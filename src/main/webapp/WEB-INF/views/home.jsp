@@ -2,11 +2,12 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>MarkDirect - Activa Juan Lucas</title>
+	<jsp:include page="links.jsp"></jsp:include>
 </head>
 <body>
 <header>
-	<h1> MarkDirect </h1>
+	<h1> MarkDirect - Activa Juan Lucas </h1>
 </header>
 <div class="navbar">
 	<ul class="nav-list">
