@@ -5,6 +5,7 @@
 		<li><a href="#">Gestionar Zonas de Control</a></li>
 		<li><a href="#">Gestionar Promociones</a></li>
 		<li><a href="#">Gestionar Usuarios</a></li>
+		<li><a href="#">Estadísticas</a></li>
 		<li><a href="#">Salir</a></li>
 	</ul>
 </div>
