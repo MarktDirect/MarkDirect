@@ -9,24 +9,14 @@
 	<h1> MarkDirect </h1>
 </header>
 <div class="navbar">
-	<div class="nav-element">
-		<p class="nav-text">Home</p>
-	</div>
-	<div class="nav-element">
-		<p class="nav-text">Gestionar Centro</p>
-	</div>
-	<div class="nav-element">
-		<p class="nav-text">Gestionar Zonas de Control</p>
-	</div>
-	<div class="nav-element">
-		<p class="nav-text">Gestionar promociones</p>
-	</div>
-	<div class="nav-element">
-		<p class="nav-text">Gestionar Usuarios</p>
-	</div>
-	<div class="nav-element">
-		<p class="nav-text">Salir</p>
-	</div>
+	<ul class="nav-list">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Gestionar Centro</a></li>
+		<li><a href="#">Gestionar Zonas de Control</a></li>
+		<li><a href="#">Gestionar Promociones</a></li>
+		<li><a href="#">Gestionar Usuarios</a></li>
+		<li><a href="#">Salir</a></li>
+	</ul>
 </div>
 </body>
 </html>
