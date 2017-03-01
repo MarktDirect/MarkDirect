@@ -4,6 +4,7 @@
 <head>
 	<title>MarkDirect - Activa Juan Lucas</title>
 	<jsp:include page="links.jsp"></jsp:include>
+	<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 </head>
 <body>
 <header>
