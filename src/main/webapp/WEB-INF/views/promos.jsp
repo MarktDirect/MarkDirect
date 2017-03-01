@@ -11,7 +11,7 @@
 	<jsp:include page="navbar.jsp"></jsp:include>
 	<h1>Gestión de Promociones</h1>
 	<a href="#" role="button" class="btn btn-info">Añadir Promoción</a>
-	<form class="form" action="promos" method="POST">
+	<form class="form" action="altaPromos" method="POST">
 		<div class="form-group">
 			<label for="promo-titulo">Título</label>
 			<input type="text" name="promo-titulo" class="form-control"/>
@@ -48,6 +48,7 @@
 				<option value="Todos">Todos</option>
 			</select>
 		</div>
+		<input type="submit" class="btn btn-info" value="Dar de alta"/>
 	</form>
 </body>
 </html>
