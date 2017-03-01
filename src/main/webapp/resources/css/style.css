@@ -1,1 +1,12 @@
 @CHARSET "UTF-8";
+
+header {
+	background-color: blue;
+	padding-top: 0;
+	margin-top: 0;
+	color: white;
+}
+
+a {
+	color: blue;
+}
