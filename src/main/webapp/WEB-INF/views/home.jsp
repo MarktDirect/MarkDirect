@@ -11,5 +11,6 @@
 	<h1> MarkDirect - Activa Juan Lucas </h1>
 </header>
 	<jsp:include page="navbar.jsp"></jsp:include>
+	<a href="promos" role="button" class="btn btn-info">Ver promociones</a>
 </body>
 </html>
