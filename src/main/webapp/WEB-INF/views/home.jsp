@@ -7,9 +7,10 @@
 	<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 </head>
 <body>
-<header>
+<div class="header">
 	<h1> MarkDirect - Activa Juan Lucas </h1>
-</header>
-	<jsp:include page="navbar.jsp"></jsp:include>
+</div>
+<jsp:include page="navbar.jsp"></jsp:include>
+<div class="main-area"></div>
 </body>
 </html>
