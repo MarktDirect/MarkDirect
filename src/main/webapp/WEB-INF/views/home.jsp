@@ -5,10 +5,28 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<header>
+	<h1> MarkDirect </h1>
+</header>
+<div class="navbar">
+	<div class="nav-element">
+		<p class="nav-text">Home</p>
+	</div>
+	<div class="nav-element">
+		<p class="nav-text">Gestionar Centro</p>
+	</div>
+	<div class="nav-element">
+		<p class="nav-text">Gestionar Zonas de Control</p>
+	</div>
+	<div class="nav-element">
+		<p class="nav-text">Gestionar promociones</p>
+	</div>
+	<div class="nav-element">
+		<p class="nav-text">Gestionar Usuarios</p>
+	</div>
+	<div class="nav-element">
+		<p class="nav-text">Salir</p>
+	</div>
+</div>
 </body>
 </html>
