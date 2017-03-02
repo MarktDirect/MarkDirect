@@ -15,8 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 //Controlador ocupado de dar validacion al usuario
 @Controller
 
-//Metodo que cargar la pagina login ,el mapping deberia ser "/" para poder iniciar en el login y luego entrar en el home
-//De momento esta el "/login" a la espera que se pueda cambiar
+
 public class LoginController {
 
 	//Metodo para comprobar si el usuario es valido o no
