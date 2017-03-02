@@ -76,7 +76,7 @@
 					</div>
 					<div class="modal-footer">
 						<input type="submit" class="btn btn-info" value="Dar de alta" />
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 					</div>
 				</form>
 			</div>
