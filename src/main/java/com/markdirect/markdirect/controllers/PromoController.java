@@ -28,7 +28,7 @@ public class PromoController {
 						@RequestParam("promo-edad") String edad,
 						@RequestParam("promo-sexo") String sexo) {
 		
-		System.out.println("Hola, yo soy la promo " + titulo + " y mi descripción es: " + descripcion);
+		//Necesitamos convertir el rango de edad que llega como un String a dos variables diferentes (edadMin - edadMax)
 		
 		return "promos";
 	}
