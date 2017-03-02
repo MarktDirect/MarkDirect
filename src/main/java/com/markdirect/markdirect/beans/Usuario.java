@@ -3,58 +3,48 @@ package com.markdirect.markdirect.beans;
 public class Usuario {
 	
 	//Variables
-	private String nombre;
-	private String email;
-	private String genero;
-	private int edad;
+	private String userEmail;
+	private String userGen;
+	private String userBorn;
 	
 	//Constructor
-	public Usuario(){};
-	public Usuario(String nombre, String email, String genero, int edad) {
-		this.nombre = nombre;
-		this.email = email;
-		this.genero = genero;
-		this.edad = edad;
+	public Usuario(){}
+	public Usuario(String userEmail, String userGen, String userBorn) {
+		this.userEmail = userEmail;
+		this.userGen = userGen;
+		this.userBorn = userBorn;
 	}
 	
 	//Metodos
-	public String getNombre() {
-		return nombre;
+	public String getUserEmail() {
+		return userEmail;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
-	public String getEmail() {
-		return email;
+	public String getUserGen() {
+		return userGen;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserGen(String userGen) {
+		this.userGen = userGen;
 	}
-	public String getGenero() {
-		return genero;
+	public String getUserBorn() {
+		return userBorn;
 	}
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-	public int getEdad() {
-		return edad;
-	}
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setUserBorn(String userBorn) {
+		this.userBorn = userBorn;
 	}
 	
 	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Usuario [nombre=");
-		builder.append(nombre);
-		builder.append(", email=");
-		builder.append(email);
-		builder.append(", genero=");
-		builder.append(genero);
-		builder.append(", edad=");
-		builder.append(edad);
+		builder.append("Usuario [userEmail=");
+		builder.append(userEmail);
+		builder.append(", userGen=");
+		builder.append(userGen);
+		builder.append(", userBorn=");
+		builder.append(userBorn);
 		builder.append("]");
 		return builder.toString();
 	}

@@ -19,9 +19,6 @@ public class Promocion {
 	
 	//Constructor
 	public Promocion(){}
-
-	
-	
 	public Promocion(int promoId, String promoName, String promoDescription, String promoSince, String promoTo,
 			int promoState, String promoCreate, String promoImage, int promoMinAge, int promoMaxAge,
 			String promoGen, int promo_controlzoneId) {
@@ -40,6 +37,7 @@ public class Promocion {
 		this.promo_controlzoneId = promo_controlzoneId;
 	}
 
+	//Metodos
 	public int getPromoId() {
 		return promoId;
 	}
