@@ -37,8 +37,12 @@
 								type="text" name="promo-descripcion" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="promo-validez">Validez</label> <input type="text"
-								name="promo-validez" class="form-control" />
+							<label for="promo-validezDesde">Válido desde</label> <input type="text"
+								name="promo-validezDesde" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label for="promo-validezHasta">Válido hasta</label> <input type="text"
+								name="promo-validezHasta" class="form-control" />
 						</div>
 						<div class="form-group">
 							<label for="promo-img"> URL Imagen</label> <input type="text"
