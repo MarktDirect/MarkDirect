@@ -4,87 +4,68 @@ package com.markdirect.markdirect.beans;
 public class Promocion {
 	
 	//Variables
-	private String nombre;
-	private String descripcion;
-	private String desde;
-	private String hasta;
-	private boolean activo;
-	private String creado;
+	private String promoName;
+	private String promoDescription;
+	private String promoSince;
+	private String promoTo;
+	private boolean promoState;
+	private String promoCreate;
 	
 	//Constructor
 	public Promocion(){}
-	public Promocion(String nombre, String descripcion, String desde, String hasta, boolean activo, String creado) {
+	public Promocion(String promoName, String promoDescription, String promoSince, String promoTo, boolean promoState, String promoCreate) {
 		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.desde = desde;
-		this.hasta = hasta;
-		this.activo = activo;
-		this.creado = creado;
+		this.promoName = promoName;
+		this.promoDescription = promoDescription;
+		this.promoSince = promoSince;
+		this.promoTo = promoTo;
+		this.promoState = promoState;
+		this.promoCreate = promoCreate;
 	}
-	
-	//Metodos
-	public String getNombre() {
-		return nombre;
+	public String getPromoName() {
+		return promoName;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setPromoName(String promoName) {
+		this.promoName = promoName;
 	}
-	public String getDescripcion() {
-		return descripcion;
+	public String getPromoDescription() {
+		return promoDescription;
 	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setPromoDescription(String promoDescription) {
+		this.promoDescription = promoDescription;
 	}
-	public String getDesde() {
-		return desde;
+	public String getPromoSince() {
+		return promoSince;
 	}
-	public void setDesde(String desde) {
-		this.desde = desde;
+	public void setPromoSince(String promoSince) {
+		this.promoSince = promoSince;
 	}
-	public String getHasta() {
-		return hasta;
+	public String getPromoTo() {
+		return promoTo;
 	}
-	public void setHasta(String hasta) {
-		this.hasta = hasta;
+	public void setPromoTo(String promoTo) {
+		this.promoTo = promoTo;
 	}
-	public boolean isActivo() {
-		return activo;
+	public boolean isPromoState() {
+		return promoState;
 	}
-	public void setActivo(boolean activo) {
-		this.activo = activo;
+	public void setPromoState(boolean promoState) {
+		this.promoState = promoState;
 	}
-	public String getCreado() {
-		return creado;
+	public String getPromoCreate() {
+		return promoCreate;
 	}
-	public void setCreado(String creado) {
-		this.creado = creado;
+	public void setPromoCreate(String promoCreate) {
+		this.promoCreate = promoCreate;
 	}
-	
-	
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Promocion [nombre=");
-		builder.append(nombre);
-		builder.append(", descripcion=");
-		builder.append(descripcion);
-		builder.append(", desde=");
-		builder.append(desde);
-		builder.append(", hasta=");
-		builder.append(hasta);
-		builder.append(", activo=");
-		builder.append(activo);
-		builder.append(", creado=");
-		builder.append(creado);
-		builder.append("]");
-		return builder.toString();
+		return "Promocion [promoName=" + promoName + ", promoDescription=" + promoDescription + ", promoSince="
+				+ promoSince + ", promoTo=" + promoTo + ", promoState=" + promoState + ", promoCreate=" + promoCreate
+				+ "]";
 	}
 	
 	
-	
-	
-	
-	
-
 }
+	
+	
