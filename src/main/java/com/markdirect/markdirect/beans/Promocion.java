@@ -147,6 +147,19 @@ public class Promocion {
 				+ promo_controlzoneId + "]";
 	}
 	
+	/* TODO
+	 * Método que calcula si la promoción está activa o no
+	 */
+	public boolean activePromo() {
+		return false;
+	}
 	
+	/* TODO
+	 * Método que data el alta de la promoción
+	 */
+	public String dateTimePromo() {
+		
+		return "";
+	}
 	
 }
