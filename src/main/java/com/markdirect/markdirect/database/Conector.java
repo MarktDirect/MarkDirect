@@ -16,6 +16,7 @@ public class Conector {
 		dataSource.setUrl(res.getString("jdbc-url"));
 		dataSource.setUsername(res.getString("jdbc-user"));
 		dataSource.setPassword(res.getString("jdbc-pass"));
+		System.out.println("He entrado en el Conector y voy a devolver el dataSource");
 		
 		return dataSource;
 	}

@@ -51,6 +51,7 @@ public class DatabaseGenerica {
 		try {
 			Class.forName(driver);
 			load = true;//Si no peta por la excepción y sigue ejecutando, es que se cargó correctamente.
+			System.out.println("El driver se ha cargado correctamente");
 
 		} catch (ClassNotFoundException e) {
 			//Si peta por la excepción, no entra en el try y load sigue valiendo un false, por lo que devuelve ese valor.
