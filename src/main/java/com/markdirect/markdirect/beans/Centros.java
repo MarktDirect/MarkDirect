@@ -3,11 +3,9 @@ package com.markdirect.markdirect.beans;
 public class Centros {
 
 	private String nombre;
-	private String nombreIngles;
 	private String telefono;
 	private String direccion;
 	private String descripcion;
-	private String descripcionIngles;
 	private String tipo;
 	private String subtipo;
 	private String activo;
@@ -20,12 +18,7 @@ public class Centros {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getNombreIngles() {
-		return nombreIngles;
-	}
-	public void setNombreIngles(String nombreIngles) {
-		this.nombreIngles = nombreIngles;
-	}
+	
 	public String getTelefono() {
 		return telefono;
 	}
@@ -44,12 +37,7 @@ public class Centros {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getDescripcionIngles() {
-		return descripcionIngles;
-	}
-	public void setDescripcionIngles(String descripcionIngles) {
-		this.descripcionIngles = descripcionIngles;
-	}
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -74,12 +62,29 @@ public class Centros {
 	public void setVerCentro(String verCentro) {
 		this.verCentro = verCentro;
 	}
+	
+	
 	@Override
 	public String toString() {
-		return "Centros [nombre=" + nombre + ", nombreIngles=" + nombreIngles + ", telefono=" + telefono
-				+ ", direccion=" + direccion + ", descripcion=" + descripcion + ", descripcionIngles="
-				+ descripcionIngles + ", tipo=" + tipo + ", subtipo=" + subtipo + ", activo=" + activo + ", verCentro="
-				+ verCentro + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Centros [nombre=");
+		builder.append(nombre);
+		builder.append(", telefono=");
+		builder.append(telefono);
+		builder.append(", direccion=");
+		builder.append(direccion);
+		builder.append(", descripcion=");
+		builder.append(descripcion);
+		builder.append(", tipo=");
+		builder.append(tipo);
+		builder.append(", subtipo=");
+		builder.append(subtipo);
+		builder.append(", activo=");
+		builder.append(activo);
+		builder.append(", verCentro=");
+		builder.append(verCentro);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 	
