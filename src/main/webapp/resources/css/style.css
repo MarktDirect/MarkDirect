@@ -11,6 +11,10 @@ a {
 	color: blue;
 }
 
-.navbar-bar {
-	color: red;
+.navbar {
+	background-color: #002C73;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #ffffff;
 }
