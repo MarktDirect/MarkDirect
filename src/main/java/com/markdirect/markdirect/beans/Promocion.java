@@ -9,7 +9,7 @@ public class Promocion {
 	private String promoDescription;
 	private String promoSince;
 	private String promoTo;
-	private boolean promoState;
+	private int promoState;
 	private String promoCreate;
 	private String promoImage;
 	private int promoMinAge;
@@ -23,7 +23,7 @@ public class Promocion {
 	
 	
 	public Promocion(int promoId, String promoName, String promoDescription, String promoSince, String promoTo,
-			boolean promoState, String promoCreate, String promoImage, int promoMinAge, int promoMaxAge,
+			int promoState, String promoCreate, String promoImage, int promoMinAge, int promoMaxAge,
 			String promoGen, int promo_controlzoneId) {
 		super();
 		this.promoId = promoId;
@@ -80,11 +80,11 @@ public class Promocion {
 		this.promoTo = promoTo;
 	}
 
-	public boolean isPromoState() {
+	public int isPromoState() {
 		return promoState;
 	}
 
-	public void setPromoState(boolean promoState) {
+	public void setPromoState(int promoState) {
 		this.promoState = promoState;
 	}
 
