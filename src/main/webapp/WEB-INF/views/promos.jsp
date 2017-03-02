@@ -73,45 +73,44 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="promo-info">
+		<table class="table table-hover table-responsive">
+			<tr>
+				<th>Título</th>
+				<th>Validez</th>
+				<th>Descripción</th>
+				<th>Imagen</th>
+				<th>Major</th>
+				<th>Minor</th>
+				<th>Id</th>
+				<th>Sexo</th>
+				<th>Edad</th>
+			</tr>
+			<tr>
+				<td>Titulo 1</td>
+				<td>Validez 1</td>
+				<td>Descripción 1</td>
+				<td>Imagen 1</td>
+				<td>Major 1</td>
+				<td>Minor 1</td>
+				<td>Id 1</td>
+				<td>Sexo 1</td>
+				<td>Edad 1</td>
+			</tr>
+			<tr>
+				<td>Titulo 2</td>
+				<td>Validez 2</td>
+				<td>Descripción 2</td>
+				<td>Imagen 2</td>
+				<td>Major 2</td>
+				<td>Minor 2</td>
+				<td>Id 2</td>
+				<td>Sexo 2</td>
+				<td>Edad 2</td>
+			</tr>
+		</table>
+	</div>
 
-	<!-- <form class="form" action="altaPromos" method="POST">
-		<div class="form-group">
-			<label for="promo-titulo">Título</label> <input type="text"
-				name="promo-titulo" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label for="promo-descripcion">Descripción</label> <input type="text"
-				name="promo-descripcion" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label for="promo-validez">Validez</label> <input type="text"
-				name="promo-validez" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label for="promo-img"> URL Imagen</label> <input type="text"
-				name="promo-img" class="form-control" />
-		</div>
-		<div class="form-group">
-			<label for="promo-zona">Zona de Control</label> <input type="text"
-				name="promo-zona" class="form-control" />
-		</div>
-		<div class="form-group">
-			<select name="promo-edad" class="form-control">
-				<option value="0-20">0-20</option>
-				<option value="21-35">21-35</option>
-				<option value="36-50">36-50</option>
-				<option value="+50">+50</option>
-				<option value="todos">Todos</option>
-			</select>
-		</div>
-		<div class="form-group">
-			<select name="promo-sexo" class="form-control">
-				<option value="H">Hombre</option>
-				<option value="M">Mujer</option>
-				<option value="Todos">Todos</option>
-			</select>
-		</div>
-		<input type="submit" class="btn btn-info" value="Dar de alta" />
-	</form>  -->
 </body>
 </html>
