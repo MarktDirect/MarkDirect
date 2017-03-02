@@ -1,5 +1,6 @@
 package com.markdirect.markdirect.database;
 
+import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,16 +24,17 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 	/* Método que devuelve una lista de todas las promociones */
 	public List<Promocion> listarPromociones() {
+		System.out.println("Estoy en el método listarPromociones");
 		String sql = "SELECT * FROM promos";
-		List<Promocion> listaPromociones = jdbc.query(
+		List<Promocion> listaPromociones = null;
+		try {
+			listaPromociones = jdbc.query(
 				sql, 
 				new BeanPropertyRowMapper<Promocion>(Promocion.class)
-				);		
-
-		if(listaPromociones.isEmpty()) {
-			System.out.println("He realizado la consulta con éxito pero la lista está vacía");
+				);	
+		}catch(Exception e) {
+			System.out.println("Error en la consulta");
 		}
-		
 		return listaPromociones;
 	}
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +12,14 @@
 	<script type="text/javascript">
 		
 	</script>
+	<div class="header-contain">
 	<jsp:include page="navbar.jsp"></jsp:include>
-	<h1>Gestión de Promociones</h1>
-	<a href="#" role="button" class="btn btn-info" data-toggle="modal"
+	<div class="jumbotron">
+		<h2>Gestión de Promociones</h2>
+		<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
 		data-target="#modalPromo">Añadir Promoción</a>
-
+	</div>
+</div>
 	<!-- Modal -->
 	<div id="modalPromo" class="modal fade" role="dialog">
 		<div class="modal-dialog">
@@ -45,24 +49,28 @@
 								name="promoTo" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="promoImg"> URL Imagen</label> <input type="text"
-								name="promoImg" class="form-control" />
+							<label for="promoImage"> URL Imagen</label> <input type="text"
+								name="promoImage" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="promo-zona">Zona de Control</label> <input
-								type="text" name="promo-zona" class="form-control" />
-						</div>
-						<div class="form-group">
-							<select name="promo-edad" class="form-control">
-								<option value="0-20">0-20</option>
-								<option value="21-35">21-35</option>
-								<option value="36-50">36-50</option>
-								<option value="+50">+50</option>
-								<option value="todos">Todos</option>
+							<label for="promo_controlZoneId">Zona de Control</label> 
+							<select name="promo_controlZoneId" class="form-control">
+								<option value="0">Genérica</option>
+								<option value="1">Zona 1</option>
+								<option value="2">Zona 2</option>
+								<option value="3">Zona 3</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<select name="promo-sexo" class="form-control">
+							<span>Rango de edad</span><br/>
+							<label for="promoMinAge">Edad mínima</label>
+							<input type="text" name="promoMinAge" class="form-control" />
+							<label for="promoMinAge">Edad máxima</label>
+							<input type="text" name="promoMaxAge" class="form-control" />
+						</div>
+						<div class="form-group">
+							<label for="promoGen">Género</label>
+							<select name="promoGen" class="form-control">
 								<option value="H">Hombre</option>
 								<option value="M">Mujer</option>
 								<option value="Todos">Todos</option>
@@ -77,42 +85,35 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="promo-info">
-		<table class="table table-hover table-responsive">
+	<!-- Tabla con las promos de la base de datos -->
+	<div class="promo-info table-responsive">
+		<table class="table table-hover">
 			<tr>
 				<th>Título</th>
-				<th>Validez</th>
 				<th>Descripción</th>
-				<th>Imagen</th>
-				<th>Major</th>
-				<th>Minor</th>
-				<th>Id</th>
-				<th>Sexo</th>
-				<th>Edad</th>
+				<th>Válida desde</th>
+				<th>Válida hasta</th>
+				<th>Activa</th>
+				<th>Creación</th>
+				<th>Edad min</th>
+				<th>Edad max</th>
+				<th>Género</th>
+				<th>Zona</th>
 			</tr>
-			<tr>
-				<td>Titulo 1</td>
-				<td>Validez 1</td>
-				<td>Descripción 1</td>
-				<td>Imagen 1</td>
-				<td>Major 1</td>
-				<td>Minor 1</td>
-				<td>Id 1</td>
-				<td>Sexo 1</td>
-				<td>Edad 1</td>
-			</tr>
-			<tr>
-				<td>Titulo 2</td>
-				<td>Validez 2</td>
-				<td>Descripción 2</td>
-				<td>Imagen 2</td>
-				<td>Major 2</td>
-				<td>Minor 2</td>
-				<td>Id 2</td>
-				<td>Sexo 2</td>
-				<td>Edad 2</td>
-			</tr>
+			<c:forEach items="${listaPromos}" var="promo">
+				<tr>
+					<td>${promo.promoName}</td>
+					<td>${promo.promoDescription}</td>
+					<td>${promo.promoSince}</td>
+					<td>${promo.promoTo}</td>
+					<td>${promo.promoState}</td>
+					<td>${promo.promoCreate}</td>
+					<td>${promo.promoMinAge}</td>
+					<td>${promo.promoMaxAge}</td>
+					<td>${promo.promoGen}</td>
+					<td>${promo.promo_controlzoneId}</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</div>
 
