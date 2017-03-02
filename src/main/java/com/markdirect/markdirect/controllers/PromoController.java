@@ -19,11 +19,11 @@ public class PromoController {
 	
 	
 	@RequestMapping(value="altaPromos", method=RequestMethod.POST)
-	public String altaPromos(@RequestParam("promo-titulo") String titulo,
-						@RequestParam("promo-descripcion") String descripcion,
-						@RequestParam("promo-validezDesde") String validezDesde,
-						@RequestParam("promo-validezHasta") String validezHasta,
-						@RequestParam("promo-img") String img,
+	public String altaPromos(@RequestParam("promoName") String promoName,
+						@RequestParam("promoDescription") String promoDescription,
+						@RequestParam("promoSince") String promoSince,
+						@RequestParam("promoTo") String promoTo,
+						@RequestParam("promoImg") String promoImg,
 						@RequestParam("promo-zona") String zona,
 						@RequestParam("promo-edad") String edad,
 						@RequestParam("promo-sexo") String sexo) {

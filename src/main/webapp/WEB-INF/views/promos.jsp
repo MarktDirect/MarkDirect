@@ -29,24 +29,24 @@
 				<form class="form" action="altaPromos" method="POST">
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="promo-titulo">Título</label> <input type="text"
-								name="promo-titulo" class="form-control" />
+							<label for="promoName">Título</label> <input type="text"
+								name="promoName" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="promo-descripcion">Descripción</label> <input
-								type="text" name="promo-descripcion" class="form-control" />
+							<label for="promoDescription">Descripción</label> <input
+								type="text" name="promoDescription" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="promo-validezDesde">Válido desde</label> <input type="text"
-								name="promo-validezDesde" class="form-control" />
+							<label for="promoSince">Válido desde</label> <input type="text"
+								name="promoSince" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="promo-validezHasta">Válido hasta</label> <input type="text"
-								name="promo-validezHasta" class="form-control" />
+							<label for="promoTo">Válido hasta</label> <input type="text"
+								name="promoTo" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="promo-img"> URL Imagen</label> <input type="text"
-								name="promo-img" class="form-control" />
+							<label for="promoImg"> URL Imagen</label> <input type="text"
+								name="promoImg" class="form-control" />
 						</div>
 						<div class="form-group">
 							<label for="promo-zona">Zona de Control</label> <input
