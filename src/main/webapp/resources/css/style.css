@@ -13,8 +13,14 @@ a {
 
 .navbar {
 	background-color: #002C73;
+	margin-bottom: 0px;
 }
 
 .navbar-default .navbar-nav > li > a {
 	color: #ffffff;
+}
+
+.main-area {
+	text-align: center;
+	text-transform: uppercase;
 }
