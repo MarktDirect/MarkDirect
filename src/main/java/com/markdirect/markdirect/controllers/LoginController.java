@@ -17,13 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 //Metodo que cargar la pagina login ,el mapping deberia ser "/" para poder iniciar en el login y luego entrar en el home
 //De momento esta el "/login" a la espera que se pueda cambiar
 public class LoginController {
-	@RequestMapping( value="/login")
-	public String Login(){
-		return "Login";
-	}
-
+	
 	//Metodo para comprobar si el usuario es valido o no
-	@RequestMapping(value = "/validar", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView Validar(
 			@RequestParam("usuario") String usuario, 
 			@RequestParam("password") String password) {
@@ -33,7 +29,7 @@ public class LoginController {
 			mav.setViewName("home");
 		}else{
 			mav.addObject("mensajeerror", "Usuario y/o email ya existen");
-			mav.setViewName("Login");
+			mav.setViewName("login");
 		}
 
 

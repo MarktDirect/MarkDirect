@@ -9,7 +9,7 @@
 <body>
 
 	<h1>FORMULARIO DE LOGIN</h1>
-	<form role="form" action="validar" method="get">
+	<form role="form" action="home" method="get">
 		<input type="text" name="usuario" placeholder="Introduce tu usuario" />
 		<input type="password" name="password"
 			placeholder="Introduce tu contraseña" /> <input type="submit"
