@@ -15,15 +15,14 @@ import com.markdirect.markdirect.database.DatabaseMarkDirect;
 @Controller
 public class UsuariosController {
 
-	//Este metodo se ocupara de mostrar una tabla de todos los usuarios
-	//En construccion
+	
+	//Metodo que muestra en el jsp una lista de los usuarios
 	@RequestMapping(value = "/usuarios", method = RequestMethod.GET)
 	public ModelAndView usuarios() {
 		ModelAndView mav = new ModelAndView();
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		mav.setViewName("usuarios");
 		mav.addObject("usuario",usuario.listarUsuarios());
-		System.out.println(usuario.listarUsuarios());
 
 		
 		

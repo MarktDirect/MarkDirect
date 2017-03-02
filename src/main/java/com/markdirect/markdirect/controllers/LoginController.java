@@ -31,12 +31,12 @@ public class LoginController {
 			mav.addObject("mensajeerror", "Usuario y/o contrase�a ya existen");
 			mav.setViewName("login");
 		}
-
+/*
 		//Aqui abajo esta el metodo de loguear usuario con la base de datos
 		//Comentado de momento
 		
-		/*  JdbcTemplate db= new JdbcTemplate(Conector.getDataSource());
-		 * try{
+		 JdbcTemplate db= new JdbcTemplate(Conector.getDataSource());
+		  try{
 		 * String sql = "SELECT*FROM USUARIOS WHERE USER= '" + usuario + "' AND PASS='" + password + "'"; Usuarios de momento puede cambiar el nombre
 		 * List<Usuario> usuarios = db.query(sql,new BeanPropertyRowMapper<Usuario>(Usuario.class));
 		 * if(!usuario.get(0).equals("")){
