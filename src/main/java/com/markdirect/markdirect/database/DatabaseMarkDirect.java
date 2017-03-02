@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.markdirect.markdirect.beans.Promocion;
+import com.markdirect.markdirect.beans.Zona;
 
 public class DatabaseMarkDirect extends DatabaseGenerica {
 
@@ -24,7 +25,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 	/* Método que devuelve una lista de todas las promociones */
 	public List<Promocion> listarPromociones() {
-		System.out.println("Estoy en el método listarPromociones");
 		String sql = "SELECT * FROM promos";
 		List<Promocion> listaPromociones = null;
 		try {
@@ -36,6 +36,19 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			System.out.println("Error en la consulta");
 		}
 		return listaPromociones;
+	}
+	public List<Zona> listarZonas() {
+		String sql = "SELECT * FROM controlzones";
+		List<Zona> listaZonas = null;
+		try {
+			listaZonas = jdbc.query(
+				sql, 
+				new BeanPropertyRowMapper<Zona>(Zona.class)
+				);	
+		}catch(Exception e) {
+			System.out.println("Error en la consulta");
+		}
+		return listaZonas;
 	}
 
 }

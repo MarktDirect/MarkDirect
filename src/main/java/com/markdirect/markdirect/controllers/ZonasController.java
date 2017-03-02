@@ -15,6 +15,7 @@ public class ZonasController {
 	@RequestMapping(value="/zonas", method = RequestMethod.GET)
 	public ModelAndView zonas(){
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("listaZonas", db.listarZonas());
 		mav.setViewName("zonas");
 		return mav;
 	}
