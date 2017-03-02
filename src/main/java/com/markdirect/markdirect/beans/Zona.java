@@ -9,6 +9,8 @@ public class Zona {
 	private String controlzoneEmplacement;
 	private int centers_centerId;
 	
+	public Zona() {}
+	
 	public Zona(int controlzoneId, String controlzoneMajor, String controlzoneMinor, String controlzoneEmplacement,
 			int centers_centerId) {
 		super();
