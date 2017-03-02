@@ -13,13 +13,16 @@ public class PromoController {
 	
 	DatabaseMarkDirect db = new DatabaseMarkDirect();
 	
-	@RequestMapping(value="promos", method=RequestMethod.GET)
+	@RequestMapping(value="/promos", method=RequestMethod.GET)
 	public ModelAndView promos() {
-		
+		System.out.println("Estoy en el método promos");
 		ModelAndView mav = new ModelAndView();
+		System.out.println("He creado un model and view");
 		
 		System.out.println(db.listarPromociones());
+		
 		mav.addObject("listaPromos", db.listarPromociones());
+		System.out.println("He añadido el objeto al mav");
 		mav.setViewName("promos");
 		return mav;
 	}

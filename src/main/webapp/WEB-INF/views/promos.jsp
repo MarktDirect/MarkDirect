@@ -90,56 +90,30 @@
 		<table class="table table-hover table-responsive">
 			<tr>
 				<th>Título</th>
-				<th>Validez</th>
 				<th>Descripción</th>
-				<th>Imagen</th>
-				<th>Major</th>
-				<th>Minor</th>
-				<th>Id</th>
-				<th>Sexo</th>
-				<th>Edad</th>
+				<th>Válida desde</th>
+				<th>Válida hasta</th>
+				<th>Activa</th>
+				<th>Creación</th>
+				<th>Edad mínima</th>
+				<th>Edad máxima</th>
+				<th>Género</th>
+				<th>Zona de Control</th>
 			</tr>
-			
 			<c:forEach items="${listaPromos}" var="promo">
 				<tr>
-					<td>Titulo 1</td>
-					<td>Validez 1</td>
-					<td>Descripción 1</td>
-					<td>Imagen 1</td>
-					<td>Major 1</td>
-					<td>Minor 1</td>
-					<td>Id 1</td>
-					<td>Sexo 1</td>
-					<td>Edad 1</td>
+					<td>${promo.promoName}</td>
+					<td>${promo.promoDescription}</td>
+					<td>${promo.promoSince}</td>
+					<td>${promo.promoTo}</td>
+					<td>${promo.promoState}</td>
+					<td>${promo.promoCreate}</td>
+					<td>${promo.promoMinAge}</td>
+					<td>${promo.promoMaxAge}</td>
+					<td>${promo.promoGen}</td>
+					<td>${promo.promo_controlzoneId}</td>
 				</tr>
 			</c:forEach>
-			
-			
-			
-			
-			
-			<tr>
-				<td>Titulo 1</td>
-				<td>Validez 1</td>
-				<td>Descripción 1</td>
-				<td>Imagen 1</td>
-				<td>Major 1</td>
-				<td>Minor 1</td>
-				<td>Id 1</td>
-				<td>Sexo 1</td>
-				<td>Edad 1</td>
-			</tr>
-			<tr>
-				<td>Titulo 2</td>
-				<td>Validez 2</td>
-				<td>Descripción 2</td>
-				<td>Imagen 2</td>
-				<td>Major 2</td>
-				<td>Minor 2</td>
-				<td>Id 2</td>
-				<td>Sexo 2</td>
-				<td>Edad 2</td>
-			</tr>
 		</table>
 	</div>
 
