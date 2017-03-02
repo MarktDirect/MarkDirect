@@ -25,24 +25,20 @@
 				<!-- el filtrar no está terminado, pero la idea sería que al buscar tag filtrará los
 		pretendientes a través de este buscador -->
 				<tr>
-					<th>nombre</th>
-					<th>genero</th>
 					<th>email</th>
-					<th>edad</th>
+					<th>genero</th>
+					<th>nacimiento</th>
 				</tr>
-				<c:forEach items="${lista}" var="Usuario">
+				<c:forEach items="${usuario}" var="Usuario">
 					<tr>
 						<td>
-							<!--${Usuario.usuario}-->
+							${Usuario.userEmail}
 						</td>
 						<td>
-							<!--${Usuario.genero}-->
+							${Usuario.userGen}
 						</td>
 						<td>
-							<!--${Usuario.email}-->
-						</td>
-						<td>
-							<!--${Usuario.edad}-->
+							${Usuario.userBorn}
 						</td>
 					</tr>
 				</c:forEach>

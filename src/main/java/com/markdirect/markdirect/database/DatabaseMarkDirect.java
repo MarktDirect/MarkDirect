@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.markdirect.markdirect.beans.Promocion;
+import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.beans.Zona;
 
 public class DatabaseMarkDirect extends DatabaseGenerica {
@@ -49,6 +50,14 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			System.out.println("Error en la consulta");
 		}
 		return listaZonas;
+	}
+	
+	public List<Usuario> listarUsuarios(){
+		String SQL="SELECT*FROM Usuarios";
+		List<Usuario> listausuario = jdbc.query(
+				SQL, new BeanPropertyRowMapper<Usuario>(Usuario.class));
+		
+		return listausuario;
 	}
 
 }
