@@ -12,12 +12,14 @@
 	<script type="text/javascript">
 		
 	</script>
+	<div class="header-contain">
 	<jsp:include page="navbar.jsp"></jsp:include>
 	<div class="jumbotron">
 		<h2>Gestión de Promociones</h2>
-		<a href="#" role="button" class="btn btn-info" data-toggle="modal"
+		<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
 		data-target="#modalPromo">Añadir Promoción</a>
 	</div>
+</div>
 	<!-- Modal -->
 	<div id="modalPromo" class="modal fade" role="dialog">
 		<div class="modal-dialog">
@@ -60,7 +62,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<span>Rango de edad</span>
+							<span>Rango de edad</span><br/>
 							<label for="promoMinAge">Edad mínima</label>
 							<input type="text" name="promoMinAge" class="form-control" />
 							<label for="promoMinAge">Edad máxima</label>
@@ -83,11 +85,9 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	<div>${listaPromos}</div>
-	<div class="promo-info">
-		<table class="table table-hover table-responsive">
+	<!-- Tabla con las promos de la base de datos -->
+	<div class="promo-info table-responsive">
+		<table class="table table-hover">
 			<tr>
 				<th>Título</th>
 				<th>Descripción</th>
@@ -95,10 +95,10 @@
 				<th>Válida hasta</th>
 				<th>Activa</th>
 				<th>Creación</th>
-				<th>Edad mínima</th>
-				<th>Edad máxima</th>
+				<th>Edad min</th>
+				<th>Edad max</th>
 				<th>Género</th>
-				<th>Zona de Control</th>
+				<th>Zona</th>
 			</tr>
 			<c:forEach items="${listaPromos}" var="promo">
 				<tr>

@@ -1,5 +1,14 @@
 @CHARSET "UTF-8";
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+
+
 header {
 	background-color: blue;
 	padding-top: 0;
@@ -7,6 +16,10 @@ header {
 	color: white;
 }
 
+/*Evitar que la navbar y el header no ocupen el 100% de la pantalla cuando hay scroll horizontal */
+.header-contain {
+	overflow-x: hidden;
+}
 a {
 	color: blue;
 }
@@ -27,4 +40,14 @@ a {
 .jumbotron {
 	text-align: center;
 	text-transform: uppercase;
+}
+
+.btn-trigger {
+	background-color: #002C73;
+	color: white;
+}
+
+.btn-trigger:hover {
+	background-color: #f9e553;
+	color: grey;
 }

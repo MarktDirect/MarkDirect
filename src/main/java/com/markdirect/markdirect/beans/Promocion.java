@@ -80,7 +80,7 @@ public class Promocion {
 		this.promoTo = promoTo;
 	}
 
-	public int isPromoState() {
+	public int getPromoState() {
 		return promoState;
 	}
 
