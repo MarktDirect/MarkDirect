@@ -1,5 +1,7 @@
 @CHARSET "UTF-8";
 
+/* General */
+
 html, body {
     margin: 0;
     padding: 0;
@@ -8,6 +10,7 @@ html, body {
     min-width: 100%;
 }
 
+/* Header: contiene navbar y jumbotron */
 
 header {
 	background-color: blue;
@@ -16,7 +19,8 @@ header {
 	color: white;
 }
 
-/*Evitar que la navbar y el header no ocupen el 100% de la pantalla cuando hay scroll horizontal */
+/*Evitar que la navbar y el header no ocupen el 100% 
+de la pantalla cuando hay scroll horizontal */
 .header-contain {
 	overflow-x: hidden;
 }
@@ -41,6 +45,8 @@ a {
 	text-align: center;
 	text-transform: uppercase;
 }
+
+/* Botones */ 
 
 .btn-trigger {
 	background-color: #002C73;
