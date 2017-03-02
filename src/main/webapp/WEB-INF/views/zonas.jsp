@@ -11,7 +11,7 @@
 	<div class="header-contain">
 		<jsp:include page="navbar.jsp"></jsp:include>
 		<div class="jumbotron">
-			<h2>Gestión de Promociones</h2>
+			<h2>Gestión de Zonas de Control</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
 				data-target="#modalZonas">Añadir Zona</a>
 		</div>

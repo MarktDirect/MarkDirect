@@ -21,14 +21,14 @@ public class LoginController {
 	//Metodo para comprobar si el usuario es valido o no
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView Validar(
-			@RequestParam("usuario") String usuario, 
-			@RequestParam("password") String password) {
+			@RequestParam("admin") String usuario, 
+			@RequestParam("adminPassword") String password) {
 		ModelAndView mav = new ModelAndView();
 
 		if(usuario.equals("admin") && password.equals("12345")){
 			mav.setViewName("home");
 		}else{
-			mav.addObject("mensajeerror", "Usuario y/o contraseña ya existen");
+			mav.addObject("mensajeerror", "Usuario y/o contraseï¿½a ya existen");
 			mav.setViewName("login");
 		}
 
@@ -45,7 +45,7 @@ public class LoginController {
 				}
 				
 				catch(IndexOutOfBoundsException e) {
-				mav.addObject("mensajeerror", "Usuario y/o Usuario y/o contraseña no son correctos");
+				mav.addObject("mensajeerror", "Usuario y/o Usuario y/o contraseï¿½a no son correctos");
 				mav.setViewName ("login");
 			}  
 		 */

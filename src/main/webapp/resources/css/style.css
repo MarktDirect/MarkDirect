@@ -51,3 +51,23 @@ a {
 	background-color: #f9e553;
 	color: grey;
 }
+/* Estilo login */
+
+#login-body {
+	background-color: #002C73;
+}
+
+#login-logo {
+	margin: 0 auto;
+}
+
+.modal-login {
+	margin-top: 200px;
+	text-align: center;
+}
+
+.modal-login .form-control {
+	width: 60%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
