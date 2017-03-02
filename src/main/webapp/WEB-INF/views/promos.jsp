@@ -9,9 +9,6 @@
 <jsp:include page="links.jsp"></jsp:include>
 </head>
 <body>
-	<script type="text/javascript">
-		
-	</script>
 	<div class="header-contain">
 	<jsp:include page="navbar.jsp"></jsp:include>
 	<div class="jumbotron">

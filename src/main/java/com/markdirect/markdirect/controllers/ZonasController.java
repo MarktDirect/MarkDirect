@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ZonasController {
 	
 	
-	@RequestMapping(value="/zonascontrol", method = RequestMethod.GET)
-	public String zonasControl(){
-		return "zonasControl";
+	@RequestMapping(value="/zonas", method = RequestMethod.GET)
+	public String zonas(){
+		return "zonas";
 	}
 
 }
