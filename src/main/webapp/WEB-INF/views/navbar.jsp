@@ -13,7 +13,7 @@
 	<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-				<a href="home"><i class="fa fa-line-chart" aria-hidden="true"></i> Estadísticas</a>
+				<a href="stats"><i class="fa fa-line-chart" aria-hidden="true"></i> Estadísticas</a>
 			</li>
 			<li>
 				<a href="centros"><i class="fa fa-building-o" aria-hidden="true"></i> Centros</a>

@@ -15,4 +15,9 @@ public class HomeController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "/stats", method = RequestMethod.GET)
+	public String backHome() {
+		return "home";
+	}
+	
 }
