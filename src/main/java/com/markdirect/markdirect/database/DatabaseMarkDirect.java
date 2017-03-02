@@ -53,7 +53,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 	
 	public List<Usuario> listarUsuarios(){
-		String SQL="SELECT*FROM Usuarios";
+		String SQL="SELECT*FROM users";
 		List<Usuario> listausuario = jdbc.query(
 				SQL, new BeanPropertyRowMapper<Usuario>(Usuario.class));
 		
