@@ -28,6 +28,8 @@ public class PromoController {
 						@RequestParam("promo-edad") String edad,
 						@RequestParam("promo-sexo") String sexo) {
 		
+		db.listarPromociones();
+		
 		//Necesitamos convertir el rango de edad que llega como un String a dos variables diferentes (edadMin - edadMax)
 		
 		return "promos";
