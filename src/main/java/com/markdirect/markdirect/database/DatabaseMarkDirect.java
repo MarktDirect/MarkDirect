@@ -46,7 +46,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 				new BeanPropertyRowMapper<Zona>(Zona.class)
 				);	
 		}catch(Exception e) {
-			System.out.println("Hola" + e.getMessage());
 			System.out.println("Error en la consulta");
 		}
 		return listaZonas;
