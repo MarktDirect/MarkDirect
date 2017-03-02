@@ -29,7 +29,7 @@
 					<!--${Usuario.usuario}-->
 				</td>
 				<td>
-					<!--${Usaurio.genero}-->
+					<!--${Usuario.genero}-->
 				</td>
 				<td>
 					<!--${Usuario.email}-->
