@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
 
@@ -13,8 +14,14 @@ public class PromoController {
 	DatabaseMarkDirect db = new DatabaseMarkDirect();
 	
 	@RequestMapping(value="promos", method=RequestMethod.GET)
-	public String promos() {
-		return "promos";
+	public ModelAndView promos() {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		System.out.println(db.listarPromociones());
+		mav.addObject("listaPromos", db.listarPromociones());
+		mav.setViewName("promos");
+		return mav;
 	}
 	
 	
@@ -23,14 +30,15 @@ public class PromoController {
 						@RequestParam("promoDescription") String promoDescription,
 						@RequestParam("promoSince") String promoSince,
 						@RequestParam("promoTo") String promoTo,
-						@RequestParam("promoImg") String promoImg,
-						@RequestParam("promo-zona") String zona,
-						@RequestParam("promo-edad") String edad,
-						@RequestParam("promo-sexo") String sexo) {
+						@RequestParam("promoImage") String promoImage,
+						@RequestParam("promo_controlZoneId") int promo_controlZoneId,
+						@RequestParam("promoMinAge") int promoMinAge,
+						@RequestParam("promoMaxAge") int promoMaxAge,
+						@RequestParam("promoGen") String promoGen) {
 		
-		System.out.println(db.listarPromociones());
-		
-		//Necesitamos convertir el rango de edad que llega como un String a dos variables diferentes (edadMin - edadMax)
+		/*
+		 * Tenemos que guardar de alguna forma el día y la hora en la que se ha creado la promo
+		 */
 		
 		return "promos";
 	}
