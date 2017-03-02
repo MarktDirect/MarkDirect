@@ -7,12 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="links.jsp"></jsp:include>
-<title>Insert title here</title>
+<title>Usuarios</title>
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
+	<a href="#" role="button" class="btn btn-info">Bloquear usuario</a>
 
-	<h1>AQUI SE MOSTRARA UNA TABLA CON LOS USUARIOS REGISTRADOS</h1>
+	<h1>USUARIOS REGISTRADOS</h1>
 
 	<table class="table table-responsive table-hover">
 		<!-- el filtrar no está terminado, pero la idea sería que al buscar tag filtrará los
