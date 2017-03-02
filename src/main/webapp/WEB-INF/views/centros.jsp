@@ -24,24 +24,24 @@
 				<form class="form" action="altaCentro" method="POST">
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="centro-nombre">NOMBRE</label> <input type="text"
-								name="centro-nombre" class="form-control" />
+							<label for="centerNombre">NOMBRE</label> <input type="text"
+								name="centerNombre" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="centro-direccion">DIRECCIÓN</label> <input
-								type="text" name="centro-direccion" class="form-control" />
+							<label for="centerDireccion">DIRECCIÓN</label> <input
+								type="text" name="centerDireccion" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="centro-descripcion">DESCRIPCIÓN</label> <input
-								type="text" name="centro-descripcion" class="form-control" />
+							<label for="centerDescription">DESCRIPCIÓN</label> <input
+								type="text" name="centerDescription" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="centro-tipo">TIPO</label> <input type="text"
-								name="centro-tipo" class="form-control" />
+							<label for="centerTipo">TIPO</label> <input type="text"
+								name="centerTipo" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="centro-subtipo">SUBTIPO</label> <input type="text"
-								name="centro-subtipo" class="form-control" />
+							<label for="centerSubtipo">SUBTIPO</label> <input type="text"
+								name="centerSubtipo" class="form-control" />
 						</div>
 
 						<div class="modal-footer">
