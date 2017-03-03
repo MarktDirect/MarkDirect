@@ -27,8 +27,10 @@
 				</div>
 				<div class="modal-footer">
 					<input type="submit" value="acceder" class="btn btn-trigger" />
+					<p class="label label-danger">${mensajeerror}</p>
 				</div>
 				</form>
+				
 			</div>
 		</div>
 	</div>
