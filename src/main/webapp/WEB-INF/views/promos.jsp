@@ -32,27 +32,27 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="promoName">Título</label> <input type="text"
-								name="promoName" class="form-control" />
+								name="promoName" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="promoDescription">Descripción</label> <input
-								type="text" name="promoDescription" class="form-control" />
+								type="text" name="promoDescription" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="promoSince">Válido desde</label> <input type="date"
-								name="promoSince" class="form-control" />
+								name="promoSince" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="promoTo">Válido hasta</label> <input type="date"
-								name="promoTo" class="form-control" />
+								name="promoTo" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="promoImage"> URL Imagen</label> <input type="text"
-								name="promoImage" class="form-control" />
+								name="promoImage" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="promo_controlZoneId">Zona de Control</label> 
-							<select name="promo_controlZoneId" class="form-control">
+							<select name="promo_controlZoneId" class="form-control" required="required">
 								<option value="0">Genérica</option>
 								<option value="1">Zona 1</option>
 								<option value="2">Zona 2</option>
@@ -62,13 +62,13 @@
 						<div class="form-group">
 							<span>Rango de edad</span><br/>
 							<label for="promoMinAge">Edad mínima</label>
-							<input type="text" name="promoMinAge" class="form-control" />
-							<label for="promoMinAge">Edad máxima</label>
-							<input type="text" name="promoMaxAge" class="form-control" />
+							<input type="text" name="promoMinAge" class="form-control" required="required"/>
+							<label for="promoMaxAge">Edad máxima</label>
+							<input type="text" name="promoMaxAge" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="promoGen">Género</label>
-							<select name="promoGen" class="form-control">
+							<select name="promoGen" class="form-control" required="required">
 								<option value="H">Hombre</option>
 								<option value="M">Mujer</option>
 								<option value="Todos">Todos</option>
