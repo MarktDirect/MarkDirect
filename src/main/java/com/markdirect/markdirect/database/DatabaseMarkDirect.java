@@ -52,6 +52,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaZonas;
 	}
 	
+	
+	//Metodo que devuelve una lista de los usuarios de la aplicacion
 	public List<Usuario> listarUsuarios(){
 		String SQL="SELECT*FROM users";
 		List<Usuario> listausuario = jdbc.query(
@@ -59,5 +61,9 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		
 		return listausuario;
 	}
+	
+	
+	
+	
 
 }
