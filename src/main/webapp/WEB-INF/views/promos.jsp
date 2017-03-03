@@ -38,11 +38,11 @@
 								type="text" name="promoDescription" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="promoSince">Válido desde</label> <input type="text"
+							<label for="promoSince">Válido desde</label> <input type="date"
 								name="promoSince" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="promoTo">Válido hasta</label> <input type="text"
+							<label for="promoTo">Válido hasta</label> <input type="date"
 								name="promoTo" class="form-control" />
 						</div>
 						<div class="form-group">
