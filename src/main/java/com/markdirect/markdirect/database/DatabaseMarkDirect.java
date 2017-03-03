@@ -83,6 +83,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listausuario;
 	}
 	
+<<<<<<< HEAD
 	//Metodo que devuelve un objeto según la petición creada y comprueba si el usuario existe o no 
 	public  Administrador login(String usuario,String password){
 		Administrador admin=new Administrador();
@@ -90,6 +91,36 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			admin = jdbc.queryForObject(sql,new BeanPropertyRowMapper<Administrador>(Administrador.class),
 					new Object[]{usuario,password});
 		return admin;
+=======
+	//Metodo que añade una zona de control a la BBDD
+	/**
+	 * This method inserts a new row in the controlzones table.
+	 * @param controlzoneMajor
+	 * @param controlzoneMinor
+	 * @param controlzoneEmplacement
+	 * @param controlzone_centerId
+	 * @return int rowsaffected with the number of rows affected by the update statement, -1 if fails
+	 */
+	public int insertarZonaControl (
+			String controlzoneMajor, 
+			String controlzoneMinor, 
+			String controlzoneEmplacement, 
+			int controlzone_centerId){
+		
+		//String con la consulta insert
+		String sql = "INSERT INTO controlzones (controlzoneMajor, controlzoneMinor," +
+		"controlzoneEmplacement, controlzone_centerId) VALUES (?,?,?,?)";
+		//TODO preparedStatement
+		
+		System.out.println(sql);
+		
+		//Realizar update
+		int rowsAffected = -1;
+		rowsAffected = this.jdbc.update(sql, 
+				new Object[] {controlzoneMajor, controlzoneMinor, controlzoneEmplacement, controlzone_centerId});
+
+		return rowsAffected;
+>>>>>>> feature/insert_de_zona
 	}
 	
 	/*
