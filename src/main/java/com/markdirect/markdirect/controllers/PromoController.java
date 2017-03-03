@@ -45,9 +45,10 @@ public class PromoController {
 		 */
 		ModelAndView mav = new ModelAndView();
 		if(db.addPromo(promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen) == 1) {
-			mav.addObject("mensaje", "promoción añadida con éxito");mav.setViewName("promos");
+			mav.addObject("mensaje", "promoción añadida con éxito");
+			mav.setViewName("redirect:promos");
 		} else {
-			System.out.println("ERROR MÁXIMO");
+			
 		}
 		
 		return mav;

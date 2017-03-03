@@ -166,10 +166,37 @@ public class Promocion {
 	}
 	
 	/* TODO
-	 * Método que calcula si la promoción está activa o no
+	 * Método que calcula si la promoción está activa o no (si la fecha de hoy está dentro del rango de validez
 	 */
 	public int activePromo() {
-		return 1;
+		int active = 1;
+		
+		Calendar calendar = new GregorianCalendar();
+		int dayActual, monthActual, yearActual, dayTo, monthTo, yearTo;
+		
+		//recogemos os datos introducidos por el usuario
+		yearTo = Integer.parseInt(this.promoTo.substring(0, 4));
+		monthTo = Integer.parseInt(this.promoTo.substring(5, 7));
+		dayTo = Integer.parseInt(this.promoTo.substring(8, 10));
+		System.out.println(this.promoTo);
+		
+		System.out.println("El día limite es: " + dayTo + "el mes: " + monthTo + "el año " + yearTo);
+		
+		dayActual = calendar.get(Calendar.DATE);
+		monthActual = calendar.get(Calendar.MONTH);
+		yearActual = calendar.get(Calendar.YEAR);
+		
+		System.out.println("El día de hoy es: " + dayActual + "el mes: " + monthActual + "el año " + yearActual);
+
+		if(yearActual > yearTo) {
+			active = 0;
+		} else if(monthActual > monthTo) {
+			active = 0;
+		} else if (dayActual > dayTo){
+			active = 0;
+		}
+		
+		return active;
 	}
 	
 	/*
