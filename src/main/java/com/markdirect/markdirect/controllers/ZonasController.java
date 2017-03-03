@@ -3,6 +3,7 @@ package com.markdirect.markdirect.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
@@ -21,16 +22,22 @@ public class ZonasController {
 	}
 
 	//TODO método para añadir zonas
-	public int insertZonaControl (
-			String controlzoneMajor, 
-			String controlzoneMinor, 
-			String controlzoneEmplacement, 
-			int controlzone_centerId){
-		//String con la consulta insert
-		String sql = "INSERT INTO controlzones (controlzoneMajor, controlzoneMinor," +
-		"controlzoneEmplacement, controlzone_centerId) VALUES" + "'" + controlzoneMajor + "'," + 
-				controlzoneMinor+ "'," + "'" + controlzoneEmplacement + "'," + "'" + controlzone_centerId + "'" + "'";
+	@RequestMapping(value="", method = RequestMethod.GET)
+	public ModelAndView añadirZonas(
+			@RequestParam("controlzoneMajor") String controlzoneMajor,
+			@RequestParam("controlzoneMajor") String controlzoneMinor,
+			@RequestParam("controlzoneMajor") String controlzoneEmplacement,
+			@RequestParam("controlzoneMajor") int controlzone_centerId
+			){
 		
-		return 0;
+		//insertar zona de control en BBDD
+		db.insertarZonaControl(controlzoneMajor, controlzoneMinor, controlzoneEmplacement, controlzone_centerId);
+		
+		//añadir vista
+		ModelAndView mav = this.zonas();
+		
+		return mav;
+		
 	}
+	
 }

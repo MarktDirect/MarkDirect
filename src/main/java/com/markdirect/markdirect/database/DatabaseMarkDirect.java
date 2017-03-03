@@ -63,7 +63,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 	
 	//Metodo que añade una zona de control a la BBDD
-	public int insertZonaControl (
+	public int insertarZonaControl (
 			String controlzoneMajor, 
 			String controlzoneMinor, 
 			String controlzoneEmplacement, 
@@ -72,7 +72,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		//String con la consulta insert
 		String sql = "INSERT INTO controlzones (controlzoneMajor, controlzoneMinor," +
 		"controlzoneEmplacement, controlzone_centerId) VALUES" + "'" + controlzoneMajor + "'," + 
-				controlzoneMinor+ "'," + "'" + controlzoneEmplacement + "'," + "'" + controlzone_centerId + "'" + "'";
+				controlzoneMinor+ "'," + "'" + controlzoneEmplacement + "'," + "'" + controlzone_centerId + "'";
 		
 		//Realizar update
 		int rowsAffected = -1;	//por defecto devuelve -1 si hay un error en el update

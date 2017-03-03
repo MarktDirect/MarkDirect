@@ -41,8 +41,8 @@
 								name="controlzoneEmplacement" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="centers_centerId">Centro</label> <input type="text"
-								name="centers_centerId" class="form-control" />
+							<label for="controlzone_centerId">Centro</label> <input type="text"
+								name="controlzone_centerId" class="form-control" />
 						</div>
 					</div>
 					<div class="modal-footer">
