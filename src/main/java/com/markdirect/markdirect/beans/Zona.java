@@ -7,18 +7,18 @@ public class Zona {
 	private String controlzoneMajor;
 	private String controlzoneMinor;
 	private String controlzoneEmplacement;
-	private int centers_centerId;
+	private int controlzone_centerId;
 	
 	public Zona() {}
 	
 	public Zona(int controlzoneId, String controlzoneMajor, String controlzoneMinor, String controlzoneEmplacement,
-			int centers_centerId) {
+			int controlzone_centerId) {
 		super();
 		this.controlzoneId = controlzoneId;
 		this.controlzoneMajor = controlzoneMajor;
 		this.controlzoneMinor = controlzoneMinor;
 		this.controlzoneEmplacement = controlzoneEmplacement;
-		this.centers_centerId = centers_centerId;
+		this.controlzone_centerId = controlzone_centerId;
 	}
 
 	public int getControlzoneId() {
@@ -53,19 +53,19 @@ public class Zona {
 		this.controlzoneEmplacement = controlzoneEmplacement;
 	}
 
-	public int getCenters_centerId() {
-		return centers_centerId;
+	public int getControlzone_centerId() {
+		return controlzone_centerId;
 	}
 
-	public void setCenters_centerId(int centers_centerId) {
-		this.centers_centerId = centers_centerId;
+	public void setControlzone_centerId(int controlzone_centerId) {
+		this.controlzone_centerId = controlzone_centerId;
 	}
 
 	@Override
 	public String toString() {
 		return "Centros [controlzoneId=" + controlzoneId + ", controlzoneMajor=" + controlzoneMajor
 				+ ", controlzoneMinor=" + controlzoneMinor + ", controlzoneEmplacement=" + controlzoneEmplacement
-				+ ", centers_centerId=" + centers_centerId + "]";
+				+ ", centers_centerId=" + controlzone_centerId + "]";
 	}
 	
 	

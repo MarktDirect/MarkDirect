@@ -62,6 +62,24 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listausuario;
 	}
 	
+	//Metodo que añade una zona de control a la BBDD
+	public int insertZonaControl (
+			String controlzoneMajor, 
+			String controlzoneMinor, 
+			String controlzoneEmplacement, 
+			int controlzone_centerId){
+		
+		//String con la consulta insert
+		String sql = "INSERT INTO controlzones (controlzoneMajor, controlzoneMinor," +
+		"controlzoneEmplacement, controlzone_centerId) VALUES" + "'" + controlzoneMajor + "'," + 
+				controlzoneMinor+ "'," + "'" + controlzoneEmplacement + "'," + "'" + controlzone_centerId + "'" + "'";
+		
+		//Realizar update
+		int rowsAffected = -1;	//por defecto devuelve -1 si hay un error en el update
+		rowsAffected = this.jdbc.update(sql);
+
+		return rowsAffected;
+	}
 	
 	
 	

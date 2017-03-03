@@ -21,4 +21,16 @@ public class ZonasController {
 	}
 
 	//TODO método para añadir zonas
+	public int insertZonaControl (
+			String controlzoneMajor, 
+			String controlzoneMinor, 
+			String controlzoneEmplacement, 
+			int controlzone_centerId){
+		//String con la consulta insert
+		String sql = "INSERT INTO controlzones (controlzoneMajor, controlzoneMinor," +
+		"controlzoneEmplacement, controlzone_centerId) VALUES" + "'" + controlzoneMajor + "'," + 
+				controlzoneMinor+ "'," + "'" + controlzoneEmplacement + "'," + "'" + controlzone_centerId + "'" + "'";
+		
+		return 0;
+	}
 }
