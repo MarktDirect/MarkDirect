@@ -27,7 +27,6 @@ import com.markdirect.markdirect.database.DatabaseMarkDirect;
 @Controller
 public class LoginController {
 	
-	
 	@Autowired
 	HttpSession session;
 
@@ -52,6 +51,15 @@ public class LoginController {
 		session.setAttribute("usuario",administrador);
 
 		return mav;
+	}
+	
+	//Metodo de deslogueo del usuario
+	@RequestMapping("/logout")
+	public String logout(Model model) {
+		model.addAttribute("mensajedespedida", "Sesion cerrada con exito");
+		session.removeAttribute("usuario"); //eliminamos el user de la sesión
+		session.invalidate(); //invalidar la session - se borra todo lo que hay dentro
+		return "login";
 	}
 
 }
