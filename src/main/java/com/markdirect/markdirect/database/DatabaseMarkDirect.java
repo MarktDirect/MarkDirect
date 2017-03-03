@@ -57,7 +57,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaZonas;
 	}
 	
-	//M�todo que te devuelve un List con todos los centros de la base de datos
+	//M�todo que te devuelve un List con todos los centros de la base de datos
 	public List<Centro> listarCentros() {
 		String sql = "SELECT * FROM centers";
 		List<Centro> listaCentros = null;
@@ -79,7 +79,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		
 		return listausuario;
 	}
-<<<<<<< HEAD
 	
 	//Metodo que devuelve un objeto segun la peticion creada y comprueba si el usuario existe o no 
 	public  Administrador login(String usuario,String password){
@@ -90,10 +89,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return admin;
 	}
 	
-	
-	
-
-=======
 	/*
 	 * Método que añade una promoción a la base de datos
 	 */
@@ -102,18 +97,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		
 		Promocion promo = new Promocion(promoName, promoDescription, promoSince, promoTo, promoImage, promoMinAge, promoMaxAge, promoGen, promo_controlZoneId);
 		
-		//TODO falta promoState
 		String sql = "INSERT INTO promos (promoName, promoDescription, promoSince, promoTo, promoCreate, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promoState) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		int filasAfectadas = jdbc.update(sql, new Object[] {promoName, promoDescription, promoSince, promoTo, Promocion.dateTimePromo(), promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promo.activePromo()});
 		
-		if(filasAfectadas == 1) {
-			System.out.println("Promoción añadida con éxito");
-		} 
-		else {
-			System.out.println("Error en la consulta");
-		}
-		
 		return filasAfectadas;
 	}
->>>>>>> feature/insert-promos
+
 }

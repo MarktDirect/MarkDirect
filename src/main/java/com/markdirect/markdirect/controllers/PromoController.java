@@ -40,9 +40,6 @@ public class PromoController {
 						@RequestParam("promoMaxAge") int promoMaxAge,
 						@RequestParam("promoGen") String promoGen) {
 		
-		/*
-		 * Tenemos que guardar de alguna forma el día y la hora en la que se ha creado la promo
-		 */
 		ModelAndView mav = new ModelAndView();
 		if(db.addPromo(promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen) == 1) {
 			mav.addObject("mensaje", "promoción añadida con éxito");
