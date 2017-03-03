@@ -2,13 +2,28 @@ package com.markdirect.markdirect.beans;
 
 public class Centro {
 
+	//Atributos
 	private String centerSubtype;
 	private String centerType ;
 	private String centerDescription;
 	private String centerName;
 	private String centerAddres;
 	
+	//Constructores
+	public Centro(){
+		
+	}
 	
+	public Centro(String centerSubtype, String centerType, String centerDescription, String centerName,
+			String centerAddres) {
+		this.centerSubtype = centerSubtype;
+		this.centerType = centerType;
+		this.centerDescription = centerDescription;
+		this.centerName = centerName;
+		this.centerAddres = centerAddres;
+	}
+
+	//Geters and Seters
 	public String getCenterSubtype() {
 		return centerSubtype;
 	}
