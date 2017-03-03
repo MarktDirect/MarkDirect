@@ -32,8 +32,8 @@ public class CentrosController {
 		System.out.println("Hola, yo soy la el centro " + nombre + "y mi descripción es: " + descripcion);
 
 
-		String sql="INSERT INTO centers WHERE ('centerNombre','centerDireccion','centerDescription'"
-				+ " 'centerTipo', 'centerSubtipo') VALUES ('nombre','direccion','descripcion','tipo','subtipo'";
+		String sql="INSERT INTO centers WHERE ('centerName','centerDireccion','centerDescription'"
+				+ " 'centerType', 'centerSubtype') VALUES ('nombre','direccion','descripcion','tipo','subtipo'";
 
 		return "centros";
 	}
