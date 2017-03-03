@@ -11,8 +11,12 @@ import com.markdirect.markdirect.database.DatabaseMarkDirect;
 @Controller
 public class PromoController {
 	
+	//Creamos el objeto que nos va a servir para conectar con la BBDD
 	DatabaseMarkDirect db = new DatabaseMarkDirect();
 	
+	/*
+	 * Método que nos lista las promociones disponibles
+	 */
 	@RequestMapping(value="/promos", method=RequestMethod.GET)
 	public ModelAndView promos() {
 		ModelAndView mav = new ModelAndView();
@@ -21,9 +25,11 @@ public class PromoController {
 		return mav;
 	}
 	
-	
+	/*
+	 * Método que da de alta una promoción en la base de datos
+	 */
 	@RequestMapping(value="altaPromos", method=RequestMethod.POST)
-	public String altaPromos(@RequestParam("promoName") String promoName,
+	public ModelAndView altaPromos(@RequestParam("promoName") String promoName,
 						@RequestParam("promoDescription") String promoDescription,
 						@RequestParam("promoSince") String promoSince,
 						@RequestParam("promoTo") String promoTo,
@@ -36,7 +42,13 @@ public class PromoController {
 		/*
 		 * Tenemos que guardar de alguna forma el día y la hora en la que se ha creado la promo
 		 */
+		ModelAndView mav = new ModelAndView();
+		if(db.addPromo(promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen) == 1) {
+			mav.addObject("mensaje", "promoción añadida con éxito");mav.setViewName("promos");
+		} else {
+			System.out.println("ERROR MÁXIMO");
+		}
 		
-		return "promos";
+		return mav;
 	}
 }

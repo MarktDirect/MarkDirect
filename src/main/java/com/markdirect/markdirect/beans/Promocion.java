@@ -1,5 +1,7 @@
 package com.markdirect.markdirect.beans;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Promocion {
 	
@@ -19,17 +21,15 @@ public class Promocion {
 	
 	//Constructor
 	public Promocion(){}
-	public Promocion(int promoId, String promoName, String promoDescription, String promoSince, String promoTo,
-			int promoState, String promoCreate, String promoImage, int promoMinAge, int promoMaxAge,
+	public Promocion(String promoName, String promoDescription, String promoSince, String promoTo,
+			String promoImage, int promoMinAge, int promoMaxAge,
 			String promoGen, int promo_controlzoneId) {
-		super();
-		this.promoId = promoId;
 		this.promoName = promoName;
 		this.promoDescription = promoDescription;
 		this.promoSince = promoSince;
 		this.promoTo = promoTo;
-		this.promoState = promoState;
-		this.promoCreate = promoCreate;
+		this.promoState = this.activePromo();
+		this.promoCreate = Promocion.dateTimePromo();
 		this.promoImage = promoImage;
 		this.promoMinAge = promoMinAge;
 		this.promoMaxAge = promoMaxAge;
@@ -148,16 +148,28 @@ public class Promocion {
 	/* TODO
 	 * Método que calcula si la promoción está activa o no
 	 */
-	public boolean activePromo() {
-		return false;
+	public int activePromo() {
+		return 1;
 	}
 	
-	/* TODO
-	 * Método que data el alta de la promoción
+	/*
+	 * Método que calcula la fecha actual para establecer la fecha en la que se ha creado la promoción
 	 */
-	public String dateTimePromo() {
+	public static String dateTimePromo() {
+		Calendar calendar = new GregorianCalendar(); 
 		
-		return "";
+		String day, month, year, hour, minute, seconds;
+		
+		day = Integer.toString(calendar.get(Calendar.DATE));
+		month = Integer.toString(calendar.get(Calendar.MONTH));
+		year = Integer.toString(calendar.get(Calendar.YEAR));
+		hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+		minute = Integer.toString(calendar.get(Calendar.MINUTE));
+		seconds = Integer.toString(calendar.get(Calendar.SECOND));
+		
+		String date = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + seconds;
+		
+		return date;
 	}
 	
 }

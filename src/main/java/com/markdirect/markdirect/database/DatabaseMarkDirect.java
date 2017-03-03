@@ -62,8 +62,20 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listausuario;
 	}
 	
-	
-	
-	
-
+	public int addPromo(String promoName, String promoDescription, String promoSince, String promoTo, String promoImage,
+			int promo_controlZoneId, int promoMinAge, int promoMaxAge, String promoGen) {
+		
+		//TODO falta promoState
+		String sql = "INSERT INTO promos (promoName, promoDescription, promoSince, promoTo, promoCreate, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		int filasAfectadas = jdbc.update(sql, new Object[] {promoName, promoDescription, promoSince, promoTo, Promocion.dateTimePromo(), promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen});
+		
+		if(filasAfectadas == 1) {
+			System.out.println("Promoción añadida con éxito");
+		} 
+		else {
+			System.out.println("Error en la consulta");
+		}
+		
+		return filasAfectadas;
+	}
 }
