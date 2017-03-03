@@ -63,6 +63,14 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 	
 	//Metodo que añade una zona de control a la BBDD
+	/**
+	 * This method inserts a new row in the controlzones table.
+	 * @param controlzoneMajor
+	 * @param controlzoneMinor
+	 * @param controlzoneEmplacement
+	 * @param controlzone_centerId
+	 * @return int rowsaffected with the number of rows affected by the update statement, -1 if fails
+	 */
 	public int insertarZonaControl (
 			String controlzoneMajor, 
 			String controlzoneMinor, 
@@ -71,12 +79,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		
 		//String con la consulta insert
 		String sql = "INSERT INTO controlzones (controlzoneMajor, controlzoneMinor," +
-		"controlzoneEmplacement, controlzone_centerId) VALUES" + "'" + controlzoneMajor + "'," + 
-				controlzoneMinor+ "'," + "'" + controlzoneEmplacement + "'," + "'" + controlzone_centerId + "'";
+		"controlzoneEmplacement, controlzone_centerId) VALUES (?,?,?,?)";
+		//TODO preparedStatement
+		
+		System.out.println(sql);
 		
 		//Realizar update
-		int rowsAffected = -1;	//por defecto devuelve -1 si hay un error en el update
-		rowsAffected = this.jdbc.update(sql);
+		int rowsAffected = -1;
+		rowsAffected = this.jdbc.update(sql, 
+				new Object[] {controlzoneMajor, controlzoneMinor, controlzoneEmplacement, controlzone_centerId});
 
 		return rowsAffected;
 	}

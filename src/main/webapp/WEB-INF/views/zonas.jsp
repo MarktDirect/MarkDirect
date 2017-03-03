@@ -69,7 +69,7 @@
 					<td>${zona.controlzoneMajor}</td>
 					<td>${zona.controlzoneMinor}</td>
 					<td>${zona.controlzoneEmplacement}</td>
-					<td>${zona.centers_centerId}</td>
+					<td>${zona.controlzone_centerId}</td>
 
 				</tr>
 			</c:forEach>

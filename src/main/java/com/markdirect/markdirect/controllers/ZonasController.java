@@ -21,20 +21,33 @@ public class ZonasController {
 		return mav;
 	}
 
-	//TODO método para añadir zonas
-	@RequestMapping(value="", method = RequestMethod.GET)
-	public ModelAndView añadirZonas(
+	//método para añadir zonas
+	/**
+	 * This method calls to insertarZonaControl inserting the @RequestParam of the form as parameters
+	 * @param controlzoneMajor
+	 * @param controlzoneMinor
+	 * @param controlzoneEmplacement
+	 * @param controlzone_centerId
+	 * @return the new ModelAndView
+	 */
+	@RequestMapping(value="altaZonas", method = RequestMethod.POST)
+	public ModelAndView addZonas(
 			@RequestParam("controlzoneMajor") String controlzoneMajor,
-			@RequestParam("controlzoneMajor") String controlzoneMinor,
-			@RequestParam("controlzoneMajor") String controlzoneEmplacement,
-			@RequestParam("controlzoneMajor") int controlzone_centerId
+			@RequestParam("controlzoneMinor") String controlzoneMinor,
+			@RequestParam("controlzoneEmplacement") String controlzoneEmplacement,
+			@RequestParam("controlzone_centerId") int controlzone_centerId
 			){
 		
 		//insertar zona de control en BBDD
-		db.insertarZonaControl(controlzoneMajor, controlzoneMinor, controlzoneEmplacement, controlzone_centerId);
+		int algodon = db.insertarZonaControl(controlzoneMajor, controlzoneMinor, controlzoneEmplacement, controlzone_centerId);
+		System.out.println(algodon);
 		
-		//añadir vista
-		ModelAndView mav = this.zonas();
+		//Vista
+		ModelAndView mav = new ModelAndView();
+		if(algodon == 1){
+			mav.addObject("mensaje", "Zona de control cargada con éxito");
+			mav.setViewName("redirect:zonas");
+		}
 		
 		return mav;
 		
