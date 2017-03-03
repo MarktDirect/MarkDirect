@@ -2,46 +2,55 @@ package com.markdirect.markdirect.beans;
 
 public class Centro {
 
-	private String subtipo;
-	private String tipo ;
-	private String descripción;
-	private String dirección;
-	private String Nombre;
-	public String getSubtipo() {
-		return subtipo;
+	private String centerSubtype;
+	private String centerType ;
+	private String centerDescription;
+	private String centerDireccion;
+	private String centerName;
+	private String centerAddres;
+	
+	
+	public String getCenterSubtype() {
+		return centerSubtype;
 	}
-	public void setSubtipo(String subtipo) {
-		this.subtipo = subtipo;
+	public void setCenterSubtype(String centerSubtype) {
+		this.centerSubtype = centerSubtype;
 	}
-	public String getTipo() {
-		return tipo;
+	public String getCenterType() {
+		return centerType;
 	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setCenterType(String centerType) {
+		this.centerType = centerType;
 	}
-	public String getDescripción() {
-		return descripción;
+	public String getCenterDescription() {
+		return centerDescription;
 	}
-	public void setDescripción(String descripción) {
-		this.descripción = descripción;
+	public void setCenterDescription(String centerDescription) {
+		this.centerDescription = centerDescription;
 	}
-	public String getDirección() {
-		return dirección;
+	public String getCenterDireccion() {
+		return centerDireccion;
 	}
-	public void setDirección(String dirección) {
-		this.dirección = dirección;
+	public void setCenterDireccion(String centerDireccion) {
+		this.centerDireccion = centerDireccion;
 	}
-	public String getNombre() {
-		return Nombre;
+	public String getCenterName() {
+		return centerName;
 	}
-	public void setNombre(String nombre) {
-		Nombre = nombre;
+	public void setCenterName(String centerName) {
+		this.centerName = centerName;
+	}
+	public String getCenterAddres() {
+		return centerAddres;
+	}
+	public void setCenterAddres(String centerAddres) {
+		this.centerAddres = centerAddres;
 	}
 	@Override
 	public String toString() {
-		return "Centro [subtipo=" + subtipo + ", tipo=" + tipo + ", descripción=" + descripción + ", dirección="
-				+ dirección + ", Nombre=" + Nombre + "]";
+		return "Centro [centerSubtype=" + centerSubtype + ", centerType=" + centerType + ", centerDescription="
+				+ centerDescription + ", centerDireccion=" + centerDireccion + ", centerName=" + centerName
+				+ ", centerAddres=" + centerAddres + "]";
 	}
 	
-		
 }
