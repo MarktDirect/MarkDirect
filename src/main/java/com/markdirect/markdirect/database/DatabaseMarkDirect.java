@@ -34,7 +34,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 				new BeanPropertyRowMapper<Promocion>(Promocion.class)
 				);	
 		}catch(Exception e) {
-			System.out.println("Error en la consulta");
+			System.out.println("Error en la consulta de listar promociones");
 		}
 		return listaPromociones;
 	}
@@ -61,7 +61,9 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		
 		return listausuario;
 	}
-	
+	/*
+	 * Método que añade una promoción a la base de datos
+	 */
 	public int addPromo(String promoName, String promoDescription, String promoSince, String promoTo, String promoImage,
 			int promo_controlZoneId, int promoMinAge, int promoMaxAge, String promoGen) {
 		

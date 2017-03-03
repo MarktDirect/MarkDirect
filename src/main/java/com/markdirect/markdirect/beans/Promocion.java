@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 public class Promocion {
 	
-	//Variables
+	//Atributos
 	private int promoId;
 	private String promoName;
 	private String promoDescription;
@@ -19,7 +19,7 @@ public class Promocion {
 	private String promoGen;
 	private int promo_controlzoneId;
 	
-	//Constructor
+	//Constructores
 	public Promocion(){}
 	public Promocion(String promoName, String promoDescription, String promoSince, String promoTo,
 			String promoImage, int promoMinAge, int promoMaxAge,
@@ -36,8 +36,28 @@ public class Promocion {
 		this.promoGen = promoGen;
 		this.promo_controlzoneId = promo_controlzoneId;
 	}
+	
+	
 
-	//Metodos
+	public Promocion(int promoId, String promoName, String promoDescription, String promoSince, String promoTo,
+			int promoState, String promoCreate, String promoImage, int promoMinAge, int promoMaxAge, String promoGen,
+			int promo_controlzoneId) {
+		super();
+		this.promoId = promoId;
+		this.promoName = promoName;
+		this.promoDescription = promoDescription;
+		this.promoSince = promoSince;
+		this.promoTo = promoTo;
+		this.promoState = promoState;
+		this.promoCreate = promoCreate;
+		this.promoImage = promoImage;
+		this.promoMinAge = promoMinAge;
+		this.promoMaxAge = promoMaxAge;
+		this.promoGen = promoGen;
+		this.promo_controlzoneId = promo_controlzoneId;
+	}
+	
+	//Getters/Setters
 	public int getPromoId() {
 		return promoId;
 	}
@@ -134,7 +154,7 @@ public class Promocion {
 		this.promo_controlzoneId = promo_controlzoneId;
 	}
 
-
+	//Métodos
 
 	@Override
 	public String toString() {
