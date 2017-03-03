@@ -21,7 +21,7 @@
 				</div>
 				<div class="modal-body">
 					<!-- form -->
-					<form role="form" action="home" method="get" class="form-group">
+					<form role="form" action="home" method="post" class="form-group">
 						<input type="text" name="admin" placeholder="Introduce tu usuario" class="form-control" /> 
 						<input type="password" name="adminPassword" placeholder="Introduce tu contraseña" class="form-control" />
 				</div>
