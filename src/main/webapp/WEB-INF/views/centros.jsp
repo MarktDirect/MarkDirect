@@ -31,24 +31,24 @@
 				<form class="form" action="altaCentro" method="POST">
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="centerNombre">Nombre</label> <input type="text"
-								name="centerNombre" class="form-control" />
+							<label for="centerName">Nombre</label> <input type="text"
+								name="centerName" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="centerDireccion">Dirección</label> <input type="text"
-								name="centerDireccion" class="form-control" />
+							<label for="centerAddres">Dirección</label> <input type="text"
+								name="centerAddres" class="form-control" />
 						</div>
 						<div class="form-group">
 							<label for="centerDescription">Descripción</label> <input
 								type="text" name="centerDescription" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="centerTipo">Tipo</label> <input type="text"
-								name="centerTipo" class="form-control" />
+							<label for="centerType">Tipo</label> <input type="text"
+								name="centerType" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="centerSubtipo">Subtipo</label> <input type="text"
-								name="centerSubtipo" class="form-control" />
+							<label for="centerSubtype">Subtipo</label> <input type="text"
+								name="centerSubtype" class="form-control" />
 						</div>
 
 						<div class="modal-footer">
@@ -63,7 +63,7 @@
 	</div>
 
 	<!-- Tabla con las promos de la base de datos -->
-	<div class="promo-info table-responsive">
+	<div class="center-info table-responsive">
 		<table class="table table-hover">
 			<tr>
 				<th>Nombre</th>
@@ -79,7 +79,8 @@
 					<td>${center.centerAddres}</td>
 					<td>${center.centerDescription}</td>
 					<td>${center.centerType}</td>
-					<td>${center.centerSubtype}</td>					
+					<td>${center.centerSubtype}</td>	
+					<td></td>				
 				</tr>
 			</c:forEach>
 		</table>
