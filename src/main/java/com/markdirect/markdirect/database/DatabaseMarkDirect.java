@@ -43,6 +43,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		}
 		return listaPromociones;
 	}
+	
+	/* Método que devuelve una lista de todas las zonas */
 	public List<Zona> listarZonas() {
 		String sql = "SELECT * FROM controlzones";
 		List<Zona> listaZonas = null;
@@ -57,7 +59,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaZonas;
 	}
 	
-	//M�todo que te devuelve un List con todos los centros de la base de datos
+	//Método que te devuelve un List con todos los centros de la base de datos
 	public List<Centro> listarCentros() {
 		String sql = "SELECT * FROM centers";
 		List<Centro> listaCentros = null;
@@ -71,19 +73,20 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		}
 		return listaCentros;
 	}
-	//Metodo que devuelve una lista de los usuarios de la aplicacion
+	
+	//Metodo que devuelve una lista de los usuarios de la aplicación
 	public List<Usuario> listarUsuarios(){
-		String SQL="SELECT*FROM users";
+		String SQL="SELECT * FROM users";
 		List<Usuario> listausuario = jdbc.query(
 				SQL, new BeanPropertyRowMapper<Usuario>(Usuario.class));
 		
 		return listausuario;
 	}
 	
-	//Metodo que devuelve un objeto segun la peticion creada y comprueba si el usuario existe o no 
+	//Metodo que devuelve un objeto según la petición creada y comprueba si el usuario existe o no 
 	public  Administrador login(String usuario,String password){
 		Administrador admin=new Administrador();
-			String sql = "SELECT*FROM admins WHERE admin= ? AND adminPassword=?";
+			String sql = "SELECT * FROM admins WHERE admin= ? AND adminPassword=?";
 			admin = jdbc.queryForObject(sql,new BeanPropertyRowMapper<Administrador>(Administrador.class),
 					new Object[]{usuario,password});
 		return admin;
@@ -94,7 +97,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 */
 	public int addPromo(String promoName, String promoDescription, String promoSince, String promoTo, String promoImage,
 			int promo_controlZoneId, int promoMinAge, int promoMaxAge, String promoGen) {
-		
+		//necesito instanciar un objeto de la clase promo para poder llamar al método activePromo()
+		//no afecta a nada más
 		Promocion promo = new Promocion(promoName, promoDescription, promoSince, promoTo, promoImage, promoMinAge, promoMaxAge, promoGen, promo_controlZoneId);
 		
 		String sql = "INSERT INTO promos (promoName, promoDescription, promoSince, promoTo, promoCreate, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promoState) VALUES (?,?,?,?,?,?,?,?,?,?,?)";

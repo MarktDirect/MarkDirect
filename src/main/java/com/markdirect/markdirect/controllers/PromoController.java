@@ -19,7 +19,6 @@ public class PromoController {
 	 */
 	@RequestMapping(value="/promos", method=RequestMethod.GET)
 	public ModelAndView promos() {
-		System.out.println("Entro a promos");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("listaPromos", db.listarPromociones());
 		mav.setViewName("promos");
@@ -42,6 +41,7 @@ public class PromoController {
 		
 		ModelAndView mav = new ModelAndView();
 		if(db.addPromo(promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen) == 1) {
+			//TODO añadir mensaje al mav para avisar al usuario que se ha registrado con éxito
 			mav.setViewName("redirect:promos");
 		} else {
 			
