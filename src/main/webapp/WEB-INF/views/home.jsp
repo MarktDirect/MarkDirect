@@ -2,13 +2,16 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>MarkDirect - Activa Juan Lucas</title>
+	<jsp:include page="links.jsp"></jsp:include>
+	<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<jsp:include page="navbar.jsp"></jsp:include>
+<div class="main-area">
+	<div class="jumbotron">
+		<h2>Estadísticas</h2>
+	</div>
+</div>
 </body>
 </html>

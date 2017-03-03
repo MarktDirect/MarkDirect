@@ -1,0 +1,79 @@
+@CHARSET "UTF-8";
+
+/* General */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+
+/* Header: contiene navbar y jumbotron */
+
+header {
+	background-color: blue;
+	padding-top: 0;
+	margin-top: 0;
+	color: white;
+}
+
+/*Evitar que la navbar y el header no ocupen el 100% 
+de la pantalla cuando hay scroll horizontal */
+.header-contain {
+	overflow-x: hidden;
+}
+a {
+	color: blue;
+}
+
+.navbar {
+	background-color: #002C73;
+	margin-bottom: 0px;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:focus {
+	color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #f9e553;
+}
+
+.jumbotron {
+	text-align: center;
+	text-transform: uppercase;
+}
+
+/* Botones */ 
+
+.btn-trigger {
+	background-color: #002C73;
+	color: white;
+}
+
+.btn-trigger:hover {
+	background-color: #f9e553;
+	color: grey;
+}
+/* Estilo login */
+
+#login-body {
+	background-color: #002C73;
+}
+
+#login-logo {
+	margin: 0 auto;
+}
+
+.modal-login {
+	margin-top: 200px;
+	text-align: center;
+}
+
+.modal-login .form-control {
+	width: 60%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
