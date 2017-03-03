@@ -5,7 +5,6 @@ public class Centro {
 	private String centerSubtype;
 	private String centerType ;
 	private String centerDescription;
-	private String centerDireccion;
 	private String centerName;
 	private String centerAddres;
 	
@@ -28,13 +27,7 @@ public class Centro {
 	public void setCenterDescription(String centerDescription) {
 		this.centerDescription = centerDescription;
 	}
-	public String getCenterDireccion() {
-		return centerDireccion;
-	}
-	public void setCenterDireccion(String centerDireccion) {
-		this.centerDireccion = centerDireccion;
-	}
-	public String getCenterName() {
+		public String getCenterName() {
 		return centerName;
 	}
 	public void setCenterName(String centerName) {
@@ -49,7 +42,7 @@ public class Centro {
 	@Override
 	public String toString() {
 		return "Centro [centerSubtype=" + centerSubtype + ", centerType=" + centerType + ", centerDescription="
-				+ centerDescription + ", centerDireccion=" + centerDireccion + ", centerName=" + centerName
+				+ centerDescription + ", centerName=" + centerName
 				+ ", centerAddres=" + centerAddres + "]";
 	}
 	
