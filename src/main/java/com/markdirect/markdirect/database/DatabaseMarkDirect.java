@@ -102,5 +102,16 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		
 		return filasAfectadas;
 	}
-
+	
+	//Método que añade un centro a la base de datos
+	public int addCentro(String centerName, String centerDescription, String centerAddres, String centerType,
+			String centerSubtype) {
+				
+		String sql = "INSERT INTO centers (centerName, centerDescription, centerAddres, centerType, centerSubtype) VALUES (?,?,?,?,?)";
+		int filasAfectadas = jdbc.update(sql, new Object[] {centerName, centerDescription, centerAddres, centerType,centerSubtype});
+		
+		return filasAfectadas;
+	}
+	
+	
 }
