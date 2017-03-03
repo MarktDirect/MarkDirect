@@ -9,17 +9,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.markdirect.markdirect.database.DatabaseMarkDirect;
+
 @Controller
 public class CentrosController {
 
+	DatabaseMarkDirect db = new DatabaseMarkDirect();
 
+	//Método que nos muestra toda la base de datos de los centros
 	@RequestMapping(value="centros", method=RequestMethod.GET)
-	public String centros(){
+	public ModelAndView centros(){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("listaCentros", db.listarCentros());
+		mav.setViewName("centros");
 
-		//Hacemos consulta a base de datos para que nos cargue todos los centros que hay
-		String sql="SELECT * FROM centers";
-
-		return "centros";
+		return mav;
 	}
 
 	@RequestMapping(value="altaCentro", method=RequestMethod.POST)
