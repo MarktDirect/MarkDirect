@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.markdirect.markdirect.beans.Administrador;
+import com.markdirect.markdirect.beans.Centro;
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.beans.Zona;
@@ -56,7 +57,20 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaZonas;
 	}
 	
-	
+	//Método que te devuelve un List con todos los centros de la base de datos
+	public List<Centro> listarCentros() {
+		String sql = "SELECT * FROM centers";
+		List<Centro> listaCentros = null;
+		try {
+			listaCentros = jdbc.query(
+				sql, 
+				new BeanPropertyRowMapper<Centro>(Centro.class)
+				);	
+		}catch(Exception e) {
+			System.out.println("Error en la consulta");
+		}
+		return listaCentros;
+	}
 	//Metodo que devuelve una lista de los usuarios de la aplicacion
 	public List<Usuario> listarUsuarios(){
 		String SQL="SELECT*FROM users";
