@@ -8,6 +8,8 @@ public class Centro {
 	private String centerDescription;
 	private String centerName;
 	private String centerAddres;
+	private int center_adminId;
+	private int centerId;
 	
 	//Constructores
 	public Centro(){
@@ -21,6 +23,21 @@ public class Centro {
 		this.centerDescription = centerDescription;
 		this.centerName = centerName;
 		this.centerAddres = centerAddres;
+		//TODO modificar la Id del administrador
+		this.center_adminId=1;
+	}
+
+	
+	
+	public Centro(String centerSubtype, String centerType, String centerDescription, String centerName,
+			String centerAddres, int center_adminId, int centerId) {
+		this.centerSubtype = centerSubtype;
+		this.centerType = centerType;
+		this.centerDescription = centerDescription;
+		this.centerName = centerName;
+		this.centerAddres = centerAddres;
+		this.center_adminId = center_adminId;
+		this.centerId = centerId;
 	}
 
 	//Geters and Seters
