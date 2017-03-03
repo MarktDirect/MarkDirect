@@ -32,23 +32,23 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="centerName">Nombre</label> <input type="text"
-								name="centerName" class="form-control" />
+								name="centerName" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="centerAddres">Dirección</label> <input type="text"
-								name="centerAddres" class="form-control" />
+								name="centerAddres" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="centerDescription">Descripción</label> <input
-								type="text" name="centerDescription" class="form-control" />
+								type="text" name="centerDescription" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="centerType">Tipo</label> <input type="text"
-								name="centerType" class="form-control" />
+								name="centerType" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="centerSubtype">Subtipo</label> <input type="text"
-								name="centerSubtype" class="form-control" />
+								name="centerSubtype" class="form-control" required="required"/>
 						</div>
 
 						<div class="modal-footer">

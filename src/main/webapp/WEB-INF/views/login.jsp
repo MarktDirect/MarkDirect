@@ -22,8 +22,8 @@
 				<div class="modal-body">
 					<!-- form -->
 					<form role="form" action="home" method="post" class="form-group">
-						<input type="text" name="admin" placeholder="Introduce tu usuario" class="form-control" /> 
-						<input type="password" name="adminPassword" placeholder="Introduce tu contraseña" class="form-control" />
+						<input type="text" name="admin" placeholder="Introduce tu usuario" class="form-control" required="required"/> 
+						<input type="password" name="adminPassword" placeholder="Introduce tu contraseña" class="form-control" required="required" />
 				</div>
 				<div class="modal-footer">
 					<p class="label label-danger">${mensajeerror}</p>

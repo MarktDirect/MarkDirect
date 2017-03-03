@@ -30,19 +30,19 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="controlzoneMajor">Major</label> <input type="text"
-								name="controlzoneMajor" class="form-control" />
+								name="controlzoneMajor" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="controlzoneMinor">Minor</label> <input
-								type="text" name="controlzoneMinor" class="form-control" />
+								type="text" name="controlzoneMinor" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="controlzoneEmplacement">Situación</label> <input type="text"
-								name="controlzoneEmplacement" class="form-control" />
+								name="controlzoneEmplacement" class="form-control" required="required"/>
 						</div>
 						<div class="form-group">
 							<label for="controlzone_centerId">Centro</label> <input type="text"
-								name="controlzone_centerId" class="form-control" />
+								name="controlzone_centerId" class="form-control" required="required"/>
 						</div>
 					</div>
 					<div class="modal-footer">
