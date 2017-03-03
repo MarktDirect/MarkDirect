@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="false"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
 <head>
@@ -10,7 +10,7 @@
 <title>Alta Centro</title>
 </head>
 <body>
-<div class="header-contain">
+	<div class="header-contain">
 		<jsp:include page="navbar.jsp"></jsp:include>
 		<div class="jumbotron">
 			<h2>Gestión de Centros</h2>
@@ -35,8 +35,8 @@
 								name="centerNombre" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label for="centerDireccion">Dirección</label> <input
-								type="text" name="centerDireccion" class="form-control" />
+							<label for="centerDireccion">Dirección</label> <input type="text"
+								name="centerDireccion" class="form-control" />
 						</div>
 						<div class="form-group">
 							<label for="centerDescription">Descripción</label> <input
@@ -61,75 +61,28 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-12">
-		<table class="table">
-			<thead>
+
+	<!-- Tabla con las promos de la base de datos -->
+	<div class="promo-info table-responsive">
+		<table class="table table-hover">
+			<tr>
+				<th>Nombre</th>
+				<th>Dirección</th>
+				<th>Descripción</th>
+				<th>Tipo</th>
+				<th>Sutipo</th>
+				<th>Ver Centro</th>
+			</tr>	
+			<c:forEach items="${listaCentros}" var="center">
 				<tr>
-					<th>Nombre</th>
-					<th>Dirección</th>
-					<th>Descripción</th>
-					<th>Tipo</th>
-					<th>Sutipo</th>
-					<th>Ver Centro</th>
+					<td>${center.centerName}</td>
+					<td>${center.centerAddres}</td>
+					<td>${center.centerDescription}</td>
+					<td>${center.centerType}</td>
+					<td>${center.centerSubtype}</td>					
 				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
+			</c:forEach>
 		</table>
-	</div>
+	</div>	
 </body>
 </html>
