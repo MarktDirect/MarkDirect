@@ -26,19 +26,23 @@ public class CentrosController {
 		return mav;
 	}
 
+	//Método que da de alta a un nuevo centro
 	@RequestMapping(value="altaCentro", method=RequestMethod.POST)
-	public String altaPromos(@RequestParam("centerNombre") String nombre,
-			@RequestParam("centerDireccion") String direccion,
-			@RequestParam("centerDescription") String descripcion,
-			@RequestParam("centerTipo") String tipo,
-			@RequestParam("centerSubtipo") String subtipo) {
+	public ModelAndView altaPromos(@RequestParam("centerName") String centerName,
+			@RequestParam("centerAddres") String centerAddres,
+			@RequestParam("centerDescription") String centerDescription,
+			@RequestParam("centerType") String centerType,
+			@RequestParam("centerSubtype") String centerSubtype) {
 
-		System.out.println("Hola, yo soy la el centro " + nombre + "y mi descripción es: " + descripcion);
+		System.out.println("Hola, yo soy la el centro " + centerName + "y mi descripción es: " + centerDescription);
 
 
-		String sql="INSERT INTO centers WHERE ('centerName','centerDireccion','centerDescription'"
-				+ " 'centerType', 'centerSubtype') VALUES ('nombre','direccion','descripcion','tipo','subtipo'";
+		ModelAndView mav = new ModelAndView();
+		if(db.addCentro(centerName, centerDescription, centerAddres, centerType, centerSubtype) == 1) {
+			mav.setViewName("redirect:centros");
+		} else {
 
-		return "centros";
+		}
+		return mav;
 	}
 }
