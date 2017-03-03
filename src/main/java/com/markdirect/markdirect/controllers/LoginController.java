@@ -44,7 +44,7 @@ public class LoginController {
 		mav.setViewName("home");
 		}
 		catch(EmptyResultDataAccessException e) {
-			mav.addObject("mensajeerror", "Usuario y/o Usuario y/o contraseña no son correctos");
+			mav.addObject("mensajeerror", "Usuario y/o password incorrectos");
 			mav.setViewName ("login");
 		}  
 		
@@ -57,7 +57,7 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public String logout(Model model) {
 		model.addAttribute("mensajedespedida", "Sesion cerrada con exito");
-		session.removeAttribute("usuario"); //eliminamos el user de la sesión
+		session.removeAttribute("usuario"); //eliminamos el user de la sesiï¿½n
 		session.invalidate(); //invalidar la session - se borra todo lo que hay dentro
 		return "login";
 	}

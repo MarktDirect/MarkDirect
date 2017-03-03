@@ -15,6 +15,7 @@
 		<h2>Gestión de Promociones</h2>
 		<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
 		data-target="#modalPromo">Añadir Promoción</a>
+		<span>${mensaje}</span>
 	</div>
 </div>
 	<!-- Modal -->

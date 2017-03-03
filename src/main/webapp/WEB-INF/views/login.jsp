@@ -26,9 +26,9 @@
 						<input type="password" name="adminPassword" placeholder="Introduce tu contraseña" class="form-control" />
 				</div>
 				<div class="modal-footer">
-					<input type="submit" value="acceder" class="btn btn-trigger" />
 					<p class="label label-danger">${mensajeerror}</p>
 					<p class="label label-danger">${mensajedespedida}</p>
+					<input type="submit" value="acceder" class="btn btn-trigger" />
 				</div>
 				</form>
 				
