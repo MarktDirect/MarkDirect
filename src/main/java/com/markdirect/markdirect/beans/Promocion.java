@@ -1,9 +1,11 @@
 package com.markdirect.markdirect.beans;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Promocion {
 	
-	//Variables
+	//Atributos
 	private int promoId;
 	private String promoName;
 	private String promoDescription;
@@ -17,11 +19,29 @@ public class Promocion {
 	private String promoGen;
 	private int promo_controlzoneId;
 	
-	//Constructor
+	//Constructores
 	public Promocion(){}
-	public Promocion(int promoId, String promoName, String promoDescription, String promoSince, String promoTo,
-			int promoState, String promoCreate, String promoImage, int promoMinAge, int promoMaxAge,
+	public Promocion(String promoName, String promoDescription, String promoSince, String promoTo,
+			String promoImage, int promoMinAge, int promoMaxAge,
 			String promoGen, int promo_controlzoneId) {
+		this.promoName = promoName;
+		this.promoDescription = promoDescription;
+		this.promoSince = promoSince;
+		this.promoTo = promoTo;
+		this.promoState = this.activePromo();
+		this.promoCreate = Promocion.dateTimePromo();
+		this.promoImage = promoImage;
+		this.promoMinAge = promoMinAge;
+		this.promoMaxAge = promoMaxAge;
+		this.promoGen = promoGen;
+		this.promo_controlzoneId = promo_controlzoneId;
+	}
+	
+	
+
+	public Promocion(int promoId, String promoName, String promoDescription, String promoSince, String promoTo,
+			int promoState, String promoCreate, String promoImage, int promoMinAge, int promoMaxAge, String promoGen,
+			int promo_controlzoneId) {
 		super();
 		this.promoId = promoId;
 		this.promoName = promoName;
@@ -36,8 +56,8 @@ public class Promocion {
 		this.promoGen = promoGen;
 		this.promo_controlzoneId = promo_controlzoneId;
 	}
-
-	//Metodos
+	
+	//Getters/Setters
 	public int getPromoId() {
 		return promoId;
 	}
@@ -134,7 +154,7 @@ public class Promocion {
 		this.promo_controlzoneId = promo_controlzoneId;
 	}
 
-
+	//Métodos
 
 	@Override
 	public String toString() {
@@ -146,18 +166,57 @@ public class Promocion {
 	}
 	
 	/* TODO
-	 * Método que calcula si la promoción está activa o no
+	 * Método que calcula si la promoción está activa o no (si la fecha de hoy está dentro del rango de validez
 	 */
-	public boolean activePromo() {
-		return false;
+	public int activePromo() {
+		int active = 1;
+		
+		Calendar calendar = new GregorianCalendar();
+		int dayActual, monthActual, yearActual, dayTo, monthTo, yearTo;
+		
+		//recogemos os datos introducidos por el usuario
+		yearTo = Integer.parseInt(this.promoTo.substring(0, 4));
+		monthTo = Integer.parseInt(this.promoTo.substring(5, 7));
+		dayTo = Integer.parseInt(this.promoTo.substring(8, 10));
+		System.out.println(this.promoTo);
+		
+		System.out.println("El día limite es: " + dayTo + "el mes: " + monthTo + "el año " + yearTo);
+		
+		dayActual = calendar.get(Calendar.DATE);
+		monthActual = calendar.get(Calendar.MONTH);
+		yearActual = calendar.get(Calendar.YEAR);
+		
+		System.out.println("El día de hoy es: " + dayActual + "el mes: " + monthActual + "el año " + yearActual);
+
+		if(yearActual > yearTo) {
+			active = 0;
+		} else if(monthActual > monthTo) {
+			active = 0;
+		} else if (dayActual > dayTo){
+			active = 0;
+		}
+		
+		return active;
 	}
 	
-	/* TODO
-	 * Método que data el alta de la promoción
+	/*
+	 * Método que calcula la fecha actual para establecer la fecha en la que se ha creado la promoción
 	 */
-	public String dateTimePromo() {
+	public static String dateTimePromo() {
+		Calendar calendar = new GregorianCalendar(); 
 		
-		return "";
+		String day, month, year, hour, minute, seconds;
+		
+		day = Integer.toString(calendar.get(Calendar.DATE));
+		month = Integer.toString(calendar.get(Calendar.MONTH));
+		year = Integer.toString(calendar.get(Calendar.YEAR));
+		hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+		minute = Integer.toString(calendar.get(Calendar.MINUTE));
+		seconds = Integer.toString(calendar.get(Calendar.SECOND));
+		
+		String date = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + seconds;
+		
+		return date;
 	}
 	
 }
