@@ -88,7 +88,6 @@
 		<table class="table table-hover">
 			<tr>
 				<th>Título</th>
-				<th>Descripción</th>
 				<th>Válida desde</th>
 				<th>Válida hasta</th>
 				<th>Activa</th>
@@ -100,8 +99,7 @@
 			</tr>
 			<c:forEach items="${listaPromos}" var="promo">
 				<tr>
-					<td>${promo.promoName}</td>
-					<td>${promo.promoDescription}</td>
+					<td><a href="#" class="popover-promo" title="Descripción" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="${promo.promoDescription}">${promo.promoName}</a></td>
 					<td>${promo.promoSince}</td>
 					<td>${promo.promoTo}</td>
 					<td align="center">
@@ -123,6 +121,11 @@
 			</c:forEach>
 		</table>
 	</div>
-
+	<!-- TODO pasarlo a un documento js propio -->
+	<script>
+		$(document).ready(function(){
+   		 $('[data-toggle="popover"]').popover();   
+	});
+</script>
 </body>
 </html>

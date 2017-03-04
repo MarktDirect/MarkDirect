@@ -77,3 +77,13 @@ a {
 	margin: 0 auto;
 	margin-bottom: 10px;
 }
+
+/* Estilo popover promociones */
+.popover-promo {
+	color: black;
+}
+
+.popover-promo:hover {
+	color: grey;
+	text-decoration: none;
+}
