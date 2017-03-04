@@ -29,7 +29,11 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		 * que después llamaremos desde los controladores designados para cada acción
 		 */
 	}
-	/* Método que devuelve una lista de todas las promociones */
+	
+	/**
+	 * Método que consulta a la base de datos para obtener una lista de promociones
+	 * @return List<Promocion> - si está completa; salta una excepción si hay error en la consulta 
+	 */
 	public List<Promocion> listarPromociones() {
 		String sql = "SELECT * FROM promos";
 		List<Promocion> listaPromociones = null;
@@ -44,7 +48,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaPromociones;
 	}
 	
-	/* Método que devuelve una lista de todas las zonas */
+	/**
+	 * Método que consulta a la base de datos para obtener una lista de zonas
+	 * @return List<Zona> - si está completa; salta una excepción si hay error en la consulta 
+	 */
 	public List<Zona> listarZonas() {
 		String sql = "SELECT * FROM controlzones";
 		List<Zona> listaZonas = null;
@@ -59,7 +66,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaZonas;
 	}
 	
-	//Método que te devuelve un List con todos los centros de la base de datos
+	/**
+	 * Método que consulta a la base de datos para obtener una lista de centros
+	 * @return List<Centro> - si está completa; salta una excepción si hay error en la consulta 
+	 */
 	public List<Centro> listarCentros() {
 		String sql = "SELECT * FROM centers";
 		List<Centro> listaCentros = null;
@@ -74,20 +84,32 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaCentros;
 	}
 	
-	//Metodo que devuelve una lista de los usuarios de la aplicación
+	/**
+	 * Método que consulta a la base de datos para obtener una lista de usuarios
+	 * @return List<Usuario> - si está completa; salta una excepción si hay error en la consulta 
+	 */
 	public List<Usuario> listarUsuarios(){
-		String SQL="SELECT * FROM users";
-		List<Usuario> listausuario = jdbc.query(
-				SQL, new BeanPropertyRowMapper<Usuario>(Usuario.class));
-		
+		String sql ="SELECT * FROM users";
+		List<Usuario> listausuario = null;
+		try {
+		listausuario = jdbc.query(
+				sql, new BeanPropertyRowMapper<Usuario>(Usuario.class));
+		} catch(Exception e) {
+			System.out.println("Error en la consulta");
+		}
 		return listausuario;
 	}
 	
 
-	//Metodo que devuelve un objeto según la petición creada y comprueba si el usuario existe o no 
-	public  Administrador login(String usuario,String password){
+	/**
+	 * Metodo que devuelve un objeto según la petición creada y comprueba si el usuario existe o no 
+	 * @param usuario
+	 * @param password
+	 * @return Administrador
+	 */
+	public Administrador login(String usuario,String password){
 		Administrador admin=new Administrador();
-			String sql = "SELECT * FROM admins WHERE admin= ? AND adminPassword=?";
+			String sql = "SELECT * FROM admins WHERE admin = ? AND adminPassword = ?";
 			admin = jdbc.queryForObject(sql,new BeanPropertyRowMapper<Administrador>(Administrador.class),
 					new Object[]{usuario,password});
 		return admin;
@@ -125,8 +147,18 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 	}
 	
-	/*
-	 * Método que añade una promoción a la base de datos
+	/**
+	 * Método que inserta una promoción en la BBDD
+	 * @param promoName
+	 * @param promoDescription
+	 * @param promoSince
+	 * @param promoTo
+	 * @param promoImage
+	 * @param promo_controlZoneId
+	 * @param promoMinAge
+	 * @param promoMaxAge
+	 * @param promoGen
+	 * @return int filasAfectadas - será 1 si la sentencia se ha realizado con éxito
 	 */
 	public int addPromo(String promoName, String promoDescription, String promoSince, String promoTo, String promoImage,
 			int promo_controlZoneId, int promoMinAge, int promoMaxAge, String promoGen) {
@@ -140,7 +172,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return filasAfectadas;
 	}
 	
-	//M�todo que a�ade un centro a la base de datos
+	/**
+	 * Método que inserta un centro en la BBDD
+	 * @param centerName
+	 * @param centerDescription
+	 * @param centerAddres
+	 * @param centerType
+	 * @param centerSubtype
+	 * @return
+	 */
 	public int addCentro(String centerName, String centerDescription, String centerAddres, String centerType,
 			String centerSubtype) {
 				
