@@ -192,4 +192,71 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	
 	//TODO método para editar una promoción
 	
+	/** 
+	 * Método que devuelve una lista de todas las promociones genéricas activas, 
+	 * sin filtros
+	 * @return List<Promocion> - todas las promociones genéricas
+	 */
+	public List<Promocion> allGenericPromos() {
+		String sql = "SELECT * FROM promos WHERE promo_controlzoneId = 0";
+		List<Promocion> listaPromociones = null;
+		try {
+			listaPromociones = jdbc.query(
+				sql, 
+				new BeanPropertyRowMapper<Promocion>(Promocion.class)
+				);	
+		}catch(Exception e) {
+			System.out.println("Error en la consulta de listar promociones genéricas");
+		}
+		return listaPromociones;
+	}
+	
+	/**
+	 * Método que devuelve una lista de las promociones genéricas activas, pero filtradas 
+	 * según el género del usuario y su edad
+	 * @param promoGen - género de la persona
+	 * @param userAge - edad de la persona
+	 * @return List<Promocion> - promociones que le corresponden en función al filtro realizado
+	 */
+	public List<Promocion> filteredGenericPromos(String promoGen, int userAge) {
+		String sql = "SELECT * FROM promos WHERE promo_controlzoneId = 0 AND promoGen = ? AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
+		List<Promocion> listaPromociones = null;
+		try {
+			listaPromociones = jdbc.query(
+				sql, 
+				new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{promoGen, userAge, userAge}
+				);	
+		}catch(Exception e) {
+			System.out.println("Error en la consulta de listar promociones genéricas filtradas");
+		}
+		return listaPromociones;
+	}
+	
+	/**
+	 * Método que devuelve una lista de las promociones según la localización del usuario y sus
+	 * características personales (género y edad) - sólo las que estén activas
+	 * @param promoGen - género del usuario
+	 * @param userAge - edad del usuario
+	 * @param controlzoneMajor - major de la zona de control
+	 * @param controlzoneMinor - minor de la zona de control
+	 * @return List<Promocion> - promociones que le corresponden en función al filtro realizado
+	 */
+	public List<Promocion> listLocationPromos(String promoGen, int userAge, int controlzoneMajor, String userId, int controlzoneMinor) {
+		//TODO añadir un contador para contar las notificaciones específicas que recibe un usuario
+		/*Hay una consulta SELECT anidada, ya que necesitamos obtener la id de 
+		la zona de control desde los major/minor que nos vienen de la app móvil*/
+		String sql = "SELECT * FROM promos "
+							+ "WHERE promo_controlzoneId = (SELECT controlzoneId FROM controlzones WHERE controlzoneMajor = ? AND controlzoneMinor = ?) "
+				            + "AND promoGen = ? AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
+		List<Promocion> locationPromos = null;
+		try {
+			locationPromos = jdbc.query(
+				sql, 
+				new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{controlzoneMajor, controlzoneMinor, promoGen, userAge, userAge}
+				);	
+		}catch(Exception e) {
+			System.out.println("Error en la consulta de listar promociones de localización");
+		}
+		return locationPromos;
+	}
 }
