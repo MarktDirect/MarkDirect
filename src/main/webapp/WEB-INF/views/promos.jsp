@@ -86,16 +86,16 @@
 	<!-- Tabla con las promos de la base de datos -->
 	<div class="promo-info table-responsive">
 		<table class="table table-hover">
-			<tr>
+			<tr align="center">
 				<th>Título</th>
 				<th>Válida desde</th>
 				<th>Válida hasta</th>
 				<th>Activa</th>
 				<th>Creación</th>
-				<th>Edad min</th>
-				<th>Edad max</th>
+				<th>Edad</th>
 				<th>Género</th>
 				<th>Zona</th>
+				<th>Editar</th>
 			</tr>
 			<c:forEach items="${listaPromos}" var="promo">
 				<tr>
@@ -113,10 +113,10 @@
 					</c:choose>
 					</td>
 					<td>${promo.promoCreate}</td>
-					<td>${promo.promoMinAge}</td>
-					<td>${promo.promoMaxAge}</td>
+					<td>${promo.promoMinAge} - ${promo.promoMaxAge}</td>
 					<td>${promo.promoGen}</td>
 					<td>${promo.promo_controlzoneId}</td>
+					<td><a href="#" role="button" class="btn btn-default" >Editar</a></td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -87,3 +87,8 @@ a {
 	color: grey;
 	text-decoration: none;
 }
+
+/* Estilo tablas - listas */
+table {
+	margin: 0 10px;
+}
