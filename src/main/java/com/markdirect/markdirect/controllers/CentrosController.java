@@ -16,7 +16,10 @@ public class CentrosController {
 
 	DatabaseMarkDirect db = new DatabaseMarkDirect();
 
-	//Método que nos muestra toda la base de datos de los centros
+	/**
+	 * 	Método que nos muestra toda la base de datos de los centros
+	 * @return mav.setViewName("centros"): vista con la lista de todos los centros
+	 */
 	@RequestMapping(value="centros", method=RequestMethod.GET)
 	public ModelAndView centros(){
 		ModelAndView mav = new ModelAndView();
@@ -25,8 +28,16 @@ public class CentrosController {
 
 		return mav;
 	}
-
-	//Método que da de alta a un nuevo centro
+	/**
+	 * Método que da de alta a un nuevo centro
+	 * @param centerName 
+	 * @param centerAddres
+	 * @param centerDescription
+	 * @param centerType
+	 * @param centerSubtype
+	 * @return mav.setViewName("redirect:centros"): nos devuelve la vista de todos los centros
+	 * actualizado con la nueva alta
+	 */
 	@RequestMapping(value="altaCentro", method=RequestMethod.POST)
 	public ModelAndView altaPromos(@RequestParam("centerName") String centerName,
 			@RequestParam("centerAddres") String centerAddres,
