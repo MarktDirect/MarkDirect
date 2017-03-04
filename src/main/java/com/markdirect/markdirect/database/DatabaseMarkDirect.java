@@ -190,6 +190,25 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return filasAfectadas;
 	}
 	
+	/** 
+	 * Método que devuelve una lista de todas las promociones genéricas activas, 
+	 * sin filtros
+	 * @return List<Promocion> - todas las promociones genéricas
+	 */
+	public List<Promocion> allGenericPromos() {
+		String sql = "SELECT * FROM promos WHERE promo_controlzoneId = 0";
+		List<Promocion> listaPromociones = null;
+		try {
+			listaPromociones = jdbc.query(
+				sql, 
+				new BeanPropertyRowMapper<Promocion>(Promocion.class)
+				);	
+		}catch(Exception e) {
+			System.out.println("Error en la consulta de listar promociones genéricas");
+		}
+		return listaPromociones;
+	}
+	
 	//TODO método para editar una promoción
 	
 }
