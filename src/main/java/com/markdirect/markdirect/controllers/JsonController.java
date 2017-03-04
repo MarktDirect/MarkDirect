@@ -51,4 +51,16 @@ public class JsonController {
 		return promociones;
 	}
 	
+	/**
+	 * Método que realiza una consulta a la BBDD, lista todas las promociones especificas de localización
+	 * en función a en qué zona se encuentra el usuario y sus características personales
+	 */
+	@RequestMapping(value="getLocationPromos/{controlzoneMajor}/{controlzoneMinor}/{userId}/{promoGen}/{userAge}", method=RequestMethod.GET)
+	public @ResponseBody List<Promocion> getLocationPromos(@PathVariable("controlzoneMajor") int controlzoneMajor, @PathVariable("controlzoneMinor") int controlzoneMinor, @PathVariable("userId") String userId, @PathVariable("promoGen") String promoGen, @PathVariable("userAge") int userAge) {
+		//Obtenemos la lista entera de promociones del método que tenemos en DatabaseMarkDirect
+		System.out.println("entro por el requestmapping");
+		List<Promocion> promociones = db.listLocationPromos(promoGen, userAge, controlzoneMajor, userId, controlzoneMinor);
+		return promociones;
+	}
+	
 }
