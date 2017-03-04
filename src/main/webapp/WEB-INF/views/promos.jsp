@@ -104,7 +104,16 @@
 					<td>${promo.promoDescription}</td>
 					<td>${promo.promoSince}</td>
 					<td>${promo.promoTo}</td>
-					<td>${promo.promoState}</td>
+					<td align="center">
+						<c:choose>
+							<c:when test="${promo.promoState == 1}">
+							<i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
+						</c:when>
+						<c:otherwise>
+							<i class="fa fa-times fa-lg" aria-hidden="true"></i>
+						</c:otherwise>
+					</c:choose>
+					</td>
 					<td>${promo.promoCreate}</td>
 					<td>${promo.promoMinAge}</td>
 					<td>${promo.promoMaxAge}</td>
