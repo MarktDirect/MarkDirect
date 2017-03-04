@@ -190,6 +190,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return filasAfectadas;
 	}
 	
+	//TODO método para editar una promoción
+	
 	/** 
 	 * Método que devuelve una lista de todas las promociones genéricas activas, 
 	 * sin filtros
@@ -209,6 +211,25 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaPromociones;
 	}
 	
-	//TODO método para editar una promoción
+	/**
+	 * Método que devuelve una lista de las promociones genéricas activas, pero filtradas 
+	 * según el género del usuario y su edad
+	 * @param promoGen - género de la persona
+	 * @param userAge - edad de la persona
+	 * @return List<Promocion> - promociones que le corresponden en función al filtro realizado
+	 */
+	public List<Promocion> filteredGenericPromos(String promoGen, int userAge) {
+		String sql = "SELECT * FROM promos WHERE promo_controlzoneId = 0 AND promoGen = ? AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
+		List<Promocion> listaPromociones = null;
+		try {
+			listaPromociones = jdbc.query(
+				sql, 
+				new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{promoGen, userAge, userAge}
+				);	
+		}catch(Exception e) {
+			System.out.println("Error en la consulta de listar promociones genéricas filtradas");
+		}
+		return listaPromociones;
+	}
 	
 }
