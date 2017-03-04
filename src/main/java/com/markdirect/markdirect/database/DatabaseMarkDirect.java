@@ -190,5 +190,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return filasAfectadas;
 	}
 	
+	//TODO método para editar una promoción
 	
 }
