@@ -38,7 +38,7 @@ public class CentrosController {
 	 * @return mav.setViewName("redirect:centros"): nos devuelve la vista de todos los centros
 	 * actualizado con la nueva alta
 	 */
-	@RequestMapping(value="altaCentro", method=RequestMethod.POST)
+	@RequestMapping(value="centros", method=RequestMethod.POST)
 	public ModelAndView altaPromos(@RequestParam("centerName") String centerName,
 			@RequestParam("centerAddres") String centerAddres,
 			@RequestParam("centerDescription") String centerDescription,
@@ -50,10 +50,18 @@ public class CentrosController {
 
 		ModelAndView mav = new ModelAndView();
 		if(db.addCentro(centerName, centerDescription, centerAddres, centerType, centerSubtype) == 1) {
-			mav.setViewName("redirect:centros");
+			
+			mav.addObject("mensaje", "Centro añadido con exito");
+			mav.addObject("listaCentros", db.listarCentros());
+			mav.setViewName("centros");
+			
 		} else {
+			mav.addObject("mensaje","Centro no añadido con exito");
+			mav.addObject("listaCentros", db.listarCentros());
+			mav.setViewName("centros");
 
 		}
+	
 		return mav;
 	}
 }

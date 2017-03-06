@@ -13,7 +13,7 @@ public class ZonasController {
 	
 	DatabaseMarkDirect db = new DatabaseMarkDirect();
 	
-	@RequestMapping(value="/zonas", method = RequestMethod.GET)
+	@RequestMapping(value="zonas", method = RequestMethod.GET)
 	public ModelAndView zonas(){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("listaZonas", db.listarZonas());
@@ -30,7 +30,7 @@ public class ZonasController {
 	 * @param controlzone_centerId
 	 * @return the new ModelAndView
 	 */
-	@RequestMapping(value="altaZonas", method = RequestMethod.POST)
+	@RequestMapping(value="zonas", method = RequestMethod.POST)
 	public ModelAndView addZonas(
 			@RequestParam("controlzoneMajor") String controlzoneMajor,
 			@RequestParam("controlzoneMinor") String controlzoneMinor,
@@ -45,8 +45,13 @@ public class ZonasController {
 		//Vista
 		ModelAndView mav = new ModelAndView();
 		if(algodon == 1){
-			mav.addObject("mensaje", "Zona de control cargada con éxito");
-			mav.setViewName("redirect:zonas");
+			mav.addObject("mensaje", "Zona de control cargada con Exito");
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("zonas");
+		}else{
+			mav.addObject("mensaje", "Zona de control cargada con Exito");
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("zonas");
 		}
 		
 		return mav;

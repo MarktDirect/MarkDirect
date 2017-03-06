@@ -14,7 +14,7 @@
 		<div class="jumbotron">
 			<h2>Gestión de Promociones</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
-				data-target="#modalPromo">Añadir Promoción</a> <span>${mensaje}</span>
+				data-target="#modalPromo">Añadir Promoción</a> <span class="label label-danger">${mensaje}</span>
 		</div>
 	</div>
 	<!-- Modal -->
@@ -27,7 +27,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Añadir Promoción</h4>
 				</div>
-				<form class="form" action="altaPromos" method="POST">
+				<form class="form" action="promos" method="POST">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="promoName">Título</label> <input type="text"

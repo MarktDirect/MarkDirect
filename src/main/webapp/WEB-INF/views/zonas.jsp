@@ -13,7 +13,7 @@
 		<div class="jumbotron">
 			<h2>Gestión de Zonas de Control</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
-				data-target="#modalZonas">Añadir Zona</a>
+				data-target="#modalZonas">Añadir Zona</a> <span class="label label-danger">${mensaje}</span>
 		</div>
 	</div>
 	<!-- Modal -->
@@ -26,7 +26,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Añadir Zona</h4>
 				</div>
-				<form class="form" action="altaZonas" method="POST">
+				<form class="form" action="zonas" method="POST">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="controlzoneMajor">Major</label> <input type="text"

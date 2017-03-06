@@ -15,7 +15,7 @@
 		<div class="jumbotron">
 			<h2>Gestión de Centros</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
-				data-target="#modalCentros">Añadir Centro</a>
+				data-target="#modalCentros">Añadir Centro</a> <span class="label label-danger">${mensaje}</span>
 		</div>
 	</div>
 	<!-- Modal -->
@@ -28,7 +28,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Añadir Centro</h4>
 				</div>
-				<form class="form" action="altaCentro" method="POST">
+				<form class="form" action="centros" method="post">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="centerName">Nombre</label> <input type="text"

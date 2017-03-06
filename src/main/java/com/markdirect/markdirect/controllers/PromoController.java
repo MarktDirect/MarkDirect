@@ -17,7 +17,7 @@ public class PromoController {
 	/*
 	 * Método que nos lista las promociones disponibles
 	 */
-	@RequestMapping(value="/promos", method=RequestMethod.GET)
+	@RequestMapping(value="promos", method=RequestMethod.GET)
 	public ModelAndView promos() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("listaPromos", db.listarPromociones());
@@ -28,7 +28,7 @@ public class PromoController {
 	/*
 	 * Método que da de alta una promoción en la base de datos
 	 */
-	@RequestMapping(value="altaPromos", method=RequestMethod.POST)
+	@RequestMapping(value="promos", method=RequestMethod.POST)
 	public ModelAndView altaPromos(@RequestParam("promoName") String promoName,
 						@RequestParam("promoDescription") String promoDescription,
 						@RequestParam("promoSince") String promoSince,
@@ -42,8 +42,14 @@ public class PromoController {
 		ModelAndView mav = new ModelAndView();
 		if(db.addPromo(promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen) == 1) {
 			//TODO añadir mensaje al mav para avisar al usuario que se ha registrado con éxito
-			mav.setViewName("redirect:promos");
+			mav.addObject("mensaje", "Promocion a�adido con exito");
+			mav.addObject("listaPromos", db.listarPromociones());
+			mav.setViewName("promos");
+			
 		} else {
+			mav.addObject("mensaje", "Promocion no a�adido con exito");
+			mav.addObject("listaPromos", db.listarPromociones());
+			mav.setViewName("promos");
 			
 		}
 		
