@@ -13,9 +13,11 @@
 	<div class="header-contain">
 		<jsp:include page="navbar.jsp"></jsp:include>
 		<div class="jumbotron">
+		<form role="form" action="bloquearusuario" method="post" class="form-group">
 			<h2>Gestión de Usuarios</h2>
-			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
-				data-target="#modalBlock">Bloquear Usuario</a>
+			<input type=submit value="Bloquear Usuario" role="button" class="btn btn-trigger" data-toggle="modal"
+				data-target="#modalBlock"/>
+				 <p class="label label-danger">${mensaje}</p>
 		</div>
 	</div>
 		<!-- Falta el modal del bloqueo, pero como todavía no sabemos que hay que hacer 
@@ -28,6 +30,7 @@
 					<th>email</th>
 					<th>genero</th>
 					<th>nacimiento</th>
+					<th>bloqueado</th>
 				</tr>
 				<c:forEach items="${usuario}" var="Usuario">
 					<tr>
@@ -40,9 +43,13 @@
 						<td>
 							${Usuario.userBorn}
 						</td>
+						<td>
+						    <input type="checkbox" name="bloquear" value="${Usuario.userEmail}">Bloquear<br>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
+			</form>
 		</div>
 </body>
 </html>

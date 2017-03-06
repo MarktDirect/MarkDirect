@@ -14,6 +14,7 @@ import com.markdirect.markdirect.beans.Centro;
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.beans.Zona;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 public class DatabaseMarkDirect extends DatabaseGenerica {
 
@@ -258,5 +259,23 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			System.out.println("Error en la consulta de listar promociones de localización");
 		}
 		return locationPromos;
+	}
+	
+	//Metodo para bloquear usuarios de momento sin conectar a la DB
+	public List<Usuario> BloquearUsuario(String[] usuariosbloqueados){
+		
+		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
+		List<Usuario> listausuario=usuario.listarUsuarios();
+		System.out.println("aqui llega");
+		for(int i=0;i<listausuario.size();i++){
+		if(usuariosbloqueados[i].equals(listausuario.get(i).getUserEmail())){
+			System.out.println("usuario bloqueado "+ listausuario.get(i).getUserEmail());
+		}else{
+			System.out.println("no bloquea");
+		}
+		}
+		
+		return  listausuario;
+		
 	}
 }
