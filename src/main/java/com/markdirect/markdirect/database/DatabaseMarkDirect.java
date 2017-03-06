@@ -241,7 +241,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 * @param controlzoneMinor - minor de la zona de control
 	 * @return List<Promocion> - promociones que le corresponden en función al filtro realizado
 	 */
-	public List<Promocion> listLocationPromos(String promoGen, int userAge, int controlzoneMajor, String userId, int controlzoneMinor) {
+	public List<Promocion> listLocationPromos(String promoGen, int userAge, String controlzoneMajor, String controlzoneMinor) {
 		//TODO añadir un contador para contar las notificaciones específicas que recibe un usuario
 		/*Hay una consulta SELECT anidada, ya que necesitamos obtener la id de 
 		la zona de control desde los major/minor que nos vienen de la app móvil*/

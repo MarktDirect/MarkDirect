@@ -40,34 +40,22 @@ public class JsonController {
 	}
 	
 	/**
-	 * Método que realiza una consulta a la BBDD, lista todas las promociones genéricas filtradas
-	 * por género y edad y devuelve la lista en formato JSON. Recibe los parámetros desde la url
+	 * Método que envía ofertas a la app móvil en función de los parámetros recibidos
 	 * @param promoGen - género del usuario
 	 * @param userAge - edad del usuario
-	 * @return List<Promocion> - promociones que le corresponden en función al filtro realizado
+	 * @param controlzoneMajor - major del beacon
+	 * @param controlzoneMinor - minor del beacon
+	 * @return List<Promocion> - lista de las promociones que le corresponden al usuario según sus características y su localización
 	 */
-	@RequestMapping(value="getFilteredGenericPromos/{promoGen}/{userAge}", method=RequestMethod.GET)
-	public @ResponseBody List<Promocion> getFilteredGenericPromos(@PathVariable("promoGen") String promoGen, @PathVariable("userAge") int userAge) {
-		//Obtenemos la lista entera de promociones del método que tenemos en DatabaseMarkDirect
-		List<Promocion> promociones = db.filteredGenericPromos(promoGen, userAge);
-		return promociones;
+	@RequestMapping(value="getPromos?_sex={promoGen}?_age={userAge}?_minor={controlzoneMinor}?_major={controlzoneMajor}", method=RequestMethod.GET)
+	public @ResponseBody List<Promocion> getPromos(@PathVariable("promoGen") String promoGen, @PathVariable("userAge") int userAge, @PathVariable("controlzoneMajor") String controlzoneMajor, @PathVariable("controlzoneMinor") String controlzoneMinor) {
+		List<Promocion> promoList = null;
+		/*Si el major y minor son caracteres vacíos, significa que la promoción es genérica */
+		if(controlzoneMajor.equals("") && controlzoneMinor.equals("")) {
+			promoList = db.filteredGenericPromos(promoGen, userAge);
+		} else {
+			promoList = db.listLocationPromos(promoGen, userAge, controlzoneMajor, controlzoneMinor);
+		}
+		return promoList;
 	}
-	
-	/**
-	 * Método que realiza una consulta a la BBDD, lista todas las promociones especificas de localización
-	 * en función a en qué zona se encuentra el usuario y sus características personales
-	 * @param controlzoneMajor - major de la zona de control
-	 * @param controlzoneMinor - minor de la zona de control
-	 * @param userId - token del usuario
-	 * @param promoGen - género del usuario
-	 * @param userAge - edad del usuario
-	 * @return
-	 */
-	@RequestMapping(value="getLocationPromos/{controlzoneMajor}/{controlzoneMinor}/{userId}/{promoGen}/{userAge}", method=RequestMethod.GET)
-	public @ResponseBody List<Promocion> getLocationPromos(@PathVariable("controlzoneMajor") int controlzoneMajor, @PathVariable("controlzoneMinor") int controlzoneMinor, @PathVariable("userId") String userId, @PathVariable("promoGen") String promoGen, @PathVariable("userAge") int userAge) {
-		//Obtenemos la lista entera de promociones del método que tenemos en DatabaseMarkDirect
-		List<Promocion> promociones = db.listLocationPromos(promoGen, userAge, controlzoneMajor, userId, controlzoneMinor);
-		return promociones;
-	}
-	
 }
