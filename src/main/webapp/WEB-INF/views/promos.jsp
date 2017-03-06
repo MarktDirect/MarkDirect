@@ -57,6 +57,11 @@
 							</select>
 						</div>
 						<div class="form-group">
+												<label for="promo_idProduct">ID Producto</label> <input
+													type="date" name="promo_idProduct" id="promoSince"
+													class="form-control" required="required" />
+											</div>
+						<div class="form-group">
 							<label for="promoSince">Válido desde</label> <input type="date"
 								name="promoSince" class="form-control" required="required" />
 						</div>
@@ -107,8 +112,8 @@
 		<table class="table table-hover">
 			<tr align="center">
 				<th>Título</th>
-				<th>Producto</th>
 				<th>Categoría</th>
+				<th>Producto</th>
 				<th>Activa</th>
 				<th>Edad</th>
 				<th>Género</th>
@@ -122,7 +127,11 @@
 						data-content="${promo.promoDescription}">${promo.promoName}</a></td>
 					<%-- Necesitamos tener la descripción (oculta- ya que está en el popover) para poder cogerla en el formulario --%>
 					<td hidden="hidden">${promo.promoDescription}</td>
+					<td hidden="hidden">${promo.promo_catNivel2}</td>
 					<td>${promo.promo_catNivel1}</td>
+					<td>${promo.promo_idProduct}</td>
+					<td hidden="hidden">${promo.promoSince}</td>
+					<td hidden="hidden">${promo.promoTo}</td>
 					<td align="center"><c:choose>
 							<c:when test="${promo.promoState == 1}">
 								<i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
@@ -131,8 +140,6 @@
 								<i class="fa fa-times fa-lg" aria-hidden="true"></i>
 							</c:otherwise>
 						</c:choose></td>
-					<td>${promo.promoSince}</td>
-					<td>${promo.promoTo}</td>
 					<td>${promo.promoMinAge}-${promo.promoMaxAge}</td>
 					<td>${promo.promoGen}</td>
 					<td>${promo.promo_controlzoneId}</td>
@@ -181,6 +188,11 @@
 													<option value="1">Categoría 2</option>
 													<option value="1">Categoría 3</option>
 												</select>
+											</div>
+											<div class="form-group">
+												<label for="promo_idProduct">ID Producto</label> <input
+													type="date" name="promo_idProduct" id="promoSince"
+													class="form-control" required="required" />
 											</div>
 											<div class="form-group">
 												<label for="promoSince">Válido desde</label> <input
@@ -253,10 +265,16 @@
 							$(this).closest('tr').children()[0].textContent);
 					$("#promoDescription").val(
 							$(this).closest('tr').children()[1].textContent);
-					/*$("#promoSince").val(
+					$('#promo_catNivel2').val(
 							$(this).closest('tr').children()[2].textContent);
+					$('#promo_catNivel1').val(
+							$(this).closest('tr').children()[3].textContent);
+					$('#promo_idProduct').val(
+							$(this).closest('tr').children()[4].textContent);
+					$("#promoSince").val(
+							$(this).closest('tr').children()[5].textContent);
 					$("#promoTo").val(
-							$(this).closest('tr').children()[3].textContent);*/
+							$(this).closest('tr').children()[6].textContent);
 
 				});
 	</script>

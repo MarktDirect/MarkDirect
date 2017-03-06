@@ -37,17 +37,21 @@ public class PromoController {
 						@RequestParam("promo_controlZoneId") int promo_controlZoneId,
 						@RequestParam("promoMinAge") int promoMinAge,
 						@RequestParam("promoMaxAge") int promoMaxAge,
-						@RequestParam("promoGen") String promoGen) {
+						@RequestParam("promoGen") String promoGen,
+						@RequestParam("promo_catNivel1") int promo_catNivel1,
+						@RequestParam("promo_catNivel2") int promo_catNivel2,
+						@RequestParam("promo_idProduct") long promo_idProduct
+						) {
 		
 		ModelAndView mav = new ModelAndView();
-		if(db.addPromo(promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen) == 1) {
+		if(db.addPromo(promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promo_catNivel1, promo_catNivel2, promo_idProduct) == 1) {
 			//TODO aÃ±adir mensaje al mav para avisar al usuario que se ha registrado con Ã©xito
-			mav.addObject("mensaje", "Promocion añadido con exito");
+			mav.addObject("mensaje", "Promocion aï¿½adido con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.setViewName("promos");
 			
 		} else {
-			mav.addObject("mensaje", "Promocion no añadido con exito");
+			mav.addObject("mensaje", "Promocion no aï¿½adido con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.setViewName("promos");
 			
