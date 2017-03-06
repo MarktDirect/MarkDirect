@@ -18,8 +18,10 @@ import com.mysql.fabric.xmlrpc.base.Array;
 public class UsuariosController {
 
 	
+	private static final Object NULL = null;
+
 	//Metodo que muestra en el jsp una lista de los usuarios
-	@RequestMapping(value = "/usuarios")
+	@RequestMapping(value = "usuarios", method=RequestMethod.GET)
 	public ModelAndView usuarios() {
 		ModelAndView mav = new ModelAndView();
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
@@ -29,16 +31,25 @@ public class UsuariosController {
 	}
 	
 	//Metodo para bloquear los usuarios escogidos
-	@RequestMapping(value="/bloquearusuario",method=RequestMethod.POST)
+	//En construccion
+	@RequestMapping(value="usuarios",method=RequestMethod.POST)
 	public ModelAndView Bloquearusuario(@RequestParam("bloquear") String userblock){
 		ModelAndView mav=new ModelAndView();
+		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
+		System.out.println(userblock);
+		if(!userblock.equals("")){
 		String separador=",";
 		String[] usuariosbloqueados;
-		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		usuariosbloqueados=userblock.split(separador);
 		mav.addObject("usuario",usuario.BloquearUsuario(usuariosbloqueados));
 		mav.addObject("mensaje", "usuario bloqueado con exito");
 		mav.setViewName("usuarios");
+		}
+		else{
+			mav.addObject("mensaje", "elige un usuario a bloquear");
+			mav.addObject("usuario",usuario.listarUsuarios());
+			mav.setViewName("usuarios");
+		}
 		
 		return mav;
 		
