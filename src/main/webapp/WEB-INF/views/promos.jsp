@@ -105,7 +105,7 @@
 						data-toggle="popover" data-trigger="hover" data-placement="bottom"
 						data-content="${promo.promoDescription}">${promo.promoName}</a></td>
 						<%-- Necesitamos tener la descripción (oculta- ya que está en el popover) para poder cogerla en el formulario --%>
-						<td hidden="hidden"">${promo.promoDescription}</td>
+						<td hidden="hidden">${promo.promoDescription}</td>
 					<td>Categoría A</td>
 					<td>${promo.promoSince}</td>
 					<td>${promo.promoTo}</td>
@@ -124,9 +124,9 @@
 					<td>${promo.promoGen}</td>
 					<td>${promo.promo_controlzoneId}</td>
 					<%--Arreglar que solo salen los valores de la primera promoción que hay en la lista, no la que le toca --%>
-					<td><a href="#" role="button" class="btn btn-default" id="btn-modalTrigger"
-						data-toggle="modal" data-target="#modalEdit" onclick="showEdit();">Editar</a></td>	
-						<td style="display: none" id="td-modalEdit">
+					<td><a href="#" role="button" class="btn btn-default"
+						data-toggle="modal" data-target="#modalEdit" id="btn-triggerModal">Editar</a></td>	
+						<td id="td-modalEdit">
 									<!-- Modal de edición de promociones-->
 								<div id="modalEdit" class="modal fade" role="dialog">
 								<div class="modal-dialog">
@@ -140,7 +140,7 @@
 											<div class="modal-body">
 												<div class="form-group">
 													<label for="promoName">Título</label> <input type="text"
-														name="promoName" class="form-control" required="required" />
+														name="promoName" id="promoName" class="form-control" required="required" />
 												</div>
 												<div class="form-group">
 													<label for="promoDescription">Descripción</label> <input
@@ -209,10 +209,8 @@
    		 $('[data-toggle="popover"]').popover();   
 	});
 		
-		function showEdit(){
-		    $("#modalEdit").modal("show");
-		    $("#promoName").val($(this).closest('tr').children()[1].textContent);
-		    $("#promoDescription").val($(this).closest('tr').children()[2].textContent);
+		$('td').on('click',function(){
+		    $("#promoName").val($(this).closest('tr').children()[0].textContent);
 		});
 		
 </script>
