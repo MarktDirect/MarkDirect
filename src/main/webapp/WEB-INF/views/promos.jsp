@@ -104,6 +104,8 @@
 					<td><a href="#" class="popover-promo" title="Descripción"
 						data-toggle="popover" data-trigger="hover" data-placement="bottom"
 						data-content="${promo.promoDescription}">${promo.promoName}</a></td>
+						<%-- Necesitamos tener la descripción (oculta- ya que está en el popover) para poder cogerla en el formulario --%>
+						<td hidden="hidden"">${promo.promoDescription}</td>
 					<td>Categoría A</td>
 					<td>${promo.promoSince}</td>
 					<td>${promo.promoTo}</td>
@@ -122,7 +124,7 @@
 					<td>${promo.promoGen}</td>
 					<td>${promo.promo_controlzoneId}</td>
 					<%--Arreglar que solo salen los valores de la primera promoción que hay en la lista, no la que le toca --%>
-					<td><a href="#" role="button" class="btn btn-default"
+					<td><a href="#" role="button" class="btn btn-default" id="btn-modalTrigger"
 						data-toggle="modal" data-target="#modalEdit" onclick="showEdit();">Editar</a></td>	
 						<td style="display: none" id="td-modalEdit">
 									<!-- Modal de edición de promociones-->
@@ -138,51 +140,51 @@
 											<div class="modal-body">
 												<div class="form-group">
 													<label for="promoName">Título</label> <input type="text"
-														name="promoName" class="form-control" required="required" value="${promo.promoName}" />
+														name="promoName" class="form-control" required="required" />
 												</div>
 												<div class="form-group">
 													<label for="promoDescription">Descripción</label> <input
 														type="text" name="promoDescription" class="form-control"
-														required="required" value="${promo.promoDescription}"/>
+														required="required"/>
 												</div>
 												<div class="form-group">
 													<label for="promoSince">Válido desde</label> <input
 														type="date" name="promoSince" class="form-control"
-														required="required" value="${promo.promoSince}"/>
+														required="required"/>
 												</div>
 												<div class="form-group">
 													<label for="promoTo">Válido hasta</label> <input type="date"
-														name="promoTo" class="form-control" required="required" value="${promo.promoTo}"/>
+														name="promoTo" class="form-control" required="required"/>
 												</div>
 												<div class="form-group">
 													<label for="promoImage"> URL Imagen</label> <input type="text"
-														name="promoImage" class="form-control" required="required" value="${promo.promoImage}" />
+														name="promoImage" class="form-control" required="required" />
 												</div>
 												<div class="form-group">
 													<label for="promo_controlZoneId">Zona de Control</label> 
 													<select name="promo_controlZoneId" class="form-control"
 														required="required">
 														<%--Utilizamos un if para que aparezca marcada la opción real de la promoción --%>
-														<option value="0" <c:if test="${promo.promo_controlzoneId.equals(0)}">selected="selected"</c:if>>Genérica</option>
-														<option value="1" <c:if test="${promo.promo_controlzoneId.equals(1)}">selected="selected"</c:if>>Zona 1</option>
-														<option value="2" <c:if test="${promo.promo_controlzoneId.equals(2)}">selected="selected"</c:if>>Zona 2</option>
-														<option value="3" <c:if test="${promo.promo_controlzoneId.equals(3)}">selected="selected"</c:if>>Zona 3</option>
+														<option value="0">Genérica</option>
+														<option value="1" >Zona 1</option>
+														<option value="2">Zona 2</option>
+														<option value="3">Zona 3</option>
 													</select>
 												</div>
 												<div class="form-group">
 													<span>Rango de edad</span>
 													<br /> 
 													<label for="promoMinAge">Edad mínima</label> 
-														<input type="text" name="promoMinAge" class="form-control" required="required" value="${promo.promoMinAge}"/> 
+														<input type="text" name="promoMinAge" class="form-control" required="required"/> 
 														<label for="promoMaxAge">Edad máxima</label> 
-														<input type="text" name="promoMaxAge" class="form-control" required="required" value="${promo.promoMaxAge}"/>
+														<input type="text" name="promoMaxAge" class="form-control" required="required"/>
 												</div>
 												<div class="form-group">
 													<label for="promoGen">Género</label> 
 													<select name="promoGen" class="form-control" required="required">
-														<option value="H" <c:if test="${promo.promoGen.equals('H')}">selected="selected"</c:if>>Hombre</option>
-														<option value="M" <c:if test="${promo.promoGen.equals('H')}">selected="selected"</c:if>>Mujer</option>
-														<option value="Todos" <c:if test="${promo.promoGen.equals('Todos')}">selected="selected"</c:if>>Todos</option>
+														<option value="H" >Hombre</option>
+														<option value="M">Mujer</option>
+														<option value="Todos">Todos</option>
 													</select>
 												</div>
 											</div>
@@ -206,9 +208,13 @@
 		$(document).ready(function(){
    		 $('[data-toggle="popover"]').popover();   
 	});
-		function showEdit() {
-			$('#td-modalEdit').fadeIn();
-		}
+		
+		function showEdit(){
+		    $("#modalEdit").modal("show");
+		    $("#promoName").val($(this).closest('tr').children()[1].textContent);
+		    $("#promoDescription").val($(this).closest('tr').children()[2].textContent);
+		});
+		
 </script>
 </body>
 </html>
