@@ -20,12 +20,8 @@
 				 <p class="label label-danger">${mensaje}</p>
 		</div>
 	</div>
-		<!-- Falta el modal del bloqueo, pero como todavía no sabemos que hay que hacer 
-		para bloquear lo dejamos de momento -->
 		<div class="usuarios-info table-responsive">
 			<table class="table table-responsive table-hover">
-				<!-- el filtrar no está terminado, pero la idea sería que al buscar tag filtrará los
-		pretendientes a través de este buscador -->
 				<tr>
 					<th>email</th>
 					<th>genero</th>
