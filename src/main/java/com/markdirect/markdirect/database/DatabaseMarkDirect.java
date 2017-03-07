@@ -295,6 +295,13 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		}
 
 		return  listausuario;
-
+	}
+	
+	public int registrarusuario(String email, String password, String sex, int age){
+		int usuario;
+		int userblock=0;
+		String SQL = "insert into users (userEmail,userGen,userAge,userblock,userPass) values (?,?,?,?,?)"; 
+		 usuario=jdbc.update(SQL,email,sex,age,userblock,password);
+		return usuario;
 	}
 }

@@ -6,9 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.markdirect.markdirect.beans.Promocion;
+import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
 
 @Controller
@@ -58,4 +60,22 @@ public class JsonController {
 		}
 		return promoList;
 	}
+	
+	//Método para registrar un usuario
+		//En construccion
+	@RequestMapping(value="registrousuario",method=RequestMethod.GET)
+	public String registrousuario(){
+		return "registroprueba";
+	}
+	
+		@RequestMapping(value="registrarusuario" ,method=RequestMethod.POST)
+		public @ResponseBody List<Usuario> registrarUser(
+				@RequestParam("email") String email,@RequestParam("password") String password,
+				@RequestParam("sex") String sex,@RequestParam("age") int age
+				){
+			List<Usuario> userlist=null;
+			db.registrarusuario(email,password,sex,age);
+			
+			return userlist;
+		}
 }
