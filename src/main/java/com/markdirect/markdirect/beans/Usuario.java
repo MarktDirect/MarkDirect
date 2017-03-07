@@ -5,14 +5,14 @@ public class Usuario {
 	//Variables
 	private String userEmail;
 	private String userGen;
-	private String userBorn;
+	private int userAge;
 	
 	//Constructor
 	public Usuario(){}
-	public Usuario(String userEmail, String userGen, String userBorn) {
+	public Usuario(String userEmail, String userGen, int userAge) {
 		this.userEmail = userEmail;
 		this.userGen = userGen;
-		this.userBorn = userBorn;
+		this.userAge = userAge;
 	}
 	
 	//Metodos
@@ -28,11 +28,11 @@ public class Usuario {
 	public void setUserGen(String userGen) {
 		this.userGen = userGen;
 	}
-	public String getUserBorn() {
-		return userBorn;
+	public int getUserAge() {
+		return userAge;
 	}
-	public void setUserBorn(String userBorn) {
-		this.userBorn = userBorn;
+	public void setUserAge(int userAge) {
+		this.userAge = userAge;
 	}
 	
 	
@@ -44,7 +44,7 @@ public class Usuario {
 		builder.append(", userGen=");
 		builder.append(userGen);
 		builder.append(", userBorn=");
-		builder.append(userBorn);
+		builder.append(userAge);
 		builder.append("]");
 		return builder.toString();
 	}
