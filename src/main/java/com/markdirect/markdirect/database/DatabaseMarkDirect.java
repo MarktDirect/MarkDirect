@@ -320,4 +320,21 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		 usuario=jdbc.update(SQL,email,sex,age,userblock,password);
 		return usuario;
 	}
+	
+	//Con este metodo saco la idmax del usuario que haya en la base de datos
+	//Con ello me aseguro de colocarle el token a la id correcta
+	public int idmaxUsuario(){
+		int idmax;
+		String sql="SELECT MAX(userid) AS id FROM users";
+		idmax=jdbc.queryForInt(sql);
+		return idmax;
+	}
+	public int insertarToken(int idusermax, String token){
+		int tokeninsertado;
+		String sql="insert into usertoken(id_user,token) VALUES (?,?)";
+		tokeninsertado=jdbc.update(sql,idusermax,token);
+		return tokeninsertado;
+		
+	}
+	
 }
