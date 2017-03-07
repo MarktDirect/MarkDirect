@@ -206,15 +206,11 @@ public class Promocion {
 		yearTo = Integer.parseInt(this.promoTo.substring(0, 4));
 		monthTo = Integer.parseInt(this.promoTo.substring(5, 7));
 		dayTo = Integer.parseInt(this.promoTo.substring(8, 10));
-		System.out.println(this.promoTo);
-		
-		System.out.println("El día limite es: " + dayTo + "el mes: " + monthTo + "el año " + yearTo);
 		
 		dayActual = calendar.get(Calendar.DATE);
 		monthActual = calendar.get(Calendar.MONTH);
 		yearActual = calendar.get(Calendar.YEAR);
-		
-		System.out.println("El día de hoy es: " + dayActual + "el mes: " + monthActual + "el año " + yearActual);
+	
 
 		if(yearActual > yearTo) {
 			active = 0;

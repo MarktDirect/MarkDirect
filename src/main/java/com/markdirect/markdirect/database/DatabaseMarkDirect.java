@@ -236,7 +236,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 * @return List<Promocion> - promociones que le corresponden en función al filtro realizado
 	 */
 	public List<Promocion> listLocationPromos(String token, String controlzoneMajor, String controlzoneMinor) {
-		//TODO añadir un contador para contar las notificaciones específicas que recibe un usuario
 		//Al igual que en el método de las promociones genéricas, tenemos que primero coger los datos característicos del usuario
 		String sqlUser = "SELECT userGen, userAge FROM users WHERE userId = (SELECT id_user FROM usertoken WHERE token = ?)";
 		Usuario user = jdbc.queryForObject(sqlUser, new BeanPropertyRowMapper<Usuario>(Usuario.class),
@@ -252,6 +251,19 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 					sql, 
 					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{controlzoneMajor, controlzoneMinor, user.getUserGen(), user.getUserAge(), user.getUserAge()}
 					);	
+			//TODO añadir un contador para contar las notificaciones específicas que recibe un usuario
+			//Tenemos que crear ahora un contador que almacene las ofertas que recibe cada persona
+			for (Promocion promocion : locationPromos) {
+				//Para cada promoción específica que le enviamos al usuario, insertamos en la tabla contadora
+				//la promoción enviada y el usuario que la ha recibido - nos servirá para plantear métricas
+				String sqlCounter = "INSERT INTO sentpromos (id_promo, user_token) VALUES (?,?)";
+				int filasAfectadas = jdbc.update(sqlCounter, new Object[]{promocion.getPromoId(), token});
+				if(filasAfectadas == 1) {
+					System.out.println("Insert realizado con éxito");
+				} else {
+					System.out.println("Error en el contador");
+				}
+				}
 		}catch(Exception e) {
 			System.out.println("Error en la consulta de listar promociones de localización");
 		}
