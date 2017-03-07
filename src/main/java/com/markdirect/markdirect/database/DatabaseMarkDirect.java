@@ -289,15 +289,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 	}
 
-<<<<<<< HEAD
-	//Tuve que hacer dos métodos para bloquear usuarios ya que habia problema si solo bloqueaba uno
-	//Saltaba una excepción de arraylist al hacer el split
-	public List<Usuario> BloquearUsuario(String userblock){
-=======
 	//Tuve que hacer dos metodos para bloquear usuarios ya que habia problema si solo bloqueaba uno
 	//Saltaba una excepcion de arraylist al hacer el split
 	public List<Usuario> bloquearUsuario(String userblock){
->>>>>>> feature/bloqueousuario
+
 
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		List<Usuario> listausuario=usuario.listarUsuarios();
