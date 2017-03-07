@@ -19,8 +19,6 @@ CREATE DATABASE IF NOT EXISTS MarkDirect;
 USE MarkDirect;
 
 
--- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `admins`
 --
@@ -2313,7 +2311,7 @@ CREATE TABLE `promos` (
 INSERT INTO `promos` (`promoId`, `promoName`, `promoDescription`, `promoSince`, `promoTo`, `promoState`, `promoCreate`, `promoImage`, `promoMinAge`, `promoMaxAge`, `promoGen`, `promo_controlzoneId`, `promo_catNivel1`, `promo_catNivel2`, `promo_idProduct`) VALUES
 (1, '20% OFF en Televisores LED', 'Aprovecha la oferta y obtiene 20% OFF en Televisores LED', '2017-03-08', '2017-03-31', 1, '2017-03-06 00:00:00', 'https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA02/CONTENIDOS/201509/17/00114841703144____3__640x640.jpg', 18, 99, 'Todos', 1, 13, 1, 8806088062235),
 (2, 'Actualizate', 'Si nos devuelves tu telefono antiguo te damos uno nuevo con un 30% de descuento', '2012-03-12', '2017-06-05', 1, '2017-02-06 22:05:33', 'https://www.theseniorlist.com/wp-content/uploads/2015/02/discounts.jpg', 21, 37, 'M', 0, 1, 2, 3030050064964),
-(3, 'Bienvenido al local!', 'Solo para ti, 10% off en FrigorÃ­ficos', '2016-07-18', '2019-04-19', 1, '2017-02-07 17:21:20', 'http://www.mediatrends.es/wp-content/uploads/2016/01/neveras-multidoor-4-750x455.jpg', 18, 38, 'M', 1, 6, 3, 4016803026013),
+(3, 'Bienvenido al local!', 'Solo para ti, 10% off en Frigoríficos', '2016-07-18', '2019-04-19', 1, '2017-02-07 17:21:20', 'http://www.mediatrends.es/wp-content/uploads/2016/01/neveras-multidoor-4-750x455.jpg', 18, 38, 'M', 1, 6, 3, 4016803026013),
 (4, '2x1 en Auriculares', '2x1 en auriculares', '2013-02-18', '2019-03-31', 1, '2017-03-07 10:00:00', 'http://iphonea2.com/wp-content/uploads/2016/06/Ecandy-auriculares-Bluetooth-600x300.jpg', 18, 99, 'Todos', 1, 7, 1, 8713016016423),
 (5, 'Super oferta en higiene', 'Aprovecha la oportunidad única', '2012-03-12', '2017-06-05', 1, '2017-02-06 22:05:33', 'https://www.theseniorlist.com/wp-content/uploads/2015/02/discounts.jpg', 21, 37, 'M', 0, 2, 2, 8712836050280),
 (6, 'Radios en oferta!!', 'Radios en oferta, solo por estar aqui', '2015-03-17', '2017-12-21', 1, '2017-02-07 17:29:08', 'https://media2.popsugar-assets.com/files/ons1/192/1922283/28_2009/2ea7b407a8ba9d47_Radio.jpg', 23, 29, 'Todos', 2, 4, 1, 4013833873822),
@@ -2329,7 +2327,15 @@ CREATE TABLE `sentpromos` (
   `id` int(4) NOT NULL,
   `id_promo` int(11) NOT NULL,
   `user_token` varchar(255) COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `sentpromos`
+--
+
+INSERT INTO `sentpromos` (`id`, `id_promo`, `user_token`) VALUES
+(1, 3, 'ABC123DEF456'),
+(2, 7, 'ABC123DEF456');
 
 -- --------------------------------------------------------
 
@@ -2365,6 +2371,14 @@ CREATE TABLE `usertoken` (
   `id_user` int(4) NOT NULL,
   `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usertoken`
+--
+
+INSERT INTO `usertoken` (`id`, `id_user`, `token`) VALUES
+(1, 1, 'ABC123DEF456'),
+(2, 2, '123ABC456DEF');
 
 --
 -- Índices para tablas volcadas
@@ -2462,7 +2476,7 @@ ALTER TABLE `promos`
 -- AUTO_INCREMENT de la tabla `sentpromos`
 --
 ALTER TABLE `sentpromos`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Restricciones para tablas volcadas
 --
