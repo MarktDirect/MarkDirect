@@ -165,19 +165,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			int promo_controlZoneId, int promoMinAge, int promoMaxAge, String promoGen, int promo_catNivel1, int promo_catNivel2, long promo_idProduct) {
 		//necesito instanciar un objeto de la clase promo para poder llamar al método activePromo()
 		//no afecta a nada más
-<<<<<<< HEAD
-		Promocion promo = new Promocion(promoName, promoDescription, promoSince, promoTo, promoImage, promoMinAge, promoMaxAge, promoGen, promo_controlZoneId);
-
-		String sql = "INSERT INTO promos (promoName, promoDescription, promoSince, promoTo, promoCreate, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promoState) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-		int filasAfectadas = jdbc.update(sql, new Object[] {promoName, promoDescription, promoSince, promoTo, Promocion.dateTimePromo(), promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promo.activePromo()});
-
-=======
 		Promocion promo = new Promocion(promoName, promoDescription, promoSince, promoTo, promoImage, promoMinAge, promoMaxAge, promoGen, promo_controlZoneId, promo_catNivel1, promo_catNivel2, promo_idProduct);
 		
 		String sql = "INSERT INTO promos (promoName, promoDescription, promoSince, promoTo, promoCreate, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promoState, promo_catNivel1, promo_catNivel2, promo_idProduct) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int filasAfectadas = jdbc.update(sql, new Object[] {promoName, promoDescription, promoSince, promoTo, Promocion.dateTimePromo(), promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promo.activePromo(), promo_catNivel1, promo_catNivel2, promo_idProduct});
 		
->>>>>>> ee76c2a3f62cfb618a99c0931a6ef75b444a9cfc
+
 		return filasAfectadas;
 	}
 
