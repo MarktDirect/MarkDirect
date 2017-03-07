@@ -17,7 +17,7 @@ import com.mysql.fabric.xmlrpc.base.Array;
 @Controller
 public class UsuariosController {
 
-	
+
 	private static final Object NULL = null;
 
 	//Metodo que muestra en el jsp una lista de los usuarios
@@ -29,30 +29,34 @@ public class UsuariosController {
 		mav.addObject("usuario",usuario.listarUsuarios());
 		return mav;
 	}
-	
+
 	//Metodo para bloquear los usuarios escogidos
 	//En construccion
-	@RequestMapping(value="usuarios",method=RequestMethod.POST)
+	//El try and catch pilla la excepcion del arraylist y ejecuta otro metodo solo para un usuario
+	@RequestMapping(value="usuario",method=RequestMethod.POST)
 	public ModelAndView Bloquearusuario(@RequestParam("bloquear") String userblock){
 		ModelAndView mav=new ModelAndView();
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		System.out.println(userblock);
-		if(!userblock.equals("")){
-		String separador=",";
-		String[] usuariosbloqueados;
-		usuariosbloqueados=userblock.split(separador);
-		mav.addObject("usuario",usuario.BloquearUsuario(usuariosbloqueados));
-		mav.addObject("mensaje", "usuario bloqueado con exito");
-		mav.setViewName("usuarios");
-		}
-		else{
-			mav.addObject("mensaje", "elige un usuario a bloquear");
-			mav.addObject("usuario",usuario.listarUsuarios());
+
+		try{
+			String separador=",";
+			String[] usuariosbloqueados;
+			usuariosbloqueados=userblock.split(separador);
+			mav.addObject("usuario",usuario.BloquearUsuario(usuariosbloqueados));
+			mav.addObject("mensaje", "usuario bloqueado con exito");
 			mav.setViewName("usuarios");
 		}
-		
+		catch(ArrayIndexOutOfBoundsException e){
+			mav.addObject("usuario",usuario.BloquearUsuario(userblock));
+			mav.addObject("mensaje", "usuario bloqueado con exito");
+			mav.setViewName("usuarios");
+
+		}
+
+
 		return mav;
-		
+
 	}
 
 }

@@ -30,7 +30,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		 * que después llamaremos desde los controladores designados para cada acción
 		 */
 	}
-	
+
 	/**
 	 * Método que consulta a la base de datos para obtener una lista de promociones
 	 * @return List<Promocion> - si está completa; salta una excepción si hay error en la consulta 
@@ -40,15 +40,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		List<Promocion> listaPromociones = null;
 		try {
 			listaPromociones = jdbc.query(
-				sql, 
-				new BeanPropertyRowMapper<Promocion>(Promocion.class)
-				);	
+					sql, 
+					new BeanPropertyRowMapper<Promocion>(Promocion.class)
+					);	
 		}catch(Exception e) {
 			System.out.println("Error en la consulta de listar promociones");
 		}
 		return listaPromociones;
 	}
-	
+
 	/**
 	 * Método que consulta a la base de datos para obtener una lista de zonas
 	 * @return List<Zona> - si está completa; salta una excepción si hay error en la consulta 
@@ -58,15 +58,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		List<Zona> listaZonas = null;
 		try {
 			listaZonas = jdbc.query(
-				sql, 
-				new BeanPropertyRowMapper<Zona>(Zona.class)
-				);	
+					sql, 
+					new BeanPropertyRowMapper<Zona>(Zona.class)
+					);	
 		}catch(Exception e) {
 			System.out.println("Error en la consulta");
 		}
 		return listaZonas;
 	}
-	
+
 	/**
 	 * Método que consulta a la base de datos para obtener una lista de centros
 	 * @return List<Centro> - si está completa; salta una excepción si hay error en la consulta 
@@ -76,15 +76,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		List<Centro> listaCentros = null;
 		try {
 			listaCentros = jdbc.query(
-				sql, 
-				new BeanPropertyRowMapper<Centro>(Centro.class)
-				);	
+					sql, 
+					new BeanPropertyRowMapper<Centro>(Centro.class)
+					);	
 		}catch(Exception e) {
 			System.out.println("Error en la consulta");
 		}
 		return listaCentros;
 	}
-	
+
 	/**
 	 * Método que consulta a la base de datos para obtener una lista de usuarios
 	 * @return List<Usuario> - si está completa; salta una excepción si hay error en la consulta 
@@ -93,14 +93,14 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		String sql ="SELECT * FROM users";
 		List<Usuario> listausuario = null;
 		try {
-		listausuario = jdbc.query(
-				sql, new BeanPropertyRowMapper<Usuario>(Usuario.class));
+			listausuario = jdbc.query(
+					sql, new BeanPropertyRowMapper<Usuario>(Usuario.class));
 		} catch(Exception e) {
 			System.out.println("Error en la consulta");
 		}
 		return listausuario;
 	}
-	
+
 
 	/**
 	 * Metodo que devuelve un objeto según la petición creada y comprueba si el usuario existe o no 
@@ -110,11 +110,11 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 */
 	public Administrador login(String usuario,String password){
 		Administrador admin=new Administrador();
-			String sql = "SELECT * FROM admins WHERE admin = ? AND adminPassword = ?";
-			admin = jdbc.queryForObject(sql,new BeanPropertyRowMapper<Administrador>(Administrador.class),
-					new Object[]{usuario,password});
+		String sql = "SELECT * FROM admins WHERE admin = ? AND adminPassword = ?";
+		admin = jdbc.queryForObject(sql,new BeanPropertyRowMapper<Administrador>(Administrador.class),
+				new Object[]{usuario,password});
 		return admin;
-		
+
 	}
 
 	//Metodo que añade una zona de control a la BBDD
@@ -131,14 +131,14 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			String controlzoneMinor, 
 			String controlzoneEmplacement, 
 			int controlzone_centerId){
-		
+
 		//String con la consulta insert
 		String sql = "INSERT INTO controlzones (controlzoneMajor, controlzoneMinor," +
-		"controlzoneEmplacement, controlzone_centerId) VALUES (?,?,?,?)";
+				"controlzoneEmplacement, controlzone_centerId) VALUES (?,?,?,?)";
 		//TODO preparedStatement
-		
+
 		System.out.println(sql);
-		
+
 		//Realizar update
 		int rowsAffected = -1;
 		rowsAffected = this.jdbc.update(sql, 
@@ -147,7 +147,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return rowsAffected;
 
 	}
-	
+
 	/**
 	 * Método que inserta una promoción en la BBDD
 	 * @param promoName
@@ -166,13 +166,13 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		//necesito instanciar un objeto de la clase promo para poder llamar al método activePromo()
 		//no afecta a nada más
 		Promocion promo = new Promocion(promoName, promoDescription, promoSince, promoTo, promoImage, promoMinAge, promoMaxAge, promoGen, promo_controlZoneId);
-		
+
 		String sql = "INSERT INTO promos (promoName, promoDescription, promoSince, promoTo, promoCreate, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promoState) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		int filasAfectadas = jdbc.update(sql, new Object[] {promoName, promoDescription, promoSince, promoTo, Promocion.dateTimePromo(), promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promo.activePromo()});
-		
+
 		return filasAfectadas;
 	}
-	
+
 	/**
 	 * Método que inserta un centro en la BBDD
 	 * @param centerName
@@ -184,15 +184,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 */
 	public int addCentro(String centerName, String centerDescription, String centerAddres, String centerType,
 			String centerSubtype) {
-				
+
 		String sql = "INSERT INTO centers (centerName, centerDescription, centerAddres, centerType, centerSubtype) VALUES (?,?,?,?,?)";
 		int filasAfectadas = jdbc.update(sql, new Object[] {centerName, centerDescription, centerAddres, centerType,centerSubtype});
-		
+
 		return filasAfectadas;
 	}
-	
+
 	//TODO método para editar una promoción
-	
+
 	/** 
 	 * Método que devuelve una lista de todas las promociones genéricas activas, 
 	 * sin filtros
@@ -203,15 +203,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		List<Promocion> listaPromociones = null;
 		try {
 			listaPromociones = jdbc.query(
-				sql, 
-				new BeanPropertyRowMapper<Promocion>(Promocion.class)
-				);	
+					sql, 
+					new BeanPropertyRowMapper<Promocion>(Promocion.class)
+					);	
 		}catch(Exception e) {
 			System.out.println("Error en la consulta de listar promociones genéricas");
 		}
 		return listaPromociones;
 	}
-	
+
 	/**
 	 * Método que devuelve una lista de las promociones genéricas activas, pero filtradas 
 	 * según el género del usuario y su edad
@@ -224,15 +224,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		List<Promocion> listaPromociones = null;
 		try {
 			listaPromociones = jdbc.query(
-				sql, 
-				new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{promoGen, userAge, userAge}
-				);	
+					sql, 
+					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{promoGen, userAge, userAge}
+					);	
 		}catch(Exception e) {
 			System.out.println("Error en la consulta de listar promociones genéricas filtradas");
 		}
 		return listaPromociones;
 	}
-	
+
 	/**
 	 * Método que devuelve una lista de las promociones según la localización del usuario y sus
 	 * características personales (género y edad) - sólo las que estén activas
@@ -247,35 +247,53 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		/*Hay una consulta SELECT anidada, ya que necesitamos obtener la id de 
 		la zona de control desde los major/minor que nos vienen de la app móvil*/
 		String sql = "SELECT * FROM promos "
-							+ "WHERE promo_controlzoneId = (SELECT controlzoneId FROM controlzones WHERE controlzoneMajor = ? AND controlzoneMinor = ?) "
-				            + "AND promoGen = ? AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
+				+ "WHERE promo_controlzoneId = (SELECT controlzoneId FROM controlzones WHERE controlzoneMajor = ? AND controlzoneMinor = ?) "
+				+ "AND promoGen = ? AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
 		List<Promocion> locationPromos = null;
 		try {
 			locationPromos = jdbc.query(
-				sql, 
-				new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{controlzoneMajor, controlzoneMinor, promoGen, userAge, userAge}
-				);	
+					sql, 
+					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{controlzoneMajor, controlzoneMinor, promoGen, userAge, userAge}
+					);	
 		}catch(Exception e) {
 			System.out.println("Error en la consulta de listar promociones de localización");
 		}
 		return locationPromos;
 	}
-	
+
 	//Metodo para bloquear usuarios de momento sin conectar a la DB
 	public List<Usuario> BloquearUsuario(String[] usuariosbloqueados){
-		
+
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		List<Usuario> listausuario=usuario.listarUsuarios();
-		System.out.println("aqui llega");
 		for(int i=0;i<listausuario.size();i++){
-		if(usuariosbloqueados[i].equals(listausuario.get(i).getUserEmail())){
-			System.out.println("usuario bloqueado "+ listausuario.get(i).getUserEmail());
-		}else{
-			System.out.println("no bloquea");
+			if(usuariosbloqueados[i].equals(listausuario.get(i).getUserEmail())){
+				System.out.println("usuario bloqueado "+ listausuario.get(i).getUserEmail());
+			}else{
+				System.out.println("no bloquea");
+			}
 		}
-		}
-		
+
 		return  listausuario;
-		
+
+	}
+
+	//Tuve que hacer dos metodos para bloquear usuarios ya que habia problema si solo bloqueaba uno
+	//Saltaba una excepcion de arraylist al hacer el split
+	public List<Usuario> BloquearUsuario(String userblock){
+
+		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
+		List<Usuario> listausuario=usuario.listarUsuarios();
+		for(int i=0;i<listausuario.size();i++){
+			if(userblock.equals(listausuario.get(i).getUserEmail())){
+				System.out.println("usuario bloqueado "+ listausuario.get(i).getUserEmail());
+			}else{
+
+				System.out.println("no bloquea");
+			}
+		}
+
+		return  listausuario;
+
 	}
 }

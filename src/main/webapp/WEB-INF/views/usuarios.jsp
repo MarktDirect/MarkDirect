@@ -13,7 +13,7 @@
 	<div class="header-contain">
 		<jsp:include page="navbar.jsp"></jsp:include>
 		<div class="jumbotron">
-		<form role="form" action="usuarios" method="post" class="form-group">
+		<form role="form" action="usuario" method="post" class="form-group">
 			<h2>Gestión de Usuarios</h2>
 			<input type=submit value="Bloquear Usuario" role="button" class="btn btn-trigger" data-toggle="modal"
 				data-target="#modalBlock"/> <label class="label label-danger">${mensaje}</label>
