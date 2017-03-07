@@ -11,8 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+<<<<<<< HEAD
 import com.markdirect.markdirect.beans.ListaPromosJSON;
 import com.markdirect.markdirect.beans.PromoJSON;
+=======
+import com.markdirect.markdirect.beans.CategoriaNivel1;
+import com.markdirect.markdirect.beans.CategoriaNivel2;
+import com.markdirect.markdirect.beans.Producto;
+import com.markdirect.markdirect.beans.ProductoReducido;
+>>>>>>> feature/angular_to_forms
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
@@ -46,6 +53,7 @@ public class JsonController {
 		return listaJSON;
 	}
 	
+<<<<<<< HEAD
 	//Metodo que me lleva a una peque�a pagina para probar el registro de usuario
 	@RequestMapping(value="registrousuario",method=RequestMethod.GET)
 	public String registrousuario(){
@@ -70,4 +78,45 @@ public class JsonController {
 			
 			return userlist;
 		}
+=======
+	/**
+	 * Método que devuelve un Json via web con todas las Categorías de nivel2
+	 * @return List<CategoriaNivel2> lista de categorías de nivel 2
+	 */
+	@RequestMapping(value="getCatNiv2", method=RequestMethod.GET)
+	public @ResponseBody List<CategoriaNivel2> getCatNiv2(){
+		List<CategoriaNivel2> catNiv2List = db.listarCategoriasNivel2();
+		return catNiv2List;
+	}
+	
+	/**
+	 * Método que devuelve un Json via web con todas las Categorías de nivel1
+	 * @return List<CategoriaNivel2> lista de categorías de nivel 1
+	 */
+	@RequestMapping(value="getCatNiv1", method=RequestMethod.GET)
+	public @ResponseBody List<CategoriaNivel1> getCatNiv1(){
+		List<CategoriaNivel1> catNiv1List = db.listarCategoriasNivel1();
+		return catNiv1List;
+	}
+	 /**
+	  * Método que devuelve un Json via web con todos los productos
+	  * @return List<Producto> lista de productos
+	  */
+	@RequestMapping(value="getProductos", method=RequestMethod.GET)
+	public @ResponseBody List<Producto> getProductos(){
+		List<Producto> productosList = db.listarProductos();
+		return productosList;
+	}
+	
+	/**
+	 * Método que cevuelve un Json con la lista de productos, pero sólo los campos id, nombre, cat2 y cat1
+	 * @return List<ProductoReducido> lista de productos con menos categorias
+	 */
+	@RequestMapping(value="getProductosRed", method=RequestMethod.GET)
+	public @ResponseBody List<ProductoReducido> getProductosReducidos(){
+		List<ProductoReducido> poductosReducidosList = db.listarProductosReducidos();
+		return poductosReducidosList;
+	}
+	
+>>>>>>> feature/angular_to_forms
 }

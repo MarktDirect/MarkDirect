@@ -11,8 +11,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.markdirect.markdirect.beans.Administrador;
+import com.markdirect.markdirect.beans.CategoriaNivel1;
+import com.markdirect.markdirect.beans.CategoriaNivel2;
 import com.markdirect.markdirect.beans.Centro;
+<<<<<<< HEAD
 import com.markdirect.markdirect.beans.ListaPromosJSON;
+=======
+import com.markdirect.markdirect.beans.Producto;
+import com.markdirect.markdirect.beans.ProductoReducido;
+>>>>>>> feature/angular_to_forms
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.beans.Zona;
@@ -322,6 +329,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 		return  listausuario;
 	}
+<<<<<<< HEAD
 	
 	//Metodo para registrar usuario
 	public int registrarUsuario(String email, String password, String sex, int age){
@@ -347,5 +355,71 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return tokeninsertado;
 		
 	}
+=======
+
+	/**
+	 * Método que consulta las Las categorías de nivel 2 de la BBDD y devuelve un Json
+	 * @return List<CategoriaNivel2> listaCatNiv2
+	 */
+	public List<CategoriaNivel2> listarCategoriasNivel2() {
+		String sql = "SELECT * FROM categoriasnivel2";
+		List<CategoriaNivel2> listaCatNiv2 = null;
+		
+		try{
+			listaCatNiv2 = jdbc.query(sql, new BeanPropertyRowMapper<CategoriaNivel2>(CategoriaNivel2.class));
+		} catch(Exception e){
+			System.out.println("Error en la consulta " + e);
+		}
+		
+		return listaCatNiv2;
+	}
+
+	/**
+	 * Método que consulta Las categorías de nivel 1 de la BBDD y devuelve un Json 
+	 * @return List<CategoriaNivel1> listaCatNiv1
+	 */
+	public List<CategoriaNivel1> listarCategoriasNivel1() {
+		String sql = "SELECT * FROM categoriasnivel1";
+		List<CategoriaNivel1> listaCatNiv1 = null;
+		
+		try{
+			listaCatNiv1 = jdbc.query(sql, new BeanPropertyRowMapper<CategoriaNivel1>(CategoriaNivel1.class));
+		} catch(Exception e){
+			System.out.println("Error en la consulta " + e);
+		}
+		
+		return listaCatNiv1;
+	}
+
+	/**
+	 * Método que consulta los pruductos de la BBDDy devuelve un Json
+	 * @return List<Producto> listaProductos
+	 */
+	public List<Producto> listarProductos() {
+		String sql = "SELECT * FROM productos";
+		List<Producto> listaProductos = null;
+		
+		try{
+			listaProductos = jdbc.query(sql, new BeanPropertyRowMapper<Producto>(Producto.class));
+		} catch(Exception e){
+			System.out.println("Error en la consulta " + e);
+		}
+		
+		return listaProductos;
+	}
+
+	public List<ProductoReducido> listarProductosReducidos() {
+		String sql = "SELECT id, nombre, id_catNivel2, id_catNivel1 FROM productos";
+		List<ProductoReducido> listaProductosReducidos = null;
+		
+		try{
+			listaProductosReducidos = jdbc.query(sql, new BeanPropertyRowMapper<ProductoReducido>(ProductoReducido.class));
+		} catch(Exception e){
+			System.out.println("Error en la consulta " + e);
+		}
+		return listaProductosReducidos;
+	}
+
+>>>>>>> feature/angular_to_forms
 	
 }

@@ -10,6 +10,11 @@
 <!-- jQuery library -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+<!--  AngularJs library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+
+<!-- Our Scripts -->
 
 <!-- Latest compiled JavaScript -->
 <script
