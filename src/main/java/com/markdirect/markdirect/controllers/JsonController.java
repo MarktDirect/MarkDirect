@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.markdirect.markdirect.beans.ListaPromosJSON;
 import com.markdirect.markdirect.beans.PromoJSON;
 import com.markdirect.markdirect.beans.Promocion;
+import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
 
 @Controller
@@ -67,4 +68,22 @@ public class JsonController {
 		}
 		return listaJSON;
 	}
+	
+	//Método para registrar un usuario
+		//En construccion
+	@RequestMapping(value="registrousuario",method=RequestMethod.GET)
+	public String registrousuario(){
+		return "registroprueba";
+	}
+	
+		@RequestMapping(value="registrarusuario" ,method=RequestMethod.POST)
+		public @ResponseBody List<Usuario> registrarUser(
+				@RequestParam("email") String email,@RequestParam("password") String password,
+				@RequestParam("sex") String sex,@RequestParam("age") int age
+				){
+			List<Usuario> userlist=null;
+			db.registrarusuario(email,password,sex,age);
+			
+			return userlist;
+		}
 }
