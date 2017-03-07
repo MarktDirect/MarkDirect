@@ -196,25 +196,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 	//TODO método para editar una promoción
 
-	/** 
-	 * Método que devuelve una lista de todas las promociones genéricas activas, 
-	 * sin filtros
-	 * @return List<Promocion> - todas las promociones genéricas
-	 */
-	public List<Promocion> allGenericPromos() {
-		String sql = "SELECT * FROM promos WHERE promo_controlzoneId = 0";
-		List<Promocion> listaPromociones = null;
-		try {
-			listaPromociones = jdbc.query(
-					sql, 
-					new BeanPropertyRowMapper<Promocion>(Promocion.class)
-					);
-			
-		}catch(Exception e) {
-			System.out.println("Error en la consulta de listar promociones genéricas");
-		}
-		return listaPromociones;
-	}
 
 	/**
 	 * Método que devuelve una lista de las promociones genéricas activas, pero filtradas 
@@ -223,13 +204,18 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 * @param userAge - edad de la persona
 	 * @return List<Promocion> - promociones que le corresponden en función al filtro realizado
 	 */
-	public List<Promocion> filteredGenericPromos(String promoGen, int userAge) {
+	public List<Promocion> getGenericPromos(String token) {
+		//primero debemos obtener los datos del usuario en función del token que recibimos
+		String sqlUser = "SELECT userGen, userAge FROM users WHERE userId = (SELECT id_user FROM usertoken WHERE token = ?)";
+		Usuario user = jdbc.queryForObject(sqlUser, new BeanPropertyRowMapper<Usuario>(Usuario.class),
+				new Object[] {token});
+		//A continuación, podemos realizar la consulta para obtener las promociones
 		String sql = "SELECT * FROM promos WHERE promo_controlzoneId = 0 AND promoGen = ? AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
 		List<Promocion> listaPromociones = null;
 		try {
 			listaPromociones = jdbc.query(
 					sql, 
-					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{promoGen, userAge, userAge}
+					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{user.getUserGen(), user.getUserAge(), user.getUserGen()}
 					);	
 			
 		}catch(Exception e) {
@@ -249,8 +235,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 * @param controlzoneMinor - minor de la zona de control
 	 * @return List<Promocion> - promociones que le corresponden en función al filtro realizado
 	 */
-	public List<Promocion> listLocationPromos(String promoGen, int userAge, String controlzoneMajor, String controlzoneMinor) {
+	public List<Promocion> listLocationPromos(String token, String controlzoneMajor, String controlzoneMinor) {
 		//TODO añadir un contador para contar las notificaciones específicas que recibe un usuario
+		//Al igual que en el método de las promociones genéricas, tenemos que primero coger los datos característicos del usuario
+		String sqlUser = "SELECT userGen, userAge FROM users WHERE userId = (SELECT id_user FROM usertoken WHERE token = ?)";
+		Usuario user = jdbc.queryForObject(sqlUser, new BeanPropertyRowMapper<Usuario>(Usuario.class),
+				new Object[] {token});
 		/*Hay una consulta SELECT anidada, ya que necesitamos obtener la id de 
 		la zona de control desde los major/minor que nos vienen de la app móvil*/
 		String sql = "SELECT * FROM promos "
@@ -260,7 +250,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		try {
 			locationPromos = jdbc.query(
 					sql, 
-					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{controlzoneMajor, controlzoneMinor, promoGen, userAge, userAge}
+					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{controlzoneMajor, controlzoneMinor, user.getUserGen(), user.getUserAge(), user.getUserAge()}
 					);	
 		}catch(Exception e) {
 			System.out.println("Error en la consulta de listar promociones de localización");
@@ -314,7 +304,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	//Metodo para registrar usuario
 	public int registrarUsuario(String email, String password, String sex, int age){
 		int usuario;
-		int userblock=0;//De momento a�ado el userblock hasta que se actualize la BD
+		int userblock=0;//De momento a�ado el userblock hasta que se actualize la BD
 		String SQL = "insert into users (userEmail,userGen,userAge,userblock,userPass) values (?,?,?,?,?)"; 
 		 usuario=jdbc.update(SQL,email,sex,age,userblock,password);
 		return usuario;

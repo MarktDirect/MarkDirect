@@ -17,6 +17,11 @@ public class Usuario {
 		this.userBlock=userBlock;
 	}
 	
+	public Usuario(String userGen, int userAge) {
+		this.userGen = userGen;
+		this.userAge = userAge;
+	}
+	
 	//Metodos
 	public String getUserEmail() {
 		return userEmail;
