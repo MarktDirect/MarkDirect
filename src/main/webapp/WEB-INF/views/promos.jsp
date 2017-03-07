@@ -149,6 +149,7 @@
 			</tr>
 			<c:forEach items="${listaPromos}" var="promo">
 				<tr>
+					<td hidden="hidden" id="promoId">${promo.promoId}</td>
 					<td><a href="#" class="popover-promo" title="Descripción"
 						data-toggle="popover" data-trigger="hover" data-placement="bottom"
 						data-content="${promo.promoDescription}" id="promoName">${promo.promoName}</a></td>
@@ -186,7 +187,7 @@
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
 										<h4 class="modal-title">Editar promoción</h4>
 									</div>
-									<form class="form" action="altaPromos" method="POST">
+									<form class="form" action="editPromos" method="GET">
 										<div class="modal-body">
 											<div class="form-group row">
 												<div class="col-md-6" >
@@ -198,6 +199,7 @@
 													</div>
 												</div>
 												<div class="col-md-6">
+												<input type="text" hidden="hidden" id="edit-promoId" name="promoId"/>
 												<label for="promoName">Título</label> <input type="text"
 													name="promoName" id="edit-promoName" class="form-control"
 													required="required" />
@@ -314,6 +316,7 @@
 			//Recogemos el modal
 			var modalEdit = $("#modalEdit");
 			//Recogemos todos los parámetros de la promoción
+			var promoId= $(promo).closest("tr").find("#promoId").html();
 			var promoName= $(promo).closest("tr").find("#promoName").html();
 			var promoDescription = $(promo).closest("tr").find("#promoDescription").html();
 			var promo_catNivel2 = $(promo).closest("tr").find("#promo_catNivel2").html();
@@ -328,6 +331,7 @@
 			var promo_controlzoneId = $(promo).closest("tr").find("#promo_controlzoneId").html();
 			
 			//Los volcamos en el formulario que se encuentra en el modal
+			$("#edit-promoId").val(promoId);
 			$("#edit-promoName").val(promoName);
 			$("#edit-promoDescription").val(promoDescription);
 			$("#edit-promo_catNivel2").val(promo_catNivel2);
