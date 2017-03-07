@@ -14,6 +14,7 @@ import com.markdirect.markdirect.beans.CategoriaNivel1;
 import com.markdirect.markdirect.beans.CategoriaNivel2;
 import com.markdirect.markdirect.beans.Centro;
 import com.markdirect.markdirect.beans.Producto;
+import com.markdirect.markdirect.beans.ProductoReducido;
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.beans.Zona;
@@ -350,6 +351,18 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		}
 		
 		return listaProductos;
+	}
+
+	public List<ProductoReducido> listarProductosReducidos() {
+		String sql = "SELECT  FROM productos";
+		List<ProductoReducido> listaProductosReducidos = null;
+		
+		try{
+			listaProductosReducidos = jdbc.query(sql, new BeanPropertyRowMapper<ProductoReducido>(ProductoReducido.class));
+		} catch(Exception e){
+			System.out.println("Error en la consulta " + e);
+		}
+		return listaProductosReducidos;
 	}
 
 	

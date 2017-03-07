@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.markdirect.markdirect.beans.CategoriaNivel1;
 import com.markdirect.markdirect.beans.CategoriaNivel2;
 import com.markdirect.markdirect.beans.Producto;
+import com.markdirect.markdirect.beans.ProductoReducido;
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
 
@@ -89,6 +90,12 @@ public class JsonController {
 	public @ResponseBody List<Producto> getProductos(){
 		List<Producto> productosList = db.listarProductos();
 		return productosList;
+	}
+	
+	@RequestMapping(value="getProductosRed", method=RequestMethod.GET)
+	public @ResponseBody List<ProductoReducido> getProductosReducidos(){
+		List<ProductoReducido> poductosReducidosList = db.listarProductosReducidos();
+		return poductosReducidosList;
 	}
 	
 }
