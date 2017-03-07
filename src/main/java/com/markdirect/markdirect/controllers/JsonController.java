@@ -49,8 +49,9 @@ public class JsonController {
 	 * @param controlzoneMinor - minor del beacon
 	 * @return List<Promocion> - lista de las promociones que le corresponden al usuario según sus características y su localización
 	 */
-	@RequestMapping(value="getPromos?_sex={promoGen}?_age={userAge}?_minor={controlzoneMinor}?_major={controlzoneMajor}", method=RequestMethod.GET)
-	public @ResponseBody List<Promocion> getPromos(@PathVariable("promoGen") String promoGen, @PathVariable("userAge") int userAge, @PathVariable("controlzoneMajor") String controlzoneMajor, @PathVariable("controlzoneMinor") String controlzoneMinor) {
+	@RequestMapping(value="getPromos", method=RequestMethod.GET)
+	public @ResponseBody List<Promocion> getPromos(@RequestParam("sex") String promoGen, @RequestParam("age") int userAge, @RequestParam("major") String controlzoneMajor, @RequestParam("minor") String controlzoneMinor) {
+		System.out.println("Estoy en el método getPromos");
 		List<Promocion> promoList = null;
 		/*Si el major y minor son caracteres vacíos, significa que la promoción es genérica */
 		if(controlzoneMajor.equals("") && controlzoneMinor.equals("")) {

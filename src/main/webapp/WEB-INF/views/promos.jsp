@@ -14,7 +14,8 @@
 		<div class="jumbotron">
 			<h2>Gestión de Promociones</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
-				data-target="#modalPromo">Añadir Promoción</a> <span class="label label-danger">${mensaje}</span>
+				data-target="#modalPromo">Añadir Promoción</a> <span
+				class="label label-danger">${mensaje}</span>
 		</div>
 	</div>
 	<!-- Modal -->
@@ -50,17 +51,30 @@
 						<div class="form-group">
 							<label for="promo_catNivel1">Categoría de nivel 1</label> <select
 								name="promo_catNivel1" class="form-control" required="required">
-								<%-- Rellenar dinámicamente--%>
-								<option value="1">Categoría 1</option>
-								<option value="1">Categoría 2</option>
-								<option value="1">Categoría 3</option>
+								<%--Mejora: Rellenar dinámicamente--%>
+								<option value="1">Accesorios TV</option>
+								<option value="2">Cuidado Personal</option>
+								<option value="3">Cuidado del Hogar</option>
+								<option value="4">Radio</option>
+								<option value="5">Lavadora</option>
+								<option value="6">Frigorífico</option>
+								<option value="7">Auriculares</option>
+								<option value="8">Cámara de Video</option>
+								<option value="9">Cámara Fotografica</option>
+								<option value="10">Hifi Pro</option>
+								<option value="11">Microondas</option>
+								<option value="12">Proyector</option>
+								<option value="13">Televisor</option>
+								<option value="14">Reproductor</option>
+								<option value="15">Tablet</option>
+								<option value="16">Tarjeta Memoria</option>
 							</select>
 						</div>
 						<div class="form-group">
-												<label for="promo_idProduct">ID Producto</label> <input
-													type="text" name="promo_idProduct" id="promoSince"
-													class="form-control" required="required" />
-											</div>
+							<label for="promo_idProduct">ID Producto</label> <input
+								type="text" name="promo_idProduct" id="promoSince"
+								class="form-control" required="required" />
+						</div>
 						<div class="form-group">
 							<label for="promoSince">Válido desde</label> <input type="date"
 								name="promoSince" class="form-control" required="required" />
@@ -183,10 +197,23 @@
 												<label for="promo_catNivel1">Categoría de nivel 1</label> <select
 													name="promo_catNivel1" class="form-control"
 													required="required">
-													<%-- Rellenar dinámicamente--%>
-													<option value="1">Categoría 1</option>
-													<option value="1">Categoría 2</option>
-													<option value="1">Categoría 3</option>
+													<%--Mejora: Rellenar dinámicamente--%>
+													<option value="1">Accesorios TV</option>
+													<option value="2">Cuidado Personal</option>
+													<option value="3">Cuidado del Hogar</option>
+													<option value="4">Radio</option>
+													<option value="5">Lavadora</option>
+													<option value="6">Frigorífico</option>
+													<option value="7">Auriculares</option>
+													<option value="8">Cámara de Video</option>
+													<option value="9">Cámara Fotografica</option>
+													<option value="10">Hifi Pro</option>
+													<option value="11">Microondas</option>
+													<option value="12">Proyector</option>
+													<option value="13">Televisor</option>
+													<option value="14">Reproductor</option>
+													<option value="15">Tablet</option>
+													<option value="16">Tarjeta Memoria</option>
 												</select>
 											</div>
 											<div class="form-group">
