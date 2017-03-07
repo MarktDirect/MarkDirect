@@ -18,12 +18,15 @@ public class Promocion {
 	private int promoMaxAge;
 	private String promoGen;
 	private int promo_controlzoneId;
+	private int promo_catNivel1;
+	private int promo_catNivel2;
+	private long promo_idProduct;
 	
 	//Constructores
 	public Promocion(){}
 	public Promocion(String promoName, String promoDescription, String promoSince, String promoTo,
 			String promoImage, int promoMinAge, int promoMaxAge,
-			String promoGen, int promo_controlzoneId) {
+			String promoGen, int promo_controlzoneId, int promo_catNivel1, int promo_catNivel2, long promo_idProduct) {
 		this.promoName = promoName;
 		this.promoDescription = promoDescription;
 		this.promoSince = promoSince;
@@ -35,13 +38,14 @@ public class Promocion {
 		this.promoMaxAge = promoMaxAge;
 		this.promoGen = promoGen;
 		this.promo_controlzoneId = promo_controlzoneId;
+		this.promo_catNivel1 = promo_catNivel1;
+		this.promo_catNivel2 = promo_catNivel2;
+		this.promo_idProduct = promo_idProduct;
 	}
 	
-	
-
 	public Promocion(int promoId, String promoName, String promoDescription, String promoSince, String promoTo,
 			int promoState, String promoCreate, String promoImage, int promoMinAge, int promoMaxAge, String promoGen,
-			int promo_controlzoneId) {
+			int promo_controlzoneId, int promo_catNivel1, int promo_catNivel2, long promo_idProduct) {
 		super();
 		this.promoId = promoId;
 		this.promoName = promoName;
@@ -55,8 +59,10 @@ public class Promocion {
 		this.promoMaxAge = promoMaxAge;
 		this.promoGen = promoGen;
 		this.promo_controlzoneId = promo_controlzoneId;
+		this.promo_catNivel1 = promo_catNivel1;
+		this.promo_catNivel2 = promo_catNivel2;
+		this.promo_idProduct = promo_idProduct;
 	}
-	
 	//Getters/Setters
 	public int getPromoId() {
 		return promoId;
@@ -153,9 +159,29 @@ public class Promocion {
 	public void setPromo_controlzoneId(int promo_controlzoneId) {
 		this.promo_controlzoneId = promo_controlzoneId;
 	}
+	
+	
 
 	//Métodos
 
+	public int getPromo_catNivel1() {
+		return promo_catNivel1;
+	}
+	public void setPromo_catNivel1(int promo_catNivel1) {
+		this.promo_catNivel1 = promo_catNivel1;
+	}
+	public int getPromo_catNivel2() {
+		return promo_catNivel2;
+	}
+	public void setPromo_catNivel2(int promo_catNivel2) {
+		this.promo_catNivel2 = promo_catNivel2;
+	}
+	public long getPromo_idProduct() {
+		return promo_idProduct;
+	}
+	public void setPromo_idProduct(long promo_idProduct) {
+		this.promo_idProduct = promo_idProduct;
+	}
 	@Override
 	public String toString() {
 		return "Promocion [promoId=" + promoId + ", promoName=" + promoName + ", promoDescription=" + promoDescription
