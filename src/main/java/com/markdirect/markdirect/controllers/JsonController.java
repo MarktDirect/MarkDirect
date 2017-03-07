@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.markdirect.markdirect.beans.CategoriaNivel1;
 import com.markdirect.markdirect.beans.CategoriaNivel2;
+import com.markdirect.markdirect.beans.Producto;
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
 
@@ -75,8 +77,8 @@ public class JsonController {
 	 * @return List<CategoriaNivel2> catNiv1List
 	 */
 	@RequestMapping(value="getCatNiv1", method=RequestMethod.GET)
-	public @ResponseBody List<CategoriaNivel2> getCatNiv1(){
-		List<CategoriaNivel2> catNiv1List = db.listarCategoriasNivel1();
+	public @ResponseBody List<CategoriaNivel1> getCatNiv1(){
+		List<CategoriaNivel1> catNiv1List = db.listarCategoriasNivel1();
 		return catNiv1List;
 	}
 	 /**
@@ -84,8 +86,8 @@ public class JsonController {
 	  * @return List<CategoriaNivel2> productosList
 	  */
 	@RequestMapping(value="getProductos", method=RequestMethod.GET)
-	public @ResponseBody List<CategoriaNivel2> getProductos(){
-		List<CategoriaNivel2> productosList = db.listarProductos();
+	public @ResponseBody List<Producto> getProductos(){
+		List<Producto> productosList = db.listarProductos();
 		return productosList;
 	}
 	

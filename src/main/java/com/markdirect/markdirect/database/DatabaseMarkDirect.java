@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.markdirect.markdirect.beans.Administrador;
+import com.markdirect.markdirect.beans.CategoriaNivel1;
 import com.markdirect.markdirect.beans.CategoriaNivel2;
 import com.markdirect.markdirect.beans.Centro;
+import com.markdirect.markdirect.beans.Producto;
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.beans.Zona;
@@ -299,18 +301,56 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 	}
 
+	/**
+	 * Método que consulta las Las categorías de nivel 2 de la BBDD y devuelve un Json
+	 * @return List<CategoriaNivel2> listaCatNiv2
+	 */
 	public List<CategoriaNivel2> listarCategoriasNivel2() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "SELECT * FROM categoriasnivel2";
+		List<CategoriaNivel2> listaCatNiv2 = null;
+		
+		try{
+			listaCatNiv2 = jdbc.query(sql, new BeanPropertyRowMapper<CategoriaNivel2>(CategoriaNivel2.class));
+		} catch(Exception e){
+			System.out.println("Error en la consulta " + e);
+		}
+		
+		return listaCatNiv2;
 	}
 
-	public List<CategoriaNivel2> listarCategoriasNivel1() {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * Método que consulta Las categorías de nivel 1 de la BBDD y devuelve un Json 
+	 * @return List<CategoriaNivel1> listaCatNiv1
+	 */
+	public List<CategoriaNivel1> listarCategoriasNivel1() {
+		String sql = "SELECT * FROM categoriasnivel1";
+		List<CategoriaNivel1> listaCatNiv1 = null;
+		
+		try{
+			listaCatNiv1 = jdbc.query(sql, new BeanPropertyRowMapper<CategoriaNivel1>(CategoriaNivel1.class));
+		} catch(Exception e){
+			System.out.println("Error en la consulta " + e);
+		}
+		
+		return listaCatNiv1;
 	}
 
-	public List<CategoriaNivel2> listarProductos() {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * Método que consulta los pruductos de la BBDDy devuelve un Json
+	 * @return List<Producto> listaProductos
+	 */
+	public List<Producto> listarProductos() {
+		String sql = "SELECT * FROM productos";
+		List<Producto> listaProductos = null;
+		
+		try{
+			listaProductos = jdbc.query(sql, new BeanPropertyRowMapper<Producto>(Producto.class));
+		} catch(Exception e){
+			System.out.println("Error en la consulta " + e);
+		}
+		
+		return listaProductos;
 	}
+
+	
 }
