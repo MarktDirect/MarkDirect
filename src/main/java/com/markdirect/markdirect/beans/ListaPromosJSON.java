@@ -1,6 +1,7 @@
 package com.markdirect.markdirect.beans;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListaPromosJSON {
 	private ArrayList<PromoJSON> ofertas;
@@ -16,13 +17,6 @@ public class ListaPromosJSON {
 
 	public void setOfertas(ArrayList<PromoJSON> ofertas) {
 		this.ofertas = ofertas;
-	}
-	
-
-	public ArrayList<PromoJSON> convertJSON() {
-		ArrayList<PromoJSON> ofertas = new ArrayList<PromoJSON>();
-		
-		return ofertas;
 	}
 	
 }

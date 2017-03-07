@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.markdirect.markdirect.beans.Administrador;
 import com.markdirect.markdirect.beans.Centro;
+import com.markdirect.markdirect.beans.ListaPromosJSON;
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.beans.Zona;
@@ -206,7 +207,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			listaPromociones = jdbc.query(
 					sql, 
 					new BeanPropertyRowMapper<Promocion>(Promocion.class)
-					);	
+					);
+			
 		}catch(Exception e) {
 			System.out.println("Error en la consulta de listar promociones genéricas");
 		}
@@ -228,9 +230,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 					sql, 
 					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{promoGen, userAge, userAge}
 					);	
+			
 		}catch(Exception e) {
 			System.out.println("Error en la consulta de listar promociones genéricas filtradas");
 		}
+		
+		
 		return listaPromociones;
 	}
 
@@ -279,8 +284,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 	}
 
-	//Tuve que hacer dos metodos para bloquear usuarios ya que habia problema si solo bloqueaba uno
-	//Saltaba una excepcion de arraylist al hacer el split
+	//Tuve que hacer dos métodos para bloquear usuarios ya que habia problema si solo bloqueaba uno
+	//Saltaba una excepción de arraylist al hacer el split
 	public List<Usuario> BloquearUsuario(String userblock){
 
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();

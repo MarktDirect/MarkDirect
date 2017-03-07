@@ -6,16 +6,16 @@ public class PromoJSON {
 	//Atributos
 	private String titulo;
 	private String validez;
-	private String descripcion;
+	private String oferta;
 	private String imagen;
 	
 	//Constructores
 	public PromoJSON(){}
 
-	public PromoJSON(String titulo, String validez, String descripcion, String imagen) {
+	public PromoJSON(String titulo, String validez, String oferta, String imagen) {
 		this.titulo = titulo;
 		this.validez = validez;
-		this.descripcion = descripcion;
+		this.oferta = oferta;
 		this.imagen = imagen;
 	}
 
@@ -35,12 +35,12 @@ public class PromoJSON {
 		this.validez = validez;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getOferta() {
+		return oferta;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setOferta(String oferta) {
+		this.oferta = oferta;
 	}
 
 	public String getImagen() {
@@ -53,7 +53,7 @@ public class PromoJSON {
 
 	@Override
 	public String toString() {
-		return "PromoJSON [titulo=" + titulo + ", validez=" + validez + ", descripcion=" + descripcion + ", imagen="
+		return "PromoJSON [titulo=" + titulo + ", validez=" + validez + ", oferta=" + oferta + ", imagen="
 				+ imagen + "]";
 	}
 	
