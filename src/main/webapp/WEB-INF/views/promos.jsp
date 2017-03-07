@@ -39,7 +39,8 @@
 								type="text" name="promoDescription" class="form-control"
 								required="required" />
 						</div>
-						<div class="form-group">
+						<div class="form-group row">
+						<div class="col-md-6">
 							<label for="promo_catNivel2">Categoría de nivel 2</label> <select
 								name="promo_catNivel2" class="form-control" required="required">
 								<%-- Rellenar dinámicamente--%>
@@ -47,8 +48,8 @@
 								<option value="2">Pequeño Electrodoméstico</option>
 								<option value="3">Grandes Electrodomésticos</option>
 							</select>
-						</div>
-						<div class="form-group">
+							</div>
+							<div class="col-md-6">
 							<label for="promo_catNivel1">Categoría de nivel 1</label> <select
 								name="promo_catNivel1" class="form-control" required="required">
 								<%--Mejora: Rellenar dinámicamente--%>
@@ -70,24 +71,28 @@
 								<option value="16">Tarjeta Memoria</option>
 							</select>
 						</div>
+						</div>
 						<div class="form-group">
 							<label for="promo_idProduct">ID Producto</label> <input
 								type="text" name="promo_idProduct" id="promoSince"
 								class="form-control" required="required" />
 						</div>
-						<div class="form-group">
+						<div class="form-group row">
+							<div class="col-md-6">
 							<label for="promoSince">Válido desde</label> <input type="date"
 								name="promoSince" class="form-control" required="required" />
-						</div>
-						<div class="form-group">
+							</div>
+							<div class="col-md-6">
 							<label for="promoTo">Válido hasta</label> <input type="date"
 								name="promoTo" class="form-control" required="required" />
+								</div>
 						</div>
 						<div class="form-group">
 							<label for="promoImage"> URL Imagen</label> <input type="text"
 								name="promoImage" class="form-control" required="required" />
 						</div>
-						<div class="form-group">
+						<div class="form-group row">
+							<div class="col-md-6">
 							<label for="promo_controlZoneId">Zona de Control</label> <select
 								name="promo_controlZoneId" class="form-control"
 								required="required">
@@ -96,21 +101,29 @@
 								<option value="2">Zona 2</option>
 								<option value="3">Zona 3</option>
 							</select>
-						</div>
-						<div class="form-group">
-							<span>Rango de edad</span><br /> <label for="promoMinAge">Edad
-								mínima</label> <input type="text" name="promoMinAge"
-								class="form-control" required="required" /> <label
-								for="promoMaxAge">Edad máxima</label> <input type="text"
-								name="promoMaxAge" class="form-control" required="required" />
-						</div>
-						<div class="form-group">
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
 							<label for="promoGen">Género</label> <select name="promoGen"
 								class="form-control" required="required">
 								<option value="H">Hombre</option>
 								<option value="M">Mujer</option>
 								<option value="Todos">Todos</option>
 							</select>
+						</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-6">
+							 <label for="promoMinAge">Edad
+								mínima</label> <input type="text" name="promoMinAge"
+								class="form-control" required="required" /> 
+								</div>
+								<div class="col-md-6">
+								<label
+								for="promoMaxAge">Edad máxima</label> <input type="text"
+								name="promoMaxAge" class="form-control" required="required" />
+								</div>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -175,18 +188,26 @@
 									</div>
 									<form class="form" action="altaPromos" method="POST">
 										<div class="modal-body">
-											<div class="form-group">
+											<div class="form-group row">
+												<div class="col-md-6" >
+													<img id ="show-promoImage" src="" style="height: auto; width:200px;"/>
+													<div class="form-group">
+													<label for="promoImage"> URL Imagen</label> <input
+													type="text" name="promoImage" id="edit-promoImage"
+													class="form-control" required="required" />
+													</div>
+												</div>
+												<div class="col-md-6">
 												<label for="promoName">Título</label> <input type="text"
 													name="promoName" id="edit-promoName" class="form-control"
 													required="required" />
+												<label for="promoDescription">Descripción</label> <textarea name="promoDescription" id="edit-promoDescription"
+													class="form-control" required="required" rows="4" draggable="false" style="resize:none;"></textarea>
+												</div>
 											</div>
-											<div class="form-group">
-												<label for="promoDescription">Descripción</label> <input
-													type="text" name="promoDescription" id="edit-promoDescription"
-													class="form-control" required="required" />
-											</div>
-											<div class="form-group">
-												<label for="promo_catNivel2">Categoría de nivel 2</label> <select
+											<div class="form-group row">
+												<div class="col-md-6">
+													<label for="promo_catNivel2">Categoría de nivel 2</label> <select
 													name="promo_catNivel2" class="form-control"
 													required="required" id="edit-promo_catNivel2">
 													<%-- Rellenar dinámicamente--%>
@@ -194,8 +215,8 @@
 													<option value="2">Pequeño Electrodoméstico</option>
 													<option value="3">Grandes Electrodomésticos</option>
 												</select>
-											</div>
-											<div class="form-group">
+												</div>
+												<div class="col-md-6">
 												<label for="promo_catNivel1">Categoría de nivel 1</label> <select
 													name="promo_catNivel1" class="form-control"
 													required="required" id="edit-promo_catNivel1">
@@ -218,27 +239,26 @@
 													<option value="16">Tarjeta Memoria</option>
 												</select>
 											</div>
+											</div>
 											<div class="form-group">
 												<label for="promo_idProduct">ID Producto</label> <input
 													type="date" name="promo_idProduct"
 													class="form-control" required="required" id="edit-promo_idProduct"/>
 											</div>
-											<div class="form-group">
+											<div class="form-group row">
+											<div class="col-md-6">
 												<label for="promoSince">Válido desde</label> <input
 													type="date" name="promoSince" id="edit-promoSince"
 													class="form-control" required="required"/>
 											</div>
-											<div class="form-group">
+											<div class="col-md-6">
 												<label for="promoTo">Válido hasta</label> <input type="date"
 													name="promoTo" id="edit-promoTo" class="form-control"
 													required="required" />
 											</div>
-											<div class="form-group">
-												<label for="promoImage"> URL Imagen</label> <input
-													type="text" name="promoImage" id="edit-promoImage"
-													class="form-control" required="required" />
 											</div>
-											<div class="form-group">
+											<div class="form-group row">
+												<div class="col-md-6">
 												<label for="promo_controlzoneId">Zona de Control</label> <select
 													name="promo_controlzoneId" class="form-control"
 													required="required" id="edit-promo_controlzoneId">
@@ -249,21 +269,29 @@
 													<option value="3">Zona 3</option>
 												</select>
 											</div>
-											<div class="form-group">
-												<span>Rango de edad</span> <br /> <label for="promoMinAge">Edad
-													mínima</label> <input type="text" name="promoMinAge"
-													class="form-control" required="required" id="edit-promoMinAge" />
-												<label for="promoMaxAge">Edad máxima</label> <input
-													type="text" name="promoMaxAge" class="form-control"
-													required="required" id="edit-promoMaxAge" />
-											</div>
-											<div class="form-group">
+											<div class="col-md-6">
+												<div class="form-group">
 												<label for="promoGen">Género</label> <select name="promoGen"
 													class="form-control" required="required" id="edit-promoGen">
 													<option value="H">Hombre</option>
 													<option value="M">Mujer</option>
 													<option value="Todos">Todos</option>
 												</select>
+											</div>
+											</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-md-6">
+												<label for="promoMinAge">Edad
+													mínima</label> <input type="text" name="promoMinAge"
+													class="form-control" required="required" id="edit-promoMinAge" />
+												</div>
+												<div class="col-md-6">
+												<label for="promoMaxAge">Edad máxima</label> 
+												<input
+													type="text" name="promoMaxAge" class="form-control"
+													required="required" id="edit-promoMaxAge" />
+												</div>
 											</div>
 										</div>
 										<div class="modal-footer">
@@ -312,6 +340,7 @@
 			$("#edit-promoMaxAge").val(promoMaxAge);
 			$("#edit-promoGen").val(promoGen);
 			$("#edit-promo_controlzoneId").val(promo_controlzoneId);
+			$('#show-promoImage').attr("src",promoImage); 
 			
 			//mostramos el modal
 			modalEdit.modal("show");
