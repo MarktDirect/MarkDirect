@@ -251,7 +251,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 					sql, 
 					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{controlzoneMajor, controlzoneMinor, user.getUserGen(), user.getUserAge(), user.getUserAge()}
 					);	
-			//TODO añadir un contador para contar las notificaciones específicas que recibe un usuario
 			//Tenemos que crear ahora un contador que almacene las ofertas que recibe cada persona
 			for (Promocion promocion : locationPromos) {
 				//Para cada promoción específica que le enviamos al usuario, insertamos en la tabla contadora
