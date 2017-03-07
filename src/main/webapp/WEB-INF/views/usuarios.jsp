@@ -36,7 +36,7 @@
 							${Usuario.userGen}
 						</td>
 						<td>
-							${Usuario.userBorn}
+							${Usuario.userAge}
 						</td>
 						<td>
 						    <input type="checkbox" name="bloquear" value="${Usuario.userEmail}">Bloquear<br>
