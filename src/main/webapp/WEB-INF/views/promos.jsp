@@ -7,15 +7,15 @@
 <meta charset="UTF-8">
 <title>Gestión de Promociones</title>
 <jsp:include page="links.jsp"></jsp:include>
-
+<script type="text/javascript" src="resources/script/promosform.js"></script>
 </head>
-<body data-ng-app="promosModule" data-ng-controller="promosController as vm">
+<body data-ng-app="promoModulo" data-ng-controller="promoControlador as vm">
 	<div class="header-contain">
 		<jsp:include page="navbar.jsp"></jsp:include>
 		<div class="jumbotron">
 			<h2>Gestión de Promociones</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
-				data-target="#modalPromo">Añadir Promoción</a> <span class="label label-danger">${mensaje}</span>
+				data-target="#modalPromo" data-ng-click="vm.cargarDatos()">Añadir Promoción</a> <span class="label label-danger">${mensaje}</span>
 		</div>
 	</div>
 	<!-- Modal -->
@@ -40,27 +40,27 @@
 								required="required" />
 						</div>
 						<div class="form-group">
-							<label for="promo_catNivel2">Categoría de nivel 2</label> <select
-								name="promo_catNivel2" class="form-control" required="required">
+							<label for="promo_catNivel2">Categoría de nivel 2</label> 
+							<select name="promo_catNivel2" class="form-control" required="required" data-ng-model="cat2">
 								<%-- Rellenar dinámicamente--%>
-								<option value="1">Electrónica de consumo</option>
-								<option value="2">Pequeño Electrodoméstico</option>
-								<option value="3">Grandes Electrodomésticos</option>
+								<option data-ng-repeat="x in vm.listaCategorias2" value="{{x.id}}">{{x.categoria}}</option>
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="promo_catNivel1">Categoría de nivel 1</label> <select
-								name="promo_catNivel1" class="form-control" required="required">
+								name="promo_catNivel1" class="form-control" required="required" data-ng-model="cat1">
 								<%-- Rellenar dinámicamente--%>
-								<option value="1">Categoría 1</option>
-								<option value="1">Categoría 2</option>
-								<option value="1">Categoría 3</option>
+								<option data-ng-repeat="x in vm.listaCategorias1 | filtrocat2 : cat2" value="{{x.id}}">{{x.categoria}}</option>
 							</select>
 						</div>
 						<div class="form-group">
-												<label for="promo_idProduct">ID Producto</label> <input
-													type="text" name="promo_idProduct" id="promoSince"
-													class="form-control" required="required" />
+												<label for="promo_idProduct">ID Producto</label> 
+												<!-- <input type="text" name="promo_idProduct" id="promoSince"
+													class="form-control" required="required" /> -->
+													<select name="promo_idProduct" class="form-control" required="required">
+													<%-- Rellenar dinámicamente--%>
+													<option data-ng-repeat="x in vm.listaProductos | filtrocat1:cat1 | filtrocat2:cat2" value="{{x.id}}">{{x.id}} - {{x.nombre}}</option>
+													</select>
 											</div>
 						<div class="form-group">
 							<label for="promoSince">Válido desde</label> <input type="date"
