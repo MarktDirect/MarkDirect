@@ -1,5 +1,6 @@
 package com.markdirect.markdirect.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.markdirect.markdirect.beans.ListaPromosJSON;
+import com.markdirect.markdirect.beans.PromoJSON;
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
@@ -35,10 +38,11 @@ public class JsonController {
 	 * @return List<Promocion> - lista de todas las promociones
 	 */
 	@RequestMapping(value="getGenericPromos", method=RequestMethod.GET)
-	public @ResponseBody List<Promocion> getGenericPromos() {
+	public @ResponseBody ListaPromosJSON getGenericPromos() {
 		//Obtenemos la lista entera de promociones del método que tenemos en DatabaseMarkDirect
-		List<Promocion> promociones = db.allGenericPromos();
-		return promociones;
+		List<Promocion> promoList = db.allGenericPromos();
+		ListaPromosJSON listaJSON = new ListaPromosJSON(Promocion.convertJSON(promoList));
+		return listaJSON;
 	}
 	
 	/**
@@ -50,16 +54,19 @@ public class JsonController {
 	 * @return List<Promocion> - lista de las promociones que le corresponden al usuario según sus características y su localización
 	 */
 	@RequestMapping(value="getPromos", method=RequestMethod.GET)
-	public @ResponseBody List<Promocion> getPromos(@RequestParam("sex") String promoGen, @RequestParam("age") int userAge, @RequestParam("major") String controlzoneMajor, @RequestParam("minor") String controlzoneMinor) {
+	public @ResponseBody ListaPromosJSON getPromos(@RequestParam("sex") String promoGen, @RequestParam("age") int userAge, @RequestParam("major") String controlzoneMajor, @RequestParam("minor") String controlzoneMinor) {
 		System.out.println("Estoy en el método getPromos");
 		List<Promocion> promoList = null;
+		ListaPromosJSON listaJSON = null;
 		/*Si el major y minor son caracteres vacíos, significa que la promoción es genérica */
 		if(controlzoneMajor.equals("") && controlzoneMinor.equals("")) {
 			promoList = db.filteredGenericPromos(promoGen, userAge);
+			listaJSON = new ListaPromosJSON(Promocion.convertJSON(promoList));
 		} else {
 			promoList = db.listLocationPromos(promoGen, userAge, controlzoneMajor, controlzoneMinor);
+			listaJSON = new ListaPromosJSON(Promocion.convertJSON(promoList));
 		}
-		return promoList;
+		return listaJSON;
 	}
 	
 	//M�todo para registrar un usuario

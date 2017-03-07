@@ -1,7 +1,9 @@
 package com.markdirect.markdirect.beans;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class Promocion {
 	
@@ -243,6 +245,22 @@ public class Promocion {
 		String date = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + seconds;
 		
 		return date;
+	}
+	
+	public static ArrayList<PromoJSON> convertJSON(List<Promocion> promoList) {
+		ArrayList<PromoJSON> ofertas = new ArrayList<PromoJSON>();
+		for (Promocion promocion : promoList) {
+			//recogemos los datos que necesitamos para crear la promoJSON
+			String titulo = promocion.getPromoName();
+			String validez = promocion.getPromoTo();
+			String oferta = promocion.getPromoDescription();
+			String imagen = promocion.getPromoImage();
+			//creamos una promoJSON
+			PromoJSON promoJSON = new PromoJSON(titulo, validez, oferta, imagen);
+			//la añadimos al arrayList
+			ofertas.add(promoJSON);
+		}
+		return ofertas;
 	}
 	
 }
