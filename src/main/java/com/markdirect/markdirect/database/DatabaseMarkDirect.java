@@ -354,7 +354,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 
 	public List<ProductoReducido> listarProductosReducidos() {
-		String sql = "SELECT  FROM productos";
+		String sql = "SELECT id, nombre, id_catNivel2, id_catNivel1 FROM productos";
 		List<ProductoReducido> listaProductosReducidos = null;
 		
 		try{
