@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Gestión de Promociones</title>
 <jsp:include page="links.jsp"></jsp:include>
-<script type="text/javascript" src="resources/script/promosform.js"></script>
+
 </head>
 <body data-ng-app="promosModule" data-ng-controller="promosController as vm">
 	<div class="header-contain">
