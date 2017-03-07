@@ -2,6 +2,7 @@ package com.markdirect.markdirect.database;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -263,31 +264,38 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 
 	//Metodo para bloquear usuarios de momento sin conectar a la DB
-	public List<Usuario> BloquearUsuario(String[] usuariosbloqueados){
+	public List<Usuario> bloquearUsuario(String[] usuariosbloqueados){
 
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		List<Usuario> listausuario=usuario.listarUsuarios();
+		for(int j=0;j<usuariosbloqueados.length;j++){
 		for(int i=0;i<listausuario.size();i++){
-			if(usuariosbloqueados[i].equals(listausuario.get(i).getUserEmail())){
-				System.out.println("usuario bloqueado "+ listausuario.get(i).getUserEmail());
+			if(usuariosbloqueados[j].equals(listausuario.get(i).getUserEmail())){
+				String sql="UPDATE users SET userBlock='1' WHERE userEmail='"+usuariosbloqueados[j]+"'";
+				jdbc.update(sql);
+			
 			}else{
 				System.out.println("no bloquea");
 			}
 		}
-
+		}
+		
 		return  listausuario;
 
 	}
 
 	//Tuve que hacer dos metodos para bloquear usuarios ya que habia problema si solo bloqueaba uno
 	//Saltaba una excepcion de arraylist al hacer el split
-	public List<Usuario> BloquearUsuario(String userblock){
+	public List<Usuario> bloquearUsuario(String userblock){
 
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		List<Usuario> listausuario=usuario.listarUsuarios();
 		for(int i=0;i<listausuario.size();i++){
 			if(userblock.equals(listausuario.get(i).getUserEmail())){
 				System.out.println("usuario bloqueado "+ listausuario.get(i).getUserEmail());
+				 String sql="UPDATE users SET userBlock='1' WHERE userEmail='"+userblock+"'";
+				 jdbc.update(sql);
+				 usuario.listarUsuarios();		
 			}else{
 
 				System.out.println("no bloquea");
@@ -297,9 +305,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return  listausuario;
 	}
 	
-	public int registrarusuario(String email, String password, String sex, int age){
+	//Metodo para registrar usuario
+	public int registrarUsuario(String email, String password, String sex, int age){
 		int usuario;
-		int userblock=0;
+		int userblock=0;//De momento añado el userblock hasta que se actualize la BD
 		String SQL = "insert into users (userEmail,userGen,userAge,userblock,userPass) values (?,?,?,?,?)"; 
 		 usuario=jdbc.update(SQL,email,sex,age,userblock,password);
 		return usuario;

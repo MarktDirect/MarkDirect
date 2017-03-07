@@ -31,27 +31,25 @@ public class UsuariosController {
 	//En construccion
 	//El try and catch pilla la excepcion del arraylist y ejecuta otro metodo solo para un usuario
 	@RequestMapping(value="usuario",method=RequestMethod.POST)
-	public ModelAndView Bloquearusuario(@RequestParam("bloquear") String userblock){
+	public ModelAndView bloquearUsuario(@RequestParam("bloquear") String userblock){
 		ModelAndView mav=new ModelAndView();
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		try{
 			String separador=",";
 			String[] usuariosbloqueados;
 			usuariosbloqueados=userblock.split(separador);
-			mav.addObject("usuario",usuario.BloquearUsuario(usuariosbloqueados));
+			mav.addObject("usuario",usuario.bloquearUsuario(usuariosbloqueados));
 			mav.addObject("mensaje", "usuario bloqueado con exito");
 			mav.setViewName("usuarios");
 		}
 		catch(ArrayIndexOutOfBoundsException e){
-			mav.addObject("usuario",usuario.BloquearUsuario(userblock));
+			mav.addObject("usuario",usuario.bloquearUsuario(userblock));
 			mav.addObject("mensaje", "usuario bloqueado con exito");
 			mav.setViewName("usuarios");
 
 		}
-
-
+		mav.addObject("usuario",usuario.listarUsuarios());
 		return mav;
-
 	}
 
 }
