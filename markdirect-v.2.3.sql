@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 07-03-2017 a las 09:14:57
+-- Tiempo de generación: 07-03-2017 a las 17:33:28
 -- Versión del servidor: 5.5.42
 -- Versión de PHP: 7.0.0
 
@@ -11,13 +11,16 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Base de datos: `MarkDirect`
+-- Base de datos: `markdirect`
 --
 DROP DATABASE IF EXISTS MarkDirect;
 CREATE DATABASE IF NOT EXISTS MarkDirect;
 
 USE MarkDirect;
+
+
 -- --------------------------------------------------------
+
 --
 -- Estructura de tabla para la tabla `admins`
 --
@@ -27,72 +30,14 @@ CREATE TABLE `admins` (
   `admin` varchar(45) NOT NULL,
   `adminPassword` varchar(45) NOT NULL,
   `adminEmail` varchar(45) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `admins`
 --
 
 INSERT INTO `admins` (`adminId`, `admin`, `adminPassword`, `adminEmail`) VALUES
-(1, 'pepe', '12345', '1@gmail.com'),
-(2, 'juan', '12345', '2@gmail.com'),
-(3, 'cristian', '12345', '3@gmail.com'),
-(4, 'Maria', '1', '4@gmail.com'),
-(5, 'Carlota', '1', '5@gmail.com');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `categoriasnivel1`
---
-
-CREATE TABLE `categoriasnivel1` (
-  `id` int(4) NOT NULL,
-  `categoria` varchar(30) NOT NULL,
-  `id_catNivel2` int(4) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `categoriasnivel1`
---
-
-INSERT INTO `categoriasnivel1` (`id`, `categoria`, `id_catNivel2`) VALUES
-(1, 'Accesorios TV', 1),
-(2, 'Cuidado Personal', 2),
-(3, 'Cuidado del Hogar', 2),
-(4, 'Radio', 1),
-(5, 'Lavadora', 3),
-(6, 'Frigorifico', 3),
-(7, 'Auriculares', 1),
-(8, 'Camara de Video', 1),
-(9, 'Cámara Fotografica', 1),
-(10, 'Hifi Pro', 1),
-(11, 'Microondas', 3),
-(12, 'Proyector', 1),
-(13, 'Televisor', 1),
-(14, 'Reproductor', 1),
-(15, 'Tablet', 1),
-(16, 'Tarjeta Memoria', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `categoriasnivel2`
---
-
-CREATE TABLE `categoriasnivel2` (
-  `id` int(40) NOT NULL,
-  `categoria` varchar(40) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `categoriasnivel2`
---
-
-INSERT INTO `categoriasnivel2` (`id`, `categoria`) VALUES
-(1, 'Electronica de Consumo'),
-(2, 'Pequeño Electrodoméstico'),
-(3, 'Grandes Electrodomésticos');
+(1, 'admin', '12345', 'admin@admin.com');
 
 -- --------------------------------------------------------
 
@@ -105,29 +50,15 @@ CREATE TABLE `centers` (
   `centerDescription` varchar(45) NOT NULL,
   `center_adminId` int(11) DEFAULT '1',
   `centerName` varchar(45) DEFAULT NULL,
-  `centerAddres` varchar(45) DEFAULT NULL,
-  `centerType` varchar(45) DEFAULT NULL,
-  `centerSubtype` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `centerAddress` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `centers`
 --
 
-INSERT INTO `centers` (`centerId`, `centerDescription`, `center_adminId`, `centerName`, `centerAddres`, `centerType`, `centerSubtype`) VALUES
-(1, 'Activa Juan Lucas', 1, 'Centro 1', 'Poligono Oeste', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `centerspromos`
---
-
-CREATE TABLE `centerspromos` (
-  `centerpromoId` int(11) NOT NULL,
-  `centerpromo_centerId` int(11) DEFAULT NULL,
-  `centerpromo_promotId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `centers` (`centerId`, `centerDescription`, `center_adminId`, `centerName`, `centerAddress`) VALUES
+(1, 'Activa Juan Lucas', 1, 'Activa Juan Lucas', 'Calle Empleo Digital s/n, 29004, Málaga');
 
 -- --------------------------------------------------------
 
@@ -141,37 +72,93 @@ CREATE TABLE `controlzones` (
   `controlzoneMinor` varchar(45) DEFAULT NULL,
   `controlzoneEmplacement` varchar(45) DEFAULT NULL,
   `controlzone_centerId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `controlzones`
 --
 
 INSERT INTO `controlzones` (`controlzoneId`, `controlzoneMajor`, `controlzoneMinor`, `controlzoneEmplacement`, `controlzone_centerId`) VALUES
-(0, '0', '0', 'zona genérica', 1),
-(1, '10', '1', 'entrada', 1);
+(0, '0', '0', 'Promoción Genérica', 1),
+(1, '4', '3456', 'Zona 1', 1),
+(2, '4', '3459', 'Zona 2', 1),
+(3, '4', '1234', 'Zona 3', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Estructura de tabla para la tabla `level1categories`
 --
 
-CREATE TABLE `productos` (
-  `id` bigint(20) NOT NULL,
-  `nombre` varchar(40) NOT NULL,
-  `id_catNivel2` int(4) NOT NULL,
-  `id_catNivel1` int(4) NOT NULL,
-  `marca` varchar(40) NOT NULL,
-  `pvp` int(5) NOT NULL,
-  `imagen` varchar(80) NOT NULL
+CREATE TABLE `level1categories` (
+  `id` int(4) NOT NULL,
+  `category` varchar(30) NOT NULL,
+  `id_level2Category` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Volcado de datos para la tabla `level1categories`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`, `pvp`, `imagen`) VALUES
+INSERT INTO `level1categories` (`id`, `category`, `id_level2Category`) VALUES
+(1, 'Accesorios TV', 1),
+(2, 'Cuidado Personal', 2),
+(3, 'Cuidado del Hogar', 2),
+(4, 'Radio', 1),
+(5, 'Lavadora', 3),
+(6, 'Frigorifico', 3),
+(7, 'Auriculares', 1),
+(8, 'Camara de Video', 1),
+(9, 'Camara Fotografica', 1),
+(10, 'Hifi Pro', 1),
+(11, 'Microondas', 3),
+(12, 'Proyector', 1),
+(13, 'Televisor', 1),
+(14, 'Reproductor', 1),
+(15, 'Tablet', 1),
+(16, 'Tarjeta Memoria', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `level2categories`
+--
+
+CREATE TABLE `level2categories` (
+  `id` int(40) NOT NULL,
+  `category` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `level2categories`
+--
+
+INSERT INTO `level2categories` (`id`, `category`) VALUES
+(1, 'Electronica de Consumo'),
+(2, 'Pequeño Electrodomestico'),
+(3, 'Grandes Electrodomesticos');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) NOT NULL,
+  `productName` varchar(40) NOT NULL,
+  `id_level2Category` int(4) NOT NULL,
+  `id_level1Category` int(4) NOT NULL,
+  `productBrand` varchar(40) NOT NULL,
+  `productPrice` int(5) NOT NULL,
+  `productImage` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `products`
+--
+
+INSERT INTO `products` (`id`, `productName`, `id_level2Category`, `id_level1Category`, `productBrand`, `productPrice`, `productImage`) VALUES
 (2014010700018, 'MANDO A DISTANCIA SCHNEIDER RC1205', 1, 1, 'SCHNEID', 20, 'http://intranet.topdigital.es/electro_img/2014010700018/2014010700018.jpg'),
 (3014260089498, 'Pack Cepillo OB PRO600 WHITE&CLEAN+PASTA', 2, 2, 'BRAUN  ', 44, 'http://intranet.topdigital.es/electro_img/3014260089498/3014260089498.jpg'),
 (3014260089535, 'Pack Cepillo Oral B Trizone 600 + 2 Reca', 2, 2, 'BRAUN  ', 45, 'http://intranet.topdigital.es/electro_img/3014260089535/3014260089535.jpg'),
@@ -494,7 +481,7 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (4210201132271, 'CORTABARBAS BRAUN CRUZER6 FACE', 2, 2, 'BRAUN  ', 78, 'http://intranet.topdigital.es/electro_img/4210201132271/4210201132271.jpg'),
 (4210201132370, 'Perfilador Braun PT5010 CRUZER6 FACE PRE', 2, 2, 'BRAUN  ', 19, 'http://intranet.topdigital.es/electro_img/4210201132370/4210201132370.jpg'),
 (4210201133315, 'Afeitadora Braun BGK7050 Corporal', 2, 2, 'BRAUN  ', 100, 'http://intranet.topdigital.es/electro_img/4210201133315/4210201133315.jpg');
-INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`, `pvp`, `imagen`) VALUES
+INSERT INTO `products` (`id`, `productName`, `id_level2Category`, `id_level1Category`, `productBrand`, `productPrice`, `productImage`) VALUES
 (4210201135555, 'Cortapelo Braun HC5050 Serie5, a red y b', 2, 2, 'BRAUN  ', 47, 'http://intranet.topdigital.es/electro_img/4210201135555/4210201135555.jpg'),
 (4210201137214, 'Cepillo Dental Braun PRO750CA, Cross Act', 2, 2, 'BRAUN  ', 36, 'http://intranet.topdigital.es/electro_img/4210201137214/4210201137214.jpg'),
 (4210201137818, 'Cepillo Dental Braun PRO2500CA, Cross Ac', 2, 2, 'BRAUN  ', 59, 'http://intranet.topdigital.es/electro_img/4210201137818/4210201137818.jpg'),
@@ -813,9 +800,9 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (4242006206963, 'Combi Balay 3KSP5660, 186x60, A++, Puert', 3, 6, 'BALAY  ', 665, 'http://intranet.topdigital.es/electro_img/4242006206963/4242006206963.jpg'),
 (4242006206987, 'Combi Balay 3KSP6865, 200x60, A+++, Puer', 3, 6, 'BALAY  ', 757, 'http://intranet.topdigital.es/electro_img/4242006206987/4242006206987.jpg'),
 (4242006210854, 'Combi Balay 3KFI7661, 185X60, No Frost, ', 3, 6, 'BALAY  ', 499, 'http://intranet.topdigital.es/electro_img/4242006210854/4242006210854.jpg'),
-(4242006210908, 'Combi Balay 3KFI7861, 200x60, No Frost, ', 3, 6, 'BALAY  ', 579, 'http://intranet.topdigital.es/electro_img/4242006210908/4242006210908.jpg'),
-(4242006218119, 'Combi Balay 3KR7707B, 185x70,  No Frost,', 3, 6, 'BALAY  ', 779, 'http://intranet.topdigital.es/electro_img/4242006218119/4242006218119.jpg');
-INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`, `pvp`, `imagen`) VALUES
+(4242006210908, 'Combi Balay 3KFI7861, 200x60, No Frost, ', 3, 6, 'BALAY  ', 579, 'http://intranet.topdigital.es/electro_img/4242006210908/4242006210908.jpg');
+INSERT INTO `products` (`id`, `productName`, `id_level2Category`, `id_level1Category`, `productBrand`, `productPrice`, `productImage`) VALUES
+(4242006218119, 'Combi Balay 3KR7707B, 185x70,  No Frost,', 3, 6, 'BALAY  ', 779, 'http://intranet.topdigital.es/electro_img/4242006218119/4242006218119.jpg'),
 (4242006218126, 'Combi Balay 3KR7767P, 185x70, No Frost, ', 3, 6, 'BALAY  ', 899, 'http://intranet.topdigital.es/electro_img/4242006218126/4242006218126.jpg'),
 (4242006218133, 'Combi Balay 3KRB7907B, 200x70, No Frost,', 3, 6, 'BALAY  ', 789, 'http://intranet.topdigital.es/electro_img/4242006218133/4242006218133.jpg'),
 (4242006218140, 'Combi Balay 3KR7967P, 200x70, No Frost, ', 3, 6, 'BALAY  ', 859, 'http://intranet.topdigital.es/electro_img/4242006218140/4242006218140.jpg'),
@@ -1131,9 +1118,9 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (6943619739234, 'Combi Hisense RB371N4EW1 178x59,5 NFR A+', 3, 6, 'HISENSE', 367, 'http://intranet.topdigital.es/electro_img/6943619739234/6943619739234.jpg'),
 (6943619740124, 'Combi HISENSE RB403N4EC2 INOX NFR A++', 3, 6, 'HISENSE', 419, 'http://intranet.topdigital.es/electro_img/6943619740124/6943619740124.jpg'),
 (6943619740247, 'Combi HISENSE RB403N4EC1 INOX NFR A+', 3, 6, 'HISENSE', 426, 'http://intranet.topdigital.es/electro_img/6943619740247/6943619740247.jpg'),
-(6945396604750, 'Lavadora Beko WCC7502BW0, 7kg, 1000rpm A', 3, 5, 'BEKO   ', 249, 'http://intranet.topdigital.es/electro_img/6945396604750/6945396604750.jpg'),
-(7332543025862, 'Lavasecadora Zanussi ZKH2105, 1000rpm, 7', 3, 5, 'ZANUSSI', 519, 'http://intranet.topdigital.es/electro_img/7332543025862/7332543025862.jpg');
-INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`, `pvp`, `imagen`) VALUES
+(6945396604750, 'Lavadora Beko WCC7502BW0, 7kg, 1000rpm A', 3, 5, 'BEKO   ', 249, 'http://intranet.topdigital.es/electro_img/6945396604750/6945396604750.jpg');
+INSERT INTO `products` (`id`, `productName`, `id_level2Category`, `id_level1Category`, `productBrand`, `productPrice`, `productImage`) VALUES
+(7332543025862, 'Lavasecadora Zanussi ZKH2105, 1000rpm, 7', 3, 5, 'ZANUSSI', 519, 'http://intranet.topdigital.es/electro_img/7332543025862/7332543025862.jpg'),
 (7332543105663, 'Microondas Aeg MCD1763EM, 17L, 800w, gri', 3, 11, 'AEG    ', 363, 'http://intranet.topdigital.es/electro_img/7332543105663/7332543105663.jpg'),
 (7332543105687, 'Microondas Aeg MC1763EM, 17L, 800w, inox', 3, 11, 'AEG    ', 259, 'http://intranet.topdigital.es/electro_img/7332543105687/7332543105687.jpg'),
 (7332543105885, 'Microondas partner Aeg MCD2665EM, 26L, 9', 3, 11, 'AEG    ', 506, 'http://intranet.topdigital.es/electro_img/7332543105885/7332543105885.jpg'),
@@ -1453,9 +1440,9 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8016361903463, 'Combi Candy CKCN6184IX1 no frost', 3, 6, 'CANDY  ', 603, 'http://intranet.topdigital.es/electro_img/8016361903463/8016361903463.jpg'),
 (8016361905825, 'Microondas Candy CMGC20DS, 20L, grill, p', 3, 11, 'CANDY  ', 94, 'http://intranet.topdigital.es/electro_img/8016361905825/8016361905825.jpg'),
 (8016361905832, 'Microondas Candy CMGC20DR, 20L, grill, p', 3, 11, 'CANDY  ', 94, 'http://intranet.topdigital.es/electro_img/8016361905832/8016361905832.jpg'),
-(8016361905849, 'Microondas Candy CMG22DS, 22L, grill Sil', 3, 11, 'CANDY  ', 98, 'http://intranet.topdigital.es/electro_img/8016361905849/8016361905849.jpg'),
-(8016361905887, 'Microondas Candy CMG22DW, 22L, grill Bla', 3, 11, 'CANDY  ', 91, 'http://intranet.topdigital.es/electro_img/8016361905887/8016361905887.jpg');
-INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`, `pvp`, `imagen`) VALUES
+(8016361905849, 'Microondas Candy CMG22DS, 22L, grill Sil', 3, 11, 'CANDY  ', 98, 'http://intranet.topdigital.es/electro_img/8016361905849/8016361905849.jpg');
+INSERT INTO `products` (`id`, `productName`, `id_level2Category`, `id_level1Category`, `productBrand`, `productPrice`, `productImage`) VALUES
+(8016361905887, 'Microondas Candy CMG22DW, 22L, grill Bla', 3, 11, 'CANDY  ', 91, 'http://intranet.topdigital.es/electro_img/8016361905887/8016361905887.jpg'),
 (8016361906648, 'Aspirador Hoover SPRINTEVOSE51, AADC, Ci', 2, 3, 'HOOVER ', 69, 'http://intranet.topdigital.es/electro_img/8016361906648/8016361906648.jpg'),
 (8016361907195, 'Lavadora Candy GS1493DH3, 1400rpm, 9kg, ', 3, 5, 'CANDY  ', 399, 'http://intranet.topdigital.es/electro_img/8016361907195/8016361907195.jpg'),
 (8016361907201, 'Lavasecadora Candy GSW4106D, 10kg lavado', 3, 5, 'CANDY  ', 489, 'http://intranet.topdigital.es/electro_img/8016361907201/8016361907201.jpg'),
@@ -1776,18 +1763,13 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8426984322679, 'Lavadora Rommer L1119, 9kg, 1000rpm,  A+', 3, 5, 'ROMMER ', 369, 'http://intranet.topdigital.es/electro_img/8426984322679/8426984322679.jpg'),
 (8426984341618, 'Frigorifico 2 puertas Rommer F241A+, 136', 3, 6, 'ROMMER ', 249, 'http://intranet.topdigital.es/electro_img/8426984341618/8426984341618.jpg'),
 (8426984344169, 'Combi ROMMER C315A+ 170x55x55 Blanco', 3, 6, 'ROMMER ', 309, 'http://intranet.topdigital.es/electro_img/8426984344169/8426984344169.jpg'),
-(8426984349980, 'Frigorifico 1puerta Rommer FT132A+, 85x5', 3, 6, 'ROMMER ', 177, 'http://intranet.topdigital.es/electro_img/8426984349980/8426984349980.jpg'),
-(8426984350061, 'Frigorifico 1 Puerta Rommer FL150, 144x5', 3, 6, 'ROMMER ', 269, 'http://intranet.topdigital.es/electro_img/8426984350061/8426984350061.jpg');
-INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`, `pvp`, `imagen`) VALUES
-(8426984350085, 'Frigorifico 1 puerta Rommer FL228, 125,5', 3, 6, 'ROMMER ', 210, 'http://intranet.topdigital.es/electro_img/8426984350085/8426984350085.jpg'),
-(8426984350108, 'Frigorifico 1 puerta ROMMER FT136A+, 85X', 3, 6, 'ROMMER ', 189, 'http://intranet.topdigital.es/electro_img/8426984350108/8426984350108.jpg'),
+(8426984349980, 'Frigorifico 1puerta Rommer FT132A+, 85x5', 3, 6, 'ROMMER ', 177, 'http://intranet.topdigital.es/electro_img/8426984349980/8426984349980.jpg');
+INSERT INTO `products` (`id`, `productName`, `id_level2Category`, `id_level1Category`, `productBrand`, `productPrice`, `productImage`) VALUES
+(8426984350061, 'Frigorifico 1 Puerta Rommer FL150, 144x5', 3, 6, 'ROMMER ', 269, 'http://intranet.topdigital.es/electro_img/8426984350061/8426984350061.jpg'),
+(8426984350085, 'Frigorifico 1 puerta Rommer FL228 125,5', 3, 6, 'ROMMER ', 210, 'http://intranet.topdigital.es/electro_img/8426984350085/8426984350085.jpg'),
+(8426984350108, 'Frigorifico 1 puerta ROMMER FT136A+ 85X', 3, 6, 'ROMMER ', 189, 'http://intranet.topdigital.es/electro_img/8426984350108/8426984350108.jpg'),
 (8426984350115, 'Frigorifico 1p. ROMMER FL222A+ 125X55X58', 3, 6, 'ROMMER ', 219, 'http://intranet.topdigital.es/electro_img/8426984350115/8426984350115.jpg'),
 (8426984350153, 'Frigorifico 1puerta ROMMER FL152A+INOX 1', 3, 6, 'ROMMER ', 273, 'http://intranet.topdigital.es/electro_img/8426984350153/8426984350153.jpg'),
-(8426984350306, 'Frigorifico 1puerta ROMMER FL353A+ 185X6', 3, 6, 'ROMMER ', 424, 'http://intranet.topdigital.es/electro_img/8426984350306/8426984350306.jpg'),
-(8426984351594, 'Frigorifico 2 puertas ROMMER F232A+, 129', 3, 6, 'ROMMER ', 239, 'http://intranet.topdigital.es/electro_img/8426984351594/8426984351594.jpg'),
-(8426984351884, 'Frigorifico 2 puertas Rommer FD365A+ 175', 3, 6, 'ROMMER ', 284, 'http://intranet.topdigital.es/electro_img/8426984351884/8426984351884.jpg'),
-(8426984351891, 'Frigor?fico 2puertas ROMMER FD366A+INOX', 3, 6, 'ROMMER ', 314, 'http://intranet.topdigital.es/electro_img/8426984351891/8426984351891.jpg'),
-(8426984375323, 'Vitrina ROMMER XLS280T, 180x57,5x59', 3, 6, 'ROMMER ', 459, 'http://intranet.topdigital.es/electro_img/8426984375323/8426984375323.jpg'),
 (8426984375330, 'Vitrina ROMMER XLS350T, 199x62x59', 3, 6, 'ROMMER ', 560, 'http://intranet.topdigital.es/electro_img/8426984375330/8426984375330.jpg'),
 (8426984375347, 'Vitrina ROMMER LG230', 3, 6, 'ROMMER ', 359, 'http://intranet.topdigital.es/electro_img/8426984375347/8426984375347.jpg'),
 (8427155000303, 'Radio Nevir NVR128LUXPLATA, plata, porta', 1, 4, 'NEVIR  ', 18, 'http://intranet.topdigital.es/electro_img/8427155000303/8427155000303.jpg'),
@@ -1832,7 +1814,6 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8427155021506, 'TV Led Nevir 39NVR740639HDN', 1, 13, 'NEVIR  ', 279, 'http://intranet.topdigital.es/electro_img/8427155021506/8427155021506.jpg'),
 (8427155021605, 'Tv Led Nevir 24NVR751224HDN', 1, 13, 'NEVIR  ', 149, 'http://intranet.topdigital.es/electro_img/8427155021605/8427155021605.jpg'),
 (8427155501435, 'DVD NEVIR NVR2049 CON DIVX,DVD-R,VCD,MP', 1, 14, 'NEVIR  ', 43, 'http://intranet.topdigital.es/electro_img/8427155501435/8427155501435.jpg'),
-(8427155502654, 'Dvd portatil Nevir NVR2766DVDPUCT2 9', 0, 1, '14', 0, '95.27'),
 (8427155502678, 'Dvd Nevir NVR2326DVDKU, KARAOKE', 1, 14, 'NEVIR  ', 40, 'http://intranet.topdigital.es/electro_img/8427155502678/8427155502678.jpg'),
 (8427155800156, 'Frigorifico 2p. Nevir NVR4352DD, Blanco,', 3, 6, 'NEVIRGB', 271, 'http://intranet.topdigital.es/electro_img/8427155800156/8427155800156.jpg'),
 (8427155800170, 'Combi Nevir NVR4372CNF Blanco,185x60, No', 3, 6, 'NEVIRGB', 337, 'http://intranet.topdigital.es/electro_img/8427155800170/8427155800170.jpg'),
@@ -1944,7 +1925,6 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8436011058525, 'Microondas Orbegozo MIG2016, 20L, 800w, ', 3, 11, 'ORBEGOZ', 95, 'http://intranet.topdigital.es/electro_img/8436011058525/8436011058525.jpg'),
 (8436011059652, 'Microondas Orbegozo MIG1730, 17L, 700w, ', 3, 11, 'ORBEGOZ', 72, 'http://intranet.topdigital.es/electro_img/8436011059652/8436011059652.jpg'),
 (8436011543595, 'CAMARA ASPECT AC10', 1, 9, 'AIRIS  ', 29, 'http://intranet.topdigital.es/electro_img/8436011543595/8436011543595.jpg'),
-(8436011545582, 'DVD Portatil Airis LW264, 8,5', 0, 1, '14', 0, '129'),
 (8436025914473, 'Frigorifico 1p Corbero CF1F85W, 84x48, A', 3, 6, 'CORBERO', 149, 'http://intranet.topdigital.es/electro_img/8436025914473/8436025914473.jpg'),
 (8436025914558, 'Frigorifico 2p Corbero CF2F160W, 160x54,', 3, 6, 'CORBERO', 259, 'http://intranet.topdigital.es/electro_img/8436025914558/8436025914558.jpg'),
 (8436025917184, 'Combi Corbero CC1850EX,NO FROST  A+, Ino', 3, 6, 'CORBERO', 469, 'http://intranet.topdigital.es/electro_img/8436025917184/8436025917184.jpg'),
@@ -1953,7 +1933,6 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8436027040422, 'Dvd portatil Schneider SCD900DVB, estere', 1, 14, 'SCHNEID', 167, 'http://intranet.topdigital.es/electro_img/8436027040422/8436027040422.jpg'),
 (8436027041207, 'Dvd Schneider Mod DVD919, TDT', 1, 14, 'SCHNEID', 51, 'http://intranet.topdigital.es/electro_img/8436027041207/8436027041207.jpg'),
 (8436027041467, 'RadioCD Schneider CDP57USBSDRED, USB, di', 1, 4, 'SCHNEID', 45, 'http://intranet.topdigital.es/electro_img/8436027041467/8436027041467.jpg'),
-(8436027041504, 'Marco foto digital Schneider SCF75, 7', 0, 1, '9', 0, '59.9'),
 (8436027041535, 'Radiocassette Schneider P60WHITE, digita', 1, 4, 'SCHNEID', 55, 'http://intranet.topdigital.es/electro_img/8436027041535/8436027041535.jpg'),
 (8436027041610, 'Mp4 Schneider CAPRICEWHITE, 4Gb, conex.U', 1, 14, 'SCHNEID', 20, 'http://intranet.topdigital.es/electro_img/8436027041610/8436027041610.jpg'),
 (8436027041771, 'Barra sonido Schneider SCBS2000, 3 altav', 1, 10, 'SCHNEID', 50, 'http://intranet.topdigital.es/electro_img/8436027041771/8436027041771.jpg'),
@@ -2100,13 +2079,13 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8690842029615, 'Frigorifico 1puerta Beko RSNE445E33W 185', 3, 6, 'BEKO   ', 449, 'http://intranet.topdigital.es/electro_img/8690842029615/8690842029615.jpg'),
 (8690842029622, 'Frigorifico 1puerta Beko RSNE445E33X 185', 3, 6, 'BEKO   ', 476, 'http://intranet.topdigital.es/electro_img/8690842029622/8690842029622.jpg'),
 (8690842030932, 'Frigorifico Side by side Beko GNE60521X ', 3, 6, 'BEKO   ', 929, 'http://intranet.topdigital.es/electro_img/8690842030932/8690842030932.jpg'),
-(8690842031762, 'Combi Beko RCNE520E31W 192x70cm no frost', 3, 6, 'BEKO   ', 629, 'http://intranet.topdigital.es/electro_img/8690842031762/8690842031762.jpg');
-INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`, `pvp`, `imagen`) VALUES
+(8690842031762, 'Combi Beko RCNE520E31W 192x70cm no frost', 3, 6, 'BEKO   ', 629, 'http://intranet.topdigital.es/electro_img/8690842031762/8690842031762.jpg'),
 (8690842034534, 'Frigorifico side by side Beko GN162530X,', 3, 6, 'BEKO   ', 1119, 'http://intranet.topdigital.es/electro_img/8690842034534/8690842034534.jpg'),
 (8690842035661, 'Microondas Beko MOC20100W 20L Blanco', 3, 11, 'BEKO   ', 53, 'http://intranet.topdigital.es/electro_img/8690842035661/8690842035661.jpg'),
 (8690842036408, 'Lavasecadora Beko HTV8633XS0, 8k/5k 1200', 3, 5, 'BEKO   ', 459, 'http://intranet.topdigital.es/electro_img/8690842036408/8690842036408.jpg'),
 (8690842037306, 'Microondas Beko MGC20100W 20L Grill', 3, 11, 'BEKO   ', 59, 'http://intranet.topdigital.es/electro_img/8690842037306/8690842037306.jpg'),
-(8690842040139, 'Frigorifico 2puertas Beko RDNE535E31ZX, ', 3, 6, 'BEKO   ', 701, 'http://intranet.topdigital.es/electro_img/8690842040139/8690842040139.jpg'),
+(8690842040139, 'Frigorifico 2puertas Beko RDNE535E31ZX, ', 3, 6, 'BEKO   ', 701, 'http://intranet.topdigital.es/electro_img/8690842040139/8690842040139.jpg');
+INSERT INTO `products` (`id`, `productName`, `id_level2Category`, `id_level1Category`, `productBrand`, `productPrice`, `productImage`) VALUES
 (8690842050411, 'Frigorifico 2Puertas Beko RDNE455K20W', 3, 6, 'BEKO   ', 531, 'http://intranet.topdigital.es/electro_img/8690842050411/8690842050411.jpg'),
 (8690842053498, 'Lavadora Beko WMI81442, 8kg 1400rpm Inte', 3, 5, 'BEKO   ', 419, 'http://intranet.topdigital.es/electro_img/8690842053498/8690842053498.jpg'),
 (8690842053719, 'Combi Beko RCNE520E31ZX 192x70cm no fros', 3, 6, 'BEKO   ', 709, 'http://intranet.topdigital.es/electro_img/8690842053719/8690842053719-10.jpg'),
@@ -2148,8 +2127,6 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8690842996450, 'Combi Beko CN161230DX 181,4x84cm no fros', 3, 6, 'BEKO   ', 1022, 'http://intranet.topdigital.es/electro_img/8690842996450/8690842996450.jpg'),
 (8690842997181, 'Combi Beko CHA27020X, 171x54cm, No Frost', 3, 6, 'BEKO   ', 369, 'http://intranet.topdigital.es/electro_img/8690842997181/8690842997181.jpg'),
 (8690842997914, 'Lavadora Beko WMY91283LB2, 9kg, 1200rpm', 3, 5, 'BEKO   ', 379, 'http://intranet.topdigital.es/electro_img/8690842997914/8690842997914.jpg'),
-(8710101349695, 'Soporte pared Philips SBCVS30000R, para ', 0, 1, '1', 0, '19.9'),
-(8710101349718, 'Soporte pared Philips SBCVS40000R, para ', 0, 1, '1', 0, '39.2'),
 (8710895738590, 'Radio Philips AE216004, portatil, mono, ', 1, 4, 'PHILIPS', 35, 'http://intranet.topdigital.es/electro_img/8710895738590/8710895738590.jpg'),
 (8710895921565, 'Altavoces Philips SBA150000, 2 altavoc.,', 1, 10, 'PHILIPS', 19, 'http://intranet.topdigital.es/electro_img/8710895921565/8710895921565.jpg'),
 (8710895935807, 'Mando a distancia Philips SRU706010, uni', 1, 1, 'PHILIPS', 64, 'http://intranet.topdigital.es/electro_img/8710895935807/8710895935807.jpg'),
@@ -2207,7 +2184,6 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8806084177018, 'Barra de sonido Lg NB3530ADDEULLK, 300w-', 1, 14, 'LG     ', 169, 'http://intranet.topdigital.es/electro_img/8806084177018/8806084177018.jpg'),
 (8806084253866, 'Home Cinema Lg BH4030SBDEULLK, H.Cinema ', 1, 14, 'LG     ', 187, 'http://intranet.topdigital.es/electro_img/8806084253866/8806084253866.jpg'),
 (8806084557421, 'Mando distancia Lg ANMR500AEU', 1, 1, 'LG     ', 41, 'http://intranet.topdigital.es/electro_img/8806084557421/8806084557421.jpg'),
-(8806084578013, 'Barra de sonido Lg NB3540DDEULLK, 42', 320, 1, '14', 0, '211.79'),
 (8806084584700, 'Home cinema Lg BH7240BBDEULLK,  UHD4K 1.', 1, 14, 'LG     ', 364, 'http://intranet.topdigital.es/electro_img/8806084584700/8806084584700.jpg'),
 (8806084754011, 'Tv Led Lg 55UB950V, ULTRA HD 4K, Panel I', 1, 13, 'LG     ', 3599, 'http://intranet.topdigital.es/electro_img/8806084754011/8806084754011.jpg'),
 (8806084754325, 'Tv Led Lg 65UB950V, ULTRA HD 4K, Panel I', 1, 13, 'LG     ', 3599, 'http://intranet.topdigital.es/electro_img/8806084754325/8806084754325.jpg'),
@@ -2217,7 +2193,6 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8806085092297, 'TV Led Samsung UE32EH4003WXXC, USB Divx,', 1, 13, 'SAMSUNG', 239, 'http://intranet.topdigital.es/electro_img/8806085092297/8806085092297.jpg'),
 (8806085928220, 'TV Led Samsung UE22H5000AWXXC, 22?, Full', 1, 13, 'SAMSUNG', 179, 'http://intranet.topdigital.es/electro_img/8806085928220/8806085928220.jpg'),
 (8806085940895, 'Blu Ray Samsung BDH8500/ZF, Full HD (192', 1, 14, 'SAMSUNG', 319, 'http://intranet.topdigital.es/electro_img/8806085940895/8806085940895.jpg'),
-(8806085988651, 'TV Led Samsung UE22H5600AWXXC SLIM LED  ', 0, 1, '13', 0, '265'),
 (8806086298650, 'TV Led Samsung UE24H4003AWXXC SLIM LED d', 1, 13, 'SAMSUNG', 159, 'http://intranet.topdigital.es/electro_img/8806086298650/8806086298650.jpg'),
 (8806086570114, 'Blu Ray Samsung BDJ5500ZF 3D Full HD; Di', 1, 14, 'SAMSUNG', 85, 'http://intranet.topdigital.es/electro_img/8806086570114/8806086570114.jpg'),
 (8806086702225, 'TV Led Samsung UE43J5500AKXXC,', 1, 13, 'SAMSUNG', 499, 'http://intranet.topdigital.es/electro_img/8806086702225/8806086702225.jpg'),
@@ -2225,11 +2200,8 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8806086826617, 'Barra Sonido Samsung HWJ470ZF 460W 4.1 c', 1, 14, 'SAMSUNG', 299, 'http://intranet.topdigital.es/electro_img/8806086826617/8806086826617.jpg'),
 (8806086892087, 'TV Led Samsung UE28J4100AWXXC', 1, 13, 'SAMSUNG', 219, 'http://intranet.topdigital.es/electro_img/8806086892087/8806086892087.jpg'),
 (8806086892117, 'TV Led Samsung UE40J5100AWXXC, Full HD, ', 1, 13, 'SAMSUNG', 349, 'http://intranet.topdigital.es/electro_img/8806086892117/8806086892117.jpg'),
-(8806086897129, 'TV Led Samsung UE32J4000AWXXC 32', 0, 1, '13', 0, '229'),
 (8806086897143, 'TV Led Samsung UE32J5000AWXXC, SLIM LED ', 1, 13, 'SAMSUNG', 239, 'http://intranet.topdigital.es/electro_img/8806086897143/8806086897143.jpg'),
 (8806086897167, 'TV Led Samsung UE32J5200AWXXC,', 1, 13, 'SAMSUNG', 319, 'http://intranet.topdigital.es/electro_img/8806086897167/8806086897167.jpg'),
-(8806086979511, 'TV Led Samsung EUE32J4000AWXXC 32', 0, 1, '13', 0, '211.99'),
-(8806086979658, 'TV Led Samsung EUE40J5100 40', 0, 1, '13', 0, '326.7'),
 (8806086979764, 'TV Led SAMSUNG EUE32J4100', 1, 13, 'ME     ', 229, 'http://intranet.topdigital.es/electro_img/8806086979764/8806086979764.jpg'),
 (8806087102123, 'Tv Led Lg 22MT44DP', 1, 13, 'LG     ', 159, 'http://intranet.topdigital.es/electro_img/8806087102123/8806087102123.jpg'),
 (8806087138399, 'Tv Led Lg 43LF630V', 1, 13, 'LG     ', 549, 'http://intranet.topdigital.es/electro_img/8806087138399/8806087138399.jpg'),
@@ -2245,7 +2217,6 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8806087225921, 'Blu Ray LG BP250 Reproductor Bluray. Pue', 1, 14, 'LG     ', 65, 'http://intranet.topdigital.es/electro_img/8806087225921/8806087225921.jpg'),
 (8806087274387, 'TV Led LG 42LF5610 LED , Full HD, Panel ', 1, 13, 'LG     ', 449, 'http://intranet.topdigital.es/electro_img/8806087274387/8806087274387.jpg'),
 (8806087297485, 'Tv Led Lg 28MT47TPZ', 1, 13, 'LG     ', 209, 'http://intranet.topdigital.es/electro_img/8806087297485/8806087297485.jpg'),
-(8806087346350, 'TV Led LG 43LF590V 43', 0, 1, '13', 0, '399'),
 (8806087346992, 'TV Led Lg 49LF590V LED , Full HD, Panel ', 1, 13, 'LG     ', 499, 'http://intranet.topdigital.es/electro_img/8806087346992/8806087346992.jpg'),
 (8806087353853, 'TV Led Lg 32LF510B, Scaled  Full HD, Pan', 1, 13, 'LG     ', 229, 'http://intranet.topdigital.es/electro_img/8806087353853/8806087353853.jpg'),
 (8806087354263, 'TV Led LG 43LF510V, Full HD, Panel IPS 3', 1, 13, 'LG     ', 359, 'http://intranet.topdigital.es/electro_img/8806087354263/8806087354263.jpg'),
@@ -2307,8 +2278,6 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 (8806088082516, 'TV Led Samsung UE48J5200AWXXC', 1, 13, 'SAMSUNG', 569, 'http://intranet.topdigital.es/electro_img/8806088082516/8806088082516.jpg'),
 (8806088084947, 'TV Led Samsung UE58J5200AWXXC', 1, 13, 'SAMSUNG', 779, 'http://intranet.topdigital.es/electro_img/8806088084947/8806088084947.jpg'),
 (8806088114194, 'Blu Ray Samsung BDJ4500RZF Full HD (1920', 1, 14, 'SAMSUNG', 70, 'http://intranet.topdigital.es/electro_img/8806088114194/8806088114194.jpg'),
-(8806088211961, 'TV Led Samsung UE55KS9000TXXC LED, 55', 0, 1, '13', 0, '2079'),
-(8806088214818, 'TV Led Samsung UE65KS9000TXXC LED, 65', 0, 1, '13', 0, '2807.06'),
 (8806088229577, 'Barra Sonido Samsung HWK450ZF 2.1 300w,', 1, 14, 'SAMSUNG', 219, 'http://intranet.topdigital.es/electro_img/8806088229577/8806088229577.jpg'),
 (8806088229584, 'Barra Sonido Samsung HWK550ZF 3.1 340w', 1, 14, 'SAMSUNG', 354, 'http://intranet.topdigital.es/electro_img/8806088229584/8806088229584.jpg'),
 (8806088229591, 'Barra Sonido Samsung HWK650ZF', 1, 14, 'SAMSUNG', 449, 'http://intranet.topdigital.es/electro_img/8806088229591/8806088229591.jpg');
@@ -2321,52 +2290,46 @@ INSERT INTO `productos` (`id`, `nombre`, `id_catNivel2`, `id_catNivel1`, `marca`
 
 CREATE TABLE `promos` (
   `promoId` int(11) NOT NULL,
-  `promoName` varchar(45) DEFAULT NULL,
-  `promoDescription` varchar(300) DEFAULT NULL,
+  `promoName` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `promoDescription` varchar(300) CHARACTER SET ucs2 COLLATE ucs2_spanish2_ci DEFAULT NULL,
   `promoSince` date DEFAULT NULL,
   `promoTo` date DEFAULT NULL,
   `promoState` tinyint(1) DEFAULT NULL,
   `promoCreate` datetime DEFAULT NULL,
-  `promoImage` varchar(300) DEFAULT NULL,
+  `promoImage` varchar(300) CHARACTER SET latin1 DEFAULT NULL,
   `promoMinAge` int(11) DEFAULT '0',
   `promoMaxAge` int(11) DEFAULT '99',
-  `promoGen` varchar(5) DEFAULT 'Todos',
+  `promoGen` varchar(5) CHARACTER SET ucs2 COLLATE ucs2_spanish2_ci DEFAULT 'Todos',
   `promo_controlzoneId` int(11) DEFAULT NULL,
   `promo_catNivel1` int(4) DEFAULT NULL,
   `promo_catNivel2` int(4) DEFAULT NULL,
   `promo_idProduct` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `promos`
 --
 
 INSERT INTO `promos` (`promoId`, `promoName`, `promoDescription`, `promoSince`, `promoTo`, `promoState`, `promoCreate`, `promoImage`, `promoMinAge`, `promoMaxAge`, `promoGen`, `promo_controlzoneId`, `promo_catNivel1`, `promo_catNivel2`, `promo_idProduct`) VALUES
-(3, 'Actualizate', 'Si nos devuelves tu teléfono antiguo te damos uno nuevo con un 30% de descuento', '2017-03-08', '2017-03-31', 1, '2017-03-06 00:00:00', NULL, 0, 99, 'Todos', 1, 1, 1, 8429015016172),
-(4, 'Descuento maximo', 'super descuento', '2012-03-12', '2017-06-05', 1, '2017-02-06 22:05:33', 'imagen', 21, 37, 'M', 0, 1, 2, 3030050064964),
-(5, '20% OFF', 'En televisores', '2013-02-18', '2019-03-31', 1, '2017-03-07 10:00:00', NULL, 18, 99, 'Todos', 1, 13, 1, 8806084754011),
-(6, 'Super oferta', 'Super descuento', '2012-03-12', '2017-06-05', 1, '2017-02-06 22:05:33', 'imagen', 21, 37, 'M', 0, 1, 2, 3030050064964),
-(7, 'Oferta en secadores', 'Super descuento', '2014-06-12', '2017-12-05', 1, '2017-02-06 23:05:33', 'imagen', 20, 56, 'M', 0, 2, 2, 3030050053180);
+(1, '20% OFF en Televisores LED', 'Aprovecha la oferta y obtiene 20% OFF en Televisores LED', '2017-03-08', '2017-03-31', 1, '2017-03-06 00:00:00', 'https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA02/CONTENIDOS/201509/17/00114841703144____3__640x640.jpg', 18, 99, 'Todos', 1, 13, 1, 8806088062235),
+(2, 'Actualizate', 'Si nos devuelves tu telefono antiguo te damos uno nuevo con un 30% de descuento', '2012-03-12', '2017-06-05', 1, '2017-02-06 22:05:33', 'https://www.theseniorlist.com/wp-content/uploads/2015/02/discounts.jpg', 21, 37, 'M', 0, 1, 2, 3030050064964),
+(3, 'Bienvenido al local!', 'Solo para ti, 10% off en FrigorÃ­ficos', '2016-07-18', '2019-04-19', 1, '2017-02-07 17:21:20', 'http://www.mediatrends.es/wp-content/uploads/2016/01/neveras-multidoor-4-750x455.jpg', 18, 38, 'M', 1, 6, 3, 4016803026013),
+(4, '2x1 en Auriculares', '2x1 en auriculares', '2013-02-18', '2019-03-31', 1, '2017-03-07 10:00:00', 'http://iphonea2.com/wp-content/uploads/2016/06/Ecandy-auriculares-Bluetooth-600x300.jpg', 18, 99, 'Todos', 1, 7, 1, 8713016016423),
+(5, 'Super oferta en higiene', 'Aprovecha la oportunidad única', '2012-03-12', '2017-06-05', 1, '2017-02-06 22:05:33', 'https://www.theseniorlist.com/wp-content/uploads/2015/02/discounts.jpg', 21, 37, 'M', 0, 2, 2, 8712836050280),
+(6, 'Radios en oferta!!', 'Radios en oferta, solo por estar aqui', '2015-03-17', '2017-12-21', 1, '2017-02-07 17:29:08', 'https://media2.popsugar-assets.com/files/ons1/192/1922283/28_2009/2ea7b407a8ba9d47_Radio.jpg', 23, 29, 'Todos', 2, 4, 1, 4013833873822),
+(7, 'Depiladoras 15% OFF', '15% de descuento en depiladoras', '2015-03-17', '2017-12-28', 1, '2017-02-07 17:31:31', 'http://www.canovaselectrodomesticos.com/WebRoot/Store/Shops/Canovas/55D6/FEE6/3E89/18C1/5EAC/AC11/0002/BC9B/DP80B.jpg', 18, 76, 'M', 1, 2, 2, 3121040052846);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `promosusers`
+-- Estructura de tabla para la tabla `sentpromos`
 --
 
-CREATE TABLE `promosusers` (
-  `promouserId` int(11) NOT NULL,
-  `promouser_promoId` int(11) NOT NULL,
-  `promouser_userId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `promosusers`
---
-
-INSERT INTO `promosusers` (`promouserId`, `promouser_promoId`, `promouser_userId`) VALUES
-(1, 1, 1),
-(2, 2, 2);
+CREATE TABLE `sentpromos` (
+  `id` int(4) NOT NULL,
+  `id_promo` int(11) NOT NULL,
+  `user_token` varchar(255) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -2379,18 +2342,29 @@ CREATE TABLE `users` (
   `userEmail` varchar(45) NOT NULL,
   `userGen` varchar(1) NOT NULL,
   `userAge` int(11) NOT NULL,
-  `userBlock` int(4) NOT NULL,
-  `userPass` varchar(50) DEFAULT NULL,
-  `userToken` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `userBlock` int(4) DEFAULT '0',
+  `userPass` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`userId`, `userEmail`, `userGen`, `userAge`, `userBlock`, `userPass`, `userToken`) VALUES
-(1, 'email1@gmail.com', 'M', 25, 0, 'pass1', NULL),
-(2, 'email2@gmail.com', 'H', 28, 0, 'pass2', NULL);
+INSERT INTO `users` (`userId`, `userEmail`, `userGen`, `userAge`, `userBlock`, `userPass`) VALUES
+(1, 'user1@gmail.com', 'M', 23, 0, 'password1'),
+(2, 'user2@gmail.com', 'M', 29, 0, 'password2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usertoken`
+--
+
+CREATE TABLE `usertoken` (
+  `id` int(4) NOT NULL,
+  `id_user` int(4) NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Índices para tablas volcadas
@@ -2400,23 +2374,7 @@ INSERT INTO `users` (`userId`, `userEmail`, `userGen`, `userAge`, `userBlock`, `
 -- Indices de la tabla `admins`
 --
 ALTER TABLE `admins`
-  ADD PRIMARY KEY (`adminId`),
-  ADD UNIQUE KEY `user_UNIQUE` (`admin`),
-  ADD UNIQUE KEY `adminEmail_UNIQUE` (`adminEmail`);
-
---
--- Indices de la tabla `categoriasnivel1`
---
-ALTER TABLE `categoriasnivel1`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_catNivel2` (`id_catNivel2`),
-  ADD KEY `id_catNivel2_2` (`id_catNivel2`);
-
---
--- Indices de la tabla `categoriasnivel2`
---
-ALTER TABLE `categoriasnivel2`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`adminId`);
 
 --
 -- Indices de la tabla `centers`
@@ -2426,14 +2384,6 @@ ALTER TABLE `centers`
   ADD KEY `center_adminId` (`center_adminId`);
 
 --
--- Indices de la tabla `centerspromos`
---
-ALTER TABLE `centerspromos`
-  ADD PRIMARY KEY (`centerpromoId`),
-  ADD KEY `centerpromo_centerId` (`centerpromo_centerId`),
-  ADD KEY `centerpromo_promoId` (`centerpromo_promotId`);
-
---
 -- Indices de la tabla `controlzones`
 --
 ALTER TABLE `controlzones`
@@ -2441,13 +2391,25 @@ ALTER TABLE `controlzones`
   ADD KEY `controlzone_centerId` (`controlzone_centerId`);
 
 --
--- Indices de la tabla `productos`
+-- Indices de la tabla `level1categories`
 --
-ALTER TABLE `productos`
+ALTER TABLE `level1categories`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_catNivel2` (`id_catNivel2`,`id_catNivel1`),
-  ADD KEY `id_catNivel1` (`id_catNivel1`),
-  ADD KEY `id_catNivel1_2` (`id_catNivel1`);
+  ADD KEY `id_level2Category` (`id_level2Category`);
+
+--
+-- Indices de la tabla `level2categories`
+--
+ALTER TABLE `level2categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_level2Category` (`id_level2Category`),
+  ADD KEY `id_level1Category` (`id_level1Category`);
 
 --
 -- Indices de la tabla `promos`
@@ -2455,23 +2417,32 @@ ALTER TABLE `productos`
 ALTER TABLE `promos`
   ADD PRIMARY KEY (`promoId`),
   ADD KEY `promo_controlzoneId` (`promo_controlzoneId`),
-  ADD KEY `promo_catNivel1` (`promo_catNivel1`),
+  ADD KEY `promo_controlzoneId_2` (`promo_controlzoneId`),
   ADD KEY `promo_catNivel2` (`promo_catNivel2`),
-  ADD KEY `promo_idProduct` (`promo_idProduct`);
+  ADD KEY `promo_idProduct` (`promo_idProduct`),
+  ADD KEY `promo_catNivel1` (`promo_catNivel1`);
 
 --
--- Indices de la tabla `promosusers`
+-- Indices de la tabla `sentpromos`
 --
-ALTER TABLE `promosusers`
-  ADD PRIMARY KEY (`promouserId`),
-  ADD KEY `promouser_promoId` (`promouser_promoId`),
-  ADD KEY `promouser_userId` (`promouser_userId`);
+ALTER TABLE `sentpromos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_promo` (`id_promo`),
+  ADD KEY `user_token` (`user_token`);
 
 --
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userId`);
+
+--
+-- Indices de la tabla `usertoken`
+--
+ALTER TABLE `usertoken`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `token` (`token`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -2481,93 +2452,64 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `categoriasnivel1`
---
-ALTER TABLE `categoriasnivel1`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT de la tabla `categoriasnivel2`
---
-ALTER TABLE `categoriasnivel2`
-  MODIFY `id` int(40) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `centers`
---
-ALTER TABLE `centers`
-  MODIFY `centerId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `centerspromos`
---
-ALTER TABLE `centerspromos`
-  MODIFY `centerpromoId` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `controlzones`
---
-ALTER TABLE `controlzones`
-  MODIFY `controlzoneId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `promos`
 --
 ALTER TABLE `promos`
   MODIFY `promoId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT de la tabla `promosusers`
+-- AUTO_INCREMENT de la tabla `sentpromos`
 --
-ALTER TABLE `promosusers`
-  MODIFY `promouserId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+ALTER TABLE `sentpromos`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `categoriasnivel1`
---
-ALTER TABLE `categoriasnivel1`
-  ADD CONSTRAINT `id_catNivel2 ` FOREIGN KEY (`id_catNivel2`) REFERENCES `categoriasnivel2` (`id`);
-
---
 -- Filtros para la tabla `centers`
 --
 ALTER TABLE `centers`
-  ADD CONSTRAINT `center_adminId` FOREIGN KEY (`center_adminId`) REFERENCES `admins` (`adminId`);
-
---
--- Filtros para la tabla `centerspromos`
---
-ALTER TABLE `centerspromos`
-  ADD CONSTRAINT `centerpromo_promoId` FOREIGN KEY (`centerpromo_promotId`) REFERENCES `promos` (`promoId`),
-  ADD CONSTRAINT `centerpromo_centerId` FOREIGN KEY (`centerpromo_centerId`) REFERENCES `centers` (`centerId`);
+  ADD CONSTRAINT `center-admin` FOREIGN KEY (`center_adminId`) REFERENCES `admins` (`adminId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `controlzones`
 --
 ALTER TABLE `controlzones`
-  ADD CONSTRAINT `controlzone_centerId ` FOREIGN KEY (`controlzone_centerId`) REFERENCES `centers` (`centerId`);
+  ADD CONSTRAINT `center-controlzone` FOREIGN KEY (`controlzone_centerId`) REFERENCES `centers` (`centerId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `productos`
+-- Filtros para la tabla `level1categories`
 --
-ALTER TABLE `productos`
-  ADD CONSTRAINT `id_catNivel1` FOREIGN KEY (`id_catNivel1`) REFERENCES `categoriasnivel1` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `level1categories`
+  ADD CONSTRAINT `leve1-level2` FOREIGN KEY (`id_level2Category`) REFERENCES `level2categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `product-level1` FOREIGN KEY (`id_level1Category`) REFERENCES `level1categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `product-level2` FOREIGN KEY (`id_level2Category`) REFERENCES `level2categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `promos`
 --
 ALTER TABLE `promos`
-  ADD CONSTRAINT `catNivel1` FOREIGN KEY (`promo_catNivel1`) REFERENCES `categoriasnivel1` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `catNivel2` FOREIGN KEY (`promo_catNivel2`) REFERENCES `categoriasnivel2` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `products` FOREIGN KEY (`promo_idProduct`) REFERENCES `productos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `promo_controlzoneId ` FOREIGN KEY (`promo_controlzoneId`) REFERENCES `controlzones` (`controlzoneId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `promo-controlzone` FOREIGN KEY (`promo_controlzoneId`) REFERENCES `controlzones` (`controlzoneId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `promo-level1` FOREIGN KEY (`promo_catNivel1`) REFERENCES `level1categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `promo-level2` FOREIGN KEY (`promo_catNivel2`) REFERENCES `level2categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `promo-product` FOREIGN KEY (`promo_idProduct`) REFERENCES `products` (`id`);
 
 --
--- Filtros para la tabla `promosusers`
+-- Filtros para la tabla `sentpromos`
 --
-ALTER TABLE `promosusers`
-  ADD CONSTRAINT `userId` FOREIGN KEY (`promouser_userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `sentpromos`
+  ADD CONSTRAINT `user_token` FOREIGN KEY (`user_token`) REFERENCES `usertoken` (`token`),
+  ADD CONSTRAINT `promo-id` FOREIGN KEY (`id_promo`) REFERENCES `promos` (`promoId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usertoken`
+--
+ALTER TABLE `usertoken`
+  ADD CONSTRAINT `user-token` FOREIGN KEY (`id_user`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
