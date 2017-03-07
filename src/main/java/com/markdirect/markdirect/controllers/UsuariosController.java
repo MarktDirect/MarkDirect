@@ -17,9 +17,6 @@ import com.mysql.fabric.xmlrpc.base.Array;
 @Controller
 public class UsuariosController {
 
-
-	private static final Object NULL = null;
-
 	//Metodo que muestra en el jsp una lista de los usuarios
 	@RequestMapping(value = "usuarios", method=RequestMethod.GET)
 	public ModelAndView usuarios() {
@@ -37,8 +34,6 @@ public class UsuariosController {
 	public ModelAndView Bloquearusuario(@RequestParam("bloquear") String userblock){
 		ModelAndView mav=new ModelAndView();
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
-		System.out.println(userblock);
-
 		try{
 			String separador=",";
 			String[] usuariosbloqueados;
