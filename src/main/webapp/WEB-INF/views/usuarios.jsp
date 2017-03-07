@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="links.jsp"></jsp:include>
 <title>Usuarios</title>
+<script type="text/javascript" src="resources/scripts/usersform"></script>
 </head>
 <body>
 	<div class="header-contain">
