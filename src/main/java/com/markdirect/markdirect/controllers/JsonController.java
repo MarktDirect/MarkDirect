@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.markdirect.markdirect.beans.CategoriaNivel2;
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
 
@@ -58,4 +59,34 @@ public class JsonController {
 		}
 		return promoList;
 	}
+	
+	/**
+	 * Método que devuelve un Json via web con todas las Categorías de nivel2
+	 * @return List<CategoriaNivel2> catNiv2List
+	 */
+	@RequestMapping(value="getCatNiv2", method=RequestMethod.GET)
+	public @ResponseBody List<CategoriaNivel2> getCatNiv2(){
+		List<CategoriaNivel2> catNiv2List = db.listarCategoriasNivel2();
+		return catNiv2List;
+	}
+	
+	/**
+	 * Método que devuelve un Json via web con todas las Categorías de nivel1
+	 * @return List<CategoriaNivel2> catNiv1List
+	 */
+	@RequestMapping(value="getCatNiv1", method=RequestMethod.GET)
+	public @ResponseBody List<CategoriaNivel2> getCatNiv1(){
+		List<CategoriaNivel2> catNiv1List = db.listarCategoriasNivel1();
+		return catNiv1List;
+	}
+	 /**
+	  * Método que devuelve un Json via web con todos los productos
+	  * @return List<CategoriaNivel2> productosList
+	  */
+	@RequestMapping(value="getProductos", method=RequestMethod.GET)
+	public @ResponseBody List<CategoriaNivel2> getProductos(){
+		List<CategoriaNivel2> productosList = db.listarProductos();
+		return productosList;
+	}
+	
 }

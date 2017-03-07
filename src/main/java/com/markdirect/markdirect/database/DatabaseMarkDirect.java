@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.markdirect.markdirect.beans.Administrador;
+import com.markdirect.markdirect.beans.CategoriaNivel2;
 import com.markdirect.markdirect.beans.Centro;
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
@@ -296,5 +297,20 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 		return  listausuario;
 
+	}
+
+	public List<CategoriaNivel2> listarCategoriasNivel2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<CategoriaNivel2> listarCategoriasNivel1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<CategoriaNivel2> listarProductos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
