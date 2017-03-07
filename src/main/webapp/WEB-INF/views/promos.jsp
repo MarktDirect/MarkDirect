@@ -58,7 +58,7 @@
 						</div>
 						<div class="form-group">
 												<label for="promo_idProduct">ID Producto</label> <input
-													type="date" name="promo_idProduct" id="promoSince"
+													type="text" name="promo_idProduct" id="promoSince"
 													class="form-control" required="required" />
 											</div>
 						<div class="form-group">
