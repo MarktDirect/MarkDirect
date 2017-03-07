@@ -2,6 +2,7 @@ package com.markdirect.markdirect.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -82,7 +83,12 @@ public class JsonController {
 				@RequestParam("sex") String sex,@RequestParam("age") int age
 				){
 			List<Usuario> userlist=null;
-			db.registrarusuario(email,password,sex,age);
+			if(db.registrarUsuario(email,password,sex,age) == 1) {
+				//si se ha registrado correctamente, generamos un token para el usuario
+				String token = UUID.randomUUID().toString();
+				
+				
+			}
 			
 			return userlist;
 		}
