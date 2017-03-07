@@ -18,5 +18,11 @@ public class ListaPromosJSON {
 	public void setOfertas(ArrayList<PromoJSON> ofertas) {
 		this.ofertas = ofertas;
 	}
+
+	@Override
+	public String toString() {
+		return "ListaPromosJSON [ofertas=" + ofertas + "]";
+	}
+	
 	
 }

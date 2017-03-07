@@ -69,7 +69,7 @@ public class JsonController {
 		return listaJSON;
 	}
 	
-	//Método para registrar un usuario
+	//Mï¿½todo para registrar un usuario
 		//En construccion
 	@RequestMapping(value="registrousuario",method=RequestMethod.GET)
 	public String registrousuario(){
