@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.markdirect.markdirect.beans.DatabaseData;
-import com.markdirect.markdirect.beans.ListaDatabaseData;
 import com.markdirect.markdirect.database.DatabaseMetricas;
 
 @Controller
