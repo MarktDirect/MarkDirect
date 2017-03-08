@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.markdirect.markdirect.beans.Administrador;
 import com.markdirect.markdirect.database.Conector;
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
+import com.markdirect.markdirect.database.DatabaseMetricas;
 
 
 //Controlador ocupado de dar validacion al usuario
@@ -30,6 +31,9 @@ public class LoginController {
 	//Se crea el objeto sesion
 	@Autowired
 	HttpSession session;
+	
+	//Creamos el objeto que nos va a servir para conectar con la BBDD
+	DatabaseMetricas db = new DatabaseMetricas();
 	
 	//Aqui se crea el objeto usuario de la clase DataBaseMarkDirect que se ocupara de las consultas a la BD
 	DatabaseMarkDirect administrador=new DatabaseMarkDirect();
@@ -50,6 +54,10 @@ public class LoginController {
 		}  
 		
 		session.setAttribute("usuario",administrador);
+		session.setAttribute("totalUsers", db.totalUsers());
+		session.setAttribute("averageAge", db.averageAge());
+		System.out.println("Se ha añadido a la session " + db.totalUsers());
+		System.out.println("Se ha añadido a la session " + db.averageAge());
 
 		return mav;
 	}
