@@ -6,7 +6,7 @@ public class ListaDatabaseData {
 
 	private ArrayList<DatabaseData> data;
 
-	
+	public ListaDatabaseData(){}
 	
 	
 	public ListaDatabaseData(ArrayList<DatabaseData> data) {
