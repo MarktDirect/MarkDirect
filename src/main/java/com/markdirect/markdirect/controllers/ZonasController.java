@@ -49,7 +49,7 @@ public class ZonasController {
 			mav.addObject("listaZonas", db.listarZonas());
 			mav.setViewName("zonas");
 		}else{
-			mav.addObject("mensaje", "Zona de control cargada con Exito");
+			mav.addObject("mensaje", "Error al cargar la zona de control");
 			mav.addObject("listaZonas", db.listarZonas());
 			mav.setViewName("zonas");
 		}
