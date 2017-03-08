@@ -15,12 +15,9 @@
 		<div class="jumbotron">
 			<h2>Gestión de Promociones</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
-<<<<<<< HEAD
-				data-target="#modalPromo">Añadir Promoción</a> <span
-				class="label label-danger">${mensaje}</span>
-=======
+
 				data-target="#modalPromo" data-ng-click="vm.cargarDatos()">Añadir Promoción</a> <span class="label label-danger">${mensaje}</span>
->>>>>>> feature/angular_to_forms
+
 		</div>
 	</div>
 	<!-- Modal -->
@@ -44,58 +41,29 @@
 								type="text" name="promoDescription" class="form-control"
 								required="required" />
 						</div>
-<<<<<<< HEAD
-						<div class="form-group row">
-						<div class="col-md-6">
-							<label for="promo_catNivel2">Categoría de nivel 2</label> <select
-								name="promo_catNivel2" class="form-control" required="required">
-=======
+
 						<div class="form-group">
 							<label for="promo_catNivel2">Categoría de nivel 2</label> 
 							<select name="promo_catNivel2" class="form-control" required="required" data-ng-model="cat2">
->>>>>>> feature/angular_to_forms
+
 								<%-- Rellenar dinámicamente--%>
 								<option data-ng-repeat="x in vm.listaCategorias2" value="{{x.id}}">{{x.categoria}}</option>
 							</select>
 							</div>
-							<div class="col-md-6">
-							<label for="promo_catNivel1">Categoría de nivel 1</label> <select
-<<<<<<< HEAD
-								name="promo_catNivel1" class="form-control" required="required">
-								<%--Mejora: Rellenar dinámicamente--%>
-								<option value="1">Accesorios TV</option>
-								<option value="2">Cuidado Personal</option>
-								<option value="3">Cuidado del Hogar</option>
-								<option value="4">Radio</option>
-								<option value="5">Lavadora</option>
-								<option value="6">Frigorífico</option>
-								<option value="7">Auriculares</option>
-								<option value="8">Cámara de Video</option>
-								<option value="9">Cámara Fotografica</option>
-								<option value="10">Hifi Pro</option>
-								<option value="11">Microondas</option>
-								<option value="12">Proyector</option>
-								<option value="13">Televisor</option>
-								<option value="14">Reproductor</option>
-								<option value="15">Tablet</option>
-								<option value="16">Tarjeta Memoria</option>
-=======
-								name="promo_catNivel1" class="form-control" required="required" data-ng-model="cat1">
+							
+							<!-- <div class="col-md-6"> -->
+							<div class="form-group">
+							<label for="promo_catNivel1">Categoría de nivel 1</label> 
+								
 								<%-- Rellenar dinámicamente--%>
+								<select name="promo_catNivel1" class="form-control" required="required" data-ng-model="cat1">
 								<option data-ng-repeat="x in vm.listaCategorias1 | filtrocat2 : cat2" value="{{x.id}}">{{x.categoria}}</option>
->>>>>>> feature/angular_to_forms
+
 							</select>
 						</div>
-						</div>
+						
 						<div class="form-group">
-<<<<<<< HEAD
-							<label for="promo_idProduct">ID Producto</label> <input
-								type="text" name="promo_idProduct" id="promoSince"
-								class="form-control" required="required" />
-						</div>
-						<div class="form-group row">
-							<div class="col-md-6">
-=======
+
 												<label for="promo_idProduct">ID Producto</label> 
 												<!-- <input type="text" name="promo_idProduct" id="promoSince"
 													class="form-control" required="required" /> -->
@@ -104,8 +72,11 @@
 													<option data-ng-repeat="x in vm.listaProductos | filtrocat1:cat1 | filtrocat2:cat2" value="{{x.id}}">{{x.id}} - {{x.nombre}}</option>
 													</select>
 											</div>
-						<div class="form-group">
->>>>>>> feature/angular_to_forms
+						
+					
+						<div class="form-group row">
+						<div class="col-md-6">
+
 							<label for="promoSince">Válido desde</label> <input type="date"
 								name="promoSince" class="form-control" required="required" />
 							</div>
@@ -114,6 +85,7 @@
 								name="promoTo" class="form-control" required="required" />
 								</div>
 						</div>
+						
 						<div class="form-group">
 							<label for="promoImage"> URL Imagen</label> <input type="text"
 								name="promoImage" class="form-control" required="required" />

@@ -11,15 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-<<<<<<< HEAD
 import com.markdirect.markdirect.beans.ListaPromosJSON;
 import com.markdirect.markdirect.beans.PromoJSON;
-=======
 import com.markdirect.markdirect.beans.CategoriaNivel1;
 import com.markdirect.markdirect.beans.CategoriaNivel2;
 import com.markdirect.markdirect.beans.Producto;
 import com.markdirect.markdirect.beans.ProductoReducido;
->>>>>>> feature/angular_to_forms
+
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
@@ -53,15 +51,14 @@ public class JsonController {
 		return listaJSON;
 	}
 	
-<<<<<<< HEAD
-	//Metodo que me lleva a una pequeÒa pagina para probar el registro de usuario
+	//Metodo que me lleva a una pequeÔøΩa pagina para probar el registro de usuario
 	@RequestMapping(value="registrousuario",method=RequestMethod.GET)
 	public String registrousuario(){
 		return "registroprueba";
 		
 	}
 	//Metodo para registrar el usuario en la BD
-	//Y si se ha registrado bien aÒadirle un token
+	//Y si se ha registrado bien aÔøΩadirle un token
 		@RequestMapping(value="registrarusuario" ,method=RequestMethod.POST)
 		public @ResponseBody List<Usuario> registrarUser(
 				@RequestParam("email") String email,@RequestParam("password") String password,
@@ -78,7 +75,7 @@ public class JsonController {
 			
 			return userlist;
 		}
-=======
+
 	/**
 	 * M√©todo que devuelve un Json via web con todas las Categor√≠as de nivel2
 	 * @return List<CategoriaNivel2> lista de categor√≠as de nivel 2
@@ -118,5 +115,4 @@ public class JsonController {
 		return poductosReducidosList;
 	}
 	
->>>>>>> feature/angular_to_forms
 }
