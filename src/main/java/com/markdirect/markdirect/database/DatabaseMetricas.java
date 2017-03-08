@@ -16,6 +16,10 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		this.jdbc = new JdbcTemplate(Conector.getDataSource());
 	}
 	
+	/**
+	 * Método que consulta la BBDD para conocer el número de usuarios registrados filtrados por género
+	 * @return ArrayList<DatabaseData> - un arrayList que contiene los datos por género
+	 */
 	public ArrayList<DatabaseData> usersByGender() {
 		
 		ArrayList<DatabaseData> users = new ArrayList<DatabaseData>();
@@ -32,9 +36,16 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		users.add(women);
 		users.add(men);
 		
-		System.out.println(users);
-		
 		return users;
+	}
+	
+	/**
+	 * Método que consulta la BB para obtener el número total de usuarios
+	 * @return int - número total de usuarios
+	 */
+	public int totalUsers() {
+		int totalUsers = jdbc.queryForInt("SELECT COUNT(*) FROM users");
+		return totalUsers;
 	}
 	
 }

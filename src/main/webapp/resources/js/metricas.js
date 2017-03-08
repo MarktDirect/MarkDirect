@@ -29,8 +29,15 @@ function drawChartUsersByGender() {
 			array.push(arrayData);
 		}
 		data.addRows(array);
+		var options = {
+		          legend: 'none',
+		          width: 170,
+		          height: 170,
+		          chartArea: {bottom: 0,top:0,width:'80%',height:'80%'},
+		          colors:['#002C73', '#99cccc']
+		        };
 		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
 		//dibujamos el chart
-		chart.draw(data, {width: 400, height: 240});
+		chart.draw(data, options);
 	}
 }
