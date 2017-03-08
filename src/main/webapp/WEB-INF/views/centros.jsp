@@ -72,6 +72,7 @@
 				<th>Tipo</th>
 				<th>Sutipo</th>
 				<th>Ver Centro</th>
+				<th>Editar</th>
 			</tr>	
 			<c:forEach items="${listaCentros}" var="center">
 				<tr>
@@ -80,6 +81,7 @@
 					<td>${center.centerDescription}</td>
 					<td>${center.centerType}</td>
 					<td>${center.centerSubtype}</td>	
+					<td></td>
 					<td></td>				
 				</tr>
 			</c:forEach>

@@ -36,7 +36,7 @@ public class LoginController {
 	
 	//Metodo para comprobar si el usuario es valido o no
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
-	public ModelAndView Validar(
+	public ModelAndView validar(
 			@RequestParam("admin") String usuario, 
 			@RequestParam("adminPassword") String password) {
 		ModelAndView mav = new ModelAndView();
