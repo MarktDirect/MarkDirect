@@ -15,12 +15,9 @@ import com.markdirect.markdirect.beans.Administrador;
 import com.markdirect.markdirect.beans.CategoriaNivel1;
 import com.markdirect.markdirect.beans.CategoriaNivel2;
 import com.markdirect.markdirect.beans.Centro;
-<<<<<<< HEAD
 import com.markdirect.markdirect.beans.ListaPromosJSON;
-=======
 import com.markdirect.markdirect.beans.Producto;
 import com.markdirect.markdirect.beans.ProductoReducido;
->>>>>>> feature/angular_to_forms
 import com.markdirect.markdirect.beans.Promocion;
 import com.markdirect.markdirect.beans.Usuario;
 import com.markdirect.markdirect.beans.Zona;
@@ -202,7 +199,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return filasAfectadas;
 	}
 
-	//TODO método para editar una promoción
 	public int editPromos(int promoId, String promoName, String promoDescription, String promoSince, String promoTo, String promoImage,
 			int promo_controlzoneId, int promoMinAge, int promoMaxAge, String promoGen, int promo_catNivel1, int promo_catNivel2, long promo_idProduct) {
 		System.out.println("Estoy en el método editPromos");	
@@ -330,8 +326,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 		return  listausuario;
 	}
-<<<<<<< HEAD
-	
 	//Metodo para registrar usuario
 	public int registrarUsuario(String email, String password, String sex, int age){
 		int usuario;
@@ -361,7 +355,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return tokeninsertado;
 		
 	}
-=======
 
 	/**
 	 * Método que consulta las Las categorías de nivel 2 de la BBDD y devuelve un Json
@@ -426,7 +419,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaProductosReducidos;
 	}
 
->>>>>>> feature/angular_to_forms
 	
 	//Metodo para sacar una lista del token recien insertado
 	public List<Map<String, Object>> sacarToken(int idusermax){
