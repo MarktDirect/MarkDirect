@@ -26,12 +26,15 @@
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-averageAge">
           	<div class="user-data" align="center">
-          		<p class="user-text" style="margin-top: 10px;">Usuarios por género <i class="fa fa-male" aria-hidden="true"></i><i class="fa fa-female" aria-hidden="true"></i></p>
+          		<p class="user-text" style="margin-top: 10px; font-size: 16px;">Usuarios por género <i class="fa fa-male" aria-hidden="true"></i><i class="fa fa-female" aria-hidden="true"></i></p>
           		<div id="chart_div"></div>
           	</div>
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-byGender">
-          	<div class="user-data"></div>
+          	<div class="user-data">
+          		<p class="user-number">1234</p>
+          		<p class="user-text"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i> Edad media</p>
+          	</div>
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-X">
           	<div class="user-data"></div>

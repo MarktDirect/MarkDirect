@@ -55,7 +55,9 @@ public class LoginController {
 		
 		session.setAttribute("usuario",administrador);
 		session.setAttribute("totalUsers", db.totalUsers());
+		session.setAttribute("averageAge", db.averageAge());
 		System.out.println("Se ha añadido a la session " + db.totalUsers());
+		System.out.println("Se ha añadido a la session " + db.averageAge());
 
 		return mav;
 	}

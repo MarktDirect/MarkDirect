@@ -40,12 +40,22 @@ public class DatabaseMetricas extends DatabaseGenerica {
 	}
 	
 	/**
-	 * Método que consulta la BB para obtener el número total de usuarios
+	 * Método que consulta la BBDD para obtener el número total de usuarios
 	 * @return int - número total de usuarios
 	 */
 	public int totalUsers() {
 		int totalUsers = jdbc.queryForInt("SELECT COUNT(*) FROM users");
 		return totalUsers;
+	}
+	
+	/**
+	 * Método que consulta la BBDD para devolver la edad media de los usuarios registrados
+	 * @return double - edad
+	 */
+	public double averageAge() {
+		double averageAge = jdbc.queryForInt("SELECT AVG(userAge) FROM users");
+		System.out.println("La edad media es: " + averageAge);
+		return averageAge;
 	}
 	
 }
