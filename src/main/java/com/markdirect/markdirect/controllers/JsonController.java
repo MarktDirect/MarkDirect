@@ -2,6 +2,7 @@ package com.markdirect.markdirect.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
@@ -60,20 +61,20 @@ public class JsonController {
 	//Metodo para registrar el usuario en la BD
 	//Y si se ha registrado bien a�adirle un token
 		@RequestMapping(value="registrarusuario" ,method=RequestMethod.POST)
-		public @ResponseBody List<Usuario> registrarUser(
+		public @ResponseBody List<Map<String, Object>>  registrarUser(
 				@RequestParam("email") String email,@RequestParam("password") String password,
 				@RequestParam("sex") String sex,@RequestParam("age") int age
 				){
-			List<Usuario> userlist=null;
+			List<Map<String, Object>> tokendevuelto = null;
 			db.idmaxUsuario();
 			if(db.registrarUsuario(email,password,sex,age) == 1) {
 				int idusermax=db.idmaxUsuario();
 				//si se ha registrado correctamente, generamos un token para el usuario
 				String token = UUID.randomUUID().toString();
-				db.insertarToken(idusermax,token);	
+				tokendevuelto=db.insertarToken(idusermax,token);	
 			}
 			
-			return userlist;
+			return tokendevuelto;
 		}
 
 	/**

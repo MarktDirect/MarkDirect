@@ -2,6 +2,7 @@ package com.markdirect.markdirect.database;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -348,10 +349,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		idmax=jdbc.queryForInt(sql);
 		return idmax;
 	}
-	public int insertarToken(int idusermax, String token){
-		int tokeninsertado;
+	public List<Map<String, Object>> insertarToken(int idusermax, String token){
+		List<Map<String, Object>> tokeninsertado = null;
+		int numtoken;
 		String sql="insert into usertoken(id_user,token) VALUES (?,?)";
-		tokeninsertado=jdbc.update(sql,idusermax,token);
+		numtoken=jdbc.update(sql,idusermax,token);
+		if(numtoken==1){
+			DatabaseMarkDirect db = new DatabaseMarkDirect();
+			tokeninsertado=db.sacarToken(idusermax);
+		}
 		return tokeninsertado;
 		
 	}
@@ -421,5 +427,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 
 >>>>>>> feature/angular_to_forms
+	
+	//Metodo para sacar una lista del token recien insertado
+	public List<Map<String, Object>> sacarToken(int idusermax){
+		List<Map<String, Object>> token;
+		String sql="select token from usertoken where id_user="+idusermax+"";
+		token=jdbc.queryForList(sql);
+		System.out.println(token);
+		return token;
+	}
+
 	
 }
