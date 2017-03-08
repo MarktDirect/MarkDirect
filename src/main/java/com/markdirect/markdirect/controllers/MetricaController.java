@@ -22,5 +22,12 @@ public class MetricaController {
 		return users;
 	}
 	
+	@RequestMapping(value="usersByAgeAndGender", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<DatabaseData> usersByAgeAndGender() {
+		ArrayList<DatabaseData> users = db.usersByAgeAndGender();
+		return users;
+	}
+	
+	
 	
 }
