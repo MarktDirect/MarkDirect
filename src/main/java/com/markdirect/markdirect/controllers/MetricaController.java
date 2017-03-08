@@ -18,25 +18,9 @@ public class MetricaController {
 		DatabaseMetricas db = new DatabaseMetricas();
 	
 	@RequestMapping(value="usersByGender", method=RequestMethod.GET)
-	public @ResponseBody ListaDatabaseData usersByGender() {
+	public @ResponseBody ArrayList<DatabaseData> usersByGender() {
 		ArrayList<DatabaseData> users = db.usersByGender();
-		ArrayList<String> cols = new ArrayList<String>();
-		ArrayList<String> rows = new ArrayList<String>();
-		String row = "{c:[";
-		for (int i = 0; i < users.size(); i++) {
-			String col = "{id: '" + users.get(i).getDataName() + "', label: '" + users.get(i).getDataName() + "', type: 'number'}";
-			cols.add(col);
-			row +="{v:" + users.get(i).getDataValue() + "}";
-			if(i != users.size() - 1) {
-				row += ",";
-			}
-		}
-		row += "]}";
-		rows.add(row);
-		ListaDatabaseData data = new ListaDatabaseData(cols, rows);
-		System.out.println(cols);
-		System.out.println(rows);
-		return data;
+		return users;
 	}
 	
 	

@@ -1,40 +1,36 @@
 /**
  * 
  */
-
 //Load the Visualization API and the corechart package.
 google.charts.load('current', {'packages':['corechart']});
 
 //Set a callback to run when the Google Visualization API is loaded.
-google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(drawChartUsersByGender);
 
-//Callback that creates and populates a data table, 
-//instantiates the pie chart, passes in the data and
-//draws it.
-function drawChart() {
-	alert("Estoy en la función drawChart");
-	var json = "";
-	var jsonData = {
-        url: "usersByGender",
-        async: false,
-        dataType: "json",
-        success: function(respuesta) {
-        	json = respuesta.responseText;
-        },
-        error: function() {
-        	alert("Error máximo");
-        }
-        };
+function drawChartUsersByGender() {
 	
-	$.ajax(jsonData);
-	alert("Soy JSON data" + JSON.stringify(jsonData));
-	alert("soy json " + json);
-	
-	// Create our data table out of JSON data loaded from server.
-    var data = new google.visualization.DataTable(jsonData);
-    // Instantiate and draw our chart, passing in some options.
-    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-    chart.draw(data, {width: 400, height: 240});
+//	Hacemos la petición a nuestro Controlador
+	$.ajax({
+		url: "usersByGender",
+		dataType: "json",
+		success: getResponse
+	});
 
-
+	function getResponse(response) {
+		var array = [];
+		var data = new google.visualization.DataTable();
+		//Añadimos los nombre de las columnas
+		data.addColumn("string", 'dataName');
+		data.addColumn("number", 'dataValue');
+		//Por cada elemento en la consulta, creamos un nuevo array con los datos correspondientes
+		//Después introducimos dicho array en un array superior que es el que pasaremos al chart
+		for(var element in response) {
+			var arrayData = [response[element].dataName, response[element].dataValue];
+			array.push(arrayData);
+		}
+		data.addRows(array);
+		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+		//dibujamos el chart
+		chart.draw(data, {width: 400, height: 240});
+	}
 }
