@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
 <html>
 <head>
 <title>MarkDirect - Activa Juan Lucas</title>
@@ -20,7 +20,7 @@
         <div class="row" style="height: 220px">
           <div id="user-registered" class="col-md-3 col-xs-6 container-userStatistics">
             <div class="user-data" align="center">
-           		<p class="user-number">1234</p>
+           		<p class="user-number"><c:out value="${sessionScope.totalUsers}"/></p>
             	<p class="user-text"><i class="fa fa-users fa-2x" aria-hidden="true"></i> Usuarios</p>
             </div>
           </div>
@@ -32,7 +32,7 @@
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-byGender">
           	<div class="user-data">
-          		<p class="user-number">1234</p>
+          		<p class="user-number"><c:out value="${sessionScope.averageAge}"/></p>
           		<p class="user-text"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i> Edad media</p>
           	</div>
           </div>
