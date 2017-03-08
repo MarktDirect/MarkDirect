@@ -64,4 +64,8 @@ public class CentrosController {
 	
 		return mav;
 	}
+	
+	//@RequestMapping(value="editcentros", method=RequestMethod.GET)
+	
+	
 }
