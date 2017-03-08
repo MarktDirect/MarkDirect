@@ -284,19 +284,18 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return locationPromos;
 	}
 
-	//Metodo para bloquear usuarios de momento sin conectar a la DB
+	//Metodo para bloquear a varios usuarios se recibe un array de string
+	//Y bloquea a los usuarios que coincidan con el array
 	public List<Usuario> bloquearUsuario(String[] usuariosbloqueados){
 
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		List<Usuario> listausuario=usuario.listarUsuarios();
-		for(int j=0;j<usuariosbloqueados.length;j++){
+		for(int j=0;j<usuariosbloqueados.length;j++){//Se hacen dos for para poder comprobar un array con la lista de usuarios
 		for(int i=0;i<listausuario.size();i++){
 			if(usuariosbloqueados[j].equals(listausuario.get(i).getUserEmail())){
 				String sql="UPDATE users SET userBlock='1' WHERE userEmail='"+usuariosbloqueados[j]+"'";
 				jdbc.update(sql);
 			
-			}else{
-				System.out.println("no bloquea");
 			}
 		}
 		}
@@ -305,11 +304,9 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 	}
 
-	//Tuve que hacer dos metodos para bloquear usuarios ya que habia problema si solo bloqueaba uno
-	//Saltaba una excepcion de arraylist al hacer el split
+	//Segundo metodo para bloquear solo un usuario
+	//Este se ejecuta al saltar la  excepcion de arraylist al hacer el split
 	public List<Usuario> bloquearUsuario(String userblock){
-
-
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		List<Usuario> listausuario=usuario.listarUsuarios();
 		for(int i=0;i<listausuario.size();i++){
@@ -318,20 +315,17 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 				 String sql="UPDATE users SET userBlock='1' WHERE userEmail='"+userblock+"'";
 				 jdbc.update(sql);
 				 usuario.listarUsuarios();		
-			}else{
-
-				System.out.println("no bloquea");
 			}
 		}
 
 		return  listausuario;
 	}
-	//Metodo para registrar usuario
+	
+	//Metodo para registrar usuario en la base de datos
 	public int registrarUsuario(String email, String password, String sex, int age){
 		int usuario;
-		int userblock=0;//De momento a�ado el userblock hasta que se actualize la BD
-		String SQL = "insert into users (userEmail,userGen,userAge,userblock,userPass) values (?,?,?,?,?)"; 
-		 usuario=jdbc.update(SQL,email,sex,age,userblock,password);
+		String SQL = "insert into users (userEmail,userGen,userAge,userPass) values (?,?,?,?)"; 
+		 usuario=jdbc.update(SQL,email,sex,age,password);
 		return usuario;
 	}
 	
@@ -343,6 +337,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		idmax=jdbc.queryForInt(sql);
 		return idmax;
 	}
+	
+	//Metodo que inserta un token al ultimo usuario registrado
 	public List<Map<String, Object>> insertarToken(int idusermax, String token){
 		List<Map<String, Object>> tokeninsertado = null;
 		int numtoken;
@@ -406,7 +402,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		
 		return listaProductos;
 	}
-
+	
+	//Metodo que devuelve una lista de los productos reducidos
 	public List<ProductoReducido> listarProductosReducidos() {
 		String sql = "SELECT id, nombre, id_catNivel2, id_catNivel1 FROM productos";
 		List<ProductoReducido> listaProductosReducidos = null;
@@ -420,7 +417,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 
 	
-	//Metodo para sacar una lista del token recien insertado
+	//Metodo para sacar una lista del token del ultimo usuario registrado
+	//y lo devuelve en una lista
 	public List<Map<String, Object>> sacarToken(int idusermax){
 		List<Map<String, Object>> token;
 		String sql="select token from usertoken where id_user="+idusermax+"";

@@ -27,23 +27,24 @@ import com.markdirect.markdirect.database.DatabaseMarkDirect;
 @Controller
 public class LoginController {
 	
+	//Se crea el objeto sesion
 	@Autowired
 	HttpSession session;
-
+	
+	//Aqui se crea el objeto usuario de la clase DataBaseMarkDirect que se ocupara de las consultas a la BD
+	DatabaseMarkDirect administrador=new DatabaseMarkDirect();
+	
 	//Metodo para comprobar si el usuario es valido o no
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public ModelAndView Validar(
 			@RequestParam("admin") String usuario, 
 			@RequestParam("adminPassword") String password) {
 		ModelAndView mav = new ModelAndView();
-		DatabaseMarkDirect administrador=new DatabaseMarkDirect();
-		
-		
-		try{
-		mav.addObject(administrador.login( usuario,password));
+		try{//Se hace un try para comprobar si el usuario existe
+		mav.addObject(administrador.login( usuario,password));//Se ejecuta un metodo que devolvera si existe
 		mav.setViewName("home");
 		}
-		catch(EmptyResultDataAccessException e) {
+		catch(EmptyResultDataAccessException e) {//Si el usuario no existe salta la excepcion y se le envia un mensaje
 			mav.addObject("mensajeerror", "Usuario y/o password incorrectos");
 			mav.setViewName ("login");
 		}  
@@ -57,7 +58,7 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public String logout(Model model) {
 		model.addAttribute("mensajedespedida", "Sesion cerrada con exito");
-		session.removeAttribute("usuario"); //eliminamos el user de la sesi�n
+		session.removeAttribute("usuario"); //eliminamos el user de la sesion
 		session.invalidate(); //invalidar la session - se borra todo lo que hay dentro
 		return "login";
 	}

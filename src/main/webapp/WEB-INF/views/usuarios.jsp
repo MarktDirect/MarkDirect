@@ -25,46 +25,18 @@
 	<div class="usuarios-info table-responsive">
 		<table class="table table-responsive table-hover">
 			<tr>
-				<th>email</th>
-				<th>genero</th>
-				<th>nacimiento</th>
-				<th>bloqueado</th>
+				<th>Email</th>
+				<th>Genero</th>
+				<th>Nacimiento</th>
+				<th>Bloqueado</th>
+				<th>Cambiar estado</th>
 			</tr>
 			<c:forEach items="${usuario}" var="Usuario">
 				<tr>
-<<<<<<< HEAD
-					<th>Email</th>
-					<th>Genero</th>
-					<th>Edad</th>
-					<th>Bloqueado</th>
-					<th>Cambiar Estado</th>
-				</tr>
-				<c:forEach items="${usuario}" var="Usuario">
-					<tr>
-						<td>
-							${Usuario.userEmail}
-						</td>
-						<td>
-							${Usuario.userGen}
-						</td>
-						<td>
-							${Usuario.userAge}
-						</td>
-						<td>
-							${Usuario.userBlock}
-						</td>
-						<td>
-						    <input type="checkbox" name="bloquear" value="${Usuario.userEmail}">Bloquear<br>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-			</form>
-		</div>
-=======
 					<td>${Usuario.userEmail}</td>
 					<td>${Usuario.userGen}</td>
 					<td>${Usuario.userAge}</td>
+					<td>${Usuario.userBlock}</td>
 					<td><input type="checkbox" name="bloquear"
 						value="${Usuario.userEmail}">Bloquear<br></td>
 				</tr>
@@ -72,6 +44,5 @@
 		</table>
 	</div>
 	</form>
->>>>>>> feature/angular_to_forms
 </body>
 </html>

@@ -53,11 +53,13 @@ public class JsonController {
 	}
 	
 	//Metodo que me lleva a una peque�a pagina para probar el registro de usuario
+	//luego se puede eliminar
 	@RequestMapping(value="registrousuario",method=RequestMethod.GET)
 	public String registrousuario(){
 		return "registroprueba";
 		
 	}
+	
 	//Metodo para registrar el usuario en la BD
 	//Y si se ha registrado bien a�adirle un token
 		@RequestMapping(value="registrarusuario" ,method=RequestMethod.POST)
