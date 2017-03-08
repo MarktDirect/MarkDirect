@@ -8,6 +8,7 @@
 <title>Gestión de Promociones</title>
 <jsp:include page="links.jsp"></jsp:include>
 <script type="text/javascript" src="resources/script/promosform.js"></script>
+<script type="text/javascript" src="resources/script/promosvalidation.js"></script>
 </head>
 <body data-ng-app="promoModulo" data-ng-controller="promoControlador as vm">
 	<div class="header-contain">
@@ -78,11 +79,11 @@
 						<div class="col-md-6">
 
 							<label for="promoSince">Válido desde</label> <input type="date"
-								name="promoSince" class="form-control" required="required" />
+								name="promoSince" class="form-control" required="required" id="minordate"/>
 							</div>
 							<div class="col-md-6">
 							<label for="promoTo">Válido hasta</label> <input type="date"
-								name="promoTo" class="form-control" required="required" />
+								name="promoTo" class="form-control" required="required" id="majordate"/>
 								</div>
 						</div>
 						
@@ -116,17 +117,17 @@
 							<div class="col-md-6">
 							 <label for="promoMinAge">Edad
 								mínima</label> <input type="text" name="promoMinAge"
-								class="form-control" required="required" /> 
+								class="form-control" required="required" id="minorage"/> 
 								</div>
 								<div class="col-md-6">
 								<label
 								for="promoMaxAge">Edad máxima</label> <input type="text"
-								name="promoMaxAge" class="form-control" required="required" />
+								name="promoMaxAge" class="form-control" required="required" id="majorage"/>
 								</div>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="submit" class="btn btn-info" value="Dar de alta" />
+						<input type="submit" class="btn btn-info" value="Dar de alta" id="okbutton"/>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 					</div>
 				</form>
@@ -296,7 +297,7 @@
 											</div>
 										</div>
 										<div class="modal-footer">
-											<input type="submit" class="btn btn-info" value="Editar" />
+											<input type="submit" class="btn btn-info" value="Editar" id="submit"/>
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Cerrar</button>
 										</div>
