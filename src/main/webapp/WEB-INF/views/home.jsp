@@ -13,5 +13,8 @@
 		<h2>Estadísticas</h2>
 	</div>
 </div>
+	
+	
+
 </body>
 </html>
