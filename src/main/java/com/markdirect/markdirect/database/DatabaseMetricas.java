@@ -12,6 +12,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 
 import com.markdirect.markdirect.beans.DatabaseData;
+import com.markdirect.markdirect.beans.Producto;
 
 public class DatabaseMetricas extends DatabaseGenerica {
 
@@ -151,6 +152,62 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		}
 		return data;
 	}
+
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+public ArrayList<DatabaseData> marcaGeneroH(){		
+		
+		//Creamos sentencia sql para hombres
+		String sql="SELECT products.productBrand AS 'Marca', "
+				+ "COUNT(products.productBrand) AS 'Veces' "
+				+ "FROM products JOIN promos ON products.id=promos.promo_idProduct JOIN sentpromos "
+				+ "ON sentpromos.id_promo = promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
+				+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'H'GROUP BY productBrand";		
+		//Realizamos las consultas y los guadamos en un list de objetos DatabaseData:
+			  				
+		List listaMarcasH = jdbc.queryForList(sql);
+		
+		//Casteamos el List para que sea un ArrayList<Databasedata>
+		ArrayList<DatabaseData> listaProductosmarcaH = new ArrayList<DatabaseData>();		
+		listaProductosmarcaH =(ArrayList<DatabaseData>) listaMarcasH;
+		
+		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a hombres
+		System.out.println(listaMarcasH);
+		return  listaProductosmarcaH;
+					
+	}	
+
+public ArrayList<DatabaseData> marcaGeneroM(){		
+	
+	//Creamos sentencia sql para hombres
+	String sql="SELECT products.productBrand AS 'Marca', "
+			+ "COUNT(products.productBrand) AS 'Veces' "
+			+ "FROM products JOIN promos ON products.id=promos.promo_idProduct JOIN sentpromos "
+			+ "ON sentpromos.id_promo = promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
+			+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'M'GROUP BY productBrand";		
+	//Realizamos las consultas y los guadamos en un list de objetos DatabaseData:
+		  				
+	List listaMarcasM = jdbc.queryForList(sql);
+	
+	//Casteamos el List para que sea un ArrayList<Databasedata>
+	ArrayList<DatabaseData> listaProductosmarcaM = new ArrayList<DatabaseData>();		
+	listaProductosmarcaM =(ArrayList<DatabaseData>) listaMarcasM;
+	System.out.println(listaMarcasM);
+	//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a hombres
+	return  listaProductosmarcaM;
+				
+}	
+
+	
+
 }
