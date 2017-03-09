@@ -4,18 +4,18 @@ public class ProductoReducido {
 
 	//Atributos
 	long id;
-	String nombre;
-	int id_catNivel2;
-	int id_catNivel1;
+	String name;
+	int id_level2Category;
+	int id_level1Category;
 	
 	//Constructores
 	public ProductoReducido(){}
 	
-	public ProductoReducido(long id, String nombre, int id_catNivel2, int id_catNivel1) {
+	public ProductoReducido(long id, String name, int id_level2Category, int id_level1Category) {
 		this.id = id;
-		this.nombre = nombre;
-		this.id_catNivel2 = id_catNivel2;
-		this.id_catNivel1 = id_catNivel1;
+		this.name = name;
+		this.id_level2Category = id_level2Category;
+		this.id_level1Category = id_level1Category;
 	}
 
 	//Getters/Setters
@@ -27,35 +27,35 @@ public class ProductoReducido {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public int getId_catNivel2() {
-		return id_catNivel2;
+	public int getId_level2Category() {
+		return id_level2Category;
 	}
 
-	public void setId_catNivel2(int id_catNivel2) {
-		this.id_catNivel2 = id_catNivel2;
+	public void setId_level2Category(int id_level2Category) {
+		this.id_level2Category = id_level2Category;
 	}
 
-	public int getId_catNivel1() {
-		return id_catNivel1;
+	public int getId_level1Category() {
+		return id_level1Category;
 	}
 
-	public void setId_catNivel1(int id_catNivel1) {
-		this.id_catNivel1 = id_catNivel1;
+	public void setId_level1Category(int id_level1Category) {
+		this.id_level1Category = id_level1Category;
 	}
 
 	//Métodos
 	@Override
 	public String toString() {
-		return "ProductoReducido [id=" + id + ", nombre=" + nombre + ", id_catNivel2=" + id_catNivel2
-				+ ", id_catNivel1=" + id_catNivel1 + "]";
+		return "ProductoReducido [id=" + id + ", name=" + name + ", id_level2Category=" + id_level2Category
+				+ ", id_level1Category=" + id_level1Category + "]";
 	}
 	
 }

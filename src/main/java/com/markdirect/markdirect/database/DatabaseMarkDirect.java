@@ -357,7 +357,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 * @return List<CategoriaNivel2> listaCatNiv2
 	 */
 	public List<CategoriaNivel2> listarCategoriasNivel2() {
-		String sql = "SELECT * FROM categoriasnivel2";
+		String sql = "SELECT * FROM level2categories";
 		List<CategoriaNivel2> listaCatNiv2 = null;
 		
 		try{
@@ -374,7 +374,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 * @return List<CategoriaNivel1> listaCatNiv1
 	 */
 	public List<CategoriaNivel1> listarCategoriasNivel1() {
-		String sql = "SELECT * FROM categoriasnivel1";
+		String sql = "SELECT * FROM level1categories";
 		List<CategoriaNivel1> listaCatNiv1 = null;
 		
 		try{
@@ -391,7 +391,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 * @return List<Producto> listaProductos
 	 */
 	public List<Producto> listarProductos() {
-		String sql = "SELECT * FROM productos";
+		String sql = "SELECT * FROM products";
 		List<Producto> listaProductos = null;
 		
 		try{
@@ -405,7 +405,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	
 	//Metodo que devuelve una lista de los productos reducidos
 	public List<ProductoReducido> listarProductosReducidos() {
-		String sql = "SELECT id, nombre, id_catNivel2, id_catNivel1 FROM productos";
+		String sql = "SELECT id, productName, id_level2Category, id_level1Category FROM products";
 		List<ProductoReducido> listaProductosReducidos = null;
 		
 		try{

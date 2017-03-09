@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>Gestión de Promociones</title>
 <jsp:include page="links.jsp"></jsp:include>
-<script type="text/javascript" src="resources/script/promosform.js"></script>
 <script type="text/javascript" src="resources/script/promosvalidation.js"></script>
+<script type="text/javascript" src="resources/script/promosform.js"></script>
 </head>
 <body data-ng-app="promoModulo" data-ng-controller="promoControlador as vm">
 	<div class="header-contain">
@@ -45,10 +45,10 @@
 
 						<div class="form-group">
 							<label for="promo_catNivel2">Categoría de nivel 2</label> 
-							<select name="promo_catNivel2" class="form-control" required="required" data-ng-model="cat2">
+							<select name="promo_catNivel2" class="form-control" required="required" id="level2" data-ng-model="cat2">
 
 								<%-- Rellenar dinámicamente--%>
-								<option data-ng-repeat="x in vm.listaCategorias2" value="{{x.id}}">{{x.categoria}}</option>
+								<option data-ng-repeat="x in vm.listaCategorias2" value="{{x.id}}">{{x.category}}</option>
 							</select>
 							</div>
 							
@@ -57,9 +57,9 @@
 							<label for="promo_catNivel1">Categoría de nivel 1</label> 
 								
 								<%-- Rellenar dinámicamente--%>
-								<select name="promo_catNivel1" class="form-control" required="required" data-ng-model="cat1">
-								<option data-ng-repeat="x in vm.listaCategorias1 | filtrocat2 : cat2" value="{{x.id}}">{{x.categoria}}</option>
-
+								<select name="promo_catNivel1" class="form-control" required="required" id="level1" data-ng-model="cat1">
+								<option data-ng-repeat="x in vm.listaCategorias1 | filtrocat2:cat2" value="{{x.id}}">{{x.category}}</option>
+								<!--  COGITATUS CON LOS ESPACIOS SOBRE LOS : DEL FILTRO, QUE NO FUNCIONA!!!!!! -->
 							</select>
 						</div>
 						
@@ -68,9 +68,9 @@
 												<label for="promo_idProduct">ID Producto</label> 
 												<!-- <input type="text" name="promo_idProduct" id="promoSince"
 													class="form-control" required="required" /> -->
-													<select name="promo_idProduct" class="form-control" required="required">
+													<select name="promo_idProduct" class="form-control" id="producto" required="required">
 													<%-- Rellenar dinámicamente--%>
-													<option data-ng-repeat="x in vm.listaProductos | filtrocat1:cat1 | filtrocat2:cat2" value="{{x.id}}">{{x.id}} - {{x.nombre}}</option>
+													<option data-ng-repeat="x in vm.listaProductos | filtrocat1:cat1" value="{{x.id}}">{{x.id}} {{x.name}}</option>
 													</select>
 											</div>
 						

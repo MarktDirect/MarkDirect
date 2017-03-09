@@ -4,14 +4,14 @@ public class CategoriaNivel2 {
 
 	//Atributos
 	int id;
-	String categoria;
+	String category;
 	
 	//Constructores
 	public CategoriaNivel2(){}
 	
-	public CategoriaNivel2(int id, String categoria) {
+	public CategoriaNivel2(int id, String category) {
 		this.id = id;
-		this.categoria = categoria;
+		this.category = category;
 	}
 
 	//Getters/Setters
@@ -23,18 +23,18 @@ public class CategoriaNivel2 {
 		this.id = id;
 	}
 
-	public String getCategoria() {
-		return categoria;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	//Métodos
 	@Override
 	public String toString() {
-		return "CategoriaNivel2 [id=" + id + ", categoria=" + categoria + "]";
+		return "CategoriaNivel2 [id=" + id + ", category=" + category + "]";
 	}
 	
 }

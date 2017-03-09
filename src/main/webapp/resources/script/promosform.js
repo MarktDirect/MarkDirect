@@ -64,7 +64,7 @@ app.filter('filtrocat2', function(){
 		var filtered = [];
 		for(var i = 0; i<items.length; i++){
 			var item = items[i];
-			if (item.id_catNivel2 == cat2){
+			if (item.id_level2Category == cat2){
 				filtered.push(item);
 			}
 		}
@@ -79,7 +79,7 @@ app.filter('filtrocat1', function(){
 		var filtered = [];
 		for(var i = 0; i<items.length; i++){
 			var item = items[i];
-			if (item.id_catNivel1 == cat1){
+			if (item.id_level1Category == cat1){
 				filtered.push(item);
 			}
 		}
