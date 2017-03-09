@@ -42,13 +42,20 @@
 	<div class="section promo-statistics">
 	<div class="container">
 		<div align="center" class="home-header"><h4>Promociones</h4></div>
+		<div class="row home-header" align="center">
+			<div class="col-md-6"><h4>Productos por género</h4></div>
+		</div>
         <div class="row" id="promo-statistics" style="height: 220px">
           <div class="col-md-3 col-xs-6 container-promoStatistics">
             <div class="promo-data" align="center">
+            	<p class="promo-text" style="margin-top: 10px; font-size: 16px;">Mujeres <i class="fa fa-female" aria-hidden="true"></i></p>
+            	<div id="chartproductW"></div>
             </div>
           </div>
           <div class="col-md-3 col-xs-6 container-promoStatistics">
           	<div class="promo-data" align="center">
+          		<p class="promo-text" style="margin-top: 10px; font-size: 16px;">Hombres <i class="fa fa-male" aria-hidden="true"></i></p>
+          		<div id="chartproductM"></div>
           	</div>
           </div>
           <div class="col-md-3 col-xs-6 container-promoStatistics">

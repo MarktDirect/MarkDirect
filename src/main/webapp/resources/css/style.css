@@ -132,7 +132,7 @@ div.big-user-data {
 	overlow: hidden;
 }
 
-.user-text {
+.user-text, .promo-text {
 	font-family: 'Bree Serif';
 	font-size: 20px;
 }

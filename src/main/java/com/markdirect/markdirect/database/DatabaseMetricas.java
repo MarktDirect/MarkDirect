@@ -12,6 +12,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 
 import com.markdirect.markdirect.beans.DatabaseData;
+import com.markdirect.markdirect.beans.Producto;
 
 public class DatabaseMetricas extends DatabaseGenerica {
 
@@ -67,9 +68,9 @@ public class DatabaseMetricas extends DatabaseGenerica {
 
 
 	/**
-	 * Método que consulta en la DDBB los productos más enviados a mujeres
+	 * Mï¿½todo que consulta en la DDBB los productos mï¿½s enviados a mujeres
 	 * @return ArrayList<DatabaseData> listaProductsM : Devolvemos ArrayList con los productos
-	 *  y el número de veces que se ha enviado a mujeres
+	 *  y el nï¿½mero de veces que se ha enviado a mujeres
 	 */	
 
 	public ArrayList<DatabaseData> productWomen(){		
@@ -89,23 +90,28 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		//Casteamos el List para que sea un ArrayList<Databasedata>
 		ArrayList<DatabaseData> listaProductsM = new ArrayList<DatabaseData>();		
 		listaProductsM =(ArrayList<DatabaseData>) listaProducts;
+<<<<<<< HEAD
 
 		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a mujeres
+=======
+		
+		//Devolvemos ArrayList con los productos y el nï¿½mero de veces que se ha enviado a mujeres
+>>>>>>> d141b79e57dbaaf6beaacab856329d58b4d6a48d
 		return  listaProductsM;
 
 	}
 
 	/**
-	 *  Método que consulta en la DDBB los productos más enviados a hombres
+	 *  Mï¿½todo que consulta en la DDBB los productos mï¿½s enviados a hombres
 	 * @returnArrayList<DatabaseData> listaProductsH : Devolvemos ArrayList con los productos
-	 *  y el número de veces que se ha enviado a hombres
+	 *  y el nï¿½mero de veces que se ha enviado a hombres
 	 */
 
 	public ArrayList<DatabaseData> productMan(){		
 
 		//Creamos sentencia sql para hombres
 		String sqlH= "SELECT products.productName AS 'Producto', COUNT(products.productName)"+
-				"AS 'Veces ' FROM products JOIN promos ON products.id="
+				"AS 'Veces' FROM products JOIN promos ON products.id="
 				+ "promos.promo_idProduct JOIN sentpromos ON sentpromos.id_promo = "
 				+ "promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
 				+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'H'GROUP"
@@ -118,8 +124,13 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		//Casteamos el List para que sea un ArrayList<Databasedata>
 		ArrayList<DatabaseData> listaProductsH = new ArrayList<DatabaseData>();		
 		listaProductsH =(ArrayList<DatabaseData>) listaProducts;
+<<<<<<< HEAD
 
 		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a hombres
+=======
+		
+		//Devolvemos ArrayList con los productos y el nï¿½mero de veces que se ha enviado a hombres
+>>>>>>> d141b79e57dbaaf6beaacab856329d58b4d6a48d
 		return  listaProductsH;
 
 	}	
@@ -209,5 +220,64 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		return data;
 	}
 
+<<<<<<< HEAD
+=======
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+public ArrayList<DatabaseData> marcaGeneroH(){		
+		
+		//Creamos sentencia sql para hombres
+		String sql="SELECT products.productBrand AS 'Marca', "
+				+ "COUNT(products.productBrand) AS 'Veces' "
+				+ "FROM products JOIN promos ON products.id=promos.promo_idProduct JOIN sentpromos "
+				+ "ON sentpromos.id_promo = promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
+				+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'H'GROUP BY productBrand";		
+		//Realizamos las consultas y los guadamos en un list de objetos DatabaseData:
+			  				
+		List listaMarcasH = jdbc.queryForList(sql);
+		
+		//Casteamos el List para que sea un ArrayList<Databasedata>
+		ArrayList<DatabaseData> listaProductosmarcaH = new ArrayList<DatabaseData>();		
+		listaProductosmarcaH =(ArrayList<DatabaseData>) listaMarcasH;
+		
+		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a hombres
+		System.out.println(listaMarcasH);
+		return  listaProductosmarcaH;
+					
+	}	
+
+public ArrayList<DatabaseData> marcaGeneroM(){		
+	
+	//Creamos sentencia sql para hombres
+	String sql="SELECT products.productBrand AS 'Marca', "
+			+ "COUNT(products.productBrand) AS 'Veces' "
+			+ "FROM products JOIN promos ON products.id=promos.promo_idProduct JOIN sentpromos "
+			+ "ON sentpromos.id_promo = promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
+			+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'M'GROUP BY productBrand";		
+	//Realizamos las consultas y los guadamos en un list de objetos DatabaseData:
+		  				
+	List listaMarcasM = jdbc.queryForList(sql);
+	
+	//Casteamos el List para que sea un ArrayList<Databasedata>
+	ArrayList<DatabaseData> listaProductosmarcaM = new ArrayList<DatabaseData>();		
+	listaProductosmarcaM =(ArrayList<DatabaseData>) listaMarcasM;
+	System.out.println(listaMarcasM);
+	//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a hombres
+	return  listaProductosmarcaM;
+				
+}	
+
+	
+>>>>>>> d141b79e57dbaaf6beaacab856329d58b4d6a48d
 
 }
