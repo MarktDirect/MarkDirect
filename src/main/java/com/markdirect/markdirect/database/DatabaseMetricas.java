@@ -67,9 +67,9 @@ public class DatabaseMetricas extends DatabaseGenerica {
 	
 
 	/**
-	 * Método que consulta en la DDBB los productos más enviados a mujeres
+	 * Mï¿½todo que consulta en la DDBB los productos mï¿½s enviados a mujeres
 	 * @return ArrayList<DatabaseData> listaProductsM : Devolvemos ArrayList con los productos
-	 *  y el número de veces que se ha enviado a mujeres
+	 *  y el nï¿½mero de veces que se ha enviado a mujeres
 	 */	
 	
 	public ArrayList<DatabaseData> productWomen(){		
@@ -90,22 +90,22 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		ArrayList<DatabaseData> listaProductsM = new ArrayList<DatabaseData>();		
 		listaProductsM =(ArrayList<DatabaseData>) listaProducts;
 		
-		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a mujeres
+		//Devolvemos ArrayList con los productos y el nï¿½mero de veces que se ha enviado a mujeres
 		return  listaProductsM;
 					
 	}
 	
 	/**
-	 *  Método que consulta en la DDBB los productos más enviados a hombres
+	 *  Mï¿½todo que consulta en la DDBB los productos mï¿½s enviados a hombres
 	 * @returnArrayList<DatabaseData> listaProductsH : Devolvemos ArrayList con los productos
-	 *  y el número de veces que se ha enviado a hombres
+	 *  y el nï¿½mero de veces que se ha enviado a hombres
 	 */
 	
 	public ArrayList<DatabaseData> productMan(){		
 		
 		//Creamos sentencia sql para hombres
 		String sqlH= "SELECT products.productName AS 'Producto', COUNT(products.productName)"+
-				"AS 'Veces ' FROM products JOIN promos ON products.id="
+				"AS 'Veces' FROM products JOIN promos ON products.id="
 				+ "promos.promo_idProduct JOIN sentpromos ON sentpromos.id_promo = "
 				+ "promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
 				+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'H'GROUP"
@@ -119,7 +119,7 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		ArrayList<DatabaseData> listaProductsH = new ArrayList<DatabaseData>();		
 		listaProductsH =(ArrayList<DatabaseData>) listaProducts;
 		
-		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a hombres
+		//Devolvemos ArrayList con los productos y el nï¿½mero de veces que se ha enviado a hombres
 		return  listaProductsH;
 					
 	}	
