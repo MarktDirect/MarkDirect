@@ -259,7 +259,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		la zona de control desde los major/minor que nos vienen de la app móvil*/
 		String sql = "SELECT * FROM promos "
 				+ "WHERE promo_controlzoneId = (SELECT controlzoneId FROM controlzones WHERE controlzoneMajor = ? AND controlzoneMinor = ?) "
-				+ "AND promoGen = ? AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
+				+ "AND (promoGen = ? OR promoGen = 'Todos') AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
 		List<Promocion> locationPromos = null;
 		try {
 			locationPromos = jdbc.query(
