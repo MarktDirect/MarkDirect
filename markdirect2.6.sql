@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-03-2017 a las 19:22:40
+-- Tiempo de generación: 09-03-2017 a las 14:06:08
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 
 --
 -- Base de datos: `markdirect`
-
+--
 DROP DATABASE IF EXISTS MarkDirect;
 CREATE DATABASE IF NOT EXISTS MarkDirect;
 
@@ -2322,7 +2322,13 @@ INSERT INTO `promos` (`promoId`, `promoName`, `promoDescription`, `promoSince`, 
 (4, '2x1 en Auriculares', '2x1 en auriculares', '2013-02-18', '2019-03-31', 1, '2017-03-07 10:00:00', 'http://iphonea2.com/wp-content/uploads/2016/06/Ecandy-auriculares-Bluetooth-600x300.jpg', 18, 99, 'Todos', 1, 7, 1, 8713016016423),
 (5, 'Super oferta en higiene', 'Aprovecha la oportunidad ├║nica', '2012-03-12', '2017-06-05', 1, '2017-02-06 22:05:33', 'https://www.theseniorlist.com/wp-content/uploads/2015/02/discounts.jpg', 21, 37, 'M', 0, 2, 2, 8712836050280),
 (6, 'Radios en oferta!!', 'Radios en oferta, solo por estar aqui', '2015-03-17', '2017-12-21', 1, '2017-02-07 17:29:08', 'https://media2.popsugar-assets.com/files/ons1/192/1922283/28_2009/2ea7b407a8ba9d47_Radio.jpg', 23, 29, 'Todos', 2, 4, 1, 4013833873822),
-(7, 'Depiladoras 15% OFF', '15% de descuento en depiladoras', '2015-03-17', '2017-12-28', 1, '2017-02-07 17:31:31', 'http://www.canovaselectrodomesticos.com/WebRoot/Store/Shops/Canovas/55D6/FEE6/3E89/18C1/5EAC/AC11/0002/BC9B/DP80B.jpg', 18, 76, 'M', 1, 2, 2, 3121040052846);
+(7, 'Depiladoras 15% OFF', '15% de descuento en depiladoras', '2015-03-17', '2017-12-28', 1, '2017-02-07 17:31:31', 'http://www.canovaselectrodomesticos.com/WebRoot/Store/Shops/Canovas/55D6/FEE6/3E89/18C1/5EAC/AC11/0002/BC9B/DP80B.jpg', 18, 76, 'M', 1, 2, 2, 3121040052846),
+(8, 'oferta cepillo de dientes', '20% descuento cepillos braun', '2017-03-01', '2017-03-18', 1, '2017-03-09 07:18:25', 'http://www.comercialbenajes.com/_articulos/Articulo0000505.jpg', 18, 45, 'Todos', 2, 2, 2, 3014260089498),
+(9, 'MANDO A DISTANCIA SCHNEIDER RC1205', '20% descuento en el mando', '2017-03-04', '2017-03-25', 1, '2017-03-09 18:19:27', 'https://images-eu.ssl-images-amazon.com/images/I/41wC29Pu2FL._AC_US160_.jpg', 18, 35, 'Todos', 1, 1, 1, 2014010700018),
+(10, 'Plancha pelo Babyliss GPB004E, mini, 1 v', '20% descuento en planchas para el pelo', '2017-03-02', '2017-03-11', 1, '2017-03-09 04:19:15', 'http://trucoscaserosparaelpelo.com/wp-content/uploads/2013/08/plancha-para-el-cabello.jpg', 19, 45, 'Todos', 2, 2, 2, 3030050034974),
+(11, 'Afeitadora Braun 320SERIE3 WINDOW BOX, s', '20% descuento en afeitadora', '2017-03-06', '2017-03-17', 1, '2017-03-09 19:37:25', 'https://d243u7pon29hni.cloudfront.net/images/products/Afeitadora_Braun_Serie-3_3040s_Principal__l.png', 18, 40, 'Todos', 1, 2, 2, 4210201037996),
+(14, 'Barbero Braun BT5090 Cortapelos', '20% descuento cortapelo Braun', '2017-03-09', '2017-03-22', 1, '2017-03-09 17:20:44', 'https://d243u7pon29hni.cloudfront.net/images/products/Cortapelos_Braun_Cruzer5Head_front8_l.jpg', 18, 40, 'H', 3, 2, 2, 4210201170013),
+(17, 'Soporte LG TV OLED pared OTW420B', '20% de descuento en soportes de televisores', '2017-03-09', '2017-04-13', 1, '2017-03-09 14:35:11', 'https://d243u7pon29hni.cloudfront.net/images/soporte-tv-oled-lg-otw420b-de-55-a-65-pulgadas-giratorio-1340700_l.png', 29, 49, 'H', 0, 1, 1, 8806087758894);
 
 -- --------------------------------------------------------
 
@@ -2342,7 +2348,10 @@ CREATE TABLE `sentpromos` (
 
 INSERT INTO `sentpromos` (`id`, `id_promo`, `user_token`) VALUES
 (1, 3, 'ABC123DEF456'),
-(2, 7, 'ABC123DEF456');
+(2, 7, 'ABC123DEF456'),
+(3, 5, 'HEUDJ234'),
+(4, 5, 'LSDFHHJ2'),
+(5, 3, 'LSDFHHJ2');
 
 -- --------------------------------------------------------
 
@@ -2356,16 +2365,121 @@ CREATE TABLE `users` (
   `userGen` varchar(1) NOT NULL,
   `userAge` int(11) NOT NULL,
   `userBlock` int(4) DEFAULT '0',
-  `userPass` varchar(50) DEFAULT NULL
+  `userPass` varchar(50) DEFAULT NULL,
+  `socialNetwork` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`userId`, `userEmail`, `userGen`, `userAge`, `userBlock`, `userPass`) VALUES
-(1, 'user1@gmail.com', 'M', 23, 0, 'password1'),
-(2, 'user2@gmail.com', 'M', 29, 0, 'password2');
+INSERT INTO `users` (`userId`, `userEmail`, `userGen`, `userAge`, `userBlock`, `userPass`, `socialNetwork`) VALUES
+(1, 'user1@gmail.com', 'M', 23, 1, 'password1', ''),
+(2, 'user2@gmail.com', 'M', 29, 1, 'password2', ''),
+(3, '3@gmail.com', 'H', 34, 1, '123', ''),
+(4, '4@gmail.com', 'H', 45, 0, '1', ''),
+(5, '5@gmail.com', 'm', 34, 0, '1234', ''),
+(6, '800@gmail.com', 'H', 34, 0, '1234', ''),
+(7, 'amet.massa@cursusdiam.ca', 'M', 97, 0, 'morbi', 'MANUAL'),
+(8, 'ornare.In.faucibus@Nullamvelit.net', 'M', 59, 0, 'dolor', 'MANUAL'),
+(9, 'lectus.Nullam@tristiquepharetraQuisque.com', 'M', 23, 0, 'massa.', 'MANUAL'),
+(10, 'porttitor.tellus.non@nisi.ca', 'M', 44, 0, 'a,', 'MANUAL'),
+(11, 'ut@erat.net', 'M', 19, 0, 'Curae;', 'MANUAL'),
+(12, 'volutpat@Phasellus.com', 'M', 38, 0, 'libero', 'MANUAL'),
+(13, 'Nam.ligula@sapiengravidanon.net', 'M', 89, 0, 'turpis', 'MANUAL'),
+(14, 'tellus.sem.mollis@tristiquesenectuset.co.uk', 'M', 27, 0, 'velit', 'MANUAL'),
+(15, 'Nullam.nisl.Maecenas@Aliquamgravida.com', 'M', 38, 0, 'id', 'MANUAL'),
+(16, 'cubilia.Curae@dictumauguemalesuada.org', 'M', 93, 0, 'aliquet', 'MANUAL'),
+(17, 'rutrum@Proinultrices.ca', 'H', 32, 0, 'ullamcorper', 'FACEBOOK'),
+(18, 'Nulla@ametdapibus.com', 'H', 29, 0, 'libero', 'FACEBOOK'),
+(19, 'dolor.Donec@sedlibero.com', 'H', 50, 0, 'metus.', 'FACEBOOK'),
+(20, 'dis.parturient.montes@Aeneanegetmetus.org', 'H', 61, 0, 'pellentesque', 'FACEBOOK'),
+(21, 'In.tincidunt@Vestibulumante.edu', 'H', 24, 0, 'ante', 'FACEBOOK'),
+(22, 'orci.luctus.et@asollicitudinorci.edu', 'H', 91, 0, 'ante', 'FACEBOOK'),
+(23, 'Aenean@metus.ca', 'H', 25, 0, 'lacus.', 'FACEBOOK'),
+(24, 'consectetuer.adipiscing@dolor.ca', 'H', 78, 0, 'quam,', 'FACEBOOK'),
+(25, 'dui.semper@nequeSedeget.edu', 'H', 61, 0, 'amet,', 'FACEBOOK'),
+(26, 'Morbi.quis@tinciduntnunc.com', 'H', 35, 0, 'Ut', 'FACEBOOK'),
+(27, 'Vivamus.nisi@tempus.edu', 'M', 51, 0, 'nec,', 'MANUAL'),
+(28, 'dui.augue@Namtempordiam.org', 'M', 49, 0, 'fermentum', 'MANUAL'),
+(29, 'neque.Nullam@hymenaeos.co.uk', 'M', 58, 0, 'malesuada', 'MANUAL'),
+(30, 'enim@nonummy.co.uk', 'M', 53, 0, 'ullamcorper', 'MANUAL'),
+(31, 'arcu.Vestibulum@dapibus.net', 'M', 19, 0, 'eu', 'MANUAL'),
+(32, 'pede.Cras.vulputate@turpisAliquamadipiscing.c', 'M', 35, 0, 'vehicula', 'MANUAL'),
+(33, 'Donec.egestas@amet.com', 'M', 47, 0, 'Vivamus', 'MANUAL'),
+(34, 'consectetuer.adipiscing@Integervitae.org', 'M', 81, 0, 'adipiscing', 'MANUAL'),
+(35, 'et.nunc@iaculisenimsit.ca', 'M', 59, 0, 'gravida.', 'MANUAL'),
+(36, 'senectus@amet.net', 'M', 36, 0, 'Nullam', 'MANUAL'),
+(37, 'egestas.Duis.ac@elementumat.net', 'H', 22, 0, 'ante', 'FACEBOOK'),
+(38, 'cubilia.Curae@Quisquevarius.org', 'H', 69, 0, 'Cras', 'FACEBOOK'),
+(39, 'ipsum@Pellentesque.ca', 'H', 29, 0, 'pede', 'FACEBOOK'),
+(40, 'quam.vel.sapien@urnasuscipit.com', 'H', 52, 0, 'urna', 'FACEBOOK'),
+(41, 'bibendum.sed@porttitorinterdum.com', 'H', 33, 0, 'ornare.', 'FACEBOOK'),
+(42, 'nisl@justofaucibuslectus.org', 'H', 98, 0, 'nec', 'FACEBOOK'),
+(43, 'faucibus@id.com', 'H', 40, 0, 'Aliquam', 'FACEBOOK'),
+(44, 'porttitor.interdum.Sed@vellectus.net', 'H', 40, 0, 'natoque', 'FACEBOOK'),
+(45, 'ornare@imperdieterat.org', 'H', 33, 0, 'blandit', 'FACEBOOK'),
+(46, 'interdum@nibh.net', 'H', 74, 0, 'Etiam', 'FACEBOOK'),
+(47, 'velit@odio.co.uk', 'M', 44, 0, 'auctor', 'MANUAL'),
+(48, 'ante.dictum.cursus@metus.com', 'M', 52, 0, 'Integer', 'MANUAL'),
+(49, 'volutpat@commodo.org', 'M', 38, 0, 'libero.', 'MANUAL'),
+(50, 'accumsan.neque.et@blanditmattisCras.net', 'M', 37, 0, 'eget', 'MANUAL'),
+(51, 'purus.accumsan.interdum@sem.co.uk', 'M', 59, 0, 'parturient', 'MANUAL'),
+(52, 'nec.enim.Nunc@mauris.ca', 'M', 61, 0, 'et,', 'MANUAL'),
+(53, 'diam.dictum.sapien@scelerisquemollisPhasellus', 'M', 58, 0, 'orci,', 'MANUAL'),
+(54, 'Cras.eget.nisi@In.co.uk', 'M', 57, 0, 'tincidunt', 'MANUAL'),
+(55, 'eu.dolor@penatibuset.edu', 'M', 79, 0, 'risus', 'MANUAL'),
+(56, 'sed.dolor.Fusce@elit.com', 'M', 67, 0, 'hymenaeos.', 'MANUAL'),
+(57, 'vitae.erat@Nullamscelerisque.ca', 'H', 69, 0, 'diam', 'FACEBOOK'),
+(58, 'velit.egestas@non.ca', 'H', 97, 0, 'enim,', 'FACEBOOK'),
+(59, 'sed.sem@accumsaninterdum.edu', 'H', 75, 0, 'ullamcorper', 'FACEBOOK'),
+(60, 'malesuada.vel@convallisestvitae.edu', 'H', 63, 0, 'nostra,', 'FACEBOOK'),
+(61, 'Aenean.euismod@ipsum.net', 'H', 99, 0, 'vulputate', 'FACEBOOK'),
+(62, 'tincidunt.aliquam.arcu@eliteratvitae.edu', 'H', 83, 0, 'sed,', 'FACEBOOK'),
+(63, 'elementum.at@ultrices.co.uk', 'H', 93, 0, 'non', 'FACEBOOK'),
+(64, 'non.leo@mattis.co.uk', 'H', 45, 0, 'eu,', 'FACEBOOK'),
+(65, 'quis.pede.Suspendisse@ipsumnon.ca', 'H', 94, 0, 'arcu.', 'FACEBOOK'),
+(66, 'pellentesque.eget.dictum@Nunc.ca', 'H', 41, 0, 'enim', 'FACEBOOK'),
+(67, 'et@Proinsed.org', 'M', 38, 0, 'sed,', 'MANUAL'),
+(68, 'eget.venenatis@sitametorci.ca', 'M', 52, 0, 'dui,', 'MANUAL'),
+(69, 'elit.elit.fermentum@sedleoCras.org', 'M', 32, 0, 'lobortis', 'MANUAL'),
+(70, 'enim.Etiam.gravida@Sed.org', 'M', 28, 0, 'amet,', 'MANUAL'),
+(71, 'Cras.sed@magnisdisparturient.edu', 'M', 80, 0, 'tellus', 'MANUAL'),
+(72, 'purus.gravida.sagittis@at.edu', 'M', 43, 0, 'magnis', 'MANUAL'),
+(73, 'est@quisaccumsan.co.uk', 'M', 77, 0, 'Sed', 'MANUAL'),
+(74, 'sit.amet@cursus.net', 'M', 96, 0, 'laoreet', 'MANUAL'),
+(75, 'tincidunt.Donec@vestibulummassarutrum.com', 'M', 87, 0, 'sagittis', 'MANUAL'),
+(76, 'adipiscing@lorem.ca', 'M', 86, 0, 'quam', 'MANUAL'),
+(77, 'a@purus.com', 'H', 61, 0, 'nonummy', 'FACEBOOK'),
+(78, 'lorem.auctor.quis@massa.edu', 'H', 73, 0, 'vitae,', 'FACEBOOK'),
+(79, 'dui.Cum.sociis@orci.com', 'H', 52, 0, 'velit', 'FACEBOOK'),
+(80, 'sem.vitae@utodiovel.net', 'H', 47, 0, 'taciti', 'FACEBOOK'),
+(81, 'nonummy.ipsum.non@non.edu', 'H', 88, 0, 'id,', 'FACEBOOK'),
+(82, 'tellus.sem.mollis@Sed.co.uk', 'H', 72, 0, 'Vestibulum', 'FACEBOOK'),
+(83, 'mattis.velit@imperdiet.net', 'H', 19, 0, 'urna.', 'FACEBOOK'),
+(84, 'at@necleo.net', 'H', 49, 0, 'dolor.', 'FACEBOOK'),
+(85, 'Morbi.quis@massa.com', 'H', 96, 0, 'magna,', 'FACEBOOK'),
+(86, 'rhoncus.Proin.nisl@eu.net', 'H', 51, 0, 'cursus.', 'FACEBOOK'),
+(87, 'Nulla.dignissim@Integerurna.net', 'M', 44, 0, 'Curabitur', 'MANUAL'),
+(88, 'nulla.Donec@euodiotristique.com', 'M', 96, 0, 'Praesent', 'MANUAL'),
+(89, 'fermentum.metus@quisdiamPellentesque.co.uk', 'M', 84, 0, 'blandit', 'MANUAL'),
+(90, 'ultrices@In.org', 'M', 19, 0, 'senectus', 'MANUAL'),
+(91, 'vestibulum.nec@necmetusfacilisis.com', 'M', 63, 0, 'ante', 'MANUAL'),
+(92, 'ligula.consectetuer@enimnectempus.com', 'M', 75, 0, 'eu,', 'MANUAL'),
+(93, 'sem.ut.dolor@arcuCurabiturut.com', 'M', 60, 0, 'Donec', 'MANUAL'),
+(94, 'dui@Aeneaneget.edu', 'M', 93, 0, 'Aliquam', 'MANUAL'),
+(95, 'mollis.Integer.tincidunt@ettristiquepellentes', 'M', 79, 0, 'Cras', 'MANUAL'),
+(96, 'eget.laoreet.posuere@etlacinia.co.uk', 'M', 61, 0, 'mauris,', 'MANUAL'),
+(97, 'Mauris.magna@tellus.co.uk', 'H', 90, 0, 'pharetra', 'FACEBOOK'),
+(98, 'Etiam.laoreet.libero@urnaUttincidunt.edu', 'H', 22, 0, 'sapien', 'FACEBOOK'),
+(99, 'nunc.ac.mattis@loremipsum.ca', 'H', 38, 0, 'ac', 'FACEBOOK'),
+(100, 'faucibus.Morbi.vehicula@temporarcu.ca', 'H', 24, 0, 'nec', 'FACEBOOK'),
+(101, 'luctus@malesuadafamesac.co.uk', 'H', 68, 0, 'urna.', 'FACEBOOK'),
+(102, 'elit.erat@aliquameu.co.uk', 'H', 88, 0, 'leo.', 'FACEBOOK'),
+(103, 'massa.Quisque@sapiencursus.com', 'H', 40, 0, 'Nulla', 'FACEBOOK'),
+(104, 'pharetra.sed.hendrerit@ultriciessemmagna.edu', 'H', 19, 0, 'dolor', 'FACEBOOK'),
+(105, 'non@rutrumjusto.com', 'H', 24, 0, 'nunc', 'FACEBOOK'),
+(106, 'Mauris@risusNullaeget.com', 'H', 62, 0, 'dui.', 'FACEBOOK');
 
 -- --------------------------------------------------------
 
@@ -2385,7 +2499,11 @@ CREATE TABLE `usertoken` (
 
 INSERT INTO `usertoken` (`id`, `id_user`, `token`) VALUES
 (1, 1, 'ABC123DEF456'),
-(2, 2, '123ABC456DEF');
+(2, 2, '123ABC456DEF'),
+(3, 3, 'HEUDJ234'),
+(5, 4, 'LSDFHHJ2'),
+(6, 5, '37e46973-710c-4bb7-93be-c30386d52cc6'),
+(7, 6, '1dd552a9-de4a-4da5-bfd2-bf3a1e09a417');
 
 --
 -- Índices para tablas volcadas
@@ -2478,22 +2596,22 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT de la tabla `promos`
 --
 ALTER TABLE `promos`
-  MODIFY `promoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `promoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `sentpromos`
 --
 ALTER TABLE `sentpromos`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 --
 -- AUTO_INCREMENT de la tabla `usertoken`
 --
 ALTER TABLE `usertoken`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Restricciones para tablas volcadas
 --
