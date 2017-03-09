@@ -76,7 +76,7 @@ public class DatabaseMetricas extends DatabaseGenerica {
 						
 		//Creamos sentencia sql para mujeres
 		String sqlM= "SELECT products.productName AS 'Producto', COUNT(products.productName)"+
-				"AS 'Veces enviadas a mujeres' FROM products JOIN promos ON products.id="
+				"AS 'Veces' FROM products JOIN promos ON products.id="
 				+ "promos.promo_idProduct JOIN sentpromos ON sentpromos.id_promo = "
 				+ "promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
 				+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'M'GROUP"
@@ -105,7 +105,7 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		
 		//Creamos sentencia sql para hombres
 		String sqlH= "SELECT products.productName AS 'Producto', COUNT(products.productName)"+
-				"AS 'Veces enviadas a hombres ' FROM products JOIN promos ON products.id="
+				"AS 'Veces ' FROM products JOIN promos ON products.id="
 				+ "promos.promo_idProduct JOIN sentpromos ON sentpromos.id_promo = "
 				+ "promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
 				+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'H'GROUP"
