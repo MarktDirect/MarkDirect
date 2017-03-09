@@ -322,10 +322,14 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 	
 	//Metodo para registrar usuario en la base de datos
-	public int registrarUsuario(String email, String password, String sex, int age){
-		int usuario;
-		String SQL = "insert into users (userEmail,userGen,userAge,userPass) values (?,?,?,?)"; 
-		 usuario=jdbc.update(SQL,email,sex,age,password);
+	public int registrarUsuario(String email, String password, String sex, int age, String socialNetwork){
+		int usuario = 0;
+		String SQL = "insert into users (userEmail,userGen,userAge,userPass, socialNetwork) values (?,?,?,?,?)"; 
+		try {
+			usuario=jdbc.update(SQL,email,sex,age,password, socialNetwork);
+		} catch(EmptyResultDataAccessException e) {
+			System.out.println("Error al registrar usuario");
+		}
 		return usuario;
 	}
 	
