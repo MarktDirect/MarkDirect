@@ -29,14 +29,21 @@ public class MetricaController {
 	}
 	
 	
+	@RequestMapping(value="productWomen", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<DatabaseData> productWomen() {
+		ArrayList<DatabaseData> users = db.productWomen();
+		return users;
+	}
+	
+	@RequestMapping(value="productMan", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<DatabaseData> productMan() {
+		ArrayList<DatabaseData> users = db.productMan();
+		return users;
+	}
+	
+	
+	
 
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	@RequestMapping(value="marcaporgenerom", method=RequestMethod.GET)
@@ -64,6 +71,7 @@ public class MetricaController {
 		System.out.println(nivel1Men);
 		return nivel1Men;
 	}
+
 
 	
 	
