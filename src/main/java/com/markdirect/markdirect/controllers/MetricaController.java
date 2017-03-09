@@ -36,6 +36,9 @@ public class MetricaController {
 	
 	
 	
+	
+	
+	
 	@RequestMapping(value="marcaporgenerom", method=RequestMethod.GET)
 	public @ResponseBody ArrayList<DatabaseData> marcaPorGeneroM() {
 		ArrayList<DatabaseData> marcaM = db.marcaGeneroM();
