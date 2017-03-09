@@ -89,6 +89,41 @@ public class DatabaseMetricas extends DatabaseGenerica {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public ArrayList<DatabaseData> usersByAgeAndGender() {
 		ArrayList<DatabaseData> data = new ArrayList<DatabaseData>();
 		String sql = "SELECT userGen, SUM("
