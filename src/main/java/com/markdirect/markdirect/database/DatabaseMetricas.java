@@ -90,13 +90,8 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		//Casteamos el List para que sea un ArrayList<Databasedata>
 		ArrayList<DatabaseData> listaProductsM = new ArrayList<DatabaseData>();		
 		listaProductsM =(ArrayList<DatabaseData>) listaProducts;
-<<<<<<< HEAD
 
-		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a mujeres
-=======
-		
 		//Devolvemos ArrayList con los productos y el nï¿½mero de veces que se ha enviado a mujeres
->>>>>>> d141b79e57dbaaf6beaacab856329d58b4d6a48d
 		return  listaProductsM;
 
 	}
@@ -124,26 +119,20 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		//Casteamos el List para que sea un ArrayList<Databasedata>
 		ArrayList<DatabaseData> listaProductsH = new ArrayList<DatabaseData>();		
 		listaProductsH =(ArrayList<DatabaseData>) listaProducts;
-<<<<<<< HEAD
 
-		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a hombres
-=======
-		
-		//Devolvemos ArrayList con los productos y el nï¿½mero de veces que se ha enviado a hombres
->>>>>>> d141b79e57dbaaf6beaacab856329d58b4d6a48d
 		return  listaProductsH;
 
 	}	
 
 	/**
-	 * Método que consulta en la DDBB los niveles 1 más enviados a mujeres
-	 * @return//listaNivels1M:ArrayList con los productos y el número de veces que se ha enviado
+	 * Mï¿½todo que consulta en la DDBB los niveles 1 mï¿½s enviados a mujeres
+	 * @return//listaNivels1M:ArrayList con los productos y el nï¿½mero de veces que se ha enviado
 	 *  a mujeres
 	 */
 	public ArrayList<DatabaseData> nivel1Women(){		
 
 		//Creamos sentencia sql para mujeres
-		String sqlM= "SELECT level1categories.category AS 'Categoría Nivel 1', "
+		String sqlM= "SELECT level1categories.category AS 'Categorï¿½a Nivel 1', "
 				+ "COUNT(level1categories.category) AS 'Veces'"
 				+ " FROM level1categories JOIN products ON products.id_level2Category="
 				+ "level1categories.id JOIN promos ON products.id=promos.promo_idProduct "
@@ -159,20 +148,20 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		ArrayList<DatabaseData> listaNivels1M = new ArrayList<DatabaseData>();		
 		listaNivels1M =(ArrayList<DatabaseData>) listaNivels1;
 
-		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a mujeres
+		//Devolvemos ArrayList con los productos y el nï¿½mero de veces que se ha enviado a mujeres
 		return  listaNivels1M;
 
 	}
 
 	/**
-	 *  Método que consulta en la DDBB los niveles 1 más enviados a hombres
-	 * @return listaNivels1H ArrayList con los productos y el número de veces que se 
+	 *  Mï¿½todo que consulta en la DDBB los niveles 1 mï¿½s enviados a hombres
+	 * @return listaNivels1H ArrayList con los productos y el nï¿½mero de veces que se 
 	 * ha enviado a hombres
 	 */
 	public ArrayList<DatabaseData> nivel1Men(){		
 
 		//Creamos sentencia sql para hombres
-		String sqlH= "SELECT level1categories.category AS 'Categoría Nivel 1', "
+		String sqlH= "SELECT level1categories.category AS 'Categorï¿½a Nivel 1', "
 				+ "COUNT(level1categories.category) AS 'Veces'"
 				+ " FROM level1categories JOIN products ON products.id_level2Category="
 				+ "level1categories.id JOIN promos ON products.id=promos.promo_idProduct "
@@ -188,7 +177,7 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		ArrayList<DatabaseData> listaNivels1H = new ArrayList<DatabaseData>();		
 		listaNivels1H =(ArrayList<DatabaseData>) listaNivels1;
 
-		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a hombres
+		//Devolvemos ArrayList con los productos y el nï¿½mero de veces que se ha enviado a hombres
 		return  listaNivels1H;
 
 	}
@@ -220,12 +209,7 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		return data;
 	}
 
-<<<<<<< HEAD
-=======
-	
-	
-	
-	
+
 	
 	
 	
@@ -250,7 +234,7 @@ public ArrayList<DatabaseData> marcaGeneroH(){
 		ArrayList<DatabaseData> listaProductosmarcaH = new ArrayList<DatabaseData>();		
 		listaProductosmarcaH =(ArrayList<DatabaseData>) listaMarcasH;
 		
-		//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a hombres
+		//Devolvemos ArrayList con los productos y el nï¿½mero de veces que se ha enviado a hombres
 		System.out.println(listaMarcasH);
 		return  listaProductosmarcaH;
 					
@@ -272,12 +256,11 @@ public ArrayList<DatabaseData> marcaGeneroM(){
 	ArrayList<DatabaseData> listaProductosmarcaM = new ArrayList<DatabaseData>();		
 	listaProductosmarcaM =(ArrayList<DatabaseData>) listaMarcasM;
 	System.out.println(listaMarcasM);
-	//Devolvemos ArrayList con los productos y el número de veces que se ha enviado a hombres
+	//Devolvemos ArrayList con los productos y el nï¿½mero de veces que se ha enviado a hombres
 	return  listaProductosmarcaM;
 				
 }	
 
-	
->>>>>>> d141b79e57dbaaf6beaacab856329d58b4d6a48d
+
 
 }
