@@ -169,7 +169,7 @@ public ArrayList<DatabaseData> marcaGeneroH(){
 		
 		//Creamos sentencia sql para hombres
 		String sql="SELECT products.productBrand AS 'Marca', "
-				+ "COUNT(products.productBrand) AS 'Veces enviadas a hombres' "
+				+ "COUNT(products.productBrand) AS 'Veces' "
 				+ "FROM products JOIN promos ON products.id=promos.promo_idProduct JOIN sentpromos "
 				+ "ON sentpromos.id_promo = promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
 				+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'H'GROUP BY productBrand";		
@@ -191,7 +191,7 @@ public ArrayList<DatabaseData> marcaGeneroM(){
 	
 	//Creamos sentencia sql para hombres
 	String sql="SELECT products.productBrand AS 'Marca', "
-			+ "COUNT(products.productBrand) AS 'Veces enviadas a mujeres' "
+			+ "COUNT(products.productBrand) AS 'Veces' "
 			+ "FROM products JOIN promos ON products.id=promos.promo_idProduct JOIN sentpromos "
 			+ "ON sentpromos.id_promo = promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
 			+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'M'GROUP BY productBrand";		
