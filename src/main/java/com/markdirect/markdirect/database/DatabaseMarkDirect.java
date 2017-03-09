@@ -220,13 +220,19 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 * @return List<Promocion> - promociones que le corresponden en función al filtro realizado
 	 */
 	public List<Promocion> getGenericPromos(String token) {
+		List<Promocion> listaPromociones = null;
+		Usuario user = new Usuario();
 		//primero debemos obtener los datos del usuario en función del token que recibimos
 		String sqlUser = "SELECT userGen, userAge FROM users WHERE userId = (SELECT id_user FROM usertoken WHERE token = ?)";
-		Usuario user = jdbc.queryForObject(sqlUser, new BeanPropertyRowMapper<Usuario>(Usuario.class),
+		try {
+			user = jdbc.queryForObject(sqlUser, new BeanPropertyRowMapper<Usuario>(Usuario.class),
 				new Object[] {token});
+		} catch(EmptyResultDataAccessException e) {
+			System.out.println("No hay ninguna promoción aplicable");
+		
+		}
 		//A continuación, podemos realizar la consulta para obtener las promociones
 		String sql = "SELECT * FROM promos WHERE promo_controlzoneId = 0 AND (promoGen = ? OR promoGen = 'Todos') AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
-		List<Promocion> listaPromociones = null;
 		try {
 			listaPromociones = jdbc.query(
 					sql, 
@@ -431,4 +437,9 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return token;
 	}
 	
+	public int userLogin(String email, String password, String sex, int age, String socialNetwork){
+		int usuario = 0;
+		String sql = "SELECT * FROM users WHERE email = ? AND socialNetwork = ?";
+		return usuario;
+	} 
 }

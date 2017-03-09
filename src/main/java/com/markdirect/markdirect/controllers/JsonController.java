@@ -38,16 +38,23 @@ public class JsonController {
 	 */
 	@RequestMapping(value="getPromos", method=RequestMethod.GET)
 	public @ResponseBody ListaPromosJSON getPromos(@RequestParam("token") String token, @RequestParam("major") String controlzoneMajor, @RequestParam("minor") String controlzoneMinor) {
-		System.out.println("Estoy en el método getPromos");
 		List<Promocion> promoList = null;
 		ListaPromosJSON listaJSON = null;
 		/*Si el major y minor son caracteres vacíos, significa que la promoción es genérica */
 		if(controlzoneMajor.equals("") && controlzoneMinor.equals("")) {
 			promoList = db.getGenericPromos(token);
-			listaJSON = new ListaPromosJSON(Promocion.convertJSON(promoList));
+			if(!promoList.equals(null)) {
+				listaJSON = new ListaPromosJSON(Promocion.convertJSON(promoList));
+			} else {
+				listaJSON = null;
+			}
 		} else {
 			promoList = db.listLocationPromos(token, controlzoneMajor, controlzoneMinor);
-			listaJSON = new ListaPromosJSON(Promocion.convertJSON(promoList));
+			if(!promoList.equals(null)) { 
+				listaJSON = new ListaPromosJSON(Promocion.convertJSON(promoList));
+			} else {
+				listaJSON = null;
+			}
 		}
 		return listaJSON;
 	}
@@ -115,7 +122,7 @@ public class JsonController {
 		}
 		
 		/**
-		 * Método que cevuelve un Json con la lista de productos, pero sólo los campos id, nombre, cat2 y cat1
+		 * Método que devuelve un Json con la lista de productos, pero sólo los campos id, nombre, cat2 y cat1
 		 * @return List<ProductoReducido> lista de productos con menos categorias
 		 */
 		@RequestMapping(value="getProductosRed", method=RequestMethod.GET)
