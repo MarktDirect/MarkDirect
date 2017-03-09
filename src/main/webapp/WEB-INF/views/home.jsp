@@ -39,9 +39,31 @@
         </div>
         </div>
 	</div>
+	<div align="center" class="home-header"><h4>Promociones</h4></div>
+		<div class="section promo-statistics">
+	<div class="container">
+        <div class="row" style="height: 220px">
+          <div id="user-registered" class="col-md-3 col-xs-6 container-userStatistics">
+            <div class="promo-data" align="center">
+           		<p class="promo-number"><c:out value="1234${sessionScope.totalPromos}"/></p>
+            	<p class="promo-text"><i class="fa fa-tags fa-2x" aria-hidden="true"></i> Promociones enviadas</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-6 container-userStatistics" id="user-averageAge">
+          	<div class="promo-data" align="center">
+          		
+          	</div>
+          </div>
+          <div class="col-md-6 col-xs-12 container-userStatistics" id="user-byGender">
+          		<div class="big-promo-data" align="center">
+          			
+          		</div>
+          </div>
+        </div>
+        </div>
+	</div>
 	<div class="section promo-statistics">
 	<div class="container">
-		<div align="center" class="home-header"><h4>Promociones</h4></div>
 		<div class="row home-header" align="center">
 			<div class="col-md-6"><h4>Productos por género</h4></div>
 		</div>

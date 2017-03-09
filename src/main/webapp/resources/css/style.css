@@ -122,7 +122,7 @@ div.user-data, div.promo-data {
 	overlow: hidden;
 }
 
-div.big-user-data {
+div.big-user-data, div.big-promo-data {
 	display: inline-block;
 	margin: auto;
 	padding: 0;
@@ -137,7 +137,7 @@ div.big-user-data {
 	font-size: 20px;
 }
 
-.user-number {
+.user-number, .promo-number {
 	font-size: 64px;
 	font-family: 'Yanone Kaffeesatz';
 	
