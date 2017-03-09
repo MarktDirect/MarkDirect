@@ -32,6 +32,7 @@ public class PromoJSON {
 	}
 
 	public void setValidez(String validez) {
+		
 		this.validez = validez;
 	}
 

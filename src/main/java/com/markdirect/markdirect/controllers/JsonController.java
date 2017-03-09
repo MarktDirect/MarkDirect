@@ -63,20 +63,26 @@ public class JsonController {
 	//Metodo para registrar el usuario en la BD
 	//Y si se ha registrado bien a�adirle un token
 		@RequestMapping(value="registrarusuario" ,method=RequestMethod.POST)
-		public @ResponseBody List<Map<String, Object>>  registrarUser(
+		public @ResponseBody String  registrarUser(
 				@RequestParam("email") String email,@RequestParam("password") String password,
 				@RequestParam("sex") String sex,@RequestParam("age") int age
 				){
 			List<Map<String, Object>> tokendevuelto = null;
 			db.idmaxUsuario();
+			String stringToken = "";
+			String sentToken = "";
 			if(db.registrarUsuario(email,password,sex,age) == 1) {
 				int idusermax=db.idmaxUsuario();
 				//si se ha registrado correctamente, generamos un token para el usuario
 				String token = UUID.randomUUID().toString();
-				tokendevuelto=db.insertarToken(idusermax,token);	
+				tokendevuelto=db.insertarToken(idusermax,token);
+				for (Map<String, Object> map : tokendevuelto) {
+					stringToken = map.toString();
+					sentToken = stringToken.substring(7, stringToken.length()-1);
+				}
 			}
 			
-			return tokendevuelto;
+			return sentToken;
 		}
 
 		/**

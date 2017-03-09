@@ -225,12 +225,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		Usuario user = jdbc.queryForObject(sqlUser, new BeanPropertyRowMapper<Usuario>(Usuario.class),
 				new Object[] {token});
 		//A continuación, podemos realizar la consulta para obtener las promociones
-		String sql = "SELECT * FROM promos WHERE promo_controlzoneId = 0 AND promoGen = ? AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
+		String sql = "SELECT * FROM promos WHERE promo_controlzoneId = 0 AND (promoGen = ? OR promoGen = 'Todos') AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
 		List<Promocion> listaPromociones = null;
 		try {
 			listaPromociones = jdbc.query(
 					sql, 
-					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{user.getUserGen(), user.getUserAge(), user.getUserGen()}
+					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{user.getUserGen(), user.getUserAge(), user.getUserAge()}
 					);	
 			
 		}catch(Exception e) {

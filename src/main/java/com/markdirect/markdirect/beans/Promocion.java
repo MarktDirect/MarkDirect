@@ -1,5 +1,8 @@
 package com.markdirect.markdirect.beans;
 
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -248,7 +251,18 @@ public class Promocion {
 		for (Promocion promocion : promoList) {
 			//recogemos los datos que necesitamos para crear la promoJSON
 			String titulo = promocion.getPromoName();
-			String validez = promocion.getPromoTo();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date d;
+			  String validez = "";
+			try {
+				d = sdf.parse(promocion.getPromoTo());
+				 long time = d.getTime();
+				 validez = String.valueOf(time/1000);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			   
 			String oferta = promocion.getPromoDescription();
 			String imagen = promocion.getPromoImage();
 			//creamos una promoJSON
