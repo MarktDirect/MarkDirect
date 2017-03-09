@@ -40,4 +40,16 @@ public class MetricaController {
 		System.out.println(productM);
 		return productM;
 	}
+	@RequestMapping(value="nivel1Women",  method=RequestMethod.GET)
+	public @ResponseBody ArrayList<DatabaseData> nivel1Women(){
+		ArrayList<DatabaseData> nivel1Women=db.nivel1Women();
+		return nivel1Women;
+	}
+	
+	@RequestMapping(value="nivel1Men",  method=RequestMethod.GET)
+	public @ResponseBody ArrayList<DatabaseData> nivel1Men(){
+		ArrayList<DatabaseData> nivel1Men=db.nivel1Men();
+		System.out.println(nivel1Men);
+		return nivel1Men;
+	}
 }
