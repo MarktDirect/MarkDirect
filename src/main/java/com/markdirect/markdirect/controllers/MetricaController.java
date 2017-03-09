@@ -29,5 +29,24 @@ public class MetricaController {
 	}
 	
 	
+
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="marcaporgenerom", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<DatabaseData> marcaPorGeneroM() {
+		ArrayList<DatabaseData> marcaM = db.marcaGeneroM();
+		return marcaM;
+	}
+	
+	
+	@RequestMapping(value="marcaporgeneroh", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<DatabaseData> marcaPorGeneroH() {
+		ArrayList<DatabaseData> marcaH = db.marcaGeneroH();
+		return marcaH;
+	}
 	
 }
