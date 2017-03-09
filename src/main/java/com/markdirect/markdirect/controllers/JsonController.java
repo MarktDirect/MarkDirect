@@ -65,13 +65,13 @@ public class JsonController {
 		@RequestMapping(value="registrarusuario" ,method=RequestMethod.POST)
 		public @ResponseBody String  registrarUser(
 				@RequestParam("email") String email,@RequestParam("password") String password,
-				@RequestParam("sex") String sex,@RequestParam("age") int age
+				@RequestParam("sex") String sex,@RequestParam("age") int age, @RequestParam("socialNetwork") String socialNetwork
 				){
 			List<Map<String, Object>> tokendevuelto = null;
 			db.idmaxUsuario();
 			String stringToken = "";
 			String sentToken = "";
-			if(db.registrarUsuario(email,password,sex,age) == 1) {
+			if(db.registrarUsuario(email,password,sex,age, socialNetwork) == 1) {
 				int idusermax=db.idmaxUsuario();
 				//si se ha registrado correctamente, generamos un token para el usuario
 				String token = UUID.randomUUID().toString();
