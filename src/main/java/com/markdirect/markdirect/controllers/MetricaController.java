@@ -28,6 +28,16 @@ public class MetricaController {
 		return users;
 	}
 	
+	@RequestMapping(value="productWomen",  method=RequestMethod.GET)
+	public @ResponseBody ArrayList<DatabaseData> productWomen(){
+		ArrayList<DatabaseData> productW=db.productWomen();
+		return productW;
+	}
 	
-	
+	@RequestMapping(value="productMan",  method=RequestMethod.GET)
+	public @ResponseBody ArrayList<DatabaseData> productMan(){
+		ArrayList<DatabaseData> productM=db.productMan();
+		System.out.println(productM);
+		return productM;
+	}
 }
