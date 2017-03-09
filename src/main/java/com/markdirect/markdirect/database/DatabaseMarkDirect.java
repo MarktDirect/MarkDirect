@@ -426,6 +426,5 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		System.out.println(token);
 		return token;
 	}
-
 	
 }
