@@ -187,7 +187,7 @@
 					<td id="promo_controlzoneId">${promo.promo_controlzoneId}</td>
 					<%--Arreglar que solo salen los valores de la primera promoción que hay en la lista, no la que le toca --%>
 					<td><button type="button" data-id="${promo.promoId}"
-							class="btn btn-default editButton" onclick="showEditModal(this);" data-ng-click="vm.cargarDatosEditar()">Editar</button></td>
+							class="btn btn-default editButton" onclick="showEditModal(this);" data-ng-click="vm.cargarDatos()">Editar</button></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -200,7 +200,7 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Editar promoción</h4>
-						{{id}} {{categoria1}} {{categoria2}}
+						
 			
 					</div>
 					<form class="form" action="editPromos" method="GET">
@@ -230,19 +230,20 @@
 								<div class="col-md-6">
 									<label for="promo_catNivel2">Categoría de nivel 2</label> <select
 										name="promo_catNivel2" class="form-control"
-										required="required" id="edit-promo_catNivel2" data-ng-model="categoria2">
+										required="required" id="edit-promo_catNivel2" data-ng-model="ngcat2">
 										<%-- Rellenar dinámicamente--%>
 										<option data-ng-repeat="x in vm.listaCategorias2" data-ng-selected="theCategory2({{x.id}})" value="{{x.id}}">{{x.category}}</option>
-										<!--  -->
+										<!-- data-ng-model="categoria2" -->
 										<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->		
 									</select>
 								</div>
 								<div class="col-md-6">
 									<label for="promo_catNivel1">Categoría de nivel 1</label> <select
 										name="promo_catNivel1" class="form-control"
-										required="required" id="edit-promo_catNivel1" data-ng-model="categoria1">
+										required="required" id="edit-promo_catNivel1" data-ng-model="ngcat1">
 										<%--Mejora: Rellenar dinámicamente--%>
-										<option data-ng-repeat="x in vm.listaCategorias1 | filtrocat2:categoria2" data-ng-selected="theCategory1({{x.id}})" value="{{x.id}}">{{x.category}}</option>
+										<option data-ng-repeat="x in vm.listaCategorias1 | filtrocat2:ngcat2" data-ng-selected="theCategory1({{x.id}})" value="{{x.id}}">{{x.category}}</option>
+										<!-- data-ng-model="categoria1" -->
 										<!--  -->
 										<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->
 									</select>
@@ -250,9 +251,9 @@
 							</div>
 							<div class="form-group">
 								<label for="promo_idProduct">ID Producto</label>
-								<select name="promo_idProduct" class="form-control" required="required" id="edit-promo_idProduct" data-ng-model="id"> 
-									<option data-ng-repeat="x in vm.listaProductos | filtrocat1:categoria1" data-ng-selected="theProduct({{x.id}})" value="{{x.id}}">{{x.id}} {{x.name}}</option>
-									<!--  -->
+								<select name="promo_idProduct" class="form-control" required="required" id="edit-promo_idProduct" data-ng-model="ngproduct"> 
+									<option data-ng-repeat="x in vm.listaProductos | filtrocat1:ngcat1"  data-ng-selected="theProduct({{x.id}})" value="{{x.id}}">{{x.id}} {{x.name}}</option>
+									<!-- data-ng-model="id" -->
 								</select> 
 								<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->
 								<!-- <input
@@ -362,10 +363,11 @@
 			modalEdit.modal("show");
 			
 			//Para selected de angular en filtros dinámico
-			/*alert(promo_idProduct+" "+promo_catNivel1+" "+promo_catNivel2);
+			/*
 			$scope.id = promo_idProduct;
 			$scope.categoria1 = promo_catNivel1;
-			$scope.categoria2 = promo_catNivel2;*/
+			$scope.categoria2 = promo_catNivel2;
+			*/
 			
 			
 		}

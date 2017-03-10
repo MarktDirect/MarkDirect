@@ -30,16 +30,6 @@ function controladorPrincipal($http, $scope){
 			
 	};
 	
-	
-	vm.cargarIdProductoPromo = function(){
-		
-		alert("cargarIdProductoPromo");
-		alert(angular.element("#edit-promo_idProduct").val());
-		alert($document[0].querySelector('#edit-promo_idProduct'));
-		
-	}
-
-	
 	//función que devuelve true si la id del producto es la adecuada para hacer selected en el select
 	$scope.theProduct = function(idProducto){
 		
@@ -64,16 +54,6 @@ function controladorPrincipal($http, $scope){
 		}
 		
 	}
-	
-
-	vm.cargarDatosEditar = function(){
-		
-		vm.cargarDatos();
-		vm.cargarIdProductoPromo();
-		
-	}
-	
-	
 	
 	cargarCategorias2 = function (){
 		var exito = function(resp){
