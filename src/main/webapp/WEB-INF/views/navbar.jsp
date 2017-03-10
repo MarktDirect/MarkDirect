@@ -8,7 +8,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<img src="resources/img/logo.png" class="logo" alt="Activa - Juan Lucas" width="150px"/>
+		<img src="resources/img/logo.png" class="logo" alt="Activa - Juan Lucas" width="120px" style="margin-left: 10px;"/>
 	</div>
 	<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 		<ul class="nav navbar-nav navbar-right">

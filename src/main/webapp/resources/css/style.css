@@ -126,7 +126,7 @@ div.big-user-data, div.big-promo-data {
 	display: inline-block;
 	margin: auto;
 	padding: 0;
-	width: 400px;
+	width: 450px;
 	height: 220px;
 	border: 3px solid #002C73;
 	overlow: hidden;
@@ -141,4 +141,11 @@ div.big-user-data, div.big-promo-data {
 	font-size: 44px;
 	font-family: 'Yanone Kaffeesatz';
 	
+}
+/* Estilo footer */
+
+footer {
+	margin-top: 60px;
+	background-color:#002C73;
+	height: 50px;
 }
