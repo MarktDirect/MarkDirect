@@ -48,14 +48,38 @@ public class UsuariosController {
 			String[] usuariosbloqueados;
 			usuariosbloqueados=userblock.split(separador);
 			mav.addObject("usuario",usuario.bloquearUsuario(usuariosbloqueados));//Metodo que bloqueara al usuario
-			mav.addObject("mensaje", "usuario bloqueado con exito");
+			mav.addObject("mensajeblock", "usuario bloqueado con exito");
 			mav.setViewName("usuarios");
 		}
 		catch(ArrayIndexOutOfBoundsException e){//En caso de que solo haya un usuario a bloquear ejecuta el catch
 			mav.addObject("usuario",usuario.bloquearUsuario(userblock));//Metodo que bloqueara al usuario
-			mav.addObject("mensaje", "usuario bloqueado con exito");
+			mav.addObject("mensajeblock", "usuario bloqueado con exito");
 			mav.setViewName("usuarios");
-
+		}
+		mav.addObject("usuario",usuario.listarUsuarios());
+		return mav;
+	}
+	
+	/**
+	 * Metodo para desbloquear usuario
+	 * @param userdesblock
+	 * @return devuelve una lista de los usuarios completa hecho los cambios de desbloqueo
+	 */
+	@RequestMapping(value="usuarios",method=RequestMethod.POST)
+	public ModelAndView desBloquearUsuario(@RequestParam("desbloquear") String userdesblock){
+		ModelAndView mav=new ModelAndView();
+		try{//Aqui coge una lista de bloqueados y las convierte en un array y desbloquea los distintos usuarios
+			String separador=",";
+			String[] usuariosdesbloqueados;
+			usuariosdesbloqueados=userdesblock.split(separador);
+			mav.addObject("usuario",usuario.desbloquearUsuario(usuariosdesbloqueados));//Metodo que debloqueara al usuario
+			mav.addObject("mensajedesblock", "usuario desbloqueado con exito");
+			mav.setViewName("usuarios");
+		}
+		catch(ArrayIndexOutOfBoundsException e){//En caso de que solo haya un usuario a bloquear ejecuta el catch
+			mav.addObject("usuario",usuario.desBloquearUsuario(userdesblock));//Metodo que bloqueara al usuario
+			mav.addObject("mensajedesblock", "usuario desbloqueado con exito");
+			mav.setViewName("usuarios");
 		}
 		mav.addObject("usuario",usuario.listarUsuarios());
 		return mav;

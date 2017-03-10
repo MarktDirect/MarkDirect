@@ -11,15 +11,18 @@
 <script type="text/javascript" src="resources/script/usersform.js"></script>
 </head>
 <body>
-	<form role="form" action="usuario" method="post" class="form-group">
+	<form role="form" method="post" class="form-group">
 	<div class="header-contain">
 		<jsp:include page="navbar.jsp"></jsp:include>
 		<div class="jumbotron">
 			
 				<h2>Gestión de Usuarios</h2>
-				<input type=submit value="Bloquear Usuario" role="button"
-					class="btn btn-trigger" data-toggle="modal"
-					data-target="#modalBlock" /> <label class="label label-danger">${mensaje}</label>
+				<button type=submit value="BloquearUsuario" role="button"
+					class="btn btn-trigger" data-toggle="modal" formaction="usuario"
+					data-target="#modalBlock">Bloquear Usuario</button> <label class="label label-danger">${mensajeblock}</label>
+					<button type=submit value="DesbloquearUsuario" role="button" 
+					class="btn btn-trigger" data-toggle="modal" formaction="usuarios"
+					data-target="#modalBlock">Desbloquear Usuario</button> <label class="label label-danger">${mensajedesblock}</label>
 		</div>
 	</div>
 	<div class="usuarios-info table-responsive">
@@ -29,7 +32,8 @@
 				<th>Genero</th>
 				<th>Nacimiento</th>
 				<th>Bloqueado</th>
-				<th>Cambiar estado</th>
+				<th>Bloquear Usuarios</th>
+				<th>Desbloquear usuarios</th>
 			</tr>
 			<c:forEach items="${usuario}" var="Usuario">
 				<tr>
@@ -39,6 +43,8 @@
 					<td>${Usuario.userBlock}</td>
 					<td><input type="checkbox" name="bloquear"
 						value="${Usuario.userEmail}">Bloquear<br></td>
+					<td><input type="checkbox" name="desbloquear"
+						value="${Usuario.userEmail}">Desbloquar<br></td>
 				</tr>
 			</c:forEach>
 		</table>
