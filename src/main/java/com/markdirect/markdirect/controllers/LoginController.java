@@ -57,6 +57,8 @@ public class LoginController {
 		session.setAttribute("totalUsers", db.totalUsers());
 		session.setAttribute("averageAge", db.averageAge());
 		session.setAttribute("totalSentPromos", db.totalSentPromos());
+		session.setAttribute("totalGenericPromos", db.totalGenericSent());
+		session.setAttribute("totalLocationPromos", db.totalLocationSent());
 
 		return mav;
 	}

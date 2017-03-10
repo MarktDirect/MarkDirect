@@ -21,7 +21,9 @@
           <div id="user-registered" class="col-md-3 col-xs-6 container-userStatistics">
             <div class="user-data" align="center">
            		<p class="user-number"><c:out value="${sessionScope.totalUsers}"/></p>
-            	<p class="user-text"><i class="fa fa-users fa-2x" aria-hidden="true"></i> Usuarios</p>
+            	<p class="user-text"><i class="fa fa-users" aria-hidden="true"></i> Usuarios</p>
+            	<p class="user-number"><c:out value="${sessionScope.averageAge}"/></p>
+            	<p class="user-text"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Edad media</p>
             </div>
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-averageAge">
@@ -47,6 +49,12 @@
             <div class="promo-data" align="center">
            		<p class="promo-number"><c:out value="${sessionScope.totalSentPromos}"/></p>
             	<p class="promo-text"><i class="fa fa-tags fa-2x" aria-hidden="true"></i> Promociones enviadas</p>
+            	<p class="promo-text">
+            	<c:out value="${sessionScope.totalGenericPromos}"/>
+            	<i class="fa fa-tags" aria-hidden="true"></i> genéricas</p>
+            	<p class="promo-text">
+            	<c:out value="${sessionScope.totalLocationPromos}"/>
+            	<i class="fa fa-tags" aria-hidden="true"></i> de localización</p>
             </div>
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-averageAge">

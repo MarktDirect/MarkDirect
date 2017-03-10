@@ -230,7 +230,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			user = jdbc.queryForObject(sqlUser, new BeanPropertyRowMapper<Usuario>(Usuario.class),
 					new Object[] {token});
 		} catch(EmptyResultDataAccessException e) {
-			System.out.println("No hay ninguna promoción aplicable");
+			System.out.println("Error al seleccionar el género y edad del usuario");
 
 		}
 		//A continuación, podemos realizar la consulta para obtener las promociones
@@ -247,12 +247,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			for (Promocion promocion : listaPromociones) {
 				filas += jdbc.update(sqlSentPromo, new Object[]{promocion.getPromoId(), token});
 			}
-			if(filas == listaPromociones.size()) {
-				System.out.println("Se han insertado tantas filas como elementos hay en la lista de promociones enviadas");
-			}
-
 		}catch(Exception e) {
-			System.out.println("Error en la consulta de listar promociones genéricas filtradas");
+			System.out.println("Error en la consulta de listar promociones genéricas filtradas por que" + e);
 		}
 
 

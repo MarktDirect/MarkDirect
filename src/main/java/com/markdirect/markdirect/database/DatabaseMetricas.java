@@ -63,7 +63,24 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		int totalSentPromos = jdbc.queryForInt("SELECT COUNT(*) FROM sentpromos");
 		return totalSentPromos;
 	}
+	
+	/**
+	 * Método que devuelve el número de promociones genéricas enviadas
+	 * @return
+	 */
+	public int totalGenericSent() {
+		int totalGenericPromos = jdbc.queryForInt("SELECT COUNT(*) FROM sentpromos JOIN promos ON sentpromos.id_promo = promos.promoId WHERE promos.promo_controlzoneId = 0");
+		return totalGenericPromos;
+	}
 
+	/**
+	 * Método que devuelve el número de promociones genéricas enviadas
+	 * @return
+	 */
+	public int totalLocationSent() {
+		int totalLocationPromos = jdbc.queryForInt("SELECT COUNT(*) FROM sentpromos JOIN promos ON sentpromos.id_promo = promos.promoId WHERE promos.promo_controlzoneId > 0");
+		return totalLocationPromos;
+	}
 	
 	/**
 	 * Método que consulta la BBDD para devolver la edad media de los usuarios registrados
