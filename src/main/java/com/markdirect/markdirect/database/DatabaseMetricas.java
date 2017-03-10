@@ -326,8 +326,6 @@ public ArrayList<DatabaseData> promocionesPorGenero() {
 }		
 
 
-
-
 	
 
 }

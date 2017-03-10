@@ -73,5 +73,6 @@ public class MetricaController {
 		ArrayList<DatabaseData> promogenero = db.sentPromosByGender();
 		return promogenero;
 	}
+	
 
 }

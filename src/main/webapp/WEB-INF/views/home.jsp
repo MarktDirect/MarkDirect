@@ -41,7 +41,7 @@
         </div>
         </div>
 	</div>
-	<div align="center" class="home-header"><h4>Promociones</h4></div>
+	<div align="center" class="home-header" style="margin-top: 60px;"><h4>Promociones</h4></div>
 		<div class="section promo-statistics">
 	<div class="container">
         <div class="row" style="height: 220px">
@@ -59,7 +59,7 @@
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-averageAge">
           	<div class="promo-data" align="center">
-          		<p class="promo-text" style="font-size: 16px">Enviadas por género</p>
+          		<p class="promo-text" style="margin-top: 10px; font-size: 16px">Enviadas por género <i class="fa fa-male" aria-hidden="true"></i><i class="fa fa-female" aria-hidden="true"></i></p>
           		<div id="chartPromosByGender"></div>
           	</div>
           </div>
