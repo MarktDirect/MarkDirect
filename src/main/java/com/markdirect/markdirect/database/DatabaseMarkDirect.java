@@ -334,14 +334,9 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		int usuario = 0;
 		String SQL = "insert into users (userEmail,userGen,userAge,userPass, socialNetwork) values (?,?,?,?,?)";
 		try{
-		try {
 			usuario=jdbc.update(SQL,email,sex,age,password, socialNetwork);
 		} catch(EmptyResultDataAccessException e) {
 			System.out.println("Error al registrar usuario");
-		}
-		}catch (DuplicateKeyException e){
-			System.out.println("El email ya existe");
-			
 		}
 		return usuario;
 	}
@@ -444,20 +439,42 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return token;
 	}
 	
+	//Este metodo saca la id de usuario que contenga el email y password correctos
 	public int userLogin(String email, String password){
 		int usuario = 0;
 		String sql = "SELECT userId FROM users WHERE userEmail = ? AND userPass = ?";
 		usuario = jdbc.queryForInt(sql,email,password);
-		System.out.println(usuario);
-		System.out.println("aqui entro");
 		return usuario;
 	} 
 	
+	//Este metodo es para sacar el token segun la idusuario enviada por el login
 	public List<Map<String, Object>> sacarTokenUserLogin(int idusuario){
 		List<Map<String, Object>> tokenUser;
 		String sql="select token from usertoken where id_user= ?";
 		tokenUser=jdbc.queryForList(sql,idusuario);
-		System.out.println(tokenUser);
 		return tokenUser;
 	}
+	
+	public String socialNetwork(String email){
+		List<Map<String, Object>> netdevuelta=null;
+		String stringSocial="";
+		String redsocial="";
+		String sql="SELECT socialNetwork FROM users WHERE userEmail = ?";
+		netdevuelta=jdbc.queryForList(sql,email);
+		for (Map<String, Object> map : netdevuelta) {
+			stringSocial = map.toString();
+			System.out.println(stringSocial);
+			redsocial = stringSocial.substring(15, stringSocial.length()-1);
+			System.out.println(redsocial);
+		}
+	
+		return redsocial;
+	}
+	
+	public int comprobarEmail(String email){
+		int usuario = 0;
+		String sql = "SELECT userId FROM users WHERE userEmail = ?";
+		usuario = jdbc.queryForInt(sql,email);
+		return usuario;
+	} 
 }

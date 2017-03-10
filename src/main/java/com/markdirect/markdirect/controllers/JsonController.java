@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -77,8 +78,10 @@ public class JsonController {
 				){
 			List<Map<String, Object>> tokendevuelto = null;
 			db.idmaxUsuario();
+			List<Map<String, Object>> tokenuser=null;
 			String stringToken = "";
 			String sentToken = "";
+			try{
 			if(db.registrarUsuario(email,password,sex,age, socialNetwork) == 1) {
 				int idusermax=db.idmaxUsuario();
 				//si se ha registrado correctamente, generamos un token para el usuario
@@ -89,7 +92,22 @@ public class JsonController {
 					sentToken = stringToken.substring(7, stringToken.length()-1);
 				}
 			}
-			
+			}catch (DuplicateKeyException e){
+				System.out.println("El email ya existe");
+				if(db.socialNetwork(email).equals("FACEBOOK")){
+					int idusuario=0;
+					idusuario=db.comprobarEmail(email);
+					tokenuser=db.sacarTokenUserLogin(idusuario);
+					for(Map<String, Object> map : tokenuser){
+						 stringToken = map.toString();
+						sentToken = stringToken.substring(7,stringToken.length()-1);
+					}			
+				}else{
+					if(db.socialNetwork(email).equals("MANUAL")){
+						sentToken="";
+					}
+				}
+			}
 			return sentToken;
 		}
 
@@ -141,7 +159,7 @@ public class JsonController {
 		}
 		
 		//Metodo para loguear usuario
-		//El try and catch 
+		//El try and catch hace que devuelva un token vacio en caso de equivocarse con el email o el password
 		@RequestMapping(value="loginuser", method=RequestMethod.POST)
 		public @ResponseBody String loginUser(@RequestParam("email") String email, @RequestParam("password") String password){
 			List<Map<String, Object>> tokenuser= null;
