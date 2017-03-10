@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.IncorrectResultSetColumnCountException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -330,11 +332,16 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	//Metodo para registrar usuario en la base de datos
 	public int registrarUsuario(String email, String password, String sex, int age, String socialNetwork){
 		int usuario = 0;
-		String SQL = "insert into users (userEmail,userGen,userAge,userPass, socialNetwork) values (?,?,?,?,?)"; 
+		String SQL = "insert into users (userEmail,userGen,userAge,userPass, socialNetwork) values (?,?,?,?,?)";
+		try{
 		try {
 			usuario=jdbc.update(SQL,email,sex,age,password, socialNetwork);
 		} catch(EmptyResultDataAccessException e) {
 			System.out.println("Error al registrar usuario");
+		}
+		}catch (DuplicateKeyException e){
+			System.out.println("El email ya existe");
+			
 		}
 		return usuario;
 	}
@@ -439,8 +446,18 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	
 	public int userLogin(String email, String password){
 		int usuario = 0;
-		String sql = "SELECT * FROM users WHERE email = ? AND pass = ?";
-		usuario = jdbc.queryForInt(sql, new Object[]{email, password});
+		String sql = "SELECT userId FROM users WHERE userEmail = ? AND userPass = ?";
+		usuario = jdbc.queryForInt(sql,email,password);
+		System.out.println(usuario);
+		System.out.println("aqui entro");
 		return usuario;
 	} 
+	
+	public List<Map<String, Object>> sacarTokenUserLogin(int idusuario){
+		List<Map<String, Object>> tokenUser;
+		String sql="select token from usertoken where id_user= ?";
+		tokenUser=jdbc.queryForList(sql,idusuario);
+		System.out.println(tokenUser);
+		return tokenUser;
+	}
 }
