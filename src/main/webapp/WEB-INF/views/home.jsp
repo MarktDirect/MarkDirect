@@ -43,15 +43,16 @@
 		<div class="section promo-statistics">
 	<div class="container">
         <div class="row" style="height: 220px">
-          <div id="user-registered" class="col-md-3 col-xs-6 container-userStatistics">
+          <div id="promo-totalSent" class="col-md-3 col-xs-6 container-promoStatistics">
             <div class="promo-data" align="center">
-           		<p class="promo-number"><c:out value="1234${sessionScope.totalPromos}"/></p>
+           		<p class="promo-number"><c:out value="${sessionScope.totalSentPromos}"/></p>
             	<p class="promo-text"><i class="fa fa-tags fa-2x" aria-hidden="true"></i> Promociones enviadas</p>
             </div>
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-averageAge">
           	<div class="promo-data" align="center">
-          		
+          		<p class="promo-text" style="font-size: 16px">Enviadas por género</p>
+          		<div id="chartPromosByGender"></div>
           	</div>
           </div>
           <div class="col-md-6 col-xs-12 container-userStatistics" id="user-byGender">

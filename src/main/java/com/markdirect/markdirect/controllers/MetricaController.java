@@ -42,10 +42,6 @@ public class MetricaController {
 	}
 	
 	
-	
-
-	
-	
 	@RequestMapping(value="marcaporgenerom", method=RequestMethod.GET)
 	public @ResponseBody ArrayList<DatabaseData> marcaPorGeneroM() {
 		ArrayList<DatabaseData> marcaM = db.marcaGeneroM();
@@ -72,13 +68,11 @@ public class MetricaController {
 		return nivel1Men;
 	}
 
+	
+	@RequestMapping(value="sentPromosByGender",  method=RequestMethod.GET)
+	public @ResponseBody ArrayList<DatabaseData> sentPromosByGender(){
+		ArrayList<DatabaseData> promogenero = db.sentPromosByGender();
 
-	
-	
-	@RequestMapping(value="promogenero",  method=RequestMethod.GET)
-	public @ResponseBody ArrayList<DatabaseData> promoGenero(){
-		ArrayList<DatabaseData> promogenero=db.promocionesPorGenero();
-		System.out.println(promogenero);
 		return promogenero;
 	}
 	
