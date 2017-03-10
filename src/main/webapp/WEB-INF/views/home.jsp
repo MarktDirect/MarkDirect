@@ -21,7 +21,9 @@
           <div id="user-registered" class="col-md-3 col-xs-6 container-userStatistics">
             <div class="user-data" align="center">
            		<p class="user-number"><c:out value="${sessionScope.totalUsers}"/></p>
-            	<p class="user-text"><i class="fa fa-users fa-2x" aria-hidden="true"></i> Usuarios</p>
+            	<p class="user-text"><i class="fa fa-users" aria-hidden="true"></i> Usuarios</p>
+            	<p class="user-number"><c:out value="${sessionScope.averageAge}"/></p>
+            	<p class="user-text"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Edad media</p>
             </div>
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-averageAge">
@@ -43,15 +45,22 @@
 		<div class="section promo-statistics">
 	<div class="container">
         <div class="row" style="height: 220px">
-          <div id="user-registered" class="col-md-3 col-xs-6 container-userStatistics">
+          <div id="promo-totalSent" class="col-md-3 col-xs-6 container-promoStatistics">
             <div class="promo-data" align="center">
-           		<p class="promo-number"><c:out value="1234${sessionScope.totalPromos}"/></p>
+           		<p class="promo-number"><c:out value="${sessionScope.totalSentPromos}"/></p>
             	<p class="promo-text"><i class="fa fa-tags fa-2x" aria-hidden="true"></i> Promociones enviadas</p>
+            	<p class="promo-text">
+            	<c:out value="${sessionScope.totalGenericPromos}"/>
+            	<i class="fa fa-tags" aria-hidden="true"></i> genéricas</p>
+            	<p class="promo-text">
+            	<c:out value="${sessionScope.totalLocationPromos}"/>
+            	<i class="fa fa-tags" aria-hidden="true"></i> de localización</p>
             </div>
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-averageAge">
           	<div class="promo-data" align="center">
-          		
+          		<p class="promo-text" style="font-size: 16px">Enviadas por género</p>
+          		<div id="chartPromosByGender"></div>
           	</div>
           </div>
           <div class="col-md-6 col-xs-12 container-userStatistics" id="user-byGender">
@@ -66,6 +75,7 @@
 	<div class="container">
 		<div class="row home-header" align="center">
 			<div class="col-md-6"><h4>Productos por género</h4></div>
+			<div class="col-md-6"><h4>Marcas por género</h4></div>
 		</div>
         <div class="row" id="promo-statistics" style="height: 220px">
           <div class="col-md-3 col-xs-6 container-promoStatistics">
@@ -81,10 +91,16 @@
           	</div>
           </div>
           <div class="col-md-3 col-xs-6 container-promoStatistics">
-          	<div class="promo-data"></div>
+          	<div class="promo-data" align="center">
+          		<p class="promo-text" style="margin-top: 10px; font-size: 16px;">Mujeres <i class="fa fa-female" aria-hidden="true"></i></p>
+          		<div id="chartbrandW"></div>
+          	</div>
           </div>
           <div class="col-md-3 col-xs-6 container-promoStatistics">
-          	<div class="promo-data"></div>
+          	<div class="promo-data" align="center">
+          		<p class="promo-text" style="margin-top: 10px; font-size: 16px;">Hombres <i class="fa fa-male" aria-hidden="true"></i></p>
+          		<div id="chartbrandM"></div>
+          	</div>
           </div>
         </div>
         </div>

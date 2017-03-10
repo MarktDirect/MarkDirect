@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.4.10
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 09-03-2017 a las 14:06:08
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 5.6.24
+-- Servidor: localhost:3306
+-- Tiempo de generación: 10-03-2017 a las 10:42:21
+-- Versión del servidor: 5.5.42
+-- Versión de PHP: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,12 +17,14 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `markdirect`
+-- Base de datos: `MarkDirect`
 --
+
 DROP DATABASE IF EXISTS MarkDirect;
 CREATE DATABASE IF NOT EXISTS MarkDirect;
 
 USE MarkDirect;
+
 
 -- --------------------------------------------------------
 
@@ -35,7 +37,7 @@ CREATE TABLE `admins` (
   `admin` varchar(45) NOT NULL,
   `adminPassword` varchar(45) NOT NULL,
   `adminEmail` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `admins`
@@ -75,7 +77,7 @@ CREATE TABLE `controlzones` (
   `controlzoneId` int(11) NOT NULL,
   `controlzoneMajor` varchar(45) DEFAULT NULL,
   `controlzoneMinor` varchar(45) DEFAULT NULL,
-  `controlzoneEmplacement` varchar(45) DEFAULT NULL,
+  `controlzoneEmplacement` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `controlzone_centerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -84,10 +86,14 @@ CREATE TABLE `controlzones` (
 --
 
 INSERT INTO `controlzones` (`controlzoneId`, `controlzoneMajor`, `controlzoneMinor`, `controlzoneEmplacement`, `controlzone_centerId`) VALUES
-(0, '0', '0', 'Promoci??n Gen?®rica', 1),
-(1, '4', '3456', 'Zona 1', 1),
-(2, '4', '3459', 'Zona 2', 1),
-(3, '4', '1234', 'Zona 3', 1);
+(0, '0', '0', 'Promoción Genérica', 1),
+(1, '4', '34696', 'Zona 1', 1),
+(2, '4', '35484', 'Zona 2', 1),
+(3, '4', '35245', 'Zona 3', 1),
+(4, '4', '34711', 'Zona 4', 1),
+(5, '4', '35274', 'Zona 5', 1),
+(6, '4', '34911', 'Zona 6', 1),
+(7, '4', '34782', 'Zona 7', 1);
 
 -- --------------------------------------------------------
 
@@ -2309,7 +2315,7 @@ CREATE TABLE `promos` (
   `promo_catNivel1` int(4) DEFAULT NULL,
   `promo_catNivel2` int(4) DEFAULT NULL,
   `promo_idProduct` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `promos`
@@ -2328,7 +2334,15 @@ INSERT INTO `promos` (`promoId`, `promoName`, `promoDescription`, `promoSince`, 
 (10, 'Plancha pelo Babyliss GPB004E, mini, 1 v', '20% descuento en planchas para el pelo', '2017-03-02', '2017-03-11', 1, '2017-03-09 04:19:15', 'http://trucoscaserosparaelpelo.com/wp-content/uploads/2013/08/plancha-para-el-cabello.jpg', 19, 45, 'Todos', 2, 2, 2, 3030050034974),
 (11, 'Afeitadora Braun 320SERIE3 WINDOW BOX, s', '20% descuento en afeitadora', '2017-03-06', '2017-03-17', 1, '2017-03-09 19:37:25', 'https://d243u7pon29hni.cloudfront.net/images/products/Afeitadora_Braun_Serie-3_3040s_Principal__l.png', 18, 40, 'Todos', 1, 2, 2, 4210201037996),
 (14, 'Barbero Braun BT5090 Cortapelos', '20% descuento cortapelo Braun', '2017-03-09', '2017-03-22', 1, '2017-03-09 17:20:44', 'https://d243u7pon29hni.cloudfront.net/images/products/Cortapelos_Braun_Cruzer5Head_front8_l.jpg', 18, 40, 'H', 3, 2, 2, 4210201170013),
-(17, 'Soporte LG TV OLED pared OTW420B', '20% de descuento en soportes de televisores', '2017-03-09', '2017-04-13', 1, '2017-03-09 14:35:11', 'https://d243u7pon29hni.cloudfront.net/images/soporte-tv-oled-lg-otw420b-de-55-a-65-pulgadas-giratorio-1340700_l.png', 29, 49, 'H', 0, 1, 1, 8806087758894);
+(17, 'Soporte LG TV OLED pared OTW420B', '20% de descuento en soportes de televisores', '2017-03-09', '2017-04-13', 1, '2017-03-09 14:35:11', 'https://d243u7pon29hni.cloudfront.net/images/soporte-tv-oled-lg-otw420b-de-55-a-65-pulgadas-giratorio-1340700_l.png', 29, 49, 'H', 0, 1, 1, 8806087758894),
+(18, 'Oferta en aspiradores UFESA', '10% de descuento en aspiradores de la marca UFESA, no te quedes sin el tuyo!', '2017-03-01', '2017-06-16', 1, '2017-03-10 13:00:00', 'http://www.es.all.biz/img/es/catalog/4000.jpeg', 18, 65, 'Todos', 0, 3, 2, 8412897677814),
+(19, 'Cámaras Sony en oferta!', 'Aprovecha 5 euros de descuento en todas las cámaras Sony', '2017-01-02', '2017-09-15', 1, '2017-01-02 08:11:00', 'https://sonyglobal.scene7.com/is/image/gwtprod/a5084836740f62aea5e507d5e7bb4832?fmt=pjpeg&wid=330&hei=330&bgcolor=F1F5F9&bgc=F1F5F9', 24, 43, 'Todos', 4, 9, 1, 4905524755787),
+(20, 'Sets masculinos Orbegoz', '15% de descuento en los kits de afeitado', '2016-11-01', '2017-03-15', 1, '2016-08-01 00:00:00', 'https://www.centrocoste.es/49414-large_default/set-de-viaje-masculino-orbegozo-set-6100.jpg', 23, 55, 'H', 2, 2, 2, 8436044530449),
+(21, 'Planchas de pelo Braun', '10 euros de descuento si compras más de una', '2017-03-01', '2017-03-31', 1, '2017-02-01 00:00:00', 'http://cdn.ares.pgsitecore.com/es-es/-/media/Braun_ES/Images/Callouts/Desktop/Brand%20Exp%20Promos/BE%20Topic%20PS%20HCA/SH7%20IONTEC%20Straightener/braun-satin-hair-7-iontec-straightener-product.jpg?h=495&la=es-ES&w=940&v=1-201512041937', 18, 36, 'M', 5, 2, 2, 4210201138839),
+(22, 'Frigoríficos BEKO', '13% de descuento en frigoríficos', '2017-02-01', '2017-03-30', 1, '2017-01-10 00:00:00', 'http://csimg.mercamania.es/srv/ES/29061548cn151920dx/T/340x340/C/FFFFFF/url/frigorifico-beko-cn151920dx.jpg', 30, 45, 'Todos', 3, 6, 3, 8690842356421),
+(23, 'Superoferta en Lavadoras FAGOR', 'Aprovecha el 10% de descuento en lavadoras FAGOR', '2017-01-01', '2017-03-15', 1, '2016-10-05 00:00:00', 'https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA02/CONTENIDOS/201509/15/00104710373186____1__640x640.jpg', 23, 45, 'Todos', 3, 5, 3, 8435436101380),
+(24, 'Microondas Orbegoz', '15% de descuento', '2016-11-01', '2017-03-31', 1, '2016-11-01 00:00:00', 'https://d243u7pon29hni.cloudfront.net/images/products/mig_2031_0_m.jpg', 19, 57, 'Todos', 4, 11, 3, 8436044532139),
+(25, 'Disfruta de la música!', '12% de descuento en radios', '2017-03-02', '2017-03-31', 1, '2016-11-01 00:00:00', 'https://d243u7pon29hni.cloudfront.net/images/products/Radio_Grundig_TR_1200_retro_Rojo_l.jpg', 19, 35, 'Todos', 0, 4, 1, 4013833624004);
 
 -- --------------------------------------------------------
 
@@ -2340,7 +2354,7 @@ CREATE TABLE `sentpromos` (
   `id` int(4) NOT NULL,
   `id_promo` int(11) NOT NULL,
   `user_token` varchar(255) COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `sentpromos`
@@ -2351,7 +2365,13 @@ INSERT INTO `sentpromos` (`id`, `id_promo`, `user_token`) VALUES
 (2, 7, 'ABC123DEF456'),
 (3, 5, 'HEUDJ234'),
 (4, 5, 'LSDFHHJ2'),
-(5, 3, 'LSDFHHJ2');
+(5, 3, 'LSDFHHJ2'),
+(6, 1, '37e46973-710c-4bb7-93be-c30386d52cc6'),
+(7, 3, '37e46973-710c-4bb7-93be-c30386d52cc6'),
+(8, 4, '37e46973-710c-4bb7-93be-c30386d52cc6'),
+(9, 7, '37e46973-710c-4bb7-93be-c30386d52cc6'),
+(10, 9, '37e46973-710c-4bb7-93be-c30386d52cc6'),
+(11, 11, '37e46973-710c-4bb7-93be-c30386d52cc6');
 
 -- --------------------------------------------------------
 
@@ -2367,7 +2387,7 @@ CREATE TABLE `users` (
   `userBlock` int(4) DEFAULT '0',
   `userPass` varchar(50) DEFAULT NULL,
   `socialNetwork` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
@@ -2491,7 +2511,7 @@ CREATE TABLE `usertoken` (
   `id` int(4) NOT NULL,
   `id_user` int(4) NOT NULL,
   `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usertoken`
@@ -2591,27 +2611,27 @@ ALTER TABLE `usertoken`
 -- AUTO_INCREMENT de la tabla `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `promos`
 --
 ALTER TABLE `promos`
-  MODIFY `promoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `promoId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `sentpromos`
 --
 ALTER TABLE `sentpromos`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=107;
 --
 -- AUTO_INCREMENT de la tabla `usertoken`
 --
 ALTER TABLE `usertoken`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- Restricciones para tablas volcadas
 --

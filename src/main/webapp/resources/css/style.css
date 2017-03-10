@@ -134,11 +134,11 @@ div.big-user-data, div.big-promo-data {
 
 .user-text, .promo-text {
 	font-family: 'Bree Serif';
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .user-number, .promo-number {
-	font-size: 64px;
+	font-size: 44px;
 	font-family: 'Yanone Kaffeesatz';
 	
 }

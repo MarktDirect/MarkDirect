@@ -175,10 +175,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		//necesito instanciar un objeto de la clase promo para poder llamar al método activePromo()
 		//no afecta a nada más
 		Promocion promo = new Promocion(promoName, promoDescription, promoSince, promoTo, promoImage, promoMinAge, promoMaxAge, promoGen, promo_controlzoneId, promo_catNivel1, promo_catNivel2, promo_idProduct);
-		
+
 		String sql = "INSERT INTO promos (promoName, promoDescription, promoSince, promoTo, promoCreate, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen, promoState, promo_catNivel1, promo_catNivel2, promo_idProduct) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int filasAfectadas = jdbc.update(sql, new Object[] {promoName, promoDescription, promoSince, promoTo, Promocion.dateTimePromo(), promoImage, promo_controlzoneId, promoMinAge, promoMaxAge, promoGen, promo.activePromo(), promo_catNivel1, promo_catNivel2, promo_idProduct});
-		
+
 
 		return filasAfectadas;
 	}
@@ -205,12 +205,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			int promo_controlzoneId, int promoMinAge, int promoMaxAge, String promoGen, int promo_catNivel1, int promo_catNivel2, long promo_idProduct) {
 		System.out.println("Estoy en el método editPromos");	
 		String sql= "UPDATE `promos` SET `promoName`= ?,`promoDescription`= ?,`promoSince`= ?,"
-						+ "`promoTo`= ?,`promoImage`= ?,`promoMinAge`= ?,"
-						+ "`promoMaxAge`= ?,`promoGen`= ?,`promo_controlzoneId`= ?,`promo_catNivel1`= ?,"
-						+ "`promo_catNivel2`= ?,`promo_idProduct`= ? WHERE promoId = ?";
-			int filasAfectadas = jdbc.update(sql, new Object[]{promoName, promoDescription, promoSince, promoTo, promoImage, promoMinAge, promoMaxAge,
-													promoGen, promo_controlzoneId, promo_catNivel1, promo_catNivel2, promo_idProduct, promoId});
-			System.out.println("He realizado la consulta " + filasAfectadas);
+				+ "`promoTo`= ?,`promoImage`= ?,`promoMinAge`= ?,"
+				+ "`promoMaxAge`= ?,`promoGen`= ?,`promo_controlzoneId`= ?,`promo_catNivel1`= ?,"
+				+ "`promo_catNivel2`= ?,`promo_idProduct`= ? WHERE promoId = ?";
+		int filasAfectadas = jdbc.update(sql, new Object[]{promoName, promoDescription, promoSince, promoTo, promoImage, promoMinAge, promoMaxAge,
+				promoGen, promo_controlzoneId, promo_catNivel1, promo_catNivel2, promo_idProduct, promoId});
+		System.out.println("He realizado la consulta " + filasAfectadas);
 		return filasAfectadas;
 	}
 
@@ -228,10 +228,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		String sqlUser = "SELECT userGen, userAge FROM users WHERE userId = (SELECT id_user FROM usertoken WHERE token = ?)";
 		try {
 			user = jdbc.queryForObject(sqlUser, new BeanPropertyRowMapper<Usuario>(Usuario.class),
-				new Object[] {token});
+					new Object[] {token});
 		} catch(EmptyResultDataAccessException e) {
-			System.out.println("No hay ninguna promoción aplicable");
-		
+			System.out.println("Error al seleccionar el género y edad del usuario");
+
 		}
 		//A continuación, podemos realizar la consulta para obtener las promociones
 		String sql = "SELECT * FROM promos WHERE promo_controlzoneId = 0 AND (promoGen = ? OR promoGen = 'Todos') AND promoMinAge < ? AND promoMaxAge > ? AND promoState = 1";
@@ -240,12 +240,18 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 					sql, 
 					new BeanPropertyRowMapper<Promocion>(Promocion.class), new Object[]{user.getUserGen(), user.getUserAge(), user.getUserAge()}
 					);	
-			
+
+			//Ahora vamos a contabilizar las promociones que se han enviado
+			String sqlSentPromo = "INSERT INTO sentpromos (id_promo, user_token) VALUES (?, ?)";
+			int filas = 0;
+			for (Promocion promocion : listaPromociones) {
+				filas += jdbc.update(sqlSentPromo, new Object[]{promocion.getPromoId(), token});
+			}
 		}catch(Exception e) {
-			System.out.println("Error en la consulta de listar promociones genéricas filtradas");
+			System.out.println("Error en la consulta de listar promociones genéricas filtradas por que" + e);
 		}
-		
-		
+
+
 		return listaPromociones;
 	}
 
@@ -280,12 +286,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 				//la promoción enviada y el usuario que la ha recibido - nos servirá para plantear métricas
 				String sqlCounter = "INSERT INTO sentpromos (id_promo, user_token) VALUES (?,?)";
 				int filasAfectadas = jdbc.update(sqlCounter, new Object[]{promocion.getPromoId(), token});
-				if(filasAfectadas == 1) {
-					System.out.println("Insert realizado con éxito");
-				} else {
-					System.out.println("Error en el contador");
+				if(filasAfectadas == locationPromos.size()) {
+					System.out.println("Se han insertado tantas filas como elementos hay en la lista de promociones enviadas");
 				}
-				}
+			}
 		}catch(Exception e) {
 			System.out.println("Error en la consulta de listar promociones de localización");
 		}
@@ -299,15 +303,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		List<Usuario> listausuario=usuario.listarUsuarios();
 		for(int j=0;j<usuariosbloqueados.length;j++){//Se hacen dos for para poder comprobar un array con la lista de usuarios
-		for(int i=0;i<listausuario.size();i++){
-			if(usuariosbloqueados[j].equals(listausuario.get(i).getUserEmail())){
-				String sql="UPDATE users SET userBlock='1' WHERE userEmail='"+usuariosbloqueados[j]+"'";
-				jdbc.update(sql);
-			
+			for(int i=0;i<listausuario.size();i++){
+				if(usuariosbloqueados[j].equals(listausuario.get(i).getUserEmail())){
+					String sql="UPDATE users SET userBlock='1' WHERE userEmail='"+usuariosbloqueados[j]+"'";
+					jdbc.update(sql);
+
+				}
 			}
 		}
-		}
-		
+
 		return  listausuario;
 
 	}
@@ -320,15 +324,15 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		for(int i=0;i<listausuario.size();i++){
 			if(userblock.equals(listausuario.get(i).getUserEmail())){
 				System.out.println("usuario bloqueado "+ listausuario.get(i).getUserEmail());
-				 String sql="UPDATE users SET userBlock='1' WHERE userEmail='"+userblock+"'";
-				 jdbc.update(sql);
-				 usuario.listarUsuarios();		
+				String sql="UPDATE users SET userBlock='1' WHERE userEmail='"+userblock+"'";
+				jdbc.update(sql);
+				usuario.listarUsuarios();		
 			}
 		}
 
 		return  listausuario;
 	}
-	
+
 	//Metodo para registrar usuario en la base de datos
 	public int registrarUsuario(String email, String password, String sex, int age, String socialNetwork){
 		int usuario = 0;
@@ -340,7 +344,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		}
 		return usuario;
 	}
-	
+
 	//Con este metodo saco la idmax del usuario que haya en la base de datos
 	//Con ello me aseguro de colocarle el token a la id correcta
 	public int idmaxUsuario(){
@@ -349,7 +353,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		idmax=jdbc.queryForInt(sql);
 		return idmax;
 	}
-	
+
 	//Metodo que inserta un token al ultimo usuario registrado
 	public List<Map<String, Object>> insertarToken(int idusermax, String token){
 		List<Map<String, Object>> tokeninsertado = null;
@@ -361,7 +365,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			tokeninsertado=db.sacarToken(idusermax);
 		}
 		return tokeninsertado;
-		
+
 	}
 
 	/**
@@ -371,13 +375,13 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	public List<CategoriaNivel2> listarCategoriasNivel2() {
 		String sql = "SELECT * FROM level2categories";
 		List<CategoriaNivel2> listaCatNiv2 = null;
-		
+
 		try{
 			listaCatNiv2 = jdbc.query(sql, new BeanPropertyRowMapper<CategoriaNivel2>(CategoriaNivel2.class));
 		} catch(Exception e){
 			System.out.println("Error en la consulta " + e);
 		}
-		
+
 		return listaCatNiv2;
 	}
 
@@ -388,13 +392,13 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	public List<CategoriaNivel1> listarCategoriasNivel1() {
 		String sql = "SELECT * FROM level1categories";
 		List<CategoriaNivel1> listaCatNiv1 = null;
-		
+
 		try{
 			listaCatNiv1 = jdbc.query(sql, new BeanPropertyRowMapper<CategoriaNivel1>(CategoriaNivel1.class));
 		} catch(Exception e){
 			System.out.println("Error en la consulta " + e);
 		}
-		
+
 		return listaCatNiv1;
 	}
 
@@ -405,21 +409,21 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	public List<Producto> listarProductos() {
 		String sql = "SELECT * FROM products";
 		List<Producto> listaProductos = null;
-		
+
 		try{
 			listaProductos = jdbc.query(sql, new BeanPropertyRowMapper<Producto>(Producto.class));
 		} catch(Exception e){
 			System.out.println("Error en la consulta " + e);
 		}
-		
+
 		return listaProductos;
 	}
-	
+
 	//Metodo que devuelve una lista de los productos reducidos
 	public List<ProductoReducido> listarProductosReducidos() {
 		String sql = "SELECT id, productName, id_level2Category, id_level1Category FROM products";
 		List<ProductoReducido> listaProductosReducidos = null;
-		
+
 		try{
 			listaProductosReducidos = jdbc.query(sql, new BeanPropertyRowMapper<ProductoReducido>(ProductoReducido.class));
 		} catch(Exception e){
@@ -428,7 +432,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaProductosReducidos;
 	}
 
-	
+
 	//Metodo para sacar una lista del token del ultimo usuario registrado
 	//y lo devuelve en una lista
 	public List<Map<String, Object>> sacarToken(int idusermax){
@@ -438,8 +442,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		System.out.println(token);
 		return token;
 	}
+<<<<<<< HEAD
 	
 	//Este metodo saca la id de usuario que contenga el email y password correctos
+=======
+
+>>>>>>> 751f12b334c334adc5b845ab492925e91e98fdf1
 	public int userLogin(String email, String password){
 		int usuario = 0;
 		String sql = "SELECT userId FROM users WHERE userEmail = ? AND userPass = ?";

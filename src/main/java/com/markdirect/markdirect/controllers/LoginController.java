@@ -52,12 +52,13 @@ public class LoginController {
 			mav.addObject("mensajeerror", "Usuario y/o password incorrectos");
 			mav.setViewName ("login");
 		}  
-		
+		//Atributos añadidos a la sesión para cargar datos de estadísticas
 		session.setAttribute("usuario",administrador);
 		session.setAttribute("totalUsers", db.totalUsers());
 		session.setAttribute("averageAge", db.averageAge());
-		System.out.println("Se ha añadido a la session " + db.totalUsers());
-		System.out.println("Se ha añadido a la session " + db.averageAge());
+		session.setAttribute("totalSentPromos", db.totalSentPromos());
+		session.setAttribute("totalGenericPromos", db.totalGenericSent());
+		session.setAttribute("totalLocationPromos", db.totalLocationSent());
 
 		return mav;
 	}

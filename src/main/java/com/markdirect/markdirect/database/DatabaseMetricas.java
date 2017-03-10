@@ -56,12 +56,38 @@ public class DatabaseMetricas extends DatabaseGenerica {
 	}
 
 	/**
+	 * Método que consulta la BBDD para obtener el número total de usuarios
+	 * @return int - número total de usuarios
+	 */
+	public int totalSentPromos() {
+		int totalSentPromos = jdbc.queryForInt("SELECT COUNT(*) FROM sentpromos");
+		return totalSentPromos;
+	}
+	
+	/**
+	 * Método que devuelve el número de promociones genéricas enviadas
+	 * @return
+	 */
+	public int totalGenericSent() {
+		int totalGenericPromos = jdbc.queryForInt("SELECT COUNT(*) FROM sentpromos JOIN promos ON sentpromos.id_promo = promos.promoId WHERE promos.promo_controlzoneId = 0");
+		return totalGenericPromos;
+	}
+
+	/**
+	 * Método que devuelve el número de promociones genéricas enviadas
+	 * @return
+	 */
+	public int totalLocationSent() {
+		int totalLocationPromos = jdbc.queryForInt("SELECT COUNT(*) FROM sentpromos JOIN promos ON sentpromos.id_promo = promos.promoId WHERE promos.promo_controlzoneId > 0");
+		return totalLocationPromos;
+	}
+	
+	/**
 	 * Método que consulta la BBDD para devolver la edad media de los usuarios registrados
 	 * @return double - edad
 	 */
 	public double averageAge() {
 		double averageAge = jdbc.queryForInt("SELECT AVG(userAge) FROM users");
-		System.out.println("La edad media es: " + averageAge);
 		return averageAge;
 	}
 
@@ -93,14 +119,8 @@ public class DatabaseMetricas extends DatabaseGenerica {
 
 
 
-		//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a mujeres
-
-		
 		//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a mujeres
 
-
-
-		//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a mujeres
 
 		return  listaProductsM;
 
@@ -129,15 +149,7 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		//Casteamos el List para que sea un ArrayList<Databasedata>
 		ArrayList<DatabaseData> listaProductsH = new ArrayList<DatabaseData>();		
 		listaProductsH =(ArrayList<DatabaseData>) listaProducts;
-
-
-
-		//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a hombres
-
-		
 		//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a hombres
-
-
 		return  listaProductsH;
 
 	}	
@@ -226,17 +238,8 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		}
 		return data;
 	}
-
-
-
 	
-	
-	
-	
-	
-
-	
-public ArrayList<DatabaseData> marcaGeneroH(){		
+public ArrayList<DatabaseData> brandMen(){		
 		
 		//Creamos sentencia sql para hombres
 		String sql="SELECT products.productBrand AS 'Marca', "
@@ -253,12 +256,11 @@ public ArrayList<DatabaseData> marcaGeneroH(){
 		listaProductosmarcaH =(ArrayList<DatabaseData>) listaMarcasH;
 		
 		//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a hombres
-		System.out.println(listaMarcasH);
 		return  listaProductosmarcaH;
 					
 	}	
 
-public ArrayList<DatabaseData> marcaGeneroM(){		
+public ArrayList<DatabaseData> brandWomen(){		
 	
 	//Creamos sentencia sql para hombres
 	String sql="SELECT products.productBrand AS 'Marca', "
@@ -273,25 +275,35 @@ public ArrayList<DatabaseData> marcaGeneroM(){
 	//Casteamos el List para que sea un ArrayList<Databasedata>
 	ArrayList<DatabaseData> listaProductosmarcaM = new ArrayList<DatabaseData>();		
 	listaProductosmarcaM =(ArrayList<DatabaseData>) listaMarcasM;
-	System.out.println(listaMarcasM);
 	//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a hombres
 	return  listaProductosmarcaM;
 				
 }	
 
+public ArrayList<DatabaseData> sentPromosByGender() {
 
+	ArrayList<DatabaseData> totalPromosByGender = new ArrayList<DatabaseData>();
 
+	//Sentencia sql que no servirá tanto para hombres como para mujeres
+	String sqlM = "SELECT COUNT(sentpromos.id_promo) AS 'Veces' FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'M'";
+	int promocionesM = jdbc.queryForInt(sqlM);
+	DatabaseData women = new DatabaseData("Mujeres", promocionesM);
+	String sqlH = "SELECT COUNT(sentpromos.id_promo) AS 'Veces' FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'H'";
+	int promocionesH = jdbc.queryForInt(sqlH);
+	DatabaseData men = new DatabaseData("Hombres", promocionesH);
+	//Añadimos al arrayList los dos objetos
+	totalPromosByGender.add(women);
+	totalPromosByGender.add(men);
 
-
-
-
+	return totalPromosByGender;
+}		
 
 public ArrayList<DatabaseData> promocionesPorGenero() {
 
 	ArrayList<DatabaseData> promocionesgenero = new ArrayList<DatabaseData>();
 
 	//Sentencia sql que no servirá tanto para hombres como para mujeres
-	String sqlM = "SELECT sentpromos.id_promo AS 'Promo ID', "
+	String sqlM = "SELECT sentpromos.id_promo AS 'Promo', "
 			+ "COUNT(sentpromos.id_promo) AS 'Veces' "
 			+ "FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token "
 			+ "JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'M' GROUP BY id_promo";
