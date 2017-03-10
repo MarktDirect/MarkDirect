@@ -324,8 +324,39 @@ public ArrayList<DatabaseData> promocionesPorGenero() {
 
 	return promocionesgenero;
 }		
-
-
+/**
+ * Método que consulta la BBDD y devuelve un ArrayList con los datos de la promoción más
+ * enviada por rango de edad y por categoría de nivel1
+ * @return ArrayList<DatabaseData> 
+ */
+public ArrayList<DatabaseData> level1ByAge() {
+	ArrayList<DatabaseData> level1ByAge = new ArrayList<DatabaseData>();
+	String sql = "SELECT level1categories.category AS dataName,  SUM(IF (userAge BETWEEN ? AND ?, 1, 0)) AS dataValue "
+			+ "FROM users  JOIN usertoken ON usertoken.id_user = users.userId  "
+			+ "JOIN sentpromos ON usertoken.token = sentpromos.user_token "
+			+ "JOIN promos ON sentpromos.id_promo = promos.promoId "
+			+ "JOIN level1categories ON promos.promo_catNivel1 = level1categories.id "
+			+ "GROUP BY level1categories.category "
+			+ "ORDER BY dataValue DESC LIMIT 1";
+	//RANGO 18-25
+	DatabaseData db1825 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{18,25}); 
+	//RANGO 26-35
+	DatabaseData db2635 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{26,35}); 
+	//RANGO 36-45
+	DatabaseData db3645 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{36,45}); 
+	//RANGO 46-55
+	DatabaseData db4655 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{46,55}); 
+	//RANGO +55
+	DatabaseData dbM55 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{55,99}); 
+	//Los añadimos al arrayList
+	level1ByAge.add(db1825);
+	level1ByAge.add(db2635);
+	level1ByAge.add(db3645);
+	level1ByAge.add(db4655);
+	level1ByAge.add(dbM55);
+	
+	return level1ByAge;
+}
 	
 
 }
