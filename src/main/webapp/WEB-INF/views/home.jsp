@@ -67,6 +67,7 @@
 	<div class="container">
 		<div class="row home-header" align="center">
 			<div class="col-md-6"><h4>Productos por género</h4></div>
+			<div class="col-md-6"><h4>Marcas por género</h4></div>
 		</div>
         <div class="row" id="promo-statistics" style="height: 220px">
           <div class="col-md-3 col-xs-6 container-promoStatistics">
@@ -82,10 +83,16 @@
           	</div>
           </div>
           <div class="col-md-3 col-xs-6 container-promoStatistics">
-          	<div class="promo-data"></div>
+          	<div class="promo-data" align="center">
+          		<p class="promo-text" style="margin-top: 10px; font-size: 16px;">Mujeres <i class="fa fa-female" aria-hidden="true"></i></p>
+          		<div id="chartbrandW"></div>
+          	</div>
           </div>
           <div class="col-md-3 col-xs-6 container-promoStatistics">
-          	<div class="promo-data"></div>
+          	<div class="promo-data" align="center">
+          		<p class="promo-text" style="margin-top: 10px; font-size: 16px;">Hombres <i class="fa fa-male" aria-hidden="true"></i></p>
+          		<div id="chartbrandM"></div>
+          	</div>
           </div>
         </div>
         </div>

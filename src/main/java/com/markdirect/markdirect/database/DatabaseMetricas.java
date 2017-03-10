@@ -71,7 +71,6 @@ public class DatabaseMetricas extends DatabaseGenerica {
 	 */
 	public double averageAge() {
 		double averageAge = jdbc.queryForInt("SELECT AVG(userAge) FROM users");
-		System.out.println("La edad media es: " + averageAge);
 		return averageAge;
 	}
 
@@ -223,7 +222,7 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		return data;
 	}
 	
-public ArrayList<DatabaseData> marcaGeneroH(){		
+public ArrayList<DatabaseData> brandMen(){		
 		
 		//Creamos sentencia sql para hombres
 		String sql="SELECT products.productBrand AS 'Marca', "
@@ -245,7 +244,7 @@ public ArrayList<DatabaseData> marcaGeneroH(){
 					
 	}	
 
-public ArrayList<DatabaseData> marcaGeneroM(){		
+public ArrayList<DatabaseData> brandWomen(){		
 	
 	//Creamos sentencia sql para hombres
 	String sql="SELECT products.productBrand AS 'Marca', "

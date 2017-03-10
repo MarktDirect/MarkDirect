@@ -10,6 +10,8 @@ google.charts.setOnLoadCallback(drawChartUsersByAgeAndGender);
 google.charts.setOnLoadCallback(drawChartProductWomen);
 google.charts.setOnLoadCallback(drawChartProductMen);
 google.charts.setOnLoadCallback(drawChartPromoByGender);
+google.charts.setOnLoadCallback(drawChartBrandWomen);
+google.charts.setOnLoadCallback(drawChartBrandMen);
 
 function drawChartUsersByGender() {
 	
@@ -179,4 +181,70 @@ function drawChartPromoByGender() {
 		chart.draw(data, options);
 	}
 	
+}
+
+function drawChartBrandWomen() {
+	$.ajax({
+		url: "brandWomen",
+		dataType: "json",
+		success: getResponse
+	});
+	
+	function getResponse(response) {
+		var array = [];
+		var data = new google.visualization.DataTable();
+		//Añadimos los nombre de las columnas
+		data.addColumn("string", 'Marca');
+		data.addColumn("number", 'Veces enviado');
+		//Por cada elemento en la consulta, creamos un nuevo array con los datos correspondientes
+		//Después introducimos dicho array en un array superior que es el que pasaremos al chart
+		for(var element in response) {
+			var arrayData = [response[element].Marca, response[element].Veces];
+			array.push(arrayData);
+		}
+		data.addRows(array);
+		var options = {
+		          legend: 'none',
+		          width: 170,
+		          height: 170,
+		          chartArea: {bottom: 0,top:0,width:'80%',height:'80%'},
+		          colors:['#002C73', '#99cccc']
+		        };
+		var chart = new google.visualization.PieChart(document.getElementById('chartbrandW'));
+		//dibujamos el chart
+		chart.draw(data, options);
+	}
+}
+
+function drawChartBrandMen() {
+	$.ajax({
+		url: "brandMen",
+		dataType: "json",
+		success: getResponse
+	});
+	
+	function getResponse(response) {
+		var array = [];
+		var data = new google.visualization.DataTable();
+		//Añadimos los nombre de las columnas
+		data.addColumn("string", 'Marca');
+		data.addColumn("number", 'Veces enviado');
+		//Por cada elemento en la consulta, creamos un nuevo array con los datos correspondientes
+		//Después introducimos dicho array en un array superior que es el que pasaremos al chart
+		for(var element in response) {
+			var arrayData = [response[element].Marca, response[element].Veces];
+			array.push(arrayData);
+		}
+		data.addRows(array);
+		var options = {
+		          legend: 'none',
+		          width: 170,
+		          height: 170,
+		          chartArea: {bottom: 0,top:0,width:'80%',height:'80%'},
+		          colors:['#002C73', '#99cccc']
+		        };
+		var chart = new google.visualization.PieChart(document.getElementById('chartbrandM'));
+		//dibujamos el chart
+		chart.draw(data, options);
+	}
 }
