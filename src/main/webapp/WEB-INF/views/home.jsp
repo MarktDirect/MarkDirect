@@ -65,7 +65,8 @@
           </div>
           <div class="col-md-6 col-xs-12 container-userStatistics" id="user-byGender">
           		<div class="big-promo-data" align="center">
-          			
+          			<p class="user-text" style="margin-top: 10px; font-size: 16px;">Por categorías de nivel 1 <i class="fa fa-asterisk" aria-hidden="true"></i></p>
+          			<div id="columnchartLevel1"></div>
           		</div>
           </div>
         </div>

@@ -12,6 +12,7 @@ google.charts.setOnLoadCallback(drawChartProductMen);
 google.charts.setOnLoadCallback(drawChartPromoByGender);
 google.charts.setOnLoadCallback(drawChartBrandWomen);
 google.charts.setOnLoadCallback(drawChartBrandMen);
+google.charts.setOnLoadCallback(drawChartLevel1ByAge);
 
 function drawChartUsersByGender() {
 	
@@ -247,4 +248,45 @@ function drawChartBrandMen() {
 		//dibujamos el chart
 		chart.draw(data, options);
 	}
+}
+
+function drawChartLevel1ByAge() {
+//	Hacemos la petición a nuestro Controlador
+	$.ajax({
+		url: "level1ByAge",
+		dataType: "json",
+		success: getResponse
+	});
+
+	function getResponse(response) {
+		for (var element in response) {
+			if(response[element].dataValue == 0) {
+				response[element].dataName = 'Sin datos';
+				alert(response[element].dataName);
+			}
+		}
+		var array = [];
+		var rango1 = ['18-25', response[0].dataValue, response[0].dataName];
+		var rango2 = ['26-35', response[1].dataValue, response[1].dataName];
+		var rango3 = ['36-45', response[2].dataValue, response[2].dataName];
+		var rango4 = ['46-55', response[3].dataValue, response[3].dataName];
+		var rango5 = ['+55', response[4].dataValue, response[4].dataName];
+	
+		var data = new google.visualization.arrayToDataTable([
+	        ['Categorías nivel 1', 'Veces', { role: 'annotation' } ],
+	           rango1, rango2, rango3, rango4, rango5
+	         ]);
+		var options = {
+		        width: 390,
+		        height: 170,
+		        legend: { position: 'top', maxLines: 1 },
+		        bar: { groupWidth: '75%' },
+		        isStacked: true,
+		        colors:['#002C73', '#99cccc']
+		      };
+		var chart = new google.visualization.ColumnChart(document.getElementById("columnchartLevel1"));
+		//dibujamos el chart
+		chart.draw(data, options);
+	}
+	
 }
