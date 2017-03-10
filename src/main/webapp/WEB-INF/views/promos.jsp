@@ -200,6 +200,8 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Editar promoción</h4>
+						{{id}} {{categoria1}} {{categoria2}}
+			
 					</div>
 					<form class="form" action="editPromos" method="GET">
 						<div class="modal-body">
@@ -230,8 +232,8 @@
 										name="promo_catNivel2" class="form-control"
 										required="required" id="edit-promo_catNivel2" data-ng-model="categoria2">
 										<%-- Rellenar dinámicamente--%>
-										<option data-ng-repeat="x in vm.listaCategorias2" value="{{x.id}}" data-ng-selected="theCategory2({{x.id}})">{{x.category}}</option>
-			
+										<option data-ng-repeat="x in vm.listaCategorias2" data-ng-selected="theCategory2({{x.id}})" value="{{x.id}}">{{x.category}}</option>
+										<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->		
 									</select>
 								</div>
 								<div class="col-md-6">
@@ -239,16 +241,17 @@
 										name="promo_catNivel1" class="form-control"
 										required="required" id="edit-promo_catNivel1" data-ng-model="categoria1">
 										<%--Mejora: Rellenar dinámicamente--%>
-										<option data-ng-repeat="x in vm.listaCategorias1 | filtrocat2:categoria2" value="{{x.id}}" data-ng-selected="theCategory1({{x.id}})">{{x.category}}</option>
-										
+										<option data-ng-repeat="x in vm.listaCategorias1 | filtrocat2:categoria2" data-ng-selected="theCategory1({{x.id}})" value="{{x.id}}">{{x.category}}</option>
+										<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="promo_idProduct">ID Producto</label>
-								<select name="promo_idProduct" class="form-control" required="required" id="edit-promo_idProduct">
-									<option data-ng-repeat="x in vm.listaProductos | filtrocat1:categoria1" value="{{x.id}}" data-ng-selected="theProduct({{x.id}})">{{x.id}} {{x.name}}</option>
+								<select name="promo_idProduct" class="form-control" required="required" id="edit-promo_idProduct" data-ng-model="id"> 
+									<option data-ng-repeat="x in vm.listaProductos | filtrocat1:categoria1" data-ng-selected="theProduct({{x.id}})" value="{{x.id}}">{{x.id}} {{x.name}}</option>
 								</select> 
+								<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->
 								<!-- <input
 									type="date" name="promo_idProduct" class="form-control"
 									required="required" id="edit-promo_idProduct" /> -->
