@@ -40,5 +40,5 @@
  <script type="text/javascript" src="<c:url value="/resources/js/metricas.js"/>"></script>
  
  <!-- Fonts -->
- <link href="https://fonts.googleapis.com/css?family=Droid+Sans|Fjalla+One" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Droid+Sans|Fjalla+One|Oswald" rel="stylesheet">
  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Roboto|Yanone+Kaffeesatz:300" rel="stylesheet">
