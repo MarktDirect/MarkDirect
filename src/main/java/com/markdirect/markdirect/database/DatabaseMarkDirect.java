@@ -437,9 +437,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return token;
 	}
 	
-	public int userLogin(String email, String password, String sex, int age, String socialNetwork){
+	public int userLogin(String email, String password){
 		int usuario = 0;
-		String sql = "SELECT * FROM users WHERE email = ? AND socialNetwork = ?";
+		String sql = "SELECT * FROM users WHERE email = ? AND pass = ?";
+		usuario = jdbc.queryForInt(sql, new Object[]{email, password});
 		return usuario;
 	} 
 }
