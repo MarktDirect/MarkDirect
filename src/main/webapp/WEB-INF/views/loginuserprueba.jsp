@@ -7,13 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form role="form" action="registrarusuario" method="post">
+<form role="form" action="loginuser" method="post">
 <input type="email" required="required" class="form-control" 
 name="email" placeholder="Introduce tu E-mail">
 <input type="password" name="password" placeholder="Introduce tu pass">
-<input type="text" name="age" placeholder="Introduce tu edad">
-<input type="text" name="sex" placeholder="Introduce tu sexo">
-<input type="text" name="socialNetwork" placeholder="Introduce red social">
 <input type="submit" value="registrate" class="btn btn-info" />
 </form>
 

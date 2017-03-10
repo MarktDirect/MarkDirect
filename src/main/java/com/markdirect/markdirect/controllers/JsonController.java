@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -130,5 +131,34 @@ public class JsonController {
 			List<ProductoReducido> poductosReducidosList = db.listarProductosReducidos();
 			return poductosReducidosList;
 		}
-	
+		
+		
+		
+		@RequestMapping(value="loginusuario",method=RequestMethod.GET)
+		public String loguearousuario(){
+			return "loginuserprueba";
+			
+		}
+		
+		//Metodo para loguear usuario
+		//El try and catch 
+		@RequestMapping(value="loginuser", method=RequestMethod.POST)
+		public @ResponseBody String loginUser(@RequestParam("email") String email, @RequestParam("password") String password){
+			List<Map<String, Object>> tokenuser= null;
+			String stringToken="";
+			String enviarToken="";
+			int idusuario=0;
+			try{
+			 idusuario=db.userLogin(email, password);
+				tokenuser=db.sacarTokenUserLogin(idusuario);
+				for(Map<String, Object> map : tokenuser){
+					 stringToken = map.toString();
+					enviarToken = stringToken.substring(7,stringToken.length()-1);
+					System.out.println(enviarToken);
+		}
+			}catch(EmptyResultDataAccessException e){
+				System.out.println("Email o contraseña mal");
+			}
+				return enviarToken;
+		}
 }
