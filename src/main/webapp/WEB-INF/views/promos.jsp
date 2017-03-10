@@ -187,7 +187,7 @@
 					<td id="promo_controlzoneId">${promo.promo_controlzoneId}</td>
 					<%--Arreglar que solo salen los valores de la primera promoción que hay en la lista, no la que le toca --%>
 					<td><button type="button" data-id="${promo.promoId}"
-							class="btn btn-default editButton" onclick="showEditModal(this);" data-ng-click="vm.cargarDatos()">Editar</button></td>
+							class="btn btn-default editButton" onclick="showEditModal(this);" data-ng-click="vm.cargarDatosEditar()">Editar</button></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -233,6 +233,7 @@
 										required="required" id="edit-promo_catNivel2" data-ng-model="categoria2">
 										<%-- Rellenar dinámicamente--%>
 										<option data-ng-repeat="x in vm.listaCategorias2" data-ng-selected="theCategory2({{x.id}})" value="{{x.id}}">{{x.category}}</option>
+										<!--  -->
 										<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->		
 									</select>
 								</div>
@@ -242,6 +243,7 @@
 										required="required" id="edit-promo_catNivel1" data-ng-model="categoria1">
 										<%--Mejora: Rellenar dinámicamente--%>
 										<option data-ng-repeat="x in vm.listaCategorias1 | filtrocat2:categoria2" data-ng-selected="theCategory1({{x.id}})" value="{{x.id}}">{{x.category}}</option>
+										<!--  -->
 										<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->
 									</select>
 								</div>
@@ -250,6 +252,7 @@
 								<label for="promo_idProduct">ID Producto</label>
 								<select name="promo_idProduct" class="form-control" required="required" id="edit-promo_idProduct" data-ng-model="id"> 
 									<option data-ng-repeat="x in vm.listaProductos | filtrocat1:categoria1" data-ng-selected="theProduct({{x.id}})" value="{{x.id}}">{{x.id}} {{x.name}}</option>
+									<!--  -->
 								</select> 
 								<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->
 								<!-- <input
@@ -359,9 +362,11 @@
 			modalEdit.modal("show");
 			
 			//Para selected de angular en filtros dinámico
+			/*alert(promo_idProduct+" "+promo_catNivel1+" "+promo_catNivel2);
 			$scope.id = promo_idProduct;
 			$scope.categoria1 = promo_catNivel1;
-			$scope.categoria2 = promo_catNivel2;
+			$scope.categoria2 = promo_catNivel2;*/
+			
 			
 		}
 		

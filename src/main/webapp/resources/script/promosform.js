@@ -3,7 +3,7 @@
  */
 
 var app = angular.module("promoModulo", []);
-	app.controller("promoControlador",["$http", "$scope", controladorPrincipal]);
+	app.controller("promoControlador",["$http", "$scope","$document", controladorPrincipal]);
 
 function controladorPrincipal($http, $scope){
 	
@@ -30,14 +30,15 @@ function controladorPrincipal($http, $scope){
 			
 	};
 	
-	/*
+	
 	vm.cargarIdProductoPromo = function(){
 		
-		alert("carga nueva función");		
-		alert($scope.ole);
+		alert("cargarIdProductoPromo");
+		alert(angular.element("#edit-promo_idProduct").val());
+		alert($document[0].querySelector('#edit-promo_idProduct'));
 		
 	}
-	*/
+
 	
 	//función que devuelve true si la id del producto es la adecuada para hacer selected en el select
 	$scope.theProduct = function(idProducto){
@@ -64,7 +65,7 @@ function controladorPrincipal($http, $scope){
 		
 	}
 	
-	/*
+
 	vm.cargarDatosEditar = function(){
 		
 		vm.cargarDatos();
@@ -72,7 +73,7 @@ function controladorPrincipal($http, $scope){
 		
 	}
 	
-	*/
+	
 	
 	cargarCategorias2 = function (){
 		var exito = function(resp){
