@@ -48,13 +48,13 @@
           <div id="promo-totalSent" class="col-md-3 col-xs-6 container-promoStatistics">
             <div class="promo-data" align="center">
            		<p class="promo-number"><c:out value="${sessionScope.totalSentPromos}"/></p>
-            	<p class="promo-text"><i class="fa fa-tags fa-2x" aria-hidden="true"></i> Promociones enviadas</p>
+            	<p class="promo-text"><i class="fa fa-tags fa-lg" aria-hidden="true"></i> Promociones enviadas</p>
             	<p class="promo-text">
             	<c:out value="${sessionScope.totalGenericPromos}"/>
-            	<i class="fa fa-tags" aria-hidden="true"></i> genéricas</p>
+            	genéricas <i class="fa fa-mobile" aria-hidden="true"></i></p> 
             	<p class="promo-text">
             	<c:out value="${sessionScope.totalLocationPromos}"/>
-            	<i class="fa fa-tags" aria-hidden="true"></i> de localización</p>
+            	de localización <i class="fa fa-location-arrow" aria-hidden="true"></i></p>
             </div>
           </div>
           <div class="col-md-3 col-xs-6 container-userStatistics" id="user-averageAge">
@@ -105,11 +105,7 @@
         </div>
         </div>
 	</div>
-
-
-	<!--Div that will hold the pie chart-->
-	<!-- <div id="chart_div"></div> -->
-
-
+	<footer>
+	</footer>
 </body>
 </html>

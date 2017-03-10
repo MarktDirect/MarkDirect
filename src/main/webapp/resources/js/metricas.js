@@ -67,7 +67,7 @@ function drawChartUsersByGender() {
 	           rango1, rango2, rango3, rango4, rango5
 	         ]);
 		var options = {
-		        width: 350,
+		        width: 390,
 		        height: 170,
 		        legend: { position: 'top', maxLines: 1 },
 		        bar: { groupWidth: '75%' },
