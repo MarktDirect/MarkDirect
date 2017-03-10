@@ -50,22 +50,19 @@ public class CentrosController {
 
 		ModelAndView mav = new ModelAndView();
 		if(db.addCentro(centerName, centerDescription, centerAddres, centerType, centerSubtype) == 1) {
-			
+
 			mav.addObject("mensaje", "Centro añadido con exito");
 			mav.addObject("listaCentros", db.listarCentros());
 			mav.setViewName("centros");
-			
+
 		} else {
 			mav.addObject("mensaje","Centro no añadido con exito");
 			mav.addObject("listaCentros", db.listarCentros());
 			mav.setViewName("centros");
 
 		}
-	
+
 		return mav;
 	}
-	
-	//@RequestMapping(value="editcentros", method=RequestMethod.GET)
-	
-	
+
 }
