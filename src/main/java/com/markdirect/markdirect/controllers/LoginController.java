@@ -38,7 +38,15 @@ public class LoginController {
 	//Aqui se crea el objeto usuario de la clase DataBaseMarkDirect que se ocupara de las consultas a la BD
 	DatabaseMarkDirect administrador=new DatabaseMarkDirect();
 	
-	//Metodo para comprobar si el usuario es valido o no
+	
+	
+	/**
+	 * Metodo para comprobar si el usuario es valido o no
+	 * @param usuario
+	 * @param password
+	 * @return devuelve un mav con la pagina que visitar y le añade un metodo para comprobar usuario
+	 * ademas tambien devuelve atributos añadidos a la sesion y crea la sesion del usuario
+	 */
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public ModelAndView validar(
 			@RequestParam("admin") String usuario, 
@@ -63,7 +71,13 @@ public class LoginController {
 		return mav;
 	}
 	
-	//Metodo de deslogueo del usuario
+	
+	
+	/**
+	 * Metodo de deslogueo del usuario
+	 * @param model
+	 * @return un string indicando que debe volver a la pagina del login, cierra completamente la sesion
+	 */
 	@RequestMapping("/logout")
 	public String logout(Model model) {
 		model.addAttribute("mensajedespedida", "Sesion cerrada con exito");

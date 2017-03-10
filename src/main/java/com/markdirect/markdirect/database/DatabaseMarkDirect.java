@@ -296,8 +296,13 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return locationPromos;
 	}
 
-	//Metodo para bloquear a varios usuarios se recibe un array de string
-	//Y bloquea a los usuarios que coincidan con el array
+
+	/**
+	 * Metodo para bloquear a varios usuarios se recibe un array de string
+	Y bloquea a los usuarios que coincidan con el array
+	 * @param usuariosbloqueados
+	 * @return devuelve una lista de los usuarios que han sido bloqueados
+	 */
 	public List<Usuario> bloquearUsuario(String[] usuariosbloqueados){
 
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
@@ -316,8 +321,13 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 	}
 
-	//Segundo metodo para bloquear solo un usuario
-	//Este se ejecuta al saltar la  excepcion de arraylist al hacer el split
+
+	/**
+	 *Segundo metodo para bloquear solo un usuario
+ Este se ejecuta al saltar la  excepcion de arraylist al hacer el split
+	 * @param userblock
+	 * @return una lista de usuarios que han sido bloqueados
+	 */
 	public List<Usuario> bloquearUsuario(String userblock){
 		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 		List<Usuario> listausuario=usuario.listarUsuarios();
@@ -333,7 +343,16 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return  listausuario;
 	}
 
-	//Metodo para registrar usuario en la base de datos
+
+	/**
+	 *Metodo para registrar usuario en la base de datos
+	 * @param email
+	 * @param password
+	 * @param sex
+	 * @param age
+	 * @param socialNetwork
+	 * @return un 1 si el usuario ha sido registrado
+	 */
 	public int registrarUsuario(String email, String password, String sex, int age, String socialNetwork){
 		int usuario = 0;
 		String SQL = "insert into users (userEmail,userGen,userAge,userPass, socialNetwork) values (?,?,?,?,?)";
@@ -345,8 +364,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return usuario;
 	}
 
-	//Con este metodo saco la idmax del usuario que haya en la base de datos
-	//Con ello me aseguro de colocarle el token a la id correcta
+
+	/**
+	 *Con este metodo saco la idmax del usuario que haya en la base de datos
+	  Con ello me aseguro de colocarle el token a la id correcta
+	 * @return devuelve un entero que equivale a la idmax de la tabla usuario
+	 */
 	public int idmaxUsuario(){
 		int idmax;
 		String sql="SELECT MAX(userid) AS id FROM users";
@@ -354,7 +377,13 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return idmax;
 	}
 
-	//Metodo que inserta un token al ultimo usuario registrado
+
+	/**
+	 * Metodo que inserta un token al ultimo usuario registrado
+	 * @param idusermax
+	 * @param token
+	 * @return devuelve una lista con el token del ultimo usuario registrado
+	 */
 	public List<Map<String, Object>> insertarToken(int idusermax, String token){
 		List<Map<String, Object>> tokeninsertado = null;
 		int numtoken;
@@ -419,7 +448,11 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return listaProductos;
 	}
 
-	//Metodo que devuelve una lista de los productos reducidos
+
+	/**
+	 * Metodo que devuelve una lista de los productos reducidos
+	 * @return una lista con los productos que se encuentren con sus precios reducidos
+	 */
 	public List<ProductoReducido> listarProductosReducidos() {
 		String sql = "SELECT id, productName, id_level2Category, id_level1Category FROM products";
 		List<ProductoReducido> listaProductosReducidos = null;
@@ -433,8 +466,13 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 
 
-	//Metodo para sacar una lista del token del ultimo usuario registrado
-	//y lo devuelve en una lista
+
+	/**
+	 *Metodo para sacar una lista del token del ultimo usuario registrado
+	  y lo devuelve en una lista
+	 * @param idusermax
+	 * @return devuelve una lista en la que esta el token del usuario recien registrado
+	 */
 	public List<Map<String, Object>> sacarToken(int idusermax){
 		List<Map<String, Object>> token;
 		String sql="select token from usertoken where id_user="+idusermax+"";
@@ -443,24 +481,38 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return token;
 	}
 
-	
-	//Este metodo saca la id de usuario que contenga el email y password correctos
 
+
+	/**
+	 * Este metodo saca la id de usuario que contenga el email y password correctos
+	 * @param email
+	 * @param password
+	 * @return devuelve la id del usuario que se esta intentando loquear
+	 */
 	public int userLogin(String email, String password){
 		int usuario = 0;
 		String sql = "SELECT userId FROM users WHERE userEmail = ? AND userPass = ?";
 		usuario = jdbc.queryForInt(sql,email,password);
 		return usuario;
 	} 
-	
-	//Este metodo es para sacar el token segun la idusuario enviada por el login
+
+	/**
+	 * Este metodo es para sacar el token segun la idusuario enviada por el login
+	 * @param idusuario
+	 * @return devuelve una lista con el token del usuario que se esta intentando loguear para darle su token
+	 */
 	public List<Map<String, Object>> sacarTokenUserLogin(int idusuario){
 		List<Map<String, Object>> tokenUser;
 		String sql="select token from usertoken where id_user= ?";
 		tokenUser=jdbc.queryForList(sql,idusuario);
 		return tokenUser;
 	}
-	
+
+	/**
+	 * Metodo que saca a la red social que pertenece el usuario que tenga el email recibido
+	 * @param email
+	 * @return devuelve un string que contiene a que red social pertenece el usuario
+	 */
 	public String socialNetwork(String email){
 		List<Map<String, Object>> netdevuelta=null;
 		String stringSocial="";
@@ -473,10 +525,16 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			redsocial = stringSocial.substring(15, stringSocial.length()-1);
 			System.out.println(redsocial);
 		}
-	
+
 		return redsocial;
 	}
-	
+
+
+	/**
+	 * Metodo que saca la idusuario que contenga dicho email
+	 * @param email
+	 * @return devuelve la id de usuario que tenia dicho email
+	 */
 	public int comprobarEmail(String email){
 		int usuario = 0;
 		String sql = "SELECT userId FROM users WHERE userEmail = ?";

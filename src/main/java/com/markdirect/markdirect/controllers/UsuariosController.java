@@ -16,11 +16,14 @@ import com.mysql.fabric.xmlrpc.base.Array;
 //Controlador de la pagina de usuarios
 @Controller
 public class UsuariosController {
-	
+
 	//Aqui se crea el objeto usuario de la clase DataBaseMarkDirect que se ocupara de las consultas a la BD
 	DatabaseMarkDirect usuario = new DatabaseMarkDirect();
 
-	//Metodo que muestra en el jsp una lista de los usuarios 
+	/**
+	 *Metodo que muestra en el jsp una lista de los usuarios
+	 * @return devuelve un mav en el que esta agregado el metodo para listar los usuarios y la pagina jsp a la que ir
+	 */
 	@RequestMapping(value = "usuarios", method=RequestMethod.GET)
 	public ModelAndView usuarios() {
 		ModelAndView mav = new ModelAndView();
@@ -29,8 +32,14 @@ public class UsuariosController {
 		return mav;
 	}
 
-	//Metodo para bloquear los usuarios escogidos
-	//El try and catch pilla la excepcion del arraylist y ejecuta otro metodo solo para un usuario
+
+
+	/**
+	 * Metodo para bloquear los usuarios escogidos
+	 *El try and catch pilla la excepcion del arraylist y ejecuta otro metodo solo para un usuario
+	 * @param userblock
+	 * @return devuelve un objeto mav al que esta añadido el metodo para bloquear usuario, un mensaje de exito y la pagina jsp a la que ir
+	 */
 	@RequestMapping(value="usuario",method=RequestMethod.POST)
 	public ModelAndView bloquearUsuario(@RequestParam("bloquear") String userblock){
 		ModelAndView mav=new ModelAndView();
@@ -51,9 +60,9 @@ public class UsuariosController {
 		mav.addObject("usuario",usuario.listarUsuarios());
 		return mav;
 	}
-	
-	
-		
-	
+
+
+
+
 
 }
