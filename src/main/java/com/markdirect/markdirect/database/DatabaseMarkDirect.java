@@ -442,12 +442,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		System.out.println(token);
 		return token;
 	}
-<<<<<<< HEAD
+
 	
 	//Este metodo saca la id de usuario que contenga el email y password correctos
-=======
 
->>>>>>> 751f12b334c334adc5b845ab492925e91e98fdf1
 	public int userLogin(String email, String password){
 		int usuario = 0;
 		String sql = "SELECT userId FROM users WHERE userEmail = ? AND userPass = ?";
