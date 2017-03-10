@@ -242,7 +242,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 					);	
 
 			//Ahora vamos a contabilizar las promociones que se han enviado
-			String sqlSentPromo = "INSERT INTO sentpromos (id_promo, user_token) VALUES id_promo = ?, user_token = ?";
+			String sqlSentPromo = "INSERT INTO sentpromos (id_promo, user_token) VALUES (?, ?)";
 			int filas = 0;
 			for (Promocion promocion : listaPromociones) {
 				filas += jdbc.update(sqlSentPromo, new Object[]{promocion.getPromoId(), token});
