@@ -320,6 +320,28 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return  listausuario;
 
 	}
+	
+	
+	/**
+	 * Metodo para desbloquear varios usuarios
+	 * @param usuariosdesbloqueados
+	 * @return devuelve una lista de los usuarios desbloqueados
+	 */
+	public List<Usuario> desbloquearUsuario(String[] usuariosdesbloqueados){
+
+		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
+		List<Usuario> listausuario=usuario.listarUsuarios();
+		for(int j=0;j<usuariosdesbloqueados.length;j++){//Se hacen dos for para poder comprobar un array con la lista de usuarios
+			for(int i=0;i<listausuario.size();i++){
+				if(usuariosdesbloqueados[j].equals(listausuario.get(i).getUserEmail())){
+					String sql="UPDATE users SET userBlock='0' WHERE userEmail='"+usuariosdesbloqueados[j]+"'";
+					jdbc.update(sql);
+
+				}
+			}
+		}
+		return  listausuario;
+	}
 
 
 	/**
@@ -335,6 +357,27 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 			if(userblock.equals(listausuario.get(i).getUserEmail())){
 				System.out.println("usuario bloqueado "+ listausuario.get(i).getUserEmail());
 				String sql="UPDATE users SET userBlock='1' WHERE userEmail='"+userblock+"'";
+				jdbc.update(sql);
+				usuario.listarUsuarios();		
+			}
+		}
+
+		return  listausuario;
+	}
+	
+	/**
+	 * Segundo metodo para desbloquear usuarios en este caso para uno solo
+	 * como el de bloqueo
+	 * @param userdesblock
+	 * @return devuelve una lista de los usuarios desbloqueados
+	 */
+	public List<Usuario> desBloquearUsuario(String userdesblock){
+		DatabaseMarkDirect usuario = new DatabaseMarkDirect();
+		List<Usuario> listausuario=usuario.listarUsuarios();
+		for(int i=0;i<listausuario.size();i++){
+			if(userdesblock.equals(listausuario.get(i).getUserEmail())){
+				System.out.println("usuario bloqueado "+ listausuario.get(i).getUserEmail());
+				String sql="UPDATE users SET userBlock='0' WHERE userEmail='"+userdesblock+"'";
 				jdbc.update(sql);
 				usuario.listarUsuarios();		
 			}
