@@ -256,7 +256,6 @@ public ArrayList<DatabaseData> brandMen(){
 		listaProductosmarcaH =(ArrayList<DatabaseData>) listaMarcasH;
 		
 		//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a hombres
-		System.out.println(listaMarcasH);
 		return  listaProductosmarcaH;
 					
 	}	
@@ -276,7 +275,6 @@ public ArrayList<DatabaseData> brandWomen(){
 	//Casteamos el List para que sea un ArrayList<Databasedata>
 	ArrayList<DatabaseData> listaProductosmarcaM = new ArrayList<DatabaseData>();		
 	listaProductosmarcaM =(ArrayList<DatabaseData>) listaMarcasM;
-	System.out.println(listaMarcasM);
 	//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a hombres
 	return  listaProductosmarcaM;
 				
