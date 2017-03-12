@@ -34,24 +34,22 @@ public class ZonasController {
 	public ModelAndView addZonas(
 			@RequestParam("controlzoneMajor") String controlzoneMajor,
 			@RequestParam("controlzoneMinor") String controlzoneMinor,
-			@RequestParam("controlzoneEmplacement") String controlzoneEmplacement,
-			@RequestParam("controlzone_centerId") int controlzone_centerId
+			@RequestParam("controlzoneEmplacement") String controlzoneEmplacement
 			){
 		
 		//insertar zona de control en BBDD
-		int algodon = db.insertarZonaControl(controlzoneMajor, controlzoneMinor, controlzoneEmplacement, controlzone_centerId);
-		System.out.println(algodon);
+		int algodon = db.insertarZonaControl(controlzoneMajor, controlzoneMinor, controlzoneEmplacement);
 		
 		//Vista
 		ModelAndView mav = new ModelAndView();
 		if(algodon == 1){
 			mav.addObject("mensaje", "Zona de control cargada con Exito");
 			mav.addObject("listaZonas", db.listarZonas());
-			mav.setViewName("zonas");
+			mav.setViewName("centroszonas");
 		}else{
 			mav.addObject("mensaje", "Error al cargar la zona de control");
 			mav.addObject("listaZonas", db.listarZonas());
-			mav.setViewName("zonas");
+			mav.setViewName("centroszonas");
 		}
 		
 		return mav;

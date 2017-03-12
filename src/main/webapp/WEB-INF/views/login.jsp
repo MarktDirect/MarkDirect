@@ -9,7 +9,7 @@
 </head>
 <body id="login-body">
 	<div class="img-login" align="center">
-		<img alt="logo-activa" src="resources/img/logo.png" width= "40%">
+		<img alt="logo-activa" src="resources/img/logo.png" width= "30%" style="margin-top: 30px;">
 	</div>
 	<!-- Modal estático -->
 	<div class="modal show modal-login">

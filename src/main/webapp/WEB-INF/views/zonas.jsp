@@ -13,7 +13,7 @@
 		<div class="jumbotron">
 			<h2>Gestión de Zonas de Control</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
-				data-target="#modalZonas">Añadir Zona</a> <span class="label label-danger">${mensaje}</span>
+				data-target="#modalZonas">Añadir Zona</a> <span class="badge">5</span> <span class="label label-info">${mensaje}</span>
 		</div>
 	</div>
 	<!-- Modal -->

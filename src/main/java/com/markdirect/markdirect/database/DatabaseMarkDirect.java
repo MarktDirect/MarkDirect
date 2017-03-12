@@ -138,20 +138,16 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	public int insertarZonaControl (
 			String controlzoneMajor, 
 			String controlzoneMinor, 
-			String controlzoneEmplacement, 
-			int controlzone_centerId){
+			String controlzoneEmplacement){
 
 		//String con la consulta insert
 		String sql = "INSERT INTO controlzones (controlzoneMajor, controlzoneMinor," +
-				"controlzoneEmplacement, controlzone_centerId) VALUES (?,?,?,?)";
-		//TODO preparedStatement
-
-		System.out.println(sql);
+				"controlzoneEmplacement, controlzone_centerId) VALUES (?,?,?,1)";
 
 		//Realizar update
 		int rowsAffected = -1;
 		rowsAffected = this.jdbc.update(sql, 
-				new Object[] {controlzoneMajor, controlzoneMinor, controlzoneEmplacement, controlzone_centerId});
+				new Object[] {controlzoneMajor, controlzoneMinor, controlzoneEmplacement});
 
 		return rowsAffected;
 
