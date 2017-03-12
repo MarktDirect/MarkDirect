@@ -21,6 +21,7 @@ public class PromoController {
 	public ModelAndView promos() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("listaPromos", db.listarPromociones());
+		mav.addObject("listaCat1", db.listarCategoriasNivel1());
 		mav.setViewName("promos");
 		return mav;
 	}

@@ -560,9 +560,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		netdevuelta=jdbc.queryForList(sql,email);
 		for (Map<String, Object> map : netdevuelta) {
 			stringSocial = map.toString();
-			System.out.println(stringSocial);
 			redsocial = stringSocial.substring(15, stringSocial.length()-1);
-			System.out.println(redsocial);
 		}
 
 		return redsocial;

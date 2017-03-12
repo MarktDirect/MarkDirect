@@ -92,7 +92,10 @@ a {
 table {
 	margin: 0 10px;
 }
-
+.table-promos-header {
+	text-transform: uppercase;
+	font-size: 12px;
+}
 /* Estilo home - métricas */
 .home-header {
 	font-family: 'Oswald';
