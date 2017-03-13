@@ -209,6 +209,19 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		System.out.println("He realizado la consulta " + filasAfectadas);
 		return filasAfectadas;
 	}
+	
+	/**
+	 * Método que borra una promoción de la BBDD
+	 * @param promoId
+	 * @return int filasAfectadas número de filas afectadas en la operación
+	 */
+	public int deletePromo(int promoId){
+		System.out.println("Estoy en el método de eliminar promociones");
+		String sql = "DELETE FROM promos WHERE 'promoId'=?";
+		int filasAfectadas = jdbc.update(sql, new Object[]{promoId});
+		System.out.println(filasAfectadas);
+		return filasAfectadas;
+	}
 
 	/**
 	 * Método que devuelve una lista de las promociones genéricas activas, pero filtradas 

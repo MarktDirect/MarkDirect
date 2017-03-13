@@ -90,4 +90,21 @@ public class PromoController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="deletePromo", method=RequestMethod.GET)
+	public ModelAndView deletePromo(@RequestParam("promoId") int promoId){
+		ModelAndView mav = new ModelAndView();
+		if(db.deletePromo(promoId) == 1){
+			mav.addObject("mensaje", "Promoción eliminada con éxito");
+			mav.addObject("listaPromos", db.listarPromociones());
+			mav.setViewName("promos");
+		} else {
+			mav.addObject("mensaje", "Error al eliminar promoción");
+			mav.addObject("listaPromos", db.listarPromociones());
+			mav.setViewName("promos");
+		}
+		
+		return mav;
+	}
+	
 }

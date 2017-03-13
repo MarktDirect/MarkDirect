@@ -52,14 +52,6 @@
 					<th>Situación</th>
 					<th>Major</th>
 					<th>Minor</th>
-<<<<<<< HEAD
-				</tr>
-				<c:forEach items="${listaZonas}" var="zona" begin="1">
-					<tr>
-					<td>${zona.controlzoneEmplacement}</td>
-					<td>${zona.controlzoneMajor}</td>
-					<td>${zona.controlzoneMinor}</td>
-=======
 					<th>Editar</th>
 				</tr>
 				<c:forEach items="${listaZonas}" var="zona" begin="1">
@@ -70,17 +62,15 @@
 					<td id="controlzoneMinor">${zona.controlzoneMinor}</td>
 					<td><a role="button" data-id="${zona.controlzoneId}"
 							onclick="showEditModal(this);"><i class="fa fa-pencil-square-o fa-lg" style="color: black" aria-hidden="true"></i></a></td>
->>>>>>> bd65ba83f791e595693b0bb49cfbd3610aba0996
+
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
 	</div>
-<<<<<<< HEAD
-		<!-- Modal -->
-=======
+
 		<!-- Modal Añadir-->
->>>>>>> bd65ba83f791e595693b0bb49cfbd3610aba0996
+
 	<div id="modalZonas" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
