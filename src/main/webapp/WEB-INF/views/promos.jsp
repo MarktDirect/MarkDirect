@@ -193,7 +193,6 @@
 						id="promoMaxAge">${promo.promoMaxAge}</span></td>
 					<td id="promoGen">${promo.promoGen}</td>
 					<td id="promo_controlzoneId">${promo.promo_controlzoneId}</td>
-					<%--Arreglar que solo salen los valores de la primera promoción que hay en la lista, no la que le toca --%>
 					<td><a role="button" data-id="${promo.promoId}"
 							editButton" onclick="showEditModal(this);" data-ng-click="vm.cargarDatos()"><i class="fa fa-pencil-square-o fa-2x" style="color: black" aria-hidden="true"></i></a></>
 				</tr>
