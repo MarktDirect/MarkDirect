@@ -47,7 +47,7 @@
 			<h3>Zonas de control <a href="#" data-toggle="modal"
 				data-target="#modalZonas"><span class="badge" style="background-color: green; width: 50px; height: 25px;"><i class="fa fa-plus fa-lg" aria-hidden="true" style="margin-top: 4px;"></i></span></a></h3>
 			<h4 style=" font-size: 12px;">${mensaje}</h4>
-			<table class="table table-responsive">
+			<table class="table table-responsive table-zonas">
 				<tr>
 					<th>Situación</th>
 					<th>Major</th>
@@ -160,6 +160,8 @@
 			</div>
 		</div>
 	</div>
+	<footer class="footer-centros">
+	</footer>
 	<script>
 	function showEditModal(zona) {
 		//Recogemos el modal

@@ -150,8 +150,8 @@
 		</div>
 	</div>
 	<!-- Tabla con las promos de la base de datos -->
-	<div class="promo-info table-responsive">
-		<table class="table table-hover table-promos">
+	<div class="promo-info">
+		<table class="table table-responsive table-bordered table-promos">
 			<tr align="center" class="table-promos-header">
 				<th>Título</th>
 				<th>Categoría</th>
@@ -380,4 +380,6 @@
 		}
 		
 	</script>
+		<footer>
+	</footer>
 </body>
