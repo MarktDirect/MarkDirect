@@ -199,14 +199,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 	public int editPromos(int promoId, String promoName, String promoDescription, String promoSince, String promoTo, String promoImage,
 			int promo_controlzoneId, int promoMinAge, int promoMaxAge, String promoGen, int promo_catNivel1, int promo_catNivel2, long promo_idProduct) {
-		System.out.println("Estoy en el método editPromos");	
 		String sql= "UPDATE `promos` SET `promoName`= ?,`promoDescription`= ?,`promoSince`= ?,"
 				+ "`promoTo`= ?,`promoImage`= ?,`promoMinAge`= ?,"
 				+ "`promoMaxAge`= ?,`promoGen`= ?,`promo_controlzoneId`= ?,`promo_catNivel1`= ?,"
 				+ "`promo_catNivel2`= ?,`promo_idProduct`= ? WHERE promoId = ?";
 		int filasAfectadas = jdbc.update(sql, new Object[]{promoName, promoDescription, promoSince, promoTo, promoImage, promoMinAge, promoMaxAge,
 				promoGen, promo_controlzoneId, promo_catNivel1, promo_catNivel2, promo_idProduct, promoId});
-		System.out.println("He realizado la consulta " + filasAfectadas);
 		return filasAfectadas;
 	}
 
@@ -580,10 +578,10 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	} 
 	
 	
-	/**public int editarZonaControl( int idzona,String controlzoneMajor, String controlzoneMinor, String controlzoneEmplacement){
-		int agregada=0;
-		String sql="UPDATE controlzones SET controlzonemajor=?,controlzoneMinor=?,controlzoneemplacement=? where"
-		return agregada;
+	public int editarZonaControl( int idzona,String controlzoneMajor, String controlzoneMinor, String controlzoneEmplacement){
+		String sql="UPDATE controlzones SET controlzonemajor=?,controlzoneMinor=?,controlzoneemplacement=? where controlzoneId=?";
+		int agregarzona = jdbc.update(sql, new Object[]{idzona,controlzoneMajor,controlzoneMinor,controlzoneEmplacement});
+		return agregarzona;
 		
-	}*/
+	}
 }

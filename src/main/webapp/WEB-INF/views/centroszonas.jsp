@@ -110,7 +110,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Editar Zona</h4>
 				</div>
-				<form class="form" action="#" method="POST">
+				<form class="form" action="editzonas" method="POST">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="edit-controlzoneMajor">Major</label> <input type="text"
