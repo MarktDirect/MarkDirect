@@ -11,13 +11,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.markdirect.markdirect.database.DatabaseMarkDirect;
 
+
 @Controller
 public class CentrosController {
 
 	DatabaseMarkDirect db = new DatabaseMarkDirect();
 
 	/**
-	 * 	M�todo que nos muestra toda la base de datos de los centros
+	 * 	Metodo que nos muestra toda la base de datos de los centros
 	 * @return mav.setViewName("centros"): vista con la lista de todos los centros
 	 */
 	@RequestMapping(value="centros", method=RequestMethod.GET)

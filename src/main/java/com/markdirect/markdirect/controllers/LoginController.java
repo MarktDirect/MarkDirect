@@ -39,7 +39,6 @@ public class LoginController {
 	DatabaseMarkDirect administrador=new DatabaseMarkDirect();
 	
 	
-	
 	/**
 	 * Metodo para comprobar si el usuario es valido o no
 	 * @param usuario
