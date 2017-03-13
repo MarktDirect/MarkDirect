@@ -92,14 +92,27 @@ a {
 table {
 	margin: 0 10px;
 }
+.dataTables_wrapper .dataTables_filter {
+	float: none;
+	text-align: center;
+}
+
+/*Pagination  */
+$table-paging-button-active: #a7b9d9 !default;
+ 
+$table-paging-button-hover: #466dc2 !default;
 
 table th {
 	text-align: center;
 }
 
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+	background-color: blue !important;
+}
+
 .promo-info, .usuarios-info {
 	text-align: center;
-	margin: 0px 30px;
+	margin: 0px 10px;
 }
 
 .table-promos-header, .table-promos-header:hover, .table-users-header, .table-users-header:hover {
@@ -108,12 +121,20 @@ table th {
 	color: #002C73;
 }
 
+.table-promos-header th {
+	text-align: center;
+}
+
 .table-zonas {
 	text-align: center;
 }
 
 .table-promos, .table-users {
 	margin: 0;
+}
+
+span.label.label-info {
+	font-weight: lighter;
 }
 /* Estilo home - métricas */
 .home-header {

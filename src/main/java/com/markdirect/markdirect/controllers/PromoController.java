@@ -23,6 +23,8 @@ public class PromoController {
 		mav.addObject("listaPromos", db.listarPromociones());
 		mav.addObject("listaCat1", db.listarCategoriasNivel1());
 		mav.addObject("listaCat2", db.listarCategoriasNivel2());
+		mav.addObject("listaProductos", db.listarProductos());
+		mav.addObject("listaZonas", db.listarZonas());
 		mav.setViewName("promos");
 		return mav;
 	}
@@ -36,7 +38,7 @@ public class PromoController {
 			@RequestParam("promoSince") String promoSince,
 			@RequestParam("promoTo") String promoTo,
 			@RequestParam("promoImage") String promoImage,
-			@RequestParam("promo_controlZoneId") int promo_controlzoneId,
+			@RequestParam("promo_controlzoneId") int promo_controlzoneId,
 			@RequestParam("promoMinAge") int promoMinAge,
 			@RequestParam("promoMaxAge") int promoMaxAge,
 			@RequestParam("promoGen") String promoGen,
@@ -48,17 +50,21 @@ public class PromoController {
 		ModelAndView mav = new ModelAndView();
 		if(db.addPromo(promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlzoneId, promoMinAge, promoMaxAge, promoGen, promo_catNivel1, promo_catNivel2, promo_idProduct) == 1) {
 			//TODO añadir mensaje al mav para avisar al usuario que se ha registrado con éxito
-			mav.addObject("mensaje", "Promocion añadido con exito");
+			mav.addObject("mensaje", "Promoción añadida con éxito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
 			mav.setViewName("promos");
 
 		} else {
-			mav.addObject("mensaje", "Promocion no añadido con exito");
+			mav.addObject("mensaje", "La promoción no ha podido ser añadida");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
 			mav.setViewName("promos");
 
 		}
@@ -99,19 +105,22 @@ public class PromoController {
 			@RequestParam("promo_catNivel1") int promo_catNivel1,
 			@RequestParam("promo_catNivel2") int promo_catNivel2,
 			@RequestParam("promo_idProduct") long promo_idProduct) {
-
 		ModelAndView mav = new ModelAndView();
 		if(db.editPromos(promoId, promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlzoneId, promoMinAge, promoMaxAge, promoGen, promo_catNivel1, promo_catNivel2, promo_idProduct) == 1) {
-			mav.addObject("mensaje", "Promocion modificada con exito");
+			mav.addObject("mensaje", "Promoción modificada con éxito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
 			mav.setViewName("promos");
 		} else {
 			mav.addObject("mensaje", "Error al modificar la promoción");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
 			mav.setViewName("promos");
 		}
 
@@ -123,16 +132,20 @@ public class PromoController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(promoId);
 		if(db.deletePromo(promoId) == 1){
-			mav.addObject("mensaje", "Promoci�n eliminada con �xito");
+			mav.addObject("mensaje", "Promoción eliminada con éxito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
 			mav.setViewName("promos");
 		} else {
-			mav.addObject("mensaje", "Error al eliminar promoci�n");
+			mav.addObject("mensaje", "Error al eliminar promoción");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
 			mav.setViewName("promos");
 		}
 		

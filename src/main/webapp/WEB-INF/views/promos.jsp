@@ -151,17 +151,29 @@
 	</div>
 	<!-- Tabla con las promos de la base de datos -->
 	<div class="promo-info">
-		<table class="table table-responsive table-bordered table-promos">
+		<table class="table table-responsive table-bordered table-promos" id="table-promos">
+			<thead>
 			<tr align="center" class="table-promos-header">
-				<th>Título</th>
-				<th>Categoría</th>
-				<th>Referencia Producto</th>
-				<th>Activa</th>
+				<th hidden="hidden">ID</th>
+				<th hidden="hidden">Descripción</th>
+				<th hidden="hidden">Categoría Nivel 2</th>
+				<th hidden="hidden">Categoría Nivel 1</th>
+				<th hidden="hidden" >Desde</th>
+				<th hidden="hidden">Hasta</th>
+				<th hidden="hidden">Imagen</th>
+				<th data-orderable="false">Título</th>
+				<th data-orderable="false">Categoría</th>
+				<th data-orderable="false">Producto</th>
+				<th hidden="hidden">Referencia Producto</th>
+				<th data-orderable="false">Activa</th>
 				<th>Edad</th>
 				<th>Género</th>
 				<th>Zona</th>
-				<th>Editar</th>
+				<th hidden="hidden">Zona nombre</th>
+				<th data-orderable="false">Editar</th>
 			</tr>
+			</thead>
+			<tbody>
 			<c:forEach items="${listaPromos}" var="promo">
 				<tr>
 					<td hidden="hidden" id="promoId">${promo.promoId}</td>
@@ -177,7 +189,14 @@
 								<td id="catNivel1">${cat1.category}</td>
 							</c:if>
 						</c:forEach>
-					<td id="promo_idProduct">${promo.promo_idProduct}</td>
+					<td hidden="hidden" id="promo_idProduct">${promo.promo_idProduct}</td>
+					<td>
+						<c:forEach items="${listaProductos}" var="producto">
+								<c:if test="${producto.id eq promo.promo_idProduct}">
+										${producto.productName}
+								</c:if>
+						</c:forEach>
+					</td>
 					<td hidden="hidden" id="promoSince">${promo.promoSince}</td>
 					<td hidden="hidden" id="promoTo">${promo.promoTo}</td>
 					<td align="center"><c:choose>
@@ -192,14 +211,22 @@
 					<td><span id="promoMinAge">${promo.promoMinAge}</span>-<span
 						id="promoMaxAge">${promo.promoMaxAge}</span></td>
 					<td id="promoGen">${promo.promoGen}</td>
-					<td id="promo_controlzoneId">${promo.promo_controlzoneId}</td>
+					<td hidden="hidden" id="promo_controlzoneId">${promo.promo_controlzoneId}</td>
+					<td>
+						<c:forEach items="${listaZonas}" var="zona">
+								<c:if test="${zona.controlzoneId eq promo.promo_controlzoneId}">
+										${zona.controlzoneEmplacement}
+								</c:if>
+						</c:forEach>
+					</td>
 					<td><a role="button" data-id="${promo.promoId}"
-							onclick="showEditModal(this);" data-ng-click="vm.cargarDatos()"><i class="fa fa-pencil-square-o fa-2x" style="color: black" aria-hidden="true"></i></a>
+							onclick="showEditModal(this);" data-ng-click="vm.cargarDatos()"><i class="fa fa-pencil-square-o fa-lg" style="color: black" aria-hidden="true"></i></a>
 						<a role="button" data-id="${promo.promoId}" 
-							onclick="showDeleteModal(this);"><i class="fa fa-trash-o fa-lg fa-2x" style="color: black" aria-hidden="true"></i></a>
+							onclick="showDeleteModal(this);"><i class="fa fa-trash-o fa-lg" style="color: black" aria-hidden="true"></i></a>
 					</td>
 				</tr>
 			</c:forEach>
+			</tbody>
 		</table>
 
 		<!-- Modal de edición de promociones-->
@@ -210,8 +237,6 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Editar promoción</h4>
-						
-			
 					</div>
 					<form class="form" action="editPromos" method="GET">
 						<div class="modal-body">
@@ -227,8 +252,9 @@
 								</div>
 								<div class="col-md-6">
 									<input type="text" hidden="hidden" id="edit-promoId"
-										name="promoId" /> <label for="promoName">Título</label> <input
-										type="text" name="promoName" id="edit-promoName"
+										name="promoId" /> 
+										<label for="promoName">Título</label> 
+										<input type="text" name="promoName" id="edit-promoName"
 										class="form-control" required="required" /> <label
 										for="promoDescription">Descripción</label>
 									<textarea name="promoDescription" id="edit-promoDescription"
@@ -239,41 +265,31 @@
 							<div class="form-group row">
 								<div class="col-md-6">
 									<label for="promo_catNivel2">Categoría de nivel 2</label> 
-										<input type="text" class="form-control" id="edit-promo_catNivel2" readonly/>
-									<!-- <select
-										name="promo_catNivel2" class="form-control"
-										required="required" id="edit-promo_catNivel2" data-ng-model="ngcat2"> -->
-										<%-- Rellenar dinámicamente--%>
-										<!-- <option data-ng-repeat="x in vm.listaCategorias2" data-ng-selected="theCategory2({{x.id}})" value="{{x.id}}">{{x.category}}</option> -->
-										<!-- data-ng-model="categoria2" -->
-										<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->		
-									<!-- </select> -->
+										<select class="form-control" name="promo_catNivel2" id="edit-promo_catNivel2">
+											<c:forEach items="${listaCat2}" var="categoria2">
+													<option value="${categoria2.id}"> ${categoria2.category}</option>
+											</c:forEach>
+										</select>
+									
 								</div>
 								<div class="col-md-6">
 									<label for="promo_catNivel1">Categoría de nivel 1</label> 
-										<input type="text" class="form-control" id="edit-promo_catNivel1" readonly/>
-									<!-- <select
-										name="promo_catNivel1" class="form-control"
-										required="required" id="edit-promo_catNivel1" data-ng-model="ngcat1"> -->
-										<%--Mejora: Rellenar dinámicamente--%>
-										<!-- <option data-ng-repeat="x in vm.listaCategorias1 | filtrocat2:ngcat2" data-ng-selected="theCategory1({{x.id}})" value="{{x.id}}">{{x.category}}</option> -->
-										<!-- data-ng-model="categoria1" -->
-										<!--  -->
-										<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->
-									<!-- </select> -->
+										<select class="form-control" name="promo_catNivel1" id="edit-promo_catNivel1">
+											<c:forEach items="${listaCat1}" var="categoria1">
+													<option value="${categoria1.id}"> ${categoria1.category}</option>
+											</c:forEach>
+										</select>
+									
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="promo_idProduct">ID Producto</label>
-									<input type="text" class="form-control" id="edit-promo_idProduct" readonly/>
-								<!-- <select name="promo_idProduct" class="form-control" required="required" id="edit-promo_idProduct" data-ng-model="ngproduct"> 
-									<option data-ng-repeat="x in vm.listaProductos | filtrocat1:ngcat1"  data-ng-selected="theProduct({{x.id}})" value="{{x.id}}">{{x.id}} {{x.name}}</option>
-									<!-- data-ng-model="id" -->
-								<!--  </select> -->
-								<!-- En este caso data-ng-model y data-ng-selected son redundantes porque apuntan al mismo valor -->
-								<!-- <input
-									type="date" name="promo_idProduct" class="form-control"
-									required="required" id="edit-promo_idProduct" /> -->
+									<select class="form-control" name="promo_idProduct" id="edit-promo_idProduct">
+											<c:forEach items="${listaProductos}" var="producto">
+													<option value="${producto.id}"> ${producto.productName}</option>
+											</c:forEach>
+										</select>
+								
 							</div>
 							<div class="form-group row">
 								<div class="col-md-6">
@@ -289,15 +305,14 @@
 							</div>
 							<div class="form-group row">
 								<div class="col-md-6">
-									<label for="promo_controlzoneId">Zona de Control</label> <select
+									<label for="promo_controlzoneId">Zona de Control</label> 
+										<select
 										name="promo_controlzoneId" class="form-control"
 										required="required" id="edit-promo_controlzoneId">
-										<%--Utilizamos un if para que aparezca marcada la opción real de la promoción --%>
-										<option value="0">Genérica</option>
-										<option value="1">Zona 1</option>
-										<option value="2">Zona 2</option>
-										<option value="3">Zona 3</option>
-									</select>
+											<c:forEach items="${listaZonas}" var="zona">
+													<option value="${zona.controlzoneId}"> ${zona.controlzoneEmplacement}</option>
+											</c:forEach>
+										</select>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
@@ -363,6 +378,27 @@
 	<script>
 		$(document).ready(function() {
 			$('[data-toggle="popover"]').popover();
+		    $('#table-promos').DataTable( {
+	    		"language": {
+	        "lengthMenu": "Mostrar _MENU_ usuarios por página",
+	        "zeroRecords": "No se ha encontrado nada - lo sentimos!",
+	        "info": "Mostrando página _PAGE_ de _PAGES_",
+	        "infoEmpty": "No se ha encontrado nada - lo sentimos!",
+	        "infoFiltered": "(filtrado por  _MAX_ registros totales)",
+	        "search":         "Buscar:",
+	        "paginate": {
+	            "first":      "Primero",
+	            "last":       "Último",
+	            "next":       "Siguiente",
+	            "previous":   "Anterior"
+	        },
+	        }
+	    });
+		    $('[type=search]').attr('class', 'input-sm');
+		    $('[type=search]').attr('style', 'width: 300px;');
+		    
+		    $('#table-promos_length').hide();
+
 		});
 		
 		function showEditModal(promo) {

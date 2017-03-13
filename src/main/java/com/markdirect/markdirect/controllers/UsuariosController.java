@@ -38,7 +38,7 @@ public class UsuariosController {
 	 * Metodo para bloquear los usuarios escogidos
 	 *El try and catch pilla la excepcion del arraylist y ejecuta otro metodo solo para un usuario
 	 * @param userblock
-	 * @return devuelve un objeto mav al que esta a�adido el metodo para bloquear usuario, un mensaje de exito y la pagina jsp a la que ir
+	 * @return devuelve un objeto mav al que esta a�adido el metodo para bloquear usuario, un mensaje de exito y la pagina jsp a la que ir
 	 */
 	@RequestMapping(value="usuario",method=RequestMethod.POST)
 	public ModelAndView bloquearUsuario(@RequestParam("bloquear") String userblock){
@@ -48,12 +48,12 @@ public class UsuariosController {
 			String[] usuariosbloqueados;
 			usuariosbloqueados=userblock.split(separador);
 			mav.addObject("usuario",usuario.bloquearUsuario(usuariosbloqueados));//Metodo que bloqueara al usuario
-			mav.addObject("mensajeblock", "usuario bloqueado con exito");
+			mav.addObject("mensajeblock", "Usuario bloqueado con éxito");
 			mav.setViewName("usuarios");
 		}
 		catch(ArrayIndexOutOfBoundsException e){//En caso de que solo haya un usuario a bloquear ejecuta el catch
 			mav.addObject("usuario",usuario.bloquearUsuario(userblock));//Metodo que bloqueara al usuario
-			mav.addObject("mensajeblock", "usuario bloqueado con exito");
+			mav.addObject("mensajeblock", "Usuario bloqueado con éxito");
 			mav.setViewName("usuarios");
 		}
 		mav.addObject("usuario",usuario.listarUsuarios());

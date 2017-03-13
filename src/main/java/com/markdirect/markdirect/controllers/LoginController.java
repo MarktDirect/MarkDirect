@@ -43,8 +43,8 @@ public class LoginController {
 	 * Metodo para comprobar si el usuario es valido o no
 	 * @param usuario
 	 * @param password
-	 * @return devuelve un mav con la pagina que visitar y le añade un metodo para comprobar usuario
-	 * ademas tambien devuelve atributos añadidos a la sesion y crea la sesion del usuario
+	 * @return devuelve un mav con la pagina que visitar y le aï¿½ade un metodo para comprobar usuario
+	 * ademas tambien devuelve atributos aï¿½adidos a la sesion y crea la sesion del usuario
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public ModelAndView validar(
@@ -79,7 +79,7 @@ public class LoginController {
 	 */
 	@RequestMapping("/logout")
 	public String logout(Model model) {
-		model.addAttribute("mensajedespedida", "Sesion cerrada con exito");
+		model.addAttribute("mensajedespedida", "SesiÃ³n cerrada con exito");
 		session.removeAttribute("usuario"); //eliminamos el user de la sesion
 		session.invalidate(); //invalidar la session - se borra todo lo que hay dentro
 		return "login";
