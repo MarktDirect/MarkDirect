@@ -587,7 +587,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	 * @return devuelve un 1 si la secuencia sql se ha ejecutado bien y ha editado la zona
 	 */
 	public int editarZonaControl( int idzona,String controlzoneMajor, String controlzoneMinor, String controlzoneEmplacement){
-		String sql="UPDATE controlzones SET controlzonemajor=?,controlzoneMinor=?,controlzoneemplacement=? where controlzoneId=?";
+		String sql="UPDATE controlzones SET controlzonemajor=?,controlzoneMinor=?,controlzoneEmplacement=? where controlzoneId=?";
 		int agregarzona = jdbc.update(sql, new Object[]{controlzoneMajor,controlzoneMinor,controlzoneEmplacement,idzona});
 		return agregarzona;
 
