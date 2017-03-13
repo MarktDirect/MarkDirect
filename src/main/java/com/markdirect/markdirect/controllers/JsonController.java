@@ -42,7 +42,7 @@ public class JsonController {
 	public @ResponseBody ListaPromosJSON getPromos(@RequestParam("token") String token, @RequestParam("major") String controlzoneMajor, @RequestParam("minor") String controlzoneMinor) {
 		List<Promocion> promoList = null;
 		ListaPromosJSON listaJSON = null;
-		/*Si el major y minor son caracteres vacíos, significa que la promoción es genérica */
+		//Si el major y minor son caracteres vacíos, significa que la promoción es genérica 
 		if(controlzoneMajor.equals("") && controlzoneMinor.equals("")) {
 			promoList = db.getGenericPromos(token);
 			if(!promoList.equals(null)) {
