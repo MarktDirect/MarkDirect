@@ -341,7 +341,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Eliminar Promoción</h4>
 				</div>
-				<form class="form" action="#" method="Get">
+				<form class="form" action="deletePromo" method="Post">
 					<div class="modal-body">
 						<p>¿Estás seguro que quieres eliminar la promoción?</p>
 					</div>
