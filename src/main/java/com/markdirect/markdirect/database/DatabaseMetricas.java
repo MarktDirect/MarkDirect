@@ -16,10 +16,12 @@ import com.markdirect.markdirect.beans.Producto;
 
 public class DatabaseMetricas extends DatabaseGenerica {
 
+	//Atributos
 	private JdbcTemplate jdbc;
 
 	public static final String BASE_DATOS = "MarkDirect";
 
+	//Constructor
 	public DatabaseMetricas() {
 		this.jdbc = new JdbcTemplate(Conector.getDataSource());
 	}
@@ -211,6 +213,10 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		return  listaNivels1H;
 
 	}
+	/**
+	 * Método para sacar la métrica de usuarios según edad y género
+	 * @return data: ArrayList<DatabaseData> con las edades por rango y género
+	 */
 
 	public ArrayList<DatabaseData> usersByAgeAndGender() {
 		ArrayList<DatabaseData> data = new ArrayList<DatabaseData>();
