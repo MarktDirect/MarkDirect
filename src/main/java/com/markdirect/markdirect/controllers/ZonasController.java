@@ -58,4 +58,27 @@ public class ZonasController {
 		
 	}
 	
+	/**@RequestMapping(value="editzonas", method=RequestMethod.POST)
+	public ModelAndView editZonas(@RequestParam("")
+			@RequestParam("controlzoneMajor") String controlzoneMajor,
+			@RequestParam("controlzoneMinor") String controlzoneMinor,
+			@RequestParam("controlzoneEmplacement") String controlzoneEmplacement){
+		
+		int zonaeditada = db.editarZonaControl(controlzoneMajor, controlzoneMinor, controlzoneEmplacement);
+		ModelAndView mav = new ModelAndView();
+		if(zonaeditada == 1){
+			mav.addObject("mensaje", "Zona de control editada con Exito");
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("zonas");
+		}else{
+			mav.addObject("mensaje", "Error al editar la zona de control");
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("zonas");
+		}
+		
+		
+		return null;
+		
+	}*/
+	
 }
