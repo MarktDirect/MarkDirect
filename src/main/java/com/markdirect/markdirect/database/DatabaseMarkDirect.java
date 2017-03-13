@@ -578,4 +578,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		usuario = jdbc.queryForInt(sql,email);
 		return usuario;
 	} 
+	
+	
+	/**public int editarZonaControl( int idzona,String controlzoneMajor, String controlzoneMinor, String controlzoneEmplacement){
+		int agregada=0;
+		String sql="UPDATE controlzones SET controlzonemajor=?,controlzoneMinor=?,controlzoneemplacement=? where"
+		return agregada;
+		
+	}*/
 }
