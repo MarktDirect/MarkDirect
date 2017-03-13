@@ -200,8 +200,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return filasAfectadas;
 	}
 	/**
-	 * Método para editar y modificar las promociones de la base de datos
-	 * Todos estos parámetros son los atributos de la promoción
+	 * Mï¿½todo para editar y modificar las promociones de la base de datos
+	 * Todos estos parï¿½metros son los atributos de la promociï¿½n
 	 * @param promoId
 	 * @param promoName
 	 * @param promoDescription
@@ -229,12 +229,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	}
 
 	/**
-	 * Método para eliminar una promoción de la base de datos
-	 * @param promoId : se elimina a partir de la id de la promoción
+	 * Mï¿½todo para eliminar una promociï¿½n de la base de datos
+	 * @param promoId : se elimina a partir de la id de la promociï¿½n
 	 * @return devuelve un entero con el numero de filas afectada
 	 */
 	public int deletePromo(int promoId){
-		System.out.println("Estoy en el método de eliminar promociones");
+		System.out.println("Estoy en el mï¿½todo de eliminar promociones");
 		String sql = "DELETE FROM promos WHERE promoId = ?";
 		int filasAfectadas = jdbc.update(sql, new Object[]{promoId});
 		System.out.println(filasAfectadas);

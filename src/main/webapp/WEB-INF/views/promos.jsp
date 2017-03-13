@@ -107,8 +107,8 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-md-6">
-								<label for="promo_controlZoneId">Zona de Control</label> <select
-									name="promo_controlZoneId" class="form-control"
+								<label for="promo_controlzoneId">Zona de Control</label> <select
+									name="promo_controlzoneId" class="form-control"
 									required="required">
 									<option value="0">Promoción Genérica</option>
 									<option value="1">Zona 1</option>
