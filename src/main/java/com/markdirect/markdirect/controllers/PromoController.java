@@ -51,20 +51,14 @@ public class PromoController {
 			mav.addObject("mensaje", "Promocion añadido con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
-<<<<<<< HEAD
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
-=======
->>>>>>> 1a0b2ef96bc41fbcb8c21606b747323f40c90e41
 			mav.setViewName("promos");
 
 		} else {
 			mav.addObject("mensaje", "Promocion no añadido con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
-<<<<<<< HEAD
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
-=======
->>>>>>> 1a0b2ef96bc41fbcb8c21606b747323f40c90e41
 			mav.setViewName("promos");
 
 		}
@@ -111,19 +105,13 @@ public class PromoController {
 			mav.addObject("mensaje", "Promocion modificada con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
-<<<<<<< HEAD
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
-=======
->>>>>>> 1a0b2ef96bc41fbcb8c21606b747323f40c90e41
 			mav.setViewName("promos");
 		} else {
 			mav.addObject("mensaje", "Error al modificar la promoción");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
-<<<<<<< HEAD
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
-=======
->>>>>>> 1a0b2ef96bc41fbcb8c21606b747323f40c90e41
 			mav.setViewName("promos");
 		}
 
