@@ -61,7 +61,8 @@
 					<td id="controlzoneMajor">${zona.controlzoneMajor}</td>
 					<td id="controlzoneMinor">${zona.controlzoneMinor}</td>
 					<td><a role="button" data-id="${zona.controlzoneId}"
-							onclick="showEditModal(this);"><i class="fa fa-pencil-square-o fa-lg" style="color: black" aria-hidden="true"></i></a></td>
+							onclick="showEditModal(this);"><i class="fa fa-pencil-square-o fa-lg" style="color: black" aria-hidden="true"></i></a>
+							&nbsp;<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></td>
 					</tr>
 				</c:forEach>
 			</table>
