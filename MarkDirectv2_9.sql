@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 13-03-2017 a las 09:12:25
+-- Tiempo de generación: 13-03-2017 a las 12:17:43
 -- Versión del servidor: 5.5.42
 -- Versión de PHP: 7.0.0
 
@@ -13,6 +13,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `MarkDirect`
 --
+
 DROP DATABASE IF EXISTS MarkDirect;
 CREATE DATABASE IF NOT EXISTS MarkDirect;
 
@@ -78,7 +79,7 @@ CREATE TABLE `controlzones` (
 
 INSERT INTO `controlzones` (`controlzoneId`, `controlzoneMajor`, `controlzoneMinor`, `controlzoneEmplacement`, `controlzone_centerId`) VALUES
 (0, '0', '0', 'Promoción Genérica', 1),
-(1, '4', '34696', 'Zona 1', 1),
+(1, '4', '34696', 'Entrada', 1),
 (2, '4', '35484', 'Zona 2', 1),
 (3, '4', '35245', 'Zona 3', 1),
 (4, '4', '34711', 'Zona 4', 1),
@@ -2345,7 +2346,7 @@ CREATE TABLE `sentpromos` (
   `id` int(4) NOT NULL,
   `id_promo` int(11) NOT NULL,
   `user_token` varchar(255) COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `sentpromos`
@@ -2370,7 +2371,14 @@ INSERT INTO `sentpromos` (`id`, `id_promo`, `user_token`) VALUES
 (16, 18, '323a4be0-9975-409d-aca0-ec975c00e9bd'),
 (17, 25, '323a4be0-9975-409d-aca0-ec975c00e9bd'),
 (18, 18, '33e81332-b523-469c-bcc7-2fd07bfcf26a'),
-(19, 25, '33e81332-b523-469c-bcc7-2fd07bfcf26a');
+(19, 25, '33e81332-b523-469c-bcc7-2fd07bfcf26a'),
+(20, 4, '37e46433-720c-4de7-93bf-c70386d52cc6'),
+(21, 18, '7dd552a9-12a-4da5-bfd2-123a1e09a999'),
+(22, 2, '1dd777a9-124a-4da5-bfd2-bf3a1239a475'),
+(23, 24, 'aef5w2a9-12a-4da5-bfd2-123a1tde97000'),
+(24, 18, '1dd552a9-0000-4fa6-bf42-123a1e09a473'),
+(25, 17, '1dd552a9-de4a-4da5-bfd2-bf3a1e09a417'),
+(26, 4, '1dd777a9-d12a-4da5-bfd2-bf331e091293');
 
 -- --------------------------------------------------------
 
@@ -2399,34 +2407,34 @@ INSERT INTO `users` (`userId`, `userEmail`, `userGen`, `userAge`, `userBlock`, `
 (4, '4@gmail.com', 'H', 45, 0, '1', ''),
 (5, '5@gmail.com', 'm', 34, 0, '1234', ''),
 (6, '800@gmail.com', 'H', 34, 0, '1234', ''),
-(7, 'amet.massa@cursusdiam.ca', 'M', 97, 0, 'morbi', 'MANUAL'),
-(8, 'ornare.In.faucibus@Nullamvelit.net', 'M', 59, 0, 'dolor', 'MANUAL'),
+(7, 'amet.massa@cursusdiam.ca', 'M', 23, 0, 'morbi', 'MANUAL'),
+(8, 'ornare.In.faucibus@Nullamvelit.net', 'M', 41, 0, 'dolor', 'MANUAL'),
 (9, 'lectus.Nullam@tristiquepharetraQuisque.com', 'M', 23, 0, 'massa.', 'MANUAL'),
 (10, 'porttitor.tellus.non@nisi.ca', 'M', 44, 0, 'a,', 'MANUAL'),
 (11, 'ut@erat.net', 'M', 19, 0, 'Curae;', 'MANUAL'),
 (12, 'volutpat@Phasellus.com', 'M', 38, 0, 'libero', 'MANUAL'),
-(13, 'Nam.ligula@sapiengravidanon.net', 'M', 89, 0, 'turpis', 'MANUAL'),
+(13, 'Nam.ligula@sapiengravidanon.net', 'M', 45, 0, 'turpis', 'MANUAL'),
 (14, 'tellus.sem.mollis@tristiquesenectuset.co.uk', 'M', 27, 0, 'velit', 'MANUAL'),
 (15, 'Nullam.nisl.Maecenas@Aliquamgravida.com', 'M', 38, 0, 'id', 'MANUAL'),
-(16, 'cubilia.Curae@dictumauguemalesuada.org', 'M', 93, 0, 'aliquet', 'MANUAL'),
+(16, 'cubilia.Curae@dictumauguemalesuada.org', 'M', 25, 0, 'aliquet', 'MANUAL'),
 (17, 'rutrum@Proinultrices.ca', 'H', 32, 0, 'ullamcorper', 'FACEBOOK'),
 (18, 'Nulla@ametdapibus.com', 'H', 29, 0, 'libero', 'FACEBOOK'),
 (19, 'dolor.Donec@sedlibero.com', 'H', 50, 0, 'metus.', 'FACEBOOK'),
-(20, 'dis.parturient.montes@Aeneanegetmetus.org', 'H', 61, 0, 'pellentesque', 'FACEBOOK'),
+(20, 'dis.parturient.montes@Aeneanegetmetus.org', 'H', 45, 0, 'pellentesque', 'FACEBOOK'),
 (21, 'In.tincidunt@Vestibulumante.edu', 'H', 24, 0, 'ante', 'FACEBOOK'),
-(22, 'orci.luctus.et@asollicitudinorci.edu', 'H', 91, 0, 'ante', 'FACEBOOK'),
+(22, 'orci.luctus.et@asollicitudinorci.edu', 'H', 32, 0, 'ante', 'FACEBOOK'),
 (23, 'Aenean@metus.ca', 'H', 25, 0, 'lacus.', 'FACEBOOK'),
-(24, 'consectetuer.adipiscing@dolor.ca', 'H', 78, 0, 'quam,', 'FACEBOOK'),
+(24, 'consectetuer.adipiscing@dolor.ca', 'H', 33, 0, 'quam,', 'FACEBOOK'),
 (25, 'dui.semper@nequeSedeget.edu', 'H', 61, 0, 'amet,', 'FACEBOOK'),
 (26, 'Morbi.quis@tinciduntnunc.com', 'H', 35, 0, 'Ut', 'FACEBOOK'),
 (27, 'Vivamus.nisi@tempus.edu', 'M', 51, 0, 'nec,', 'MANUAL'),
 (28, 'dui.augue@Namtempordiam.org', 'M', 49, 0, 'fermentum', 'MANUAL'),
-(29, 'neque.Nullam@hymenaeos.co.uk', 'M', 58, 0, 'malesuada', 'MANUAL'),
+(29, 'neque.Nullam@hymenaeos.co.uk', 'M', 32, 0, 'malesuada', 'MANUAL'),
 (30, 'enim@nonummy.co.uk', 'M', 53, 0, 'ullamcorper', 'MANUAL'),
 (31, 'arcu.Vestibulum@dapibus.net', 'M', 19, 0, 'eu', 'MANUAL'),
 (32, 'pede.Cras.vulputate@turpisAliquamadipiscing.c', 'M', 35, 0, 'vehicula', 'MANUAL'),
 (33, 'Donec.egestas@amet.com', 'M', 47, 0, 'Vivamus', 'MANUAL'),
-(34, 'consectetuer.adipiscing@Integervitae.org', 'M', 81, 0, 'adipiscing', 'MANUAL'),
+(34, 'consectetuer.adipiscing@Integervitae.org', 'M', 36, 0, 'adipiscing', 'MANUAL'),
 (35, 'et.nunc@iaculisenimsit.ca', 'M', 59, 0, 'gravida.', 'MANUAL'),
 (36, 'senectus@amet.net', 'M', 36, 0, 'Nullam', 'MANUAL'),
 (37, 'egestas.Duis.ac@elementumat.net', 'H', 22, 0, 'ante', 'FACEBOOK'),
@@ -2434,11 +2442,11 @@ INSERT INTO `users` (`userId`, `userEmail`, `userGen`, `userAge`, `userBlock`, `
 (39, 'ipsum@Pellentesque.ca', 'H', 29, 0, 'pede', 'FACEBOOK'),
 (40, 'quam.vel.sapien@urnasuscipit.com', 'H', 52, 0, 'urna', 'FACEBOOK'),
 (41, 'bibendum.sed@porttitorinterdum.com', 'H', 33, 0, 'ornare.', 'FACEBOOK'),
-(42, 'nisl@justofaucibuslectus.org', 'H', 98, 0, 'nec', 'FACEBOOK'),
+(42, 'nisl@justofaucibuslectus.org', 'H', 22, 0, 'nec', 'FACEBOOK'),
 (43, 'faucibus@id.com', 'H', 40, 0, 'Aliquam', 'FACEBOOK'),
 (44, 'porttitor.interdum.Sed@vellectus.net', 'H', 40, 0, 'natoque', 'FACEBOOK'),
 (45, 'ornare@imperdieterat.org', 'H', 33, 0, 'blandit', 'FACEBOOK'),
-(46, 'interdum@nibh.net', 'H', 74, 0, 'Etiam', 'FACEBOOK'),
+(46, 'interdum@nibh.net', 'H', 20, 0, 'Etiam', 'FACEBOOK'),
 (47, 'velit@odio.co.uk', 'M', 44, 0, 'auctor', 'MANUAL'),
 (48, 'ante.dictum.cursus@metus.com', 'M', 52, 0, 'Integer', 'MANUAL'),
 (49, 'volutpat@commodo.org', 'M', 38, 0, 'libero.', 'MANUAL'),
@@ -2446,42 +2454,42 @@ INSERT INTO `users` (`userId`, `userEmail`, `userGen`, `userAge`, `userBlock`, `
 (51, 'purus.accumsan.interdum@sem.co.uk', 'M', 59, 0, 'parturient', 'MANUAL'),
 (52, 'nec.enim.Nunc@mauris.ca', 'M', 61, 0, 'et,', 'MANUAL'),
 (53, 'diam.dictum.sapien@scelerisquemollisPhasellus', 'M', 58, 0, 'orci,', 'MANUAL'),
-(54, 'Cras.eget.nisi@In.co.uk', 'M', 57, 0, 'tincidunt', 'MANUAL'),
-(55, 'eu.dolor@penatibuset.edu', 'M', 79, 0, 'risus', 'MANUAL'),
-(56, 'sed.dolor.Fusce@elit.com', 'M', 67, 0, 'hymenaeos.', 'MANUAL'),
-(57, 'vitae.erat@Nullamscelerisque.ca', 'H', 69, 0, 'diam', 'FACEBOOK'),
-(58, 'velit.egestas@non.ca', 'H', 97, 0, 'enim,', 'FACEBOOK'),
-(59, 'sed.sem@accumsaninterdum.edu', 'H', 75, 0, 'ullamcorper', 'FACEBOOK'),
+(54, 'Cras.eget.nisi@In.co.uk', 'M', 30, 0, 'tincidunt', 'MANUAL'),
+(55, 'eu.dolor@penatibuset.edu', 'M', 22, 0, 'risus', 'MANUAL'),
+(56, 'sed.dolor.Fusce@elit.com', 'M', 30, 0, 'hymenaeos.', 'MANUAL'),
+(57, 'vitae.erat@Nullamscelerisque.ca', 'H', 21, 0, 'diam', 'FACEBOOK'),
+(58, 'velit.egestas@non.ca', 'H', 32, 0, 'enim,', 'FACEBOOK'),
+(59, 'sed.sem@accumsaninterdum.edu', 'H', 42, 0, 'ullamcorper', 'FACEBOOK'),
 (60, 'malesuada.vel@convallisestvitae.edu', 'H', 63, 0, 'nostra,', 'FACEBOOK'),
-(61, 'Aenean.euismod@ipsum.net', 'H', 99, 0, 'vulputate', 'FACEBOOK'),
-(62, 'tincidunt.aliquam.arcu@eliteratvitae.edu', 'H', 83, 0, 'sed,', 'FACEBOOK'),
-(63, 'elementum.at@ultrices.co.uk', 'H', 93, 0, 'non', 'FACEBOOK'),
+(61, 'Aenean.euismod@ipsum.net', 'H', 29, 0, 'vulputate', 'FACEBOOK'),
+(62, 'tincidunt.aliquam.arcu@eliteratvitae.edu', 'H', 19, 0, 'sed,', 'FACEBOOK'),
+(63, 'elementum.at@ultrices.co.uk', 'H', 24, 0, 'non', 'FACEBOOK'),
 (64, 'non.leo@mattis.co.uk', 'H', 45, 0, 'eu,', 'FACEBOOK'),
-(65, 'quis.pede.Suspendisse@ipsumnon.ca', 'H', 94, 0, 'arcu.', 'FACEBOOK'),
+(65, 'quis.pede.Suspendisse@ipsumnon.ca', 'H', 44, 0, 'arcu.', 'FACEBOOK'),
 (66, 'pellentesque.eget.dictum@Nunc.ca', 'H', 41, 0, 'enim', 'FACEBOOK'),
 (67, 'et@Proinsed.org', 'M', 38, 0, 'sed,', 'MANUAL'),
-(68, 'eget.venenatis@sitametorci.ca', 'M', 52, 0, 'dui,', 'MANUAL'),
+(68, 'eget.venenatis@sitametorci.ca', 'M', 19, 0, 'dui,', 'MANUAL'),
 (69, 'elit.elit.fermentum@sedleoCras.org', 'M', 32, 0, 'lobortis', 'MANUAL'),
 (70, 'enim.Etiam.gravida@Sed.org', 'M', 28, 0, 'amet,', 'MANUAL'),
-(71, 'Cras.sed@magnisdisparturient.edu', 'M', 80, 0, 'tellus', 'MANUAL'),
+(71, 'Cras.sed@magnisdisparturient.edu', 'M', 43, 0, 'tellus', 'MANUAL'),
 (72, 'purus.gravida.sagittis@at.edu', 'M', 43, 0, 'magnis', 'MANUAL'),
-(73, 'est@quisaccumsan.co.uk', 'M', 77, 0, 'Sed', 'MANUAL'),
-(74, 'sit.amet@cursus.net', 'M', 96, 0, 'laoreet', 'MANUAL'),
-(75, 'tincidunt.Donec@vestibulummassarutrum.com', 'M', 87, 0, 'sagittis', 'MANUAL'),
-(76, 'adipiscing@lorem.ca', 'M', 86, 0, 'quam', 'MANUAL'),
-(77, 'a@purus.com', 'H', 61, 0, 'nonummy', 'FACEBOOK'),
-(78, 'lorem.auctor.quis@massa.edu', 'H', 73, 0, 'vitae,', 'FACEBOOK'),
-(79, 'dui.Cum.sociis@orci.com', 'H', 52, 0, 'velit', 'FACEBOOK'),
+(73, 'est@quisaccumsan.co.uk', 'M', 22, 0, 'Sed', 'MANUAL'),
+(74, 'sit.amet@cursus.net', 'M', 48, 0, 'laoreet', 'MANUAL'),
+(75, 'tincidunt.Donec@vestibulummassarutrum.com', 'M', 21, 0, 'sagittis', 'MANUAL'),
+(76, 'adipiscing@lorem.ca', 'M', 43, 0, 'quam', 'MANUAL'),
+(77, 'a@purus.com', 'H', 26, 0, 'nonummy', 'FACEBOOK'),
+(78, 'lorem.auctor.quis@massa.edu', 'H', 33, 0, 'vitae,', 'FACEBOOK'),
+(79, 'dui.Cum.sociis@orci.com', 'H', 34, 0, 'velit', 'FACEBOOK'),
 (80, 'sem.vitae@utodiovel.net', 'H', 47, 0, 'taciti', 'FACEBOOK'),
-(81, 'nonummy.ipsum.non@non.edu', 'H', 88, 0, 'id,', 'FACEBOOK'),
-(82, 'tellus.sem.mollis@Sed.co.uk', 'H', 72, 0, 'Vestibulum', 'FACEBOOK'),
+(81, 'nonummy.ipsum.non@non.edu', 'H', 23, 0, 'id,', 'FACEBOOK'),
+(82, 'tellus.sem.mollis@Sed.co.uk', 'H', 18, 0, 'Vestibulum', 'FACEBOOK'),
 (83, 'mattis.velit@imperdiet.net', 'H', 19, 0, 'urna.', 'FACEBOOK'),
 (84, 'at@necleo.net', 'H', 49, 0, 'dolor.', 'FACEBOOK'),
-(85, 'Morbi.quis@massa.com', 'H', 96, 0, 'magna,', 'FACEBOOK'),
-(86, 'rhoncus.Proin.nisl@eu.net', 'H', 51, 0, 'cursus.', 'FACEBOOK'),
+(85, 'Morbi.quis@massa.com', 'H', 24, 0, 'magna,', 'FACEBOOK'),
+(86, 'rhoncus.Proin.nisl@eu.net', 'H', 35, 0, 'cursus.', 'FACEBOOK'),
 (87, 'Nulla.dignissim@Integerurna.net', 'M', 44, 0, 'Curabitur', 'MANUAL'),
-(88, 'nulla.Donec@euodiotristique.com', 'M', 96, 0, 'Praesent', 'MANUAL'),
-(89, 'fermentum.metus@quisdiamPellentesque.co.uk', 'M', 84, 0, 'blandit', 'MANUAL'),
+(88, 'nulla.Donec@euodiotristique.com', 'M', 32, 0, 'Praesent', 'MANUAL'),
+(89, 'fermentum.metus@quisdiamPellentesque.co.uk', 'M', 33, 0, 'blandit', 'MANUAL'),
 (90, 'ultrices@In.org', 'M', 19, 0, 'senectus', 'MANUAL'),
 (91, 'vestibulum.nec@necmetusfacilisis.com', 'M', 63, 0, 'ante', 'MANUAL'),
 (92, 'ligula.consectetuer@enimnectempus.com', 'M', 75, 0, 'eu,', 'MANUAL'),
@@ -2512,7 +2520,7 @@ CREATE TABLE `usertoken` (
   `id` int(4) NOT NULL,
   `id_user` int(4) NOT NULL,
   `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usertoken`
@@ -2526,7 +2534,14 @@ INSERT INTO `usertoken` (`id`, `id_user`, `token`) VALUES
 (6, 5, '37e46973-710c-4bb7-93be-c30386d52cc6'),
 (7, 6, '1dd552a9-de4a-4da5-bfd2-bf3a1e09a417'),
 (8, 107, '323a4be0-9975-409d-aca0-ec975c00e9bd'),
-(9, 108, '33e81332-b523-469c-bcc7-2fd07bfcf26a');
+(9, 108, '33e81332-b523-469c-bcc7-2fd07bfcf26a'),
+(10, 19, '37e46433-720c-4de7-93bf-c70386d52cc6'),
+(11, 25, '7dd552a9-12a-4da5-bfd2-123a1e09a999'),
+(12, 9, '1dd777a9-124a-4da5-bfd2-bf3a1239a475'),
+(13, 47, 'aef5w2a9-12a-4da5-bfd2-123a1tde97000'),
+(14, 29, '1dd552a9-0000-4fa6-bf42-123a1e09a473'),
+(15, 64, '234552a9-124a-4da5-bfd2-bf3a1e22a317'),
+(16, 27, '1dd777a9-d12a-4da5-bfd2-bf331e091293');
 
 --
 -- Índices para tablas volcadas
@@ -2629,7 +2644,7 @@ ALTER TABLE `promos`
 -- AUTO_INCREMENT de la tabla `sentpromos`
 --
 ALTER TABLE `sentpromos`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
@@ -2639,7 +2654,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `usertoken`
 --
 ALTER TABLE `usertoken`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- Restricciones para tablas volcadas
 --

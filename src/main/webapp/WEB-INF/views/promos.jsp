@@ -194,7 +194,10 @@
 					<td id="promoGen">${promo.promoGen}</td>
 					<td id="promo_controlzoneId">${promo.promo_controlzoneId}</td>
 					<td><a role="button" data-id="${promo.promoId}"
-							editButton" onclick="showEditModal(this);" data-ng-click="vm.cargarDatos()"><i class="fa fa-pencil-square-o fa-2x" style="color: black" aria-hidden="true"></i></a></>
+							onclick="showEditModal(this);" data-ng-click="vm.cargarDatos()"><i class="fa fa-pencil-square-o fa-2x" style="color: black" aria-hidden="true"></i></a>
+						<a role="button" data-id="${promo.promoId}" 
+							onclick="showDeleteModal(this);"><i class="fa fa-trash-o fa-lg fa-2x" style="color: black" aria-hidden="true"></i></a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -326,6 +329,31 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- Modal Eliminar -->
+	<div id="modalDelete" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Eliminar Promoción</h4>
+				</div>
+				<form class="form" action="deletePromo" method="POST">
+					<div class="modal-body">
+						<p>¿Estás seguro que quieres eliminar la promoción?</p>
+						<input type="hidden" id="deletePromo" name="promoId"/>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-danger" value="Eliminar" />
+						<button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
 	<!-- TODO pasarlo a un documento js propio -->
 	<script>
 		$(document).ready(function() {
@@ -375,8 +403,14 @@
 			$scope.categoria1 = promo_catNivel1;
 			$scope.categoria2 = promo_catNivel2;
 			*/
-			
-			
+					
+		}
+		
+		function showDeleteModal(promo) {
+			var modalDelete = $("#modalDelete");
+			var promoId= $(promo).closest("tr").find("#promoId").html();
+			$("#deletePromo").val(promoId);
+			modalDelete.modal("show");		
 		}
 		
 	</script>

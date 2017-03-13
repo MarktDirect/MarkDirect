@@ -209,6 +209,14 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 				promoGen, promo_controlzoneId, promo_catNivel1, promo_catNivel2, promo_idProduct, promoId});
 		return filasAfectadas;
 	}
+	
+	public int deletePromo(int promoId){
+		System.out.println("Estoy en el m�todo de eliminar promociones");
+		String sql = "DELETE FROM promos WHERE promoId = ?";
+		int filasAfectadas = jdbc.update(sql, new Object[]{promoId});
+		System.out.println(filasAfectadas);
+		return filasAfectadas;
+	}
 
 	/**
 	 * Método que devuelve una lista de las promociones genéricas activas, pero filtradas 
