@@ -164,12 +164,11 @@
 	function showEditModal(zona) {
 		//Recogemos el modal
 		var modalEdit = $("#modalEdit");
-		var modalDelete = $("#modalDelete");
 		//Recogemos todos los parámetros de la promoción
-		var controlzoneId= $(promo).closest("tr").find("#controlzoneId").html();
-		var controlzoneEmplacement= $(promo).closest("tr").find("#controlzoneEmplacement").html();
-		var controlzoneMajor = $(promo).closest("tr").find("#controlzoneMajor").html();
-		var controlzoneMinor = $(promo).closest("tr").find("#controlzoneMinor").html();
+		var controlzoneId= $(zona).closest("tr").find("#controlzoneId").html();
+		var controlzoneEmplacement= $(zona).closest("tr").find("#controlzoneEmplacement").html();
+		var controlzoneMajor = $(zona).closest("tr").find("#controlzoneMajor").html();
+		var controlzoneMinor = $(zona).closest("tr").find("#controlzoneMinor").html();
 		
 		//Los volcamos en el formulario que se encuentra en el modal
 		$("#edit-controlzoneEmplacement").val(controlzoneEmplacement);
@@ -178,8 +177,7 @@
 		$("#edit-controlzoneId").val(controlzoneId);
 		
 		//mostramos el modal
-		modalEdit.modal("show");		
-		modalDelete.modal("show");		
+		modalEdit.modal("show");			
 	}
 	
 	function showDeleteModal(zona) {
