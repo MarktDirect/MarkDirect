@@ -77,7 +77,6 @@ public class PromoController {
 						@RequestParam("promo_idProduct") long promo_idProduct) {
 		
 		ModelAndView mav = new ModelAndView();
-		System.out.println("He creado el mav y voy a ejecutar el método");
 		if(db.editPromos(promoId, promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlzoneId, promoMinAge, promoMaxAge, promoGen, promo_catNivel1, promo_catNivel2, promo_idProduct) == 1) {
 			mav.addObject("mensaje", "Promocion modificada con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
