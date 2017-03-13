@@ -578,6 +578,14 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	} 
 	
 	
+	/**
+	 * Metodo para editar una zona de control 
+	 * @param idzona
+	 * @param controlzoneMajor
+	 * @param controlzoneMinor
+	 * @param controlzoneEmplacement
+	 * @return devuelve un 1 si la secuencia sql se ha ejecutado bien y ha editado la zona
+	 */
 	public int editarZonaControl( int idzona,String controlzoneMajor, String controlzoneMinor, String controlzoneEmplacement){
 		String sql="UPDATE controlzones SET controlzonemajor=?,controlzoneMinor=?,controlzoneemplacement=? where controlzoneId=?";
 		int agregarzona = jdbc.update(sql, new Object[]{controlzoneMajor,controlzoneMinor,controlzoneEmplacement,idzona});
@@ -585,6 +593,11 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		
 	}
 	
+	/**
+	 * Metodo para eliminar una zona de control mediante su id
+	 * @param idzona
+	 * @return devuelve un 1 si la consulta ha tenido exito y se ha eliminado
+	 */
 	public int eliminarZonaControl( int idzona){
 		String sql="DELETE FROM controlzones where controlzoneId=?";
 		int eliminarzona = jdbc.update(sql,idzona);

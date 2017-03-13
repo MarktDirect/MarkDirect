@@ -56,6 +56,15 @@ public class ZonasController {
 
 	}
 
+	
+	/**
+	 * Metodo para editar las zonas se recogen los parametros y se envian a un metodo que lo conecta con la BD
+	 * @param idzona
+	 * @param controlzoneEmplacement
+	 * @param controlzoneMajor
+	 * @param controlzoneMinor
+	 * @return devuelve un mav con la lista de zonas modificada 
+	 */
 	@RequestMapping(value="editzonas", method=RequestMethod.POST)
 	public ModelAndView editZonas(@RequestParam("controlzoneId")int idzona,
 			@RequestParam("controlzoneEmplacement") String controlzoneEmplacement,
@@ -77,6 +86,12 @@ public class ZonasController {
 		return mav;	
 	}
 	
+	
+	/**
+	 *Metodo para eliminar las zonas segun la id enviada 
+	 * @param idzona
+	 * @return devuelve un mav con la lista de zonas editada
+	 */
 	@RequestMapping(value="deletezonas", method=RequestMethod.POST)
 	public ModelAndView deleteZonas(@RequestParam("controlzoneid")int idzona){
 
