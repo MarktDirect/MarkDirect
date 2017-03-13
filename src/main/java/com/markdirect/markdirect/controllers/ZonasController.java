@@ -10,9 +10,9 @@ import com.markdirect.markdirect.database.DatabaseMarkDirect;
 
 @Controller
 public class ZonasController {
-	
+
 	DatabaseMarkDirect db = new DatabaseMarkDirect();
-	
+
 	@RequestMapping(value="zonas", method = RequestMethod.GET)
 	public ModelAndView zonas(){
 		ModelAndView mav = new ModelAndView();
@@ -36,10 +36,10 @@ public class ZonasController {
 			@RequestParam("controlzoneMinor") String controlzoneMinor,
 			@RequestParam("controlzoneEmplacement") String controlzoneEmplacement
 			){
-		
+
 		//insertar zona de control en BBDD
 		int algodon = db.insertarZonaControl(controlzoneMajor, controlzoneMinor, controlzoneEmplacement);
-		
+
 		//Vista
 		ModelAndView mav = new ModelAndView();
 		if(algodon == 1){
@@ -51,17 +51,17 @@ public class ZonasController {
 			mav.addObject("listaZonas", db.listarZonas());
 			mav.setViewName("centroszonas");
 		}
-		
+
 		return mav;
-		
+
 	}
-	
+
 	@RequestMapping(value="editzonas", method=RequestMethod.POST)
 	public ModelAndView editZonas(@RequestParam("controlzoneId")int idzona,
 			@RequestParam("controlzoneEmplacement") String controlzoneEmplacement,
 			@RequestParam("controlzoneMajor") String controlzoneMajor,
 			@RequestParam("controlzoneMinor") String controlzoneMinor){
-		
+
 		int zonaeditada = db.editarZonaControl(idzona,controlzoneMajor, controlzoneMinor, controlzoneEmplacement);
 		ModelAndView mav = new ModelAndView();
 		if(zonaeditada == 1){
@@ -73,9 +73,26 @@ public class ZonasController {
 			mav.addObject("listaZonas", db.listarZonas());
 			mav.setViewName("centroszonas");
 		}
-		
-		return mav;
-		
+
+		return mav;	
 	}
 	
+	@RequestMapping(value="deletezonas", method=RequestMethod.POST)
+	public ModelAndView deleteZonas(@RequestParam("controlzoneid")int idzona){
+
+		int zonaeliminada = db.eliminarZonaControl(idzona);
+		ModelAndView mav = new ModelAndView();
+		if(zonaeliminada == 1){
+			mav.addObject("mensaje", "Zona de control eliminada con Exito");
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("centroszonas");
+		}else{
+			mav.addObject("mensaje", "Error al eliminar la zona de control");
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("centroszonas");
+		}
+
+		return mav;	
+	}
+
 }

@@ -584,4 +584,11 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return agregarzona;
 		
 	}
+	
+	public int eliminarZonaControl( int idzona){
+		String sql="DELETE FROM controlzones where controlzoneId=?";
+		int eliminarzona = jdbc.update(sql,idzona);
+		return eliminarzona;
+		
+	}
 }
