@@ -106,7 +106,7 @@ function drawChartProductWomen() {
 		          width: 170,
 		          height: 170,
 		          chartArea: {bottom: 0,top:0,width:'80%',height:'80%'},
-		          colors:['#002C73', '#99cccc']
+		          colors:['#002C73', '#99cccc', '#91b4c0', '#add2f0']
 		        };
 		var chart = new google.visualization.PieChart(document.getElementById('chartproductW'));
 		//dibujamos el chart
@@ -140,7 +140,7 @@ function drawChartProductMen() {
 		          width: 170,
 		          height: 170,
 		          chartArea: {bottom: 0,top:0,width:'80%',height:'80%'},
-		          colors:['#002C73', '#99cccc']
+		          colors:['#002C73', '#99cccc', '#91b4c0', '#add2f0']
 		        };
 		var chart = new google.visualization.PieChart(document.getElementById('chartproductM'));
 		//dibujamos el chart
@@ -209,7 +209,7 @@ function drawChartBrandWomen() {
 		          width: 170,
 		          height: 170,
 		          chartArea: {bottom: 0,top:0,width:'80%',height:'80%'},
-		          colors:['#002C73', '#99cccc']
+		          colors:['#002C73', '#99cccc', '#91b4c0', '#add2f0']
 		        };
 		var chart = new google.visualization.PieChart(document.getElementById('chartbrandW'));
 		//dibujamos el chart
@@ -242,7 +242,7 @@ function drawChartBrandMen() {
 		          width: 170,
 		          height: 170,
 		          chartArea: {bottom: 0,top:0,width:'80%',height:'80%'},
-		          colors:['#002C73', '#99cccc']
+		          colors:['#002C73', '#99cccc', '#91b4c0', '#add2f0']
 		        };
 		var chart = new google.visualization.PieChart(document.getElementById('chartbrandM'));
 		//dibujamos el chart
@@ -281,7 +281,7 @@ function drawChartLevel1ByAge() {
 		        legend: { position: 'top', maxLines: 1 },
 		        bar: { groupWidth: '75%' },
 		        isStacked: true,
-		        colors:['#002C73', '#99cccc', '#f9e553']
+		        colors:['#002C73', '#99cccc']
 		      };
 		var chart = new google.visualization.ColumnChart(document.getElementById("columnchartLevel1"));
 		//dibujamos el chart
