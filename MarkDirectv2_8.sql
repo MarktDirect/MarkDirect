@@ -3,29 +3,20 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 10-03-2017 a las 10:42:21
+-- Tiempo de generación: 13-03-2017 a las 09:12:25
 -- Versión del servidor: 5.5.42
 -- Versión de PHP: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Base de datos: `MarkDirect`
 --
-
 DROP DATABASE IF EXISTS MarkDirect;
 CREATE DATABASE IF NOT EXISTS MarkDirect;
 
 USE MarkDirect;
-
-
 -- --------------------------------------------------------
 
 --
@@ -79,7 +70,7 @@ CREATE TABLE `controlzones` (
   `controlzoneMinor` varchar(45) DEFAULT NULL,
   `controlzoneEmplacement` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL,
   `controlzone_centerId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `controlzones`
@@ -137,7 +128,7 @@ INSERT INTO `level1categories` (`id`, `category`, `id_level2Category`) VALUES
 
 CREATE TABLE `level2categories` (
   `id` int(40) NOT NULL,
-  `category` varchar(40) NOT NULL
+  `category` varchar(40) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -146,7 +137,7 @@ CREATE TABLE `level2categories` (
 
 INSERT INTO `level2categories` (`id`, `category`) VALUES
 (1, 'Electronica de Consumo'),
-(2, 'Peque??o Electrodomestico'),
+(2, 'Pequeño Electrodomestico'),
 (3, 'Grandes Electrodomesticos');
 
 -- --------------------------------------------------------
@@ -2324,9 +2315,9 @@ CREATE TABLE `promos` (
 INSERT INTO `promos` (`promoId`, `promoName`, `promoDescription`, `promoSince`, `promoTo`, `promoState`, `promoCreate`, `promoImage`, `promoMinAge`, `promoMaxAge`, `promoGen`, `promo_controlzoneId`, `promo_catNivel1`, `promo_catNivel2`, `promo_idProduct`) VALUES
 (1, '20% OFF en Televisores LED', 'Aprovecha la oferta y obtiene 20% OFF en Televisores LED', '2017-03-08', '2017-03-31', 1, '2017-03-06 00:00:00', 'https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA02/CONTENIDOS/201509/17/00114841703144____3__640x640.jpg', 18, 99, 'Todos', 1, 13, 1, 8806088062235),
 (2, 'Actualizate', 'Si nos devuelves tu telefono antiguo te damos uno nuevo con un 30% de descuento', '2012-03-12', '2017-06-05', 1, '2017-02-06 22:05:33', 'https://www.theseniorlist.com/wp-content/uploads/2015/02/discounts.jpg', 21, 37, 'M', 0, 1, 2, 3030050064964),
-(3, 'Bienvenido al local!', 'Solo para ti, 10% off en Frigor├¡ficos', '2016-07-18', '2019-04-19', 1, '2017-02-07 17:21:20', 'http://www.mediatrends.es/wp-content/uploads/2016/01/neveras-multidoor-4-750x455.jpg', 18, 38, 'M', 1, 6, 3, 4016803026013),
+(3, 'Bienvenido al local!', 'Solo para ti, 10% off en Frigoríficos', '2016-07-18', '2019-04-19', 1, '2017-02-07 17:21:20', 'http://www.mediatrends.es/wp-content/uploads/2016/01/neveras-multidoor-4-750x455.jpg', 18, 38, 'M', 1, 6, 3, 4016803026013),
 (4, '2x1 en Auriculares', '2x1 en auriculares', '2013-02-18', '2019-03-31', 1, '2017-03-07 10:00:00', 'http://iphonea2.com/wp-content/uploads/2016/06/Ecandy-auriculares-Bluetooth-600x300.jpg', 18, 99, 'Todos', 1, 7, 1, 8713016016423),
-(5, 'Super oferta en higiene', 'Aprovecha la oportunidad ├║nica', '2012-03-12', '2017-06-05', 1, '2017-02-06 22:05:33', 'https://www.theseniorlist.com/wp-content/uploads/2015/02/discounts.jpg', 21, 37, 'M', 0, 2, 2, 8712836050280),
+(5, 'Super oferta en higiene', 'Aprovecha la oportunidad única', '2012-03-12', '2017-06-05', 1, '2017-02-06 22:05:33', 'https://www.theseniorlist.com/wp-content/uploads/2015/02/discounts.jpg', 21, 37, 'M', 0, 2, 2, 8712836050280),
 (6, 'Radios en oferta!!', 'Radios en oferta, solo por estar aqui', '2015-03-17', '2017-12-21', 1, '2017-02-07 17:29:08', 'https://media2.popsugar-assets.com/files/ons1/192/1922283/28_2009/2ea7b407a8ba9d47_Radio.jpg', 23, 29, 'Todos', 2, 4, 1, 4013833873822),
 (7, 'Depiladoras 15% OFF', '15% de descuento en depiladoras', '2015-03-17', '2017-12-28', 1, '2017-02-07 17:31:31', 'http://www.canovaselectrodomesticos.com/WebRoot/Store/Shops/Canovas/55D6/FEE6/3E89/18C1/5EAC/AC11/0002/BC9B/DP80B.jpg', 18, 76, 'M', 1, 2, 2, 3121040052846),
 (8, 'oferta cepillo de dientes', '20% descuento cepillos braun', '2017-03-01', '2017-03-18', 1, '2017-03-09 07:18:25', 'http://www.comercialbenajes.com/_articulos/Articulo0000505.jpg', 18, 45, 'Todos', 2, 2, 2, 3014260089498),
@@ -2342,7 +2333,7 @@ INSERT INTO `promos` (`promoId`, `promoName`, `promoDescription`, `promoSince`, 
 (22, 'Frigoríficos BEKO', '13% de descuento en frigoríficos', '2017-02-01', '2017-03-30', 1, '2017-01-10 00:00:00', 'http://csimg.mercamania.es/srv/ES/29061548cn151920dx/T/340x340/C/FFFFFF/url/frigorifico-beko-cn151920dx.jpg', 30, 45, 'Todos', 3, 6, 3, 8690842356421),
 (23, 'Superoferta en Lavadoras FAGOR', 'Aprovecha el 10% de descuento en lavadoras FAGOR', '2017-01-01', '2017-03-15', 1, '2016-10-05 00:00:00', 'https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA02/CONTENIDOS/201509/15/00104710373186____1__640x640.jpg', 23, 45, 'Todos', 3, 5, 3, 8435436101380),
 (24, 'Microondas Orbegoz', '15% de descuento', '2016-11-01', '2017-03-31', 1, '2016-11-01 00:00:00', 'https://d243u7pon29hni.cloudfront.net/images/products/mig_2031_0_m.jpg', 19, 57, 'Todos', 4, 11, 3, 8436044532139),
-(25, 'Disfruta de la música!', '12% de descuento en radios', '2017-03-02', '2017-03-31', 1, '2016-11-01 00:00:00', 'https://d243u7pon29hni.cloudfront.net/images/products/Radio_Grundig_TR_1200_retro_Rojo_l.jpg', 19, 35, 'Todos', 0, 4, 1, 4013833624004);
+(25, 'Disfruta de la música!', '12% de descuento en radios', '2017-03-02', '2017-03-31', 1, '2016-11-01 00:00:00', 'https://d243u7pon29hni.cloudfront.net/images/products/Radio_Grundig_TR_1200_retro_Rojo_l.jpg', 25, 35, 'Todos', 0, 4, 1, 4905524803792);
 
 -- --------------------------------------------------------
 
@@ -2354,7 +2345,7 @@ CREATE TABLE `sentpromos` (
   `id` int(4) NOT NULL,
   `id_promo` int(11) NOT NULL,
   `user_token` varchar(255) COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `sentpromos`
@@ -2371,7 +2362,15 @@ INSERT INTO `sentpromos` (`id`, `id_promo`, `user_token`) VALUES
 (8, 4, '37e46973-710c-4bb7-93be-c30386d52cc6'),
 (9, 7, '37e46973-710c-4bb7-93be-c30386d52cc6'),
 (10, 9, '37e46973-710c-4bb7-93be-c30386d52cc6'),
-(11, 11, '37e46973-710c-4bb7-93be-c30386d52cc6');
+(11, 11, '37e46973-710c-4bb7-93be-c30386d52cc6'),
+(12, 17, '323a4be0-9975-409d-aca0-ec975c00e9bd'),
+(13, 18, '323a4be0-9975-409d-aca0-ec975c00e9bd'),
+(14, 25, '323a4be0-9975-409d-aca0-ec975c00e9bd'),
+(15, 17, '323a4be0-9975-409d-aca0-ec975c00e9bd'),
+(16, 18, '323a4be0-9975-409d-aca0-ec975c00e9bd'),
+(17, 25, '323a4be0-9975-409d-aca0-ec975c00e9bd'),
+(18, 18, '33e81332-b523-469c-bcc7-2fd07bfcf26a'),
+(19, 25, '33e81332-b523-469c-bcc7-2fd07bfcf26a');
 
 -- --------------------------------------------------------
 
@@ -2387,7 +2386,7 @@ CREATE TABLE `users` (
   `userBlock` int(4) DEFAULT '0',
   `userPass` varchar(50) DEFAULT NULL,
   `socialNetwork` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
@@ -2499,7 +2498,9 @@ INSERT INTO `users` (`userId`, `userEmail`, `userGen`, `userAge`, `userBlock`, `
 (103, 'massa.Quisque@sapiencursus.com', 'H', 40, 0, 'Nulla', 'FACEBOOK'),
 (104, 'pharetra.sed.hendrerit@ultriciessemmagna.edu', 'H', 19, 0, 'dolor', 'FACEBOOK'),
 (105, 'non@rutrumjusto.com', 'H', 24, 0, 'nunc', 'FACEBOOK'),
-(106, 'Mauris@risusNullaeget.com', 'H', 62, 0, 'dui.', 'FACEBOOK');
+(106, 'Mauris@risusNullaeget.com', 'H', 62, 0, 'dui.', 'FACEBOOK'),
+(107, 'hoi', 'H', 32, 0, 'hh', 'MANUAL'),
+(108, 'cazallau@gmail.com', 'H', 26, 0, '', 'FACEBOOK');
 
 -- --------------------------------------------------------
 
@@ -2511,7 +2512,7 @@ CREATE TABLE `usertoken` (
   `id` int(4) NOT NULL,
   `id_user` int(4) NOT NULL,
   `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usertoken`
@@ -2523,7 +2524,9 @@ INSERT INTO `usertoken` (`id`, `id_user`, `token`) VALUES
 (3, 3, 'HEUDJ234'),
 (5, 4, 'LSDFHHJ2'),
 (6, 5, '37e46973-710c-4bb7-93be-c30386d52cc6'),
-(7, 6, '1dd552a9-de4a-4da5-bfd2-bf3a1e09a417');
+(7, 6, '1dd552a9-de4a-4da5-bfd2-bf3a1e09a417'),
+(8, 107, '323a4be0-9975-409d-aca0-ec975c00e9bd'),
+(9, 108, '33e81332-b523-469c-bcc7-2fd07bfcf26a');
 
 --
 -- Índices para tablas volcadas
@@ -2613,6 +2616,11 @@ ALTER TABLE `usertoken`
 ALTER TABLE `admins`
   MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT de la tabla `controlzones`
+--
+ALTER TABLE `controlzones`
+  MODIFY `controlzoneId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT de la tabla `promos`
 --
 ALTER TABLE `promos`
@@ -2621,17 +2629,17 @@ ALTER TABLE `promos`
 -- AUTO_INCREMENT de la tabla `sentpromos`
 --
 ALTER TABLE `sentpromos`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=107;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT de la tabla `usertoken`
 --
 ALTER TABLE `usertoken`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- Restricciones para tablas volcadas
 --
@@ -2682,7 +2690,3 @@ ALTER TABLE `sentpromos`
 --
 ALTER TABLE `usertoken`
   ADD CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`userId`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
