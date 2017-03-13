@@ -20,8 +20,8 @@ public class PromoController {
 	@RequestMapping(value="promos", method=RequestMethod.GET)
 	public ModelAndView promos() {
 		ModelAndView mav = new ModelAndView();
-		System.out.println("Listo las promociones");
 		mav.addObject("listaPromos", db.listarPromociones());
+		mav.addObject("listaCat1", db.listarCategoriasNivel1());
 		mav.setViewName("promos");
 		return mav;
 	}
