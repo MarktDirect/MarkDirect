@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	</div>
-	<!-- Modal -->
+	<!-- Modal Añadir Promoción-->
 	<div id="modalPromo" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
@@ -110,10 +110,9 @@
 								<label for="promo_controlzoneId">Zona de Control</label> <select
 									name="promo_controlzoneId" class="form-control"
 									required="required">
-									<option value="0">Promoción Genérica</option>
-									<option value="1">Zona 1</option>
-									<option value="2">Zona 2</option>
-									<option value="3">Zona 3</option>
+									<c:forEach items="${listaZonas}" var="zona">
+										<option value="${zona.controlzoneId}">${zona.controlzoneEmplacement}</option>
+									</c:forEach>
 								</select>
 							</div>
 							<div class="col-md-6">
