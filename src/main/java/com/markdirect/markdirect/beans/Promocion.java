@@ -165,7 +165,6 @@ public class Promocion {
 		this.promo_controlzoneId = promo_controlzoneId;
 	}
 	
-	
 
 	//MÃ©todos
 
@@ -246,6 +245,11 @@ public class Promocion {
 		return date;
 	}
 	
+	/**
+	 * Método para generar el código Json con los datos de las promociones
+	 * @param promoList: List con los datos de la promoción
+	 * @return ofertas: ArrayList con los datos de la promoción en lenguaje Json
+	 */
 	public static ArrayList<PromoJSON> convertJSON(List<Promocion> promoList) {
 		ArrayList<PromoJSON> ofertas = new ArrayList<PromoJSON>();
 		for (Promocion promocion : promoList) {
@@ -259,7 +263,6 @@ public class Promocion {
 				 long time = d.getTime();
 				 validez = String.valueOf(time/1000);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			   
