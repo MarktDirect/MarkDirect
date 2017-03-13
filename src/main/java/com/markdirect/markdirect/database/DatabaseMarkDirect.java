@@ -314,8 +314,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		return  listausuario;
 
 	}
-	
-	
+
+
 	/**
 	 * Metodo para desbloquear varios usuarios
 	 * @param usuariosdesbloqueados
@@ -358,7 +358,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 
 		return  listausuario;
 	}
-	
+
 	/**
 	 * Segundo metodo para desbloquear usuarios en este caso para uno solo
 	 * como el de bloqueo
@@ -576,8 +576,8 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		usuario = jdbc.queryForInt(sql,email);
 		return usuario;
 	} 
-	
-	
+
+
 	/**
 	 * Metodo para editar una zona de control 
 	 * @param idzona
@@ -590,9 +590,9 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		String sql="UPDATE controlzones SET controlzonemajor=?,controlzoneMinor=?,controlzoneemplacement=? where controlzoneId=?";
 		int agregarzona = jdbc.update(sql, new Object[]{controlzoneMajor,controlzoneMinor,controlzoneEmplacement,idzona});
 		return agregarzona;
-		
+
 	}
-	
+
 	/**
 	 * Metodo para eliminar una zona de control mediante su id
 	 * @param idzona
@@ -602,6 +602,6 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		String sql="DELETE FROM controlzones where controlzoneId=?";
 		int eliminarzona = jdbc.update(sql,idzona);
 		return eliminarzona;
-		
+
 	}
 }

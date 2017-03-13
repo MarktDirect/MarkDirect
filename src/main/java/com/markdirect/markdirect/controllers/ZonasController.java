@@ -56,7 +56,7 @@ public class ZonasController {
 
 	}
 
-	
+
 	/**
 	 * Metodo para editar las zonas se recogen los parametros y se envian a un metodo que lo conecta con la BD
 	 * @param idzona
@@ -85,8 +85,8 @@ public class ZonasController {
 
 		return mav;	
 	}
-	
-	
+
+
 	/**
 	 *Metodo para eliminar las zonas segun la id enviada 
 	 * @param idzona
