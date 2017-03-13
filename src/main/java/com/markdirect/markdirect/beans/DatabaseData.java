@@ -2,10 +2,11 @@ package com.markdirect.markdirect.beans;
 
 public class DatabaseData {
 
-	//atributos
+	//Atributos
 	private String dataName;
 	private int dataValue;
 	
+	//Constructores
 	public DatabaseData(){}
 	
 	public DatabaseData(String dataName, int dataValue) {
@@ -14,6 +15,7 @@ public class DatabaseData {
 		this.dataValue = dataValue;
 	}
 
+	//Getters y seters
 	public String getDataName() {
 		return dataName;
 	}
