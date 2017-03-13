@@ -151,6 +151,7 @@
 				<form class="form" action="deletezonas" method="POST">
 					<div class="modal-body">
 						<p>¿Estás seguro que quieres eliminar la zona?</p>
+						<input type="hidden" id="delete-controlzoneId" name="controlzoneid"/>
 					</div>
 					<div class="modal-footer">
 						<input type="submit" class="btn btn-danger" value="Eliminar" />
@@ -184,6 +185,8 @@
 	
 	function showDeleteModal(zona) {
 		var modalDelete = $("#modalDelete");
+		var controlzoneId= $(zona).closest("tr").find("#controlzoneId").html();
+		$("#delete-controlzoneId").val(controlzoneId);
 		modalDelete.modal("show");		
 	}
 	

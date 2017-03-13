@@ -106,8 +106,6 @@ public class JsonController {
 		//Aqui se captura si el email del usuario ya existe y en caso de que exista se mirara
 		//si viene por FACEBOOK o MANUAL,si viene por FACEBOOK se le dara su token y si no se le enviara token vacio
 		catch (DuplicateKeyException e){
-
-			System.out.println("El email ya existe");
 			if(db.socialNetwork(email).equals("FACEBOOK")){
 				int idusuario=0;
 				idusuario=db.comprobarEmail(email);
@@ -165,7 +163,7 @@ public class JsonController {
 	}
 
 
-
+	//Metodo que lleva a un login de usuario de prueba para conectar con la app
 	@RequestMapping(value="loginusuario",method=RequestMethod.GET)
 	public String loguearousuario(){
 		return "loginuserprueba";

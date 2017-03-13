@@ -63,7 +63,7 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		int totalSentPromos = jdbc.queryForInt("SELECT COUNT(*) FROM sentpromos");
 		return totalSentPromos;
 	}
-	
+
 	/**
 	 * Método que devuelve el número de promociones genéricas enviadas
 	 * @return
@@ -81,7 +81,7 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		int totalLocationPromos = jdbc.queryForInt("SELECT COUNT(*) FROM sentpromos JOIN promos ON sentpromos.id_promo = promos.promoId WHERE promos.promo_controlzoneId > 0");
 		return totalLocationPromos;
 	}
-	
+
 	/**
 	 * Método que consulta la BBDD para devolver la edad media de los usuarios registrados
 	 * @return double - edad
@@ -238,9 +238,9 @@ public class DatabaseMetricas extends DatabaseGenerica {
 		}
 		return data;
 	}
-	
-public ArrayList<DatabaseData> brandMen(){		
-		
+
+	public ArrayList<DatabaseData> brandMen(){		
+
 		//Creamos sentencia sql para hombres
 		String sql="SELECT products.productBrand AS 'Marca', "
 				+ "COUNT(products.productBrand) AS 'Veces' "
@@ -248,115 +248,115 @@ public ArrayList<DatabaseData> brandMen(){
 				+ "ON sentpromos.id_promo = promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
 				+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'H'GROUP BY productBrand";		
 		//Realizamos las consultas y los guadamos en un list de objetos DatabaseData:
-			  				
+
 		List listaMarcasH = jdbc.queryForList(sql);
-		
+
 		//Casteamos el List para que sea un ArrayList<Databasedata>
 		ArrayList<DatabaseData> listaProductosmarcaH = new ArrayList<DatabaseData>();		
 		listaProductosmarcaH =(ArrayList<DatabaseData>) listaMarcasH;
-		
+
 		//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a hombres
 		return  listaProductosmarcaH;
-					
+
 	}	
 
-public ArrayList<DatabaseData> brandWomen(){		
-	
-	//Creamos sentencia sql para hombres
-	String sql="SELECT products.productBrand AS 'Marca', "
-			+ "COUNT(products.productBrand) AS 'Veces' "
-			+ "FROM products JOIN promos ON products.id=promos.promo_idProduct JOIN sentpromos "
-			+ "ON sentpromos.id_promo = promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
-			+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'M'GROUP BY productBrand";		
-	//Realizamos las consultas y los guadamos en un list de objetos DatabaseData:
-		  				
-	List listaMarcasM = jdbc.queryForList(sql);
-	
-	//Casteamos el List para que sea un ArrayList<Databasedata>
-	ArrayList<DatabaseData> listaProductosmarcaM = new ArrayList<DatabaseData>();		
-	listaProductosmarcaM =(ArrayList<DatabaseData>) listaMarcasM;
-	//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a hombres
-	return  listaProductosmarcaM;
-				
-}	
+	public ArrayList<DatabaseData> brandWomen(){		
 
-public ArrayList<DatabaseData> sentPromosByGender() {
+		//Creamos sentencia sql para hombres
+		String sql="SELECT products.productBrand AS 'Marca', "
+				+ "COUNT(products.productBrand) AS 'Veces' "
+				+ "FROM products JOIN promos ON products.id=promos.promo_idProduct JOIN sentpromos "
+				+ "ON sentpromos.id_promo = promos.promoId JOIN usertoken ON sentpromos.user_token=usertoken.token "
+				+ "JOIN users ON usertoken.id_user=users.userId WHERE users.userGen = 'M'GROUP BY productBrand";		
+		//Realizamos las consultas y los guadamos en un list de objetos DatabaseData:
 
-	ArrayList<DatabaseData> totalPromosByGender = new ArrayList<DatabaseData>();
+		List listaMarcasM = jdbc.queryForList(sql);
 
-	//Sentencia sql que no servirá tanto para hombres como para mujeres
-	String sqlM = "SELECT COUNT(sentpromos.id_promo) AS 'Veces' FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'M'";
-	int promocionesM = jdbc.queryForInt(sqlM);
-	DatabaseData women = new DatabaseData("Mujeres", promocionesM);
-	String sqlH = "SELECT COUNT(sentpromos.id_promo) AS 'Veces' FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'H'";
-	int promocionesH = jdbc.queryForInt(sqlH);
-	DatabaseData men = new DatabaseData("Hombres", promocionesH);
-	//Añadimos al arrayList los dos objetos
-	totalPromosByGender.add(women);
-	totalPromosByGender.add(men);
+		//Casteamos el List para que sea un ArrayList<Databasedata>
+		ArrayList<DatabaseData> listaProductosmarcaM = new ArrayList<DatabaseData>();		
+		listaProductosmarcaM =(ArrayList<DatabaseData>) listaMarcasM;
+		//Devolvemos ArrayList con los productos y el n�mero de veces que se ha enviado a hombres
+		return  listaProductosmarcaM;
 
-	return totalPromosByGender;
-}		
+	}	
 
-public ArrayList<DatabaseData> promocionesPorGenero() {
+	public ArrayList<DatabaseData> sentPromosByGender() {
 
-	ArrayList<DatabaseData> promocionesgenero = new ArrayList<DatabaseData>();
+		ArrayList<DatabaseData> totalPromosByGender = new ArrayList<DatabaseData>();
 
-	//Sentencia sql que no servirá tanto para hombres como para mujeres
-	String sqlM = "SELECT sentpromos.id_promo AS 'Promo', "
-			+ "COUNT(sentpromos.id_promo) AS 'Veces' "
-			+ "FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token "
-			+ "JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'M' GROUP BY id_promo";
-	int promocionesM = jdbc.queryForInt(sqlM);
-	DatabaseData mujer = new DatabaseData("Mujeres", promocionesM);
-	System.out.println(mujer);
-	String sqlH = "SELECT sentpromos.id_promo AS 'Promo ID', "
-			+ "COUNT(sentpromos.id_promo) AS 'Veces' "
-			+ "FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token "
-			+ "JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'H' GROUP BY id_promo";
-	int promocionesH = jdbc.queryForInt(sqlH);
-	DatabaseData hombre = new DatabaseData("Hombres", promocionesH);
-	System.out.println(hombre);
-	//Añadimos al arrayList los dos objetos
-	promocionesgenero.add(mujer);
-	promocionesgenero.add(hombre);
-	System.out.println(promocionesgenero);
+		//Sentencia sql que no servirá tanto para hombres como para mujeres
+		String sqlM = "SELECT COUNT(sentpromos.id_promo) AS 'Veces' FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'M'";
+		int promocionesM = jdbc.queryForInt(sqlM);
+		DatabaseData women = new DatabaseData("Mujeres", promocionesM);
+		String sqlH = "SELECT COUNT(sentpromos.id_promo) AS 'Veces' FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'H'";
+		int promocionesH = jdbc.queryForInt(sqlH);
+		DatabaseData men = new DatabaseData("Hombres", promocionesH);
+		//Añadimos al arrayList los dos objetos
+		totalPromosByGender.add(women);
+		totalPromosByGender.add(men);
 
-	return promocionesgenero;
-}		
-/**
- * Método que consulta la BBDD y devuelve un ArrayList con los datos de la promoción más
- * enviada por rango de edad y por categoría de nivel1
- * @return ArrayList<DatabaseData> 
- */
-public ArrayList<DatabaseData> level1ByAge() {
-	ArrayList<DatabaseData> level1ByAge = new ArrayList<DatabaseData>();
-	String sql = "SELECT level1categories.category AS dataName,  SUM(IF (userAge BETWEEN ? AND ?, 1, 0)) AS dataValue "
-			+ "FROM users  JOIN usertoken ON usertoken.id_user = users.userId  "
-			+ "JOIN sentpromos ON usertoken.token = sentpromos.user_token "
-			+ "JOIN promos ON sentpromos.id_promo = promos.promoId "
-			+ "JOIN level1categories ON promos.promo_catNivel1 = level1categories.id "
-			+ "GROUP BY level1categories.category "
-			+ "ORDER BY dataValue DESC LIMIT 1";
-	//RANGO 18-25
-	DatabaseData db1825 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{18,25}); 
-	//RANGO 26-35
-	DatabaseData db2635 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{26,35}); 
-	//RANGO 36-45
-	DatabaseData db3645 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{36,45}); 
-	//RANGO 46-55
-	DatabaseData db4655 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{46,55}); 
-	//RANGO +55
-	DatabaseData dbM55 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{55,99}); 
-	//Los añadimos al arrayList
-	level1ByAge.add(db1825);
-	level1ByAge.add(db2635);
-	level1ByAge.add(db3645);
-	level1ByAge.add(db4655);
-	level1ByAge.add(dbM55);
-	
-	return level1ByAge;
-}
-	
+		return totalPromosByGender;
+	}		
+
+	public ArrayList<DatabaseData> promocionesPorGenero() {
+
+		ArrayList<DatabaseData> promocionesgenero = new ArrayList<DatabaseData>();
+
+		//Sentencia sql que no servirá tanto para hombres como para mujeres
+		String sqlM = "SELECT sentpromos.id_promo AS 'Promo', "
+				+ "COUNT(sentpromos.id_promo) AS 'Veces' "
+				+ "FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token "
+				+ "JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'M' GROUP BY id_promo";
+		int promocionesM = jdbc.queryForInt(sqlM);
+		DatabaseData mujer = new DatabaseData("Mujeres", promocionesM);
+		System.out.println(mujer);
+		String sqlH = "SELECT sentpromos.id_promo AS 'Promo ID', "
+				+ "COUNT(sentpromos.id_promo) AS 'Veces' "
+				+ "FROM sentpromos JOIN usertoken ON sentpromos.user_token = usertoken.token "
+				+ "JOIN users ON usertoken.id_user = users.userId WHERE users.userGen = 'H' GROUP BY id_promo";
+		int promocionesH = jdbc.queryForInt(sqlH);
+		DatabaseData hombre = new DatabaseData("Hombres", promocionesH);
+		System.out.println(hombre);
+		//Añadimos al arrayList los dos objetos
+		promocionesgenero.add(mujer);
+		promocionesgenero.add(hombre);
+		System.out.println(promocionesgenero);
+
+		return promocionesgenero;
+	}		
+	/**
+	 * Método que consulta la BBDD y devuelve un ArrayList con los datos de la promoción más
+	 * enviada por rango de edad y por categoría de nivel1
+	 * @return ArrayList<DatabaseData> 
+	 */
+	public ArrayList<DatabaseData> level1ByAge() {
+		ArrayList<DatabaseData> level1ByAge = new ArrayList<DatabaseData>();
+		String sql = "SELECT level1categories.category AS dataName,  SUM(IF (userAge BETWEEN ? AND ?, 1, 0)) AS dataValue "
+				+ "FROM users  JOIN usertoken ON usertoken.id_user = users.userId  "
+				+ "JOIN sentpromos ON usertoken.token = sentpromos.user_token "
+				+ "JOIN promos ON sentpromos.id_promo = promos.promoId "
+				+ "JOIN level1categories ON promos.promo_catNivel1 = level1categories.id "
+				+ "GROUP BY level1categories.category "
+				+ "ORDER BY dataValue DESC LIMIT 1";
+		//RANGO 18-25
+		DatabaseData db1825 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{18,25}); 
+		//RANGO 26-35
+		DatabaseData db2635 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{26,35}); 
+		//RANGO 36-45
+		DatabaseData db3645 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{36,45}); 
+		//RANGO 46-55
+		DatabaseData db4655 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{46,55}); 
+		//RANGO +55
+		DatabaseData dbM55 = jdbc.queryForObject(sql, new BeanPropertyRowMapper<DatabaseData>(DatabaseData.class), new Object[]{55,99}); 
+		//Los añadimos al arrayList
+		level1ByAge.add(db1825);
+		level1ByAge.add(db2635);
+		level1ByAge.add(db3645);
+		level1ByAge.add(db4655);
+		level1ByAge.add(dbM55);
+
+		return level1ByAge;
+	}
+
 
 }

@@ -28,7 +28,7 @@ public class CentrosController {
 
 		return mav;
 	}
-	
+
 	/**
 	 * 	M�todo que nos muestra toda la base de datos de los centros
 	 * @return mav.setViewName("centros"): vista con la lista de todos los centros
@@ -42,9 +42,9 @@ public class CentrosController {
 
 		return mav;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * M�todo que da de alta a un nuevo centro
 	 * @param centerName 
@@ -61,9 +61,6 @@ public class CentrosController {
 			@RequestParam("centerDescription") String centerDescription,
 			@RequestParam("centerType") String centerType,
 			@RequestParam("centerSubtype") String centerSubtype) {
-
-		System.out.println("Hola, yo soy la el centro " + centerName + "y mi descripci�n es: " + centerDescription);
-
 
 		ModelAndView mav = new ModelAndView();
 		if(db.addCentro(centerName, centerDescription, centerAddres, centerType, centerSubtype) == 1) {
