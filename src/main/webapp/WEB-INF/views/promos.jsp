@@ -196,6 +196,9 @@
 					<%--Arreglar que solo salen los valores de la primera promoción que hay en la lista, no la que le toca --%>
 					<td><a role="button" data-id="${promo.promoId}"
 							editButton" onclick="showEditModal(this);" data-ng-click="vm.cargarDatos()"><i class="fa fa-pencil-square-o fa-2x" style="color: black" aria-hidden="true"></i></a></>
+						&nbsp;
+						<a role="button" data-id="${promo.promoId}"
+							onclick="showDeleteModal(this);"><i class="fa fa-trash-o fa-lg fa-2x" style="color: black" aria-hidden="true"></i></a>
 				</tr>
 			</c:forEach>
 		</table>
@@ -327,6 +330,30 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- Modal Eliminar -->
+	<div id="modalDelete" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Eliminar Promoción</h4>
+				</div>
+				<form class="form" action="#" method="Get">
+					<div class="modal-body">
+						<p>¿Estás seguro que quieres eliminar la promoción?</p>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-danger" value="Eliminar" />
+						<button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
 	<!-- TODO pasarlo a un documento js propio -->
 	<script>
 		$(document).ready(function() {
@@ -378,6 +405,11 @@
 			*/
 			
 			
+		}
+		
+		function showDeleteModal(promo) {
+			var modalDelete = $("#modalDelete");
+			modalDelete.modal("show");		
 		}
 		
 	</script>

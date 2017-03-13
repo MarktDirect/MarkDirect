@@ -60,17 +60,13 @@
 					<td id="controlzoneEmplacement">${zona.controlzoneEmplacement}</td>
 					<td id="controlzoneMajor">${zona.controlzoneMajor}</td>
 					<td id="controlzoneMinor">${zona.controlzoneMinor}</td>
-					<td><a role="button" data-id="${zona.controlzoneId}"
-<<<<<<< HEAD
-							onclick="showEditModal(this);"><i class="fa fa-pencil-square-o fa-lg" style="color: black" aria-hidden="true"></i></a></td>
-
-=======
+					<td><a role="button" data-id="${zona.controlzoneId}" 
 							onclick="showEditModal(this);"><i class="fa fa-pencil-square-o fa-lg" style="color: black" aria-hidden="true"></i></a>
 							&nbsp;
 							<a role="button" data-id="${zona.controlzoneId}"
 							onclick="showDeleteModal(this);"><i class="fa fa-trash-o fa-lg" style="color: black" aria-hidden="true"></i></a>
 							</td>
->>>>>>> 07caaacd6d133da242b389203b663f997816a564
+
 					</tr>
 				</c:forEach>
 			</table>
@@ -111,8 +107,7 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
-=======
+
 			<!-- Modal  Editar-->
 	<div id="modalEdit" class="modal fade" role="dialog">
 		<div class="modal-dialog">
@@ -196,6 +191,6 @@
 	
 	
 	</script>
->>>>>>> bd65ba83f791e595693b0bb49cfbd3610aba0996
+
 </body>
 </html>
