@@ -3,13 +3,13 @@ package com.markdirect.markdirect.beans;
 public class Producto {
 
 	//Atributos
-	long id;
-	String nombre;
-	int id_catNivel2;
-	int id_catNivel1;
-	String marca;
-	int pvp;
-	String imagen;
+	private long id;
+	private String nombre;
+	private int id_catNivel2;
+	private int id_catNivel1;
+	private String marca;
+	private int pvp;
+	private String imagen;
 	
 	//Constructores
 	public Producto(){}

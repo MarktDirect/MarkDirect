@@ -3,10 +3,10 @@ package com.markdirect.markdirect.beans;
 public class ProductoReducido {
 
 	//Atributos
-	long id;
-	String name;
-	int id_level2Category;
-	int id_level1Category;
+	private long id;
+	private String name;
+	private int id_level2Category;
+	private int id_level1Category;
 	
 	//Constructores
 	public ProductoReducido(){}

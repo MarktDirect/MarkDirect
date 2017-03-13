@@ -2,7 +2,7 @@ package com.markdirect.markdirect.beans;
 
 public class Usuario {
 	
-	//Variables
+	//Atributos
 	private String userEmail;
 	private String userGen;
 	private int userAge;
@@ -22,7 +22,7 @@ public class Usuario {
 		this.userAge = userAge;
 	}
 	
-	//Metodos
+	//Geter y seter
 	public String getUserEmail() {
 		return userEmail;
 	}
@@ -48,6 +48,7 @@ public class Usuario {
 		this.userBlock = userBlock;
 	}
 	
+	//Métodos
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

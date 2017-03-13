@@ -2,13 +2,13 @@ package com.markdirect.markdirect.beans;
 
 
 public class PromoJSON {
-	
+
 	//Atributos
 	private String titulo;
 	private String validez;
 	private String oferta;
 	private String imagen;
-	
+
 	//Constructores
 	public PromoJSON(){}
 
@@ -18,7 +18,7 @@ public class PromoJSON {
 		this.oferta = oferta;
 		this.imagen = imagen;
 	}
-
+	//Geter y seter
 	public String getTitulo() {
 		return titulo;
 	}
@@ -32,7 +32,7 @@ public class PromoJSON {
 	}
 
 	public void setValidez(String validez) {
-		
+
 		this.validez = validez;
 	}
 
@@ -52,12 +52,13 @@ public class PromoJSON {
 		this.imagen = imagen;
 	}
 
+	//Métodos
 	@Override
 	public String toString() {
 		return "PromoJSON [titulo=" + titulo + ", validez=" + validez + ", oferta=" + oferta + ", imagen="
 				+ imagen + "]";
 	}
-	
-	
-	
+
+
+
 }
