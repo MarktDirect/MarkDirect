@@ -62,7 +62,10 @@
 					<td id="controlzoneMinor">${zona.controlzoneMinor}</td>
 					<td><a role="button" data-id="${zona.controlzoneId}"
 							onclick="showEditModal(this);"><i class="fa fa-pencil-square-o fa-lg" style="color: black" aria-hidden="true"></i></a>
-							&nbsp;<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></td>
+							&nbsp;
+							<a role="button" data-id="${zona.controlzoneId}"
+							onclick="showDeleteModal(this);"><i class="fa fa-trash-o fa-lg" style="color: black" aria-hidden="true"></i></a>
+							</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -134,10 +137,33 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal Eliminar -->
+	<div id="modalDelete" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Eliminar Zona</h4>
+				</div>
+				<form class="form" action="deletezonas" method="POST">
+					<div class="modal-body">
+						<p>¿Estás seguro que quieres eliminar la zona?</p>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-danger" value="Eliminar" />
+						<button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<script>
-	function showEditModal(promo) {
+	function showEditModal(zona) {
 		//Recogemos el modal
 		var modalEdit = $("#modalEdit");
+		var modalDelete = $("#modalDelete");
 		//Recogemos todos los parámetros de la promoción
 		var controlzoneId= $(promo).closest("tr").find("#controlzoneId").html();
 		var controlzoneEmplacement= $(promo).closest("tr").find("#controlzoneEmplacement").html();
@@ -151,7 +177,15 @@
 		
 		//mostramos el modal
 		modalEdit.modal("show");		
+		modalDelete.modal("show");		
 	}
+	
+	function showDeleteModal(zona) {
+		var modalDelete = $("#modalDelete");
+		modalDelete.modal("show");		
+	}
+	
+	
 	</script>
 </body>
 </html>
