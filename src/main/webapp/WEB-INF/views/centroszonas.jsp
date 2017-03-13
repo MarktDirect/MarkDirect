@@ -61,8 +61,16 @@
 					<td id="controlzoneMajor">${zona.controlzoneMajor}</td>
 					<td id="controlzoneMinor">${zona.controlzoneMinor}</td>
 					<td><a role="button" data-id="${zona.controlzoneId}"
+<<<<<<< HEAD
 							onclick="showEditModal(this);"><i class="fa fa-pencil-square-o fa-lg" style="color: black" aria-hidden="true"></i></a></td>
 
+=======
+							onclick="showEditModal(this);"><i class="fa fa-pencil-square-o fa-lg" style="color: black" aria-hidden="true"></i></a>
+							&nbsp;
+							<a role="button" data-id="${zona.controlzoneId}"
+							onclick="showDeleteModal(this);"><i class="fa fa-trash-o fa-lg" style="color: black" aria-hidden="true"></i></a>
+							</td>
+>>>>>>> 07caaacd6d133da242b389203b663f997816a564
 					</tr>
 				</c:forEach>
 			</table>
@@ -115,8 +123,9 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Editar Zona</h4>
 				</div>
-				<form class="form" action="#" method="POST">
+				<form class="form" action="editzonas" method="POST">
 					<div class="modal-body">
+						<input type="hidden" id="edit-controlzoneId" name="controlzoneId">
 						<div class="form-group">
 							<label for="edit-controlzoneMajor">Major</label> <input type="text"
 								name="controlzoneMajor" class="form-control" id="edit-controlzoneMajor" required="required"/>
@@ -138,24 +147,54 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal Eliminar -->
+	<div id="modalDelete" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Eliminar Zona</h4>
+				</div>
+				<form class="form" action="deletezonas" method="POST">
+					<div class="modal-body">
+						<p>¿Estás seguro que quieres eliminar la zona?</p>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-danger" value="Eliminar" />
+						<button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<script>
-	function showEditModal(promo) {
+	function showEditModal(zona) {
 		//Recogemos el modal
 		var modalEdit = $("#modalEdit");
 		//Recogemos todos los parámetros de la promoción
-		var controlzoneId= $(promo).closest("tr").find("#controlzoneId").html();
-		var controlzoneEmplacement= $(promo).closest("tr").find("#controlzoneEmplacement").html();
-		var controlzoneMajor = $(promo).closest("tr").find("#controlzoneMajor").html();
-		var controlzoneMinor = $(promo).closest("tr").find("#controlzoneMinor").html();
+		var controlzoneId= $(zona).closest("tr").find("#controlzoneId").html();
+		var controlzoneEmplacement= $(zona).closest("tr").find("#controlzoneEmplacement").html();
+		var controlzoneMajor = $(zona).closest("tr").find("#controlzoneMajor").html();
+		var controlzoneMinor = $(zona).closest("tr").find("#controlzoneMinor").html();
 		
 		//Los volcamos en el formulario que se encuentra en el modal
 		$("#edit-controlzoneEmplacement").val(controlzoneEmplacement);
 		$("#edit-controlzoneMajor").val(controlzoneMajor);
 		$("#edit-controlzoneMinor").val(controlzoneMinor);
+		$("#edit-controlzoneId").val(controlzoneId);
 		
 		//mostramos el modal
-		modalEdit.modal("show");		
+		modalEdit.modal("show");			
 	}
+	
+	function showDeleteModal(zona) {
+		var modalDelete = $("#modalDelete");
+		modalDelete.modal("show");		
+	}
+	
+	
 	</script>
 >>>>>>> bd65ba83f791e595693b0bb49cfbd3610aba0996
 </body>
