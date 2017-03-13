@@ -27,10 +27,12 @@ import com.mysql.fabric.xmlrpc.base.Array;
 
 public class DatabaseMarkDirect extends DatabaseGenerica {
 
+	//Atributos
 	private JdbcTemplate jdbc;
 
 	public static final String BASE_DATOS = "MarkDirect";
 
+	//Constructor
 	public DatabaseMarkDirect(){
 
 		this.jdbc = new JdbcTemplate(Conector.getDataSource());

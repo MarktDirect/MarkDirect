@@ -61,6 +61,25 @@ public class PromoController {
 		return mav;
 	}
 
+	/**
+	 * Método para editar las promociones
+	 * Todos los parámetros que se le introducen son los atributos que tiene la clase promoción
+	 * @param promoId
+	 * @param promoName
+	 * @param promoDescription
+	 * @param promoSince
+	 * @param promoTo
+	 * @param promoImage
+	 * @param promo_controlzoneId
+	 * @param promoMinAge
+	 * @param promoMaxAge
+	 * @param promoGen
+	 * @param promo_catNivel1
+	 * @param promo_catNivel2
+	 * @param promo_idProduct
+	 * @return mav: nos manda a la vista de promocioens, introducimos los campos a modificar de la 
+	 * promoción, nos manda un mensaje si la modificación ha sido realizada con éxito o no
+	 */
 	@RequestMapping(value="editPromos", method=RequestMethod.GET)
 	public ModelAndView editPromos(@RequestParam("promoId") int promoId, 
 			@RequestParam("promoName") String promoName,
