@@ -49,11 +49,13 @@ public class PromoController {
 			//TODO añadir mensaje al mav para avisar al usuario que se ha registrado con éxito
 			mav.addObject("mensaje", "Promocion añadido con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
+			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.setViewName("promos");
 
 		} else {
 			mav.addObject("mensaje", "Promocion no añadido con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
+			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.setViewName("promos");
 
 		}
@@ -99,10 +101,12 @@ public class PromoController {
 		if(db.editPromos(promoId, promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlzoneId, promoMinAge, promoMaxAge, promoGen, promo_catNivel1, promo_catNivel2, promo_idProduct) == 1) {
 			mav.addObject("mensaje", "Promocion modificada con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
+			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.setViewName("promos");
 		} else {
 			mav.addObject("mensaje", "Error al modificar la promoción");
 			mav.addObject("listaPromos", db.listarPromociones());
+			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.setViewName("promos");
 		}
 
