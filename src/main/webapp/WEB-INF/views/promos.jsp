@@ -20,7 +20,7 @@
 			<h2>Gestión de promociones</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
 				data-target="#modalPromo" data-ng-click="vm.cargarDatos()">
-				Añadir Promoción</a> <span class="label label-danger">${mensaje}</span>
+				Añadir Promoción</a> <span class="label label-info">${mensaje}</span>
 			<hr style="backgound-color: #f9e553;"/>
 		</div>
 	</div>
@@ -107,8 +107,8 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-md-6">
-								<label for="promo_controlZoneId">Zona de Control</label> <select
-									name="promo_controlZoneId" class="form-control"
+								<label for="promo_controlzoneId">Zona de Control</label> <select
+									name="promo_controlzoneId" class="form-control"
 									required="required">
 									<option value="0">Promoción Genérica</option>
 									<option value="1">Zona 1</option>

@@ -51,14 +51,20 @@ public class PromoController {
 			mav.addObject("mensaje", "Promocion aÃ±adido con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
+<<<<<<< HEAD
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+=======
+>>>>>>> 1a0b2ef96bc41fbcb8c21606b747323f40c90e41
 			mav.setViewName("promos");
 
 		} else {
 			mav.addObject("mensaje", "Promocion no aÃ±adido con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
+<<<<<<< HEAD
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+=======
+>>>>>>> 1a0b2ef96bc41fbcb8c21606b747323f40c90e41
 			mav.setViewName("promos");
 
 		}
@@ -66,6 +72,25 @@ public class PromoController {
 		return mav;
 	}
 
+	/**
+	 * Mï¿½todo para editar las promociones
+	 * Todos los parï¿½metros que se le introducen son los atributos que tiene la clase promociï¿½n
+	 * @param promoId
+	 * @param promoName
+	 * @param promoDescription
+	 * @param promoSince
+	 * @param promoTo
+	 * @param promoImage
+	 * @param promo_controlzoneId
+	 * @param promoMinAge
+	 * @param promoMaxAge
+	 * @param promoGen
+	 * @param promo_catNivel1
+	 * @param promo_catNivel2
+	 * @param promo_idProduct
+	 * @return mav: nos manda a la vista de promocioens, introducimos los campos a modificar de la 
+	 * promociï¿½n, nos manda un mensaje si la modificaciï¿½n ha sido realizada con ï¿½xito o no
+	 */
 	@RequestMapping(value="editPromos", method=RequestMethod.GET)
 	public ModelAndView editPromos(@RequestParam("promoId") int promoId, 
 			@RequestParam("promoName") String promoName,
@@ -86,13 +111,19 @@ public class PromoController {
 			mav.addObject("mensaje", "Promocion modificada con exito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
+<<<<<<< HEAD
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+=======
+>>>>>>> 1a0b2ef96bc41fbcb8c21606b747323f40c90e41
 			mav.setViewName("promos");
 		} else {
 			mav.addObject("mensaje", "Error al modificar la promociÃ³n");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
+<<<<<<< HEAD
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+=======
+>>>>>>> 1a0b2ef96bc41fbcb8c21606b747323f40c90e41
 			mav.setViewName("promos");
 		}
 
@@ -104,13 +135,13 @@ public class PromoController {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(promoId);
 		if(db.deletePromo(promoId) == 1){
-			mav.addObject("mensaje", "Promoción eliminada con éxito");
+			mav.addObject("mensaje", "Promociï¿½n eliminada con ï¿½xito");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());
 			mav.setViewName("promos");
 		} else {
-			mav.addObject("mensaje", "Error al eliminar promoción");
+			mav.addObject("mensaje", "Error al eliminar promociï¿½n");
 			mav.addObject("listaPromos", db.listarPromociones());
 			mav.addObject("listaCat1", db.listarCategoriasNivel1());
 			mav.addObject("listaCat2", db.listarCategoriasNivel2());

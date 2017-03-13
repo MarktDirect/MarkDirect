@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class DatabaseGenerica {
 
+	//Atributos 
 	protected String host;
 	protected int port;
 	protected String dataBase;
@@ -13,11 +14,11 @@ public class DatabaseGenerica {
 	protected String pass;
 	protected Connection cn;
 
-
+	//Datos del driver para la conexión con la base de datos, constantes para todo el proyecto
 	public static final String DRIVER_MYSQL = "com.mysql.jdbc.Driver";
 	public static final String DRIVER_SQL_SERVER = "com.odbc.oracle.SQLServer";
 
-
+	//Constructores
 	protected DatabaseGenerica(){
 
 	}
