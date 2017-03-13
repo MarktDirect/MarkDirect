@@ -116,6 +116,7 @@
 				</div>
 				<form class="form" action="editzonas" method="POST">
 					<div class="modal-body">
+						<input type="hidden" id="edit-controlzoneId" name="controlzoneId">
 						<div class="form-group">
 							<label for="edit-controlzoneMajor">Major</label> <input type="text"
 								name="controlzoneMajor" class="form-control" id="edit-controlzoneMajor" required="required"/>
@@ -174,6 +175,7 @@
 		$("#edit-controlzoneEmplacement").val(controlzoneEmplacement);
 		$("#edit-controlzoneMajor").val(controlzoneMajor);
 		$("#edit-controlzoneMinor").val(controlzoneMinor);
+		$("#edit-controlzoneId").val(controlzoneId);
 		
 		//mostramos el modal
 		modalEdit.modal("show");		
