@@ -34,28 +34,49 @@ public class ZonasController {
 	public ModelAndView addZonas(
 			@RequestParam("controlzoneMajor") String controlzoneMajor,
 			@RequestParam("controlzoneMinor") String controlzoneMinor,
-			@RequestParam("controlzoneEmplacement") String controlzoneEmplacement,
-			@RequestParam("controlzone_centerId") int controlzone_centerId
+			@RequestParam("controlzoneEmplacement") String controlzoneEmplacement
 			){
 		
 		//insertar zona de control en BBDD
-		int algodon = db.insertarZonaControl(controlzoneMajor, controlzoneMinor, controlzoneEmplacement, controlzone_centerId);
-		System.out.println(algodon);
+		int algodon = db.insertarZonaControl(controlzoneMajor, controlzoneMinor, controlzoneEmplacement);
 		
 		//Vista
 		ModelAndView mav = new ModelAndView();
 		if(algodon == 1){
 			mav.addObject("mensaje", "Zona de control cargada con Exito");
 			mav.addObject("listaZonas", db.listarZonas());
-			mav.setViewName("zonas");
+			mav.setViewName("centroszonas");
 		}else{
 			mav.addObject("mensaje", "Error al cargar la zona de control");
 			mav.addObject("listaZonas", db.listarZonas());
-			mav.setViewName("zonas");
+			mav.setViewName("centroszonas");
 		}
 		
 		return mav;
 		
 	}
+	
+	/**@RequestMapping(value="editzonas", method=RequestMethod.POST)
+	public ModelAndView editZonas(@RequestParam("")
+			@RequestParam("controlzoneMajor") String controlzoneMajor,
+			@RequestParam("controlzoneMinor") String controlzoneMinor,
+			@RequestParam("controlzoneEmplacement") String controlzoneEmplacement){
+		
+		int zonaeditada = db.editarZonaControl(controlzoneMajor, controlzoneMinor, controlzoneEmplacement);
+		ModelAndView mav = new ModelAndView();
+		if(zonaeditada == 1){
+			mav.addObject("mensaje", "Zona de control editada con Exito");
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("zonas");
+		}else{
+			mav.addObject("mensaje", "Error al editar la zona de control");
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("zonas");
+		}
+		
+		
+		return null;
+		
+	}*/
 	
 }

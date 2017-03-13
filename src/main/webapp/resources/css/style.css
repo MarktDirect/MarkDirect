@@ -48,7 +48,7 @@ a {
 
 /* Botones */ 
 
-.btn-trigger {
+.btn-trigger, .btn-trigger:focus, .btn-trigger:after {
 	background-color: #002C73;
 	color: white;
 }
@@ -92,7 +92,10 @@ a {
 table {
 	margin: 0 10px;
 }
-
+.table-promos-header {
+	text-transform: uppercase;
+	font-size: 12px;
+}
 /* Estilo home - métricas */
 .home-header {
 	font-family: 'Oswald';
@@ -148,4 +151,8 @@ footer {
 	margin-top: 60px;
 	background-color:#002C73;
 	height: 50px;
+}
+.info-centros h3, .info-zonas h3, .info-zonas h4 {
+	text-align: center;
+	margin-bottom: 20px;
 }

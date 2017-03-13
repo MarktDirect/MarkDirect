@@ -52,18 +52,35 @@
 					<th>Situación</th>
 					<th>Major</th>
 					<th>Minor</th>
+<<<<<<< HEAD
 				</tr>
 				<c:forEach items="${listaZonas}" var="zona" begin="1">
 					<tr>
 					<td>${zona.controlzoneEmplacement}</td>
 					<td>${zona.controlzoneMajor}</td>
 					<td>${zona.controlzoneMinor}</td>
+=======
+					<th>Editar</th>
+				</tr>
+				<c:forEach items="${listaZonas}" var="zona" begin="1">
+					<tr>
+					<td hidden="hidden" id="controlzoneId">${zona.controlzoneId}</td>
+					<td id="controlzoneEmplacement">${zona.controlzoneEmplacement}</td>
+					<td id="controlzoneMajor">${zona.controlzoneMajor}</td>
+					<td id="controlzoneMinor">${zona.controlzoneMinor}</td>
+					<td><a role="button" data-id="${zona.controlzoneId}"
+							onclick="showEditModal(this);"><i class="fa fa-pencil-square-o fa-lg" style="color: black" aria-hidden="true"></i></a></td>
+>>>>>>> bd65ba83f791e595693b0bb49cfbd3610aba0996
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
 	</div>
+<<<<<<< HEAD
 		<!-- Modal -->
+=======
+		<!-- Modal Añadir-->
+>>>>>>> bd65ba83f791e595693b0bb49cfbd3610aba0996
 	<div id="modalZonas" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
@@ -96,5 +113,60 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
+=======
+			<!-- Modal  Editar-->
+	<div id="modalEdit" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Editar Zona</h4>
+				</div>
+				<form class="form" action="#" method="POST">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="edit-controlzoneMajor">Major</label> <input type="text"
+								name="controlzoneMajor" class="form-control" id="edit-controlzoneMajor" required="required"/>
+						</div>
+						<div class="form-group">
+							<label for="edit-controlzoneMinor">Minor</label> <input
+								type="text" name="controlzoneMinor" id="edit-controlzoneMinor" class="form-control" required="required"/>
+						</div>
+						<div class="form-group">
+							<label for="edit-controlzoneEmplacement">Situación</label> <input type="text"
+								name="controlzoneEmplacement" class="form-control" id="edit-controlzoneEmplacement" required="required"/>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-success" value="Editar" />
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+	function showEditModal(promo) {
+		//Recogemos el modal
+		var modalEdit = $("#modalEdit");
+		//Recogemos todos los parámetros de la promoción
+		var controlzoneId= $(promo).closest("tr").find("#controlzoneId").html();
+		var controlzoneEmplacement= $(promo).closest("tr").find("#controlzoneEmplacement").html();
+		var controlzoneMajor = $(promo).closest("tr").find("#controlzoneMajor").html();
+		var controlzoneMinor = $(promo).closest("tr").find("#controlzoneMinor").html();
+		
+		//Los volcamos en el formulario que se encuentra en el modal
+		$("#edit-controlzoneEmplacement").val(controlzoneEmplacement);
+		$("#edit-controlzoneMajor").val(controlzoneMajor);
+		$("#edit-controlzoneMinor").val(controlzoneMinor);
+		
+		//mostramos el modal
+		modalEdit.modal("show");		
+	}
+	</script>
+>>>>>>> bd65ba83f791e595693b0bb49cfbd3610aba0996
 </body>
 </html>

@@ -13,14 +13,17 @@
 </head>
 <body data-ng-app="promoModulo"
 	data-ng-controller="promoControlador as vm">
-	<div class="header-contain">
+		<div class="header-contain">
 		<jsp:include page="navbar.jsp"></jsp:include>
-		<div class="jumbotron">
-			<h2>Gestión de Promociones</h2>
+		<div class="home-header">
+		<div align="center">
+			<h2>Gestión de promociones</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
 				data-target="#modalPromo" data-ng-click="vm.cargarDatos()">
 				Añadir Promoción</a> <span class="label label-danger">${mensaje}</span>
+			<hr style="backgound-color: #f9e553;"/>
 		</div>
+	</div>
 	</div>
 	<!-- Modal -->
 	<div id="modalPromo" class="modal fade" role="dialog">
@@ -148,11 +151,11 @@
 	</div>
 	<!-- Tabla con las promos de la base de datos -->
 	<div class="promo-info table-responsive">
-		<table class="table table-hover">
-			<tr align="center">
+		<table class="table table-hover table-promos">
+			<tr align="center" class="table-promos-header">
 				<th>Título</th>
 				<th>Categoría</th>
-				<th>Producto</th>
+				<th>Referencia Producto</th>
 				<th>Activa</th>
 				<th>Edad</th>
 				<th>Género</th>
@@ -168,7 +171,12 @@
 					<%-- Necesitamos tener la descripción (oculta- ya que está en el popover) para poder cogerla en el formulario --%>
 					<td hidden="hidden" id="promoDescription">${promo.promoDescription}</td>
 					<td hidden="hidden" id="promo_catNivel2">${promo.promo_catNivel2}</td>
-					<td id="promo_catNivel1">${promo.promo_catNivel1}</td>
+					<td hidden="hidden" id="promo_catNivel1">${promo.promo_catNivel1}</td>
+						<c:forEach items="${listaCat1}" var="cat1">
+							<c:if test="${cat1.id eq promo.promo_catNivel1}">
+								<td id="catNivel1">${cat1.category}</td>
+							</c:if>
+						</c:forEach>
 					<td id="promo_idProduct">${promo.promo_idProduct}</td>
 					<td hidden="hidden" id="promoSince">${promo.promoSince}</td>
 					<td hidden="hidden" id="promoTo">${promo.promoTo}</td>
@@ -185,9 +193,8 @@
 						id="promoMaxAge">${promo.promoMaxAge}</span></td>
 					<td id="promoGen">${promo.promoGen}</td>
 					<td id="promo_controlzoneId">${promo.promo_controlzoneId}</td>
-					<%--Arreglar que solo salen los valores de la primera promoción que hay en la lista, no la que le toca --%>
-					<td><button type="button" data-id="${promo.promoId}"
-							class="btn btn-default editButton" onclick="showEditModal(this);" data-ng-click="vm.cargarDatos()">Editar</button></td>
+					<td><a role="button" data-id="${promo.promoId}"
+							editButton" onclick="showEditModal(this);" data-ng-click="vm.cargarDatos()"><i class="fa fa-pencil-square-o fa-2x" style="color: black" aria-hidden="true"></i></a></>
 				</tr>
 			</c:forEach>
 		</table>

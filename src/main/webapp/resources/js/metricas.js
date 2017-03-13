@@ -262,7 +262,6 @@ function drawChartLevel1ByAge() {
 		for (var element in response) {
 			if(response[element].dataValue == 0) {
 				response[element].dataName = 'Sin datos';
-				alert(response[element].dataName);
 			}
 		}
 		var array = [];
@@ -282,7 +281,7 @@ function drawChartLevel1ByAge() {
 		        legend: { position: 'top', maxLines: 1 },
 		        bar: { groupWidth: '75%' },
 		        isStacked: true,
-		        colors:['#002C73', '#99cccc']
+		        colors:['#002C73', '#99cccc', '#f9e553']
 		      };
 		var chart = new google.visualization.ColumnChart(document.getElementById("columnchartLevel1"));
 		//dibujamos el chart

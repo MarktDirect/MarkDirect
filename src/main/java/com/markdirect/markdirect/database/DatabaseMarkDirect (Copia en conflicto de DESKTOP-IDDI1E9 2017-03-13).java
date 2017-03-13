@@ -138,20 +138,16 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 	public int insertarZonaControl (
 			String controlzoneMajor, 
 			String controlzoneMinor, 
-			String controlzoneEmplacement, 
-			int controlzone_centerId){
+			String controlzoneEmplacement){
 
 		//String con la consulta insert
 		String sql = "INSERT INTO controlzones (controlzoneMajor, controlzoneMinor," +
-				"controlzoneEmplacement, controlzone_centerId) VALUES (?,?,?,?)";
-		//TODO preparedStatement
-
-		System.out.println(sql);
+				"controlzoneEmplacement, controlzone_centerId) VALUES (?,?,?,1)";
 
 		//Realizar update
 		int rowsAffected = -1;
 		rowsAffected = this.jdbc.update(sql, 
-				new Object[] {controlzoneMajor, controlzoneMinor, controlzoneEmplacement, controlzone_centerId});
+				new Object[] {controlzoneMajor, controlzoneMinor, controlzoneEmplacement});
 
 		return rowsAffected;
 
@@ -564,9 +560,7 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		netdevuelta=jdbc.queryForList(sql,email);
 		for (Map<String, Object> map : netdevuelta) {
 			stringSocial = map.toString();
-			System.out.println(stringSocial);
 			redsocial = stringSocial.substring(15, stringSocial.length()-1);
-			System.out.println(redsocial);
 		}
 
 		return redsocial;
@@ -584,4 +578,12 @@ public class DatabaseMarkDirect extends DatabaseGenerica {
 		usuario = jdbc.queryForInt(sql,email);
 		return usuario;
 	} 
+	
+	
+	/**public int editarZonaControl( int idzona,String controlzoneMajor, String controlzoneMinor, String controlzoneEmplacement){
+		int agregada=0;
+		String sql="UPDATE controlzones SET controlzonemajor=?,controlzoneMinor=?,controlzoneemplacement=? where"
+		return agregada;
+		
+	}*/
 }

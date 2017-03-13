@@ -17,7 +17,7 @@ public class CentrosController {
 	DatabaseMarkDirect db = new DatabaseMarkDirect();
 
 	/**
-	 * 	Método que nos muestra toda la base de datos de los centros
+	 * 	Mï¿½todo que nos muestra toda la base de datos de los centros
 	 * @return mav.setViewName("centros"): vista con la lista de todos los centros
 	 */
 	@RequestMapping(value="centros", method=RequestMethod.GET)
@@ -28,8 +28,25 @@ public class CentrosController {
 
 		return mav;
 	}
+	
 	/**
-	 * Método que da de alta a un nuevo centro
+	 * 	Mï¿½todo que nos muestra toda la base de datos de los centros
+	 * @return mav.setViewName("centros"): vista con la lista de todos los centros
+	 */
+	@RequestMapping(value="centroszonas", method=RequestMethod.GET)
+	public ModelAndView centroszonas(){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("listaCentros", db.listarCentros());
+		mav.addObject("listaZonas", db.listarZonas());
+		mav.setViewName("centroszonas");
+
+		return mav;
+	}
+	
+	
+	
+	/**
+	 * Mï¿½todo que da de alta a un nuevo centro
 	 * @param centerName 
 	 * @param centerAddres
 	 * @param centerDescription
@@ -45,18 +62,18 @@ public class CentrosController {
 			@RequestParam("centerType") String centerType,
 			@RequestParam("centerSubtype") String centerSubtype) {
 
-		System.out.println("Hola, yo soy la el centro " + centerName + "y mi descripción es: " + centerDescription);
+		System.out.println("Hola, yo soy la el centro " + centerName + "y mi descripciï¿½n es: " + centerDescription);
 
 
 		ModelAndView mav = new ModelAndView();
 		if(db.addCentro(centerName, centerDescription, centerAddres, centerType, centerSubtype) == 1) {
 
-			mav.addObject("mensaje", "Centro añadido con exito");
+			mav.addObject("mensaje", "Centro aï¿½adido con exito");
 			mav.addObject("listaCentros", db.listarCentros());
 			mav.setViewName("centros");
 
 		} else {
-			mav.addObject("mensaje","Centro no añadido con exito");
+			mav.addObject("mensaje","Centro no aï¿½adido con exito");
 			mav.addObject("listaCentros", db.listarCentros());
 			mav.setViewName("centros");
 
