@@ -2,23 +2,58 @@
  * Script to charge content and validations for the form 
  */
 
-
 var app = angular.module("promoModulo", []);
-	app.controller("promoControlador",["$http", "$scope", controladorPrincipal]);
+	app.controller("promoControlador",["$http", "$scope","$document", controladorPrincipal]);
 
 function controladorPrincipal($http, $scope){
 	
 	var vm = this;
 	
+	vm.datosCargados = false;
 	vm.listaCategorias2 = [];
 	vm.listaCategorias1 = [];
 	vm.listaProductos = [];
 	
+	vm.idProductoPromo;
+	
 	vm.cargarDatos = function(){
-		cargarCategorias2();
-		cargarCategorias1();
-		cargarProductos();
+		
+		//encapsulamos rutina en if para que sólo se ejecute una vez mientras estemos en la página, la primera vez que se pida
+		if(!vm.datosCargados){
+			
+			cargarCategorias2();
+			cargarCategorias1();
+			cargarProductos();
+			vm.datosCargados = true;
+			
+		}
+			
 	};
+	
+	//función que devuelve true si la id del producto es la adecuada para hacer selected en el select
+	$scope.theProduct = function(idProducto){
+		
+		if($scope.id == idProducto){
+			return true;
+		}
+		
+	}
+	
+	$scope.theCategory1 = function(idCategory1){
+		
+		if($scope.categoria1 == idCategory1){
+			return true;
+		}
+		
+	}
+	
+	$scope.theCategory2 = function(idCategory2){
+		
+		if($scope.categoria2 == idCategory2){
+			return true;
+		}
+		
+	}
 	
 	cargarCategorias2 = function (){
 		var exito = function(resp){

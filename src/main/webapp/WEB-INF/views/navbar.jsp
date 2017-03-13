@@ -16,10 +16,7 @@
 				<a href="stats"><i class="fa fa-line-chart" aria-hidden="true"></i> Estadísticas</a>
 			</li>
 			<li>
-				<a href="centros"><i class="fa fa-building-o" aria-hidden="true"></i> Centros</a>
-			</li>
-			<li>
-				<a href="zonas"><i class="fa fa-bullseye" aria-hidden="true"></i> Zonas</a>
+				<a href="centroszonas"><i class="fa fa-building-o" aria-hidden="true"></i> Mi centro</a>
 			</li>
 			<li>
 				<a href="promos"><i class="fa fa-tags" aria-hidden="true"></i> Promociones</a>

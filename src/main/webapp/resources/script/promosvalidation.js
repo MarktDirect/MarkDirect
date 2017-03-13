@@ -2,21 +2,15 @@
  * Script to validate dates and ages before submit
  */
 
-window.onload = ahivamos();
-	
-	
-function ahivamos(){
+window.onload = promosvalidation;
 
-
-	alert("hola");
+function promosvalidation(){
 
 	//Agregar promociones nuevas
 	$("#minordate").change(function(){
 
 		if($("#minordate").val() > $("#majordate").val()){
 			$("#okbutton").attr("disabled",true);
-			console.log("1 disable");
-			alert("1 disable");
 
 			if(($("#minordate").val() != "") && ($("#majordate").val() != "")){
 				alert("La fecha de inicio de la promoción debe ser igual o mayor a la de vencimiento.");
@@ -25,11 +19,10 @@ function ahivamos(){
 		}
 
 		if(($("#minordate").val() <= $("#majordate").val())){
-			alert("paso el primero " + ($("#minordate").val() <= $("#majordate").val()));
 			if(($("#minorage").val() <= $("#majorage").val())){
+
 				$("#okbutton").attr("disabled",false);
-				console.log("1 enable");
-				alert("1 enable");
+
 			}
 		}
 
@@ -41,9 +34,6 @@ function ahivamos(){
 		if($("#minordate").val() > $("#majordate").val()){
 			$("#okbutton").attr("disabled",true);
 
-			console.log("2 diasble");
-			alert("2 diasble");
-			
 			if(($("#minordate").val() != "") && ($("#majordate").val() != "")){
 				alert("La fecha de inicio de la promoción debe ser igual o mayor a la de vencimiento.");
 			}
@@ -51,11 +41,10 @@ function ahivamos(){
 		}
 
 		if(($("#minordate").val() <= $("#majordate").val())){
-			alert("paso el segundo " + ($("#minordate").val() <= $("#majordate").val()));
 			if(($("#minorage").val() <= $("#majorage").val())){
+
 				$("#okbutton").attr("disabled",false);
-				console.log("2 enable");
-				alert("2 enable");
+
 			}
 		}
 
@@ -66,18 +55,17 @@ function ahivamos(){
 		if($("#minorage").val() > $("#majorage").val()){
 			$("#okbutton").attr("disabled",true);
 
-			console.log("3 disable");
-			
 			if(($("#minorage").val() != "") && ($("#majorage").val() != "")){
 				alert("La edad mínima de la promoción debe ser igual o mayor a la máxima.");
 			}
 
 		}
+
 		if(($("#minorage").val() <= $("#majorage").val())){
-			alert("paso el tercero " + ($("#minorage").val() <= $("#majorage").val()));
 			if(($("#minordate").val() <= $("#majordate").val())){
+
 				$("#okbutton").attr("disabled",false);
-				console.log("3 enable");
+
 			}
 		}
 
@@ -88,18 +76,16 @@ function ahivamos(){
 		if($("#minorage").val() > $("#majorage").val()){
 			$("#okbutton").attr("disabled",true);
 
-			console.log("4 disable");
-			
 			if(($("#minorage").val() != "") && ($("#majorage").val() != "")){
 				alert("La edad mínima de la promoción debe ser igual o mayor a la máxima.");
 			}
 
 		}
 		if(($("#minorage").val() <= $("#majorage").val())){
-			alert("paso el tercero " + ($("#minorage").val() <= $("#majorage").val()));
 			if(($("#minordate").val() <= $("#majordate").val())){
+
 				$("#okbutton").attr("disabled",false);
-				console.log("4 enable");
+
 			}
 		}
 
@@ -119,7 +105,11 @@ function ahivamos(){
 
 		}
 		if($("#edit-promoSince").val() <= $("#edit-promoTo").val()){
-			$("#submit").attr("disabled",false);
+			if(($("#edit-promoMinAge").val() <= $("#edit-promoMaxAge").val())){
+				
+				$("#submit").attr("disabled",false);
+				
+			}
 		}
 
 	});
@@ -135,7 +125,11 @@ function ahivamos(){
 
 		}
 		if($("#edit-promoSince").val() <= $("#edit-promoTo").val()){
-			$("#submit").attr("disabled",false);
+			if(($("#edit-promoMinAge").val() <= $("#edit-promoMaxAge").val())){
+			
+				$("#submit").attr("disabled",false);
+				
+			}
 		}
 
 	});
@@ -151,7 +145,11 @@ function ahivamos(){
 
 		}
 		if($("#edit-promoMinAge").val() <= $("#edit-promoMaxAge").val()){
-			$("#submit").attr("disabled",false);
+			if(($("#edit-promoSince").val() <= $("#edit-promoTo").val())){
+			
+				$("#submit").attr("disabled",false);
+			
+			}
 		}
 
 	});
@@ -166,10 +164,15 @@ function ahivamos(){
 
 		}
 		if($("#edit-promoMinAge").val() <= $("#edit-promoMaxAge").val()){
-			$("#submit").attr("disabled",false);
+			if(($("#edit-promoSince").val() <= $("#edit-promoTo").val())){
+			
+				$("#submit").attr("disabled",false);
+			
+			}
 		}
 
 	});
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
 }
+
