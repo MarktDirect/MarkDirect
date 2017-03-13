@@ -20,7 +20,7 @@
 			<h2>Gestión de promociones</h2>
 			<a href="#" role="button" class="btn btn-trigger" data-toggle="modal"
 				data-target="#modalPromo" data-ng-click="vm.cargarDatos()">
-				Añadir Promoción</a> <span class="label label-danger">${mensaje}</span>
+				Añadir Promoción</a> <span class="label label-info">${mensaje}</span>
 			<hr style="backgound-color: #f9e553;"/>
 		</div>
 	</div>

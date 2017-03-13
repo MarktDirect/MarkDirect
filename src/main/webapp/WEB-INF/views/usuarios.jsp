@@ -23,8 +23,8 @@
 					<button type=submit value="DesbloquearUsuario" role="button" 
 					class="btn btn-trigger" data-toggle="modal" formaction="usuarios"
 					data-target="#modalBlock">Desbloquear seleccionados</button></p>
-					<label class="label label-danger">${mensajeblock}</label>
-					<label class="label label-danger">${mensajedesblock}</label>
+					<label class="label label-info">${mensajeblock}</label>
+					<label class="label label-info">${mensajedesblock}</label>
 			<hr style="backgound-color: #f9e553;"/>
 		</div>
 	</div>
