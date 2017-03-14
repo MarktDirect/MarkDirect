@@ -121,7 +121,7 @@ table th {
 	color: #002C73;
 }
 
-.table-promos-header th {
+.table-promos-header th, .table-users-header th  {
 	text-align: center;
 }
 
