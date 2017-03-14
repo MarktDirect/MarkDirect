@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="links.jsp"></jsp:include>
 <title>Usuarios</title>
-<script type="text/javascript" src="resources/script/usersform.js"></script>
+<script type="text/javascript" src="resources/script/blockusers.js"></script>
 <script>
 
 $(document).ready( function () {
@@ -45,10 +45,10 @@ $(document).ready( function () {
 					<p>
 						<button type=submit value="BloquearUsuario" role="button"
 							class="btn btn-trigger" data-toggle="modal" formaction="usuario"
-							data-target="#modalBlock">Bloquear seleccionados</button>
-						<button type=submit value="DesbloquearUsuario" role="button"
+							data-target="#modalBlock" id="BotonBloquear" disabled>Bloquear seleccionados</button>
+						<button type=submit value="BloquearUsuario" role="button"
 							class="btn btn-trigger" data-toggle="modal" formaction="usuarios"
-							data-target="#modalBlock">Desbloquear seleccionados</button>
+							data-target="#modalBlock" id="BotonDesbloquear" disabled>Desbloquear seleccionados</button>
 					</p>
 					<label class="label label-info" style="font-weight: lighter;">${mensajeblock}</label> <label
 						class="label label-info" style="font-weight: lighter;">${mensajedesblock}</label>
@@ -85,9 +85,9 @@ $(document).ready( function () {
 									</c:otherwise>
 								</c:choose></td>
 							<td><input type="checkbox" name="bloquear"
-								value="${Usuario.userEmail}"><br></td>
+								value="${Usuario.userEmail}" onclick="verificarBloquear(this)"><br></td>
 							<td><input type="checkbox" name="desbloquear"
-								value="${Usuario.userEmail}"><br></td>
+								value="${Usuario.userEmail}" onclick="verificarDesbloquear(this)"><br></td>
 						</tr>
 					</c:forEach>
 				</tbody>
