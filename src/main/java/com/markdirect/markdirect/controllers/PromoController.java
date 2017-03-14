@@ -130,7 +130,6 @@ public class PromoController {
 	@RequestMapping(value="deletePromo", method=RequestMethod.POST)
 	public ModelAndView detelePromo(@RequestParam("promoId") int promoId){
 		ModelAndView mav = new ModelAndView();
-		System.out.println(promoId);
 		if(db.deletePromo(promoId) == 1){
 			mav.addObject("mensaje", "Promoción eliminada con éxito");
 			mav.addObject("listaPromos", db.listarPromociones());
