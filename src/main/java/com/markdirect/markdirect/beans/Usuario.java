@@ -2,20 +2,27 @@ package com.markdirect.markdirect.beans;
 
 public class Usuario {
 	
-	//Variables
+	//Atributos
 	private String userEmail;
 	private String userGen;
-	private String userBorn;
+	private int userAge;
+	private int userBlock;
 	
 	//Constructor
 	public Usuario(){}
-	public Usuario(String userEmail, String userGen, String userBorn) {
+	public Usuario(String userEmail, String userGen, int userAge, int userBlock) {
 		this.userEmail = userEmail;
 		this.userGen = userGen;
-		this.userBorn = userBorn;
+		this.userAge = userAge;
+		this.userBlock=userBlock;
 	}
 	
-	//Metodos
+	public Usuario(String userGen, int userAge) {
+		this.userGen = userGen;
+		this.userAge = userAge;
+	}
+	
+	//Geter y seter
 	public String getUserEmail() {
 		return userEmail;
 	}
@@ -28,14 +35,20 @@ public class Usuario {
 	public void setUserGen(String userGen) {
 		this.userGen = userGen;
 	}
-	public String getUserBorn() {
-		return userBorn;
+	public int getUserAge() {
+		return userAge;
 	}
-	public void setUserBorn(String userBorn) {
-		this.userBorn = userBorn;
+	public void setUserAge(int userAge) {
+		this.userAge = userAge;
+	}
+	public int getUserBlock() {
+		return userBlock;
+	}
+	public void setUserBlock(int userBlock) {
+		this.userBlock = userBlock;
 	}
 	
-	
+	//Métodos
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -43,11 +56,16 @@ public class Usuario {
 		builder.append(userEmail);
 		builder.append(", userGen=");
 		builder.append(userGen);
-		builder.append(", userBorn=");
-		builder.append(userBorn);
+		builder.append(", userAge=");
+		builder.append(userAge);
+		builder.append(", userBlock=");
+		builder.append(userBlock);
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	
+	
 	
 	
 	

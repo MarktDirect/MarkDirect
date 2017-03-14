@@ -10,43 +10,146 @@ import com.markdirect.markdirect.database.DatabaseMarkDirect;
 
 @Controller
 public class PromoController {
-	
+
 	//Creamos el objeto que nos va a servir para conectar con la BBDD
 	DatabaseMarkDirect db = new DatabaseMarkDirect();
-	
+
 	/*
 	 * Método que nos lista las promociones disponibles
 	 */
-	@RequestMapping(value="/promos", method=RequestMethod.GET)
+	@RequestMapping(value="promos", method=RequestMethod.GET)
 	public ModelAndView promos() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("listaPromos", db.listarPromociones());
+		mav.addObject("listaCat1", db.listarCategoriasNivel1());
+		mav.addObject("listaCat2", db.listarCategoriasNivel2());
+		mav.addObject("listaProductos", db.listarProductos());
+		mav.addObject("listaZonas", db.listarZonas());
 		mav.setViewName("promos");
 		return mav;
 	}
-	
+
 	/*
 	 * Método que da de alta una promoción en la base de datos
 	 */
-	@RequestMapping(value="altaPromos", method=RequestMethod.POST)
+	@RequestMapping(value="promos", method=RequestMethod.POST)
 	public ModelAndView altaPromos(@RequestParam("promoName") String promoName,
-						@RequestParam("promoDescription") String promoDescription,
-						@RequestParam("promoSince") String promoSince,
-						@RequestParam("promoTo") String promoTo,
-						@RequestParam("promoImage") String promoImage,
-						@RequestParam("promo_controlZoneId") int promo_controlZoneId,
-						@RequestParam("promoMinAge") int promoMinAge,
-						@RequestParam("promoMaxAge") int promoMaxAge,
-						@RequestParam("promoGen") String promoGen) {
-		
+			@RequestParam("promoDescription") String promoDescription,
+			@RequestParam("promoSince") String promoSince,
+			@RequestParam("promoTo") String promoTo,
+			@RequestParam("promoImage") String promoImage,
+			@RequestParam("promo_controlzoneId") int promo_controlzoneId,
+			@RequestParam("promoMinAge") int promoMinAge,
+			@RequestParam("promoMaxAge") int promoMaxAge,
+			@RequestParam("promoGen") String promoGen,
+			@RequestParam("promo_catNivel1") int promo_catNivel1,
+			@RequestParam("promo_catNivel2") int promo_catNivel2,
+			@RequestParam("promo_idProduct") long promo_idProduct
+			) {
+
 		ModelAndView mav = new ModelAndView();
-		if(db.addPromo(promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlZoneId, promoMinAge, promoMaxAge, promoGen) == 1) {
+		if(db.addPromo(promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlzoneId, promoMinAge, promoMaxAge, promoGen, promo_catNivel1, promo_catNivel2, promo_idProduct) == 1) {
 			//TODO añadir mensaje al mav para avisar al usuario que se ha registrado con éxito
-			mav.setViewName("redirect:promos");
+			mav.addObject("mensaje", "Promoción añadida con éxito");
+			mav.addObject("listaPromos", db.listarPromociones());
+			mav.addObject("listaCat1", db.listarCategoriasNivel1());
+			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("promos");
+
 		} else {
-			
+			mav.addObject("mensaje", "La promoción no ha podido ser añadida");
+			mav.addObject("listaPromos", db.listarPromociones());
+			mav.addObject("listaCat1", db.listarCategoriasNivel1());
+			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("promos");
+
+		}
+
+		return mav;
+	}
+
+	/**
+	 * M�todo para editar las promociones
+	 * Todos los par�metros que se le introducen son los atributos que tiene la clase promoci�n
+	 * @param promoId
+	 * @param promoName
+	 * @param promoDescription
+	 * @param promoSince
+	 * @param promoTo
+	 * @param promoImage
+	 * @param promo_controlzoneId
+	 * @param promoMinAge
+	 * @param promoMaxAge
+	 * @param promoGen
+	 * @param promo_catNivel1
+	 * @param promo_catNivel2
+	 * @param promo_idProduct
+	 * @return mav: nos manda a la vista de promocioens, introducimos los campos a modificar de la 
+	 * promoci�n, nos manda un mensaje si la modificaci�n ha sido realizada con �xito o no
+	 */
+	@RequestMapping(value="editPromos", method=RequestMethod.GET)
+	public ModelAndView editPromos(@RequestParam("promoId") int promoId, 
+			@RequestParam("promoName") String promoName,
+			@RequestParam("promoDescription") String promoDescription,
+			@RequestParam("promoSince") String promoSince,
+			@RequestParam("promoTo") String promoTo,
+			@RequestParam("promoImage") String promoImage,
+			@RequestParam("promo_controlzoneId") int promo_controlzoneId,
+			@RequestParam("promoMinAge") int promoMinAge,
+			@RequestParam("promoMaxAge") int promoMaxAge,
+			@RequestParam("promoGen") String promoGen,
+			@RequestParam("promo_catNivel1") int promo_catNivel1,
+			@RequestParam("promo_catNivel2") int promo_catNivel2,
+			@RequestParam("promo_idProduct") long promo_idProduct) {
+		ModelAndView mav = new ModelAndView();
+		if(db.editPromos(promoId, promoName, promoDescription, promoSince, promoTo, promoImage, promo_controlzoneId, promoMinAge, promoMaxAge, promoGen, promo_catNivel1, promo_catNivel2, promo_idProduct) == 1) {
+			mav.addObject("mensaje", "Promoción modificada con éxito");
+			mav.addObject("listaPromos", db.listarPromociones());
+			mav.addObject("listaCat1", db.listarCategoriasNivel1());
+			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("promos");
+		} else {
+			mav.addObject("mensaje", "Error al modificar la promoción");
+			mav.addObject("listaPromos", db.listarPromociones());
+			mav.addObject("listaCat1", db.listarCategoriasNivel1());
+			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("promos");
+		}
+
+		return mav;
+	}
+	
+	@RequestMapping(value="deletePromo", method=RequestMethod.POST)
+	public ModelAndView detelePromo(@RequestParam("promoId") int promoId){
+		ModelAndView mav = new ModelAndView();
+		if(db.deletePromo(promoId) == 1){
+			mav.addObject("mensaje", "Promoción eliminada con éxito");
+			mav.addObject("listaPromos", db.listarPromociones());
+			mav.addObject("listaCat1", db.listarCategoriasNivel1());
+			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("promos");
+		} else {
+			mav.addObject("mensaje", "Error al eliminar promoción");
+			mav.addObject("listaPromos", db.listarPromociones());
+			mav.addObject("listaCat1", db.listarCategoriasNivel1());
+			mav.addObject("listaCat2", db.listarCategoriasNivel2());
+			mav.addObject("listaProductos", db.listarProductos());
+			mav.addObject("listaZonas", db.listarZonas());
+			mav.setViewName("promos");
 		}
 		
 		return mav;
+		
 	}
+	
 }

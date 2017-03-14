@@ -1,7 +1,12 @@
 package com.markdirect.markdirect.beans;
 
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class Promocion {
 	
@@ -18,12 +23,15 @@ public class Promocion {
 	private int promoMaxAge;
 	private String promoGen;
 	private int promo_controlzoneId;
+	private int promo_catNivel1;
+	private int promo_catNivel2;
+	private long promo_idProduct;
 	
 	//Constructores
 	public Promocion(){}
 	public Promocion(String promoName, String promoDescription, String promoSince, String promoTo,
 			String promoImage, int promoMinAge, int promoMaxAge,
-			String promoGen, int promo_controlzoneId) {
+			String promoGen, int promo_controlzoneId, int promo_catNivel1, int promo_catNivel2, long promo_idProduct) {
 		this.promoName = promoName;
 		this.promoDescription = promoDescription;
 		this.promoSince = promoSince;
@@ -35,13 +43,14 @@ public class Promocion {
 		this.promoMaxAge = promoMaxAge;
 		this.promoGen = promoGen;
 		this.promo_controlzoneId = promo_controlzoneId;
+		this.promo_catNivel1 = promo_catNivel1;
+		this.promo_catNivel2 = promo_catNivel2;
+		this.promo_idProduct = promo_idProduct;
 	}
 	
-	
-
 	public Promocion(int promoId, String promoName, String promoDescription, String promoSince, String promoTo,
 			int promoState, String promoCreate, String promoImage, int promoMinAge, int promoMaxAge, String promoGen,
-			int promo_controlzoneId) {
+			int promo_controlzoneId, int promo_catNivel1, int promo_catNivel2, long promo_idProduct) {
 		super();
 		this.promoId = promoId;
 		this.promoName = promoName;
@@ -55,8 +64,10 @@ public class Promocion {
 		this.promoMaxAge = promoMaxAge;
 		this.promoGen = promoGen;
 		this.promo_controlzoneId = promo_controlzoneId;
+		this.promo_catNivel1 = promo_catNivel1;
+		this.promo_catNivel2 = promo_catNivel2;
+		this.promo_idProduct = promo_idProduct;
 	}
-	
 	//Getters/Setters
 	public int getPromoId() {
 		return promoId;
@@ -153,9 +164,28 @@ public class Promocion {
 	public void setPromo_controlzoneId(int promo_controlzoneId) {
 		this.promo_controlzoneId = promo_controlzoneId;
 	}
+	
 
 	//MÃ©todos
 
+	public int getPromo_catNivel1() {
+		return promo_catNivel1;
+	}
+	public void setPromo_catNivel1(int promo_catNivel1) {
+		this.promo_catNivel1 = promo_catNivel1;
+	}
+	public int getPromo_catNivel2() {
+		return promo_catNivel2;
+	}
+	public void setPromo_catNivel2(int promo_catNivel2) {
+		this.promo_catNivel2 = promo_catNivel2;
+	}
+	public long getPromo_idProduct() {
+		return promo_idProduct;
+	}
+	public void setPromo_idProduct(long promo_idProduct) {
+		this.promo_idProduct = promo_idProduct;
+	}
 	@Override
 	public String toString() {
 		return "Promocion [promoId=" + promoId + ", promoName=" + promoName + ", promoDescription=" + promoDescription
@@ -178,15 +208,11 @@ public class Promocion {
 		yearTo = Integer.parseInt(this.promoTo.substring(0, 4));
 		monthTo = Integer.parseInt(this.promoTo.substring(5, 7));
 		dayTo = Integer.parseInt(this.promoTo.substring(8, 10));
-		System.out.println(this.promoTo);
-		
-		System.out.println("El dÃ­a limite es: " + dayTo + "el mes: " + monthTo + "el aÃ±o " + yearTo);
 		
 		dayActual = calendar.get(Calendar.DATE);
 		monthActual = calendar.get(Calendar.MONTH);
 		yearActual = calendar.get(Calendar.YEAR);
-		
-		System.out.println("El dÃ­a de hoy es: " + dayActual + "el mes: " + monthActual + "el aÃ±o " + yearActual);
+	
 
 		if(yearActual > yearTo) {
 			active = 0;
@@ -217,6 +243,37 @@ public class Promocion {
 		String date = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + seconds;
 		
 		return date;
+	}
+	
+	/**
+	 * Método para generar el código Json con los datos de las promociones
+	 * @param promoList: List con los datos de la promoción
+	 * @return ofertas: ArrayList con los datos de la promoción en lenguaje Json
+	 */
+	public static ArrayList<PromoJSON> convertJSON(List<Promocion> promoList) {
+		ArrayList<PromoJSON> ofertas = new ArrayList<PromoJSON>();
+		for (Promocion promocion : promoList) {
+			//recogemos los datos que necesitamos para crear la promoJSON
+			String titulo = promocion.getPromoName();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date d;
+			  String validez = "";
+			try {
+				d = sdf.parse(promocion.getPromoTo());
+				 long time = d.getTime();
+				 validez = String.valueOf(time/1000);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			   
+			String oferta = promocion.getPromoDescription();
+			String imagen = promocion.getPromoImage();
+			//creamos una promoJSON
+			PromoJSON promoJSON = new PromoJSON(titulo, validez, oferta, imagen);
+			//la aÃ±adimos al arrayList
+			ofertas.add(promoJSON);
+		}
+		return ofertas;
 	}
 	
 }

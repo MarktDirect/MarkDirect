@@ -48,7 +48,7 @@ a {
 
 /* Botones */ 
 
-.btn-trigger {
+.btn-trigger, .btn-trigger:focus, .btn-trigger:after {
 	background-color: #002C73;
 	color: white;
 }
@@ -76,4 +76,127 @@ a {
 	width: 60%;
 	margin: 0 auto;
 	margin-bottom: 10px;
+}
+
+/* Estilo popover promociones */
+.popover-promo {
+	color: black;
+}
+
+.popover-promo:hover {
+	color: grey;
+	text-decoration: none;
+}
+
+/* Estilo tablas - listas */
+table {
+	margin: 0 10px;
+}
+.dataTables_wrapper .dataTables_filter {
+	float: none;
+	text-align: center;
+}
+
+/*Pagination  */
+$table-paging-button-active: #a7b9d9 !default;
+ 
+$table-paging-button-hover: #466dc2 !default;
+
+table th {
+	text-align: center;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+	background-color: blue !important;
+}
+
+.promo-info, .usuarios-info {
+	text-align: center;
+	margin: 0px 10px;
+}
+
+.table-promos-header, .table-promos-header:hover, .table-users-header, .table-users-header:hover {
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #002C73;
+}
+
+.table-promos-header th {
+	text-align: center;
+}
+
+.table-zonas {
+	text-align: center;
+}
+
+.table-promos, .table-users {
+	margin: 0;
+}
+
+span.label.label-info {
+	font-weight: lighter;
+}
+/* Estilo home - métricas */
+.home-header {
+	font-family: 'Oswald';
+}
+
+.user-statistics {
+	margin-bottom: 30px;
+}
+
+.promo-statistics {
+	margin-top: 40px;
+}
+
+.container-userStatistics, .container-promoStatistics {
+	text-align: center;
+	padding: 20px;
+	height: 220px;
+}
+
+div.user-data, div.promo-data {
+	display: inline-block;
+	margin: auto;
+	padding: 0;
+	width: 200px;
+	height: 220px;
+	border: 3px solid #002C73;
+	overlow: hidden;
+}
+
+div.big-user-data, div.big-promo-data {
+	display: inline-block;
+	margin: auto;
+	padding: 0;
+	width: 450px;
+	height: 220px;
+	border: 3px solid #002C73;
+	overlow: hidden;
+}
+
+.user-text, .promo-text {
+	font-family: 'Bree Serif';
+	font-size: 18px;
+}
+
+.user-number, .promo-number {
+	font-size: 44px;
+	font-family: 'Yanone Kaffeesatz';
+	
+}
+/* Estilo footer */
+
+footer {
+	margin-top: 60px;
+	background-color:#002C73;
+	height: 50px;
+}
+
+.footer-centros {
+	margin-top: 550px;
+}
+.info-centros h3, .info-zonas h3, .info-zonas h4 {
+	text-align: center;
+	margin-bottom: 20px;
 }

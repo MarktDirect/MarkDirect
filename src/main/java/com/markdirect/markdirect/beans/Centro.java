@@ -23,7 +23,6 @@ public class Centro {
 		this.centerDescription = centerDescription;
 		this.centerName = centerName;
 		this.centerAddres = centerAddres;
-		//TODO modificar la Id del administrador
 		this.center_adminId=1;
 	}
 

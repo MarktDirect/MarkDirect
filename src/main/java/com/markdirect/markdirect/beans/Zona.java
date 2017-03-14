@@ -3,12 +3,14 @@ package com.markdirect.markdirect.beans;
 
 public class Zona {
 	
+	//Atributos
 	private int controlzoneId;
 	private String controlzoneMajor;
 	private String controlzoneMinor;
 	private String controlzoneEmplacement;
 	private int controlzone_centerId;
 	
+	//Constructores
 	public Zona() {}
 	
 	public Zona(int controlzoneId, String controlzoneMajor, String controlzoneMinor, String controlzoneEmplacement,
@@ -21,6 +23,7 @@ public class Zona {
 		this.controlzone_centerId = controlzone_centerId;
 	}
 
+	//Geter y seter
 	public int getControlzoneId() {
 		return controlzoneId;
 	}
@@ -61,6 +64,7 @@ public class Zona {
 		this.controlzone_centerId = controlzone_centerId;
 	}
 
+	//Métodos
 	@Override
 	public String toString() {
 		return "Centros [controlzoneId=" + controlzoneId + ", controlzoneMajor=" + controlzoneMajor

@@ -6,6 +6,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public class Conector {
 
+	/**
+	 * Método que crea la conexión a la base de datos
+	 * @return dataSource: Devuelve la conexión con la base de datos
+	 */
 	public static DriverManagerDataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		
